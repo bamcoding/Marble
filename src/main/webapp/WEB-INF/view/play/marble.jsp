@@ -2,12 +2,10 @@
 	pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" type="text/css" href="/Marble/css/marble.css" />
-<link rel="stylesheet" type="text/css"
-	href="/Marble/bamcoding_css/cube.css" />
-<link rel="stylesheet" type="text/css"
-	href="/Marble/bamcoding_css/flip.css" />
-<link rel="stylesheet" type="text/css"
-	href="/Marble/bamcoding_css/gamePan.css" />
+<link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/cube.css" />
+<link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/flip.css" />
+<link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/gamePan.css" />
+<link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/carousel.css" />
 
 <script type="text/javascript">
 	$(document).ready(
@@ -93,11 +91,11 @@
 
 						var showTime = 1000;
 						var number = parseInt(data);
-						$("#bling").addClass("bling");
-						$("#cube").addClass("actionMove");
+						$("#blingEffect").addClass("blingEffect");
+						$("#cube").addClass("throwAction");
 
 						setTimeout(function() {
-							$("#cube").removeClass("actionMove");
+							$("#cube").removeClass("throwAction");
 						}, showTime);
 
 						console.log("전꺼:" + preNum + " 지금:" + number);
@@ -115,38 +113,55 @@
 							setTimeout(moveUnit, showTime);
 						}
 						setTimeout(function() {
-							$("#bling").removeClass("bling");
+							$("#blingEffect").removeClass("blingEffect");
 							getPenalty();
 						}, showTime + 700);
-
-						
-						
-						
 					});
-
 				});
 				
-				function getPenalty(){
-					var x = pointX/pxX;
-					var y = pointY/pxY;
+		function getPenalty(){
+			var x = pointX/pxX;
+			var y = pointY/pxY;
+			var positionIndex = 0;
+			
+				if(y == 0){
+					positionIndex = x;
+				}else if(x == 6){
+					positionIndex = x - y;
+				}else if(y == -6){
+					positionIndex = cellX + (cellX- x) - y;
+				}else if(x == 0){
+					positionIndex = (2 * cellX) + cellY + (cellY + y);
 					
-					var positionIndex = 0;
-					
-					if(y == 0){
-						positionIndex = x;
-					}else if(x == 6){
-						positionIndex = x - y;
-					}else if(y == -6){
-						positionIndex = cellX + (cellX- x) - y;
-					}else if(x == 0){
-						positionIndex = (2 * cellX) + cellY + (cellY + y);
-					}
-					
-					var div = $("#cell"+positionIndex+" .gameInfo").text();
-					alert(div);
 				}
-
-			});
+					actionGoldKey(positionIndex);
+			
+		}
+		
+		function actionGoldKey(date){
+			var result = 0;
+			var currdeg = 0;
+			var div = $("#cell"+date+" .gameType").text();
+			alert(div);
+			if(div == "GOLD_KEY"){
+				result = parseInt(Math.random()*6)+1;
+				currdeg = currdeg + result*600;
+				$("#keyCard").addClass("actionSpinGoldKey");	
+				$("#keyCardFrame").css("display","block");
+				$("#disabledEffect").css("display","block");
+				//황금카드를 랜덤 하게 보여주는 부분
+				setTimeout(function(){
+				$("#keyCard").addClass("pick" + 6);
+				},4000);
+				//기다렸다가 카드를 사라지게 하는 함수를 실행
+				/* setTimeout(function(){
+					$("#keyCard").removeClass("actionSpinGoldKey");	
+					$("#keyCardFrame").css("display","none");
+					$("#disabledEffect").css("display","none");
+				},4000); */
+			}
+		}
+	});
 </script>
 <div id="marble">
 	<div id="gamePan">
@@ -295,14 +310,16 @@
 		<!-- 큐브 부분 -->
 		<div class="cubeFrame">
 			<div class="cube" id="cube">
-				<div class="front side item">1</div>
-				<div class="back side item">6</div>
-				<div class="left side item">3</div>
-				<div class="right side item">4</div>
-				<div class="top side item">5</div>
-				<div class="bottom side item">2</div>
+				<div class="front side"></div>
+				<div class="back side"></div>
+				<div class="left side"></div>
+				<div class="right side"></div>
+				<div class="top side"></div>
+				<div class="bottom side"></div>
 			</div>
 		</div>
+		<div id="blingEffect"></div>
+		<div id="disabledEffect"></div>
 		<!-- 카드 뒤집기 부분 -->
 		<div id="container">
 			<div id="flipper">
@@ -315,9 +332,17 @@
 				</div>
 			</div>
 		</div>
-
-
-		<div id="bling"></div>
+		<!-- 황금 열쇠 연출 부분 -->
+		<div id="keyCardFrame">
+		  <div id="keyCard">
+		    <div class="item a">A</div>
+		    <div class="item b">B</div>
+		    <div class="item c">C</div>
+		    <div class="item d">D</div>
+		    <div class="item e">E</div>
+		    <div class="item f">F</div>
+		  </div>
+		</div>
 		<div id="viewInfo"></div>
 		<div id="goldenCard"></div>
 		<div id="drink"></div>

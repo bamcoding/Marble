@@ -1,4 +1,15 @@
 @CHARSET "UTF-8";
+#disabledEffect{
+	display:none;
+	z-index:998;
+	top:0px;
+	left:11px;
+	width:98%;
+	height:100%;
+	opacity:0.5;
+	background:gray;
+	position: absolute;
+}
 
 #gamePan .object {
   	position: absolute;
