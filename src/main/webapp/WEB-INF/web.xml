@@ -228,8 +228,8 @@
     <servlet-name>DoSetGamesServlet</servlet-name>
     <url-pattern>/doSetGames</url-pattern>
   </servlet-mapping>
-<servlet>
-<description></description>
+  <servlet>
+    <description></description>
     <display-name>DoLogoutPageServlet</display-name>
     <servlet-name>DoLogoutPageServlet</servlet-name>
     <servlet-class>net.ktds.drink.user.web.DoLogoutPageServlet</servlet-class>
@@ -247,4 +247,14 @@
     <filter-name>SessionCheckFilter</filter-name>
     <url-pattern>/board/*</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewAddGamesServlet</display-name>
+    <servlet-name>ViewAddGamesServlet</servlet-name>
+    <servlet-class>net.ktds.drink.games.web.ViewAddGamesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAddGamesServlet</servlet-name>
+    <url-pattern>/addGames</url-pattern>
+  </servlet-mapping>
 </web-app>
