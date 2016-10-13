@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 	$("#recommendBtn").click(function() {
 		if (confirm("\"${board.boardSubject }\"를 추천하시겠습니까?")) {
-			$.post("/Marble/recommendCount",{boardId : "${board.boardId}"},function(data) {
+			$.post("/Marble/doUpdateRecommend",{boardId : "${board.boardId}"},function(data) {
 				if (data == "true") {
 					var count = parseInt($("#recommendCount").text());
 					$("#recommendCount").text(count + 1);

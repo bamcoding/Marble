@@ -256,5 +256,15 @@
   <servlet-mapping>
     <servlet-name>ViewAddGamesServlet</servlet-name>
     <url-pattern>/addGames</url-pattern>
+    </servlet-mapping>
+	<servlet>
+  <description></description>
+    <display-name>DoUpdateRecommendCountServlet</display-name>
+    <servlet-name>DoUpdateRecommendCountServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.web.DoUpdateRecommendCountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoUpdateRecommendCountServlet</servlet-name>
+    <url-pattern>/doUpdateRecommend</url-pattern>
   </servlet-mapping>
 </web-app>

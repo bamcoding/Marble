@@ -336,7 +336,7 @@ public class BoardDaoImpl extends DaoSupport implements BoardDao{
 			public PreparedStatement query(Connection conn) throws SQLException {
 				StringBuffer query = new StringBuffer();
 				query.append(" UPDATE	BOARD ");
-				query.append(" SET		RCMD_CNT ");
+				query.append(" SET		RCMD_CNT = RCMD_CNT + 1 ");
 				query.append(" WHERE	BRD_ID = ? ");
 				
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
