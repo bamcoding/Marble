@@ -12,28 +12,39 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 
-		$("#categoryId").change(function(){
-			$.post("/Marble/searchType",{"categoryId": $("#categoryId").val()}, function(data) {
-				$("#gameName").remove();
-				$("#gameName").html(data); 
-			});
+
+$(document).ready(function () {
+	
+   $("select option:selected").each(function () {
+	   $( "#gameName" ).load( "/Marble/searchType", { "categoryId": $("#categoryId").val()} );
 		});
+
+     
+	$("#categoryId").change(function(){
+		$( "#gameName" ).load( "/Marble/searchType", { "categoryId": $("#categoryId").val()} );
+	});
+
+});
+
+
+
 		
 </script>
 
 </head>
 <body>
 
+	<div id = "gamesSet_Wrapper">
 	<div>
 		<select id="categoryId" name="categoryId">
-			<option>Category</option>
-			<c:forEach items="${games}" var="game">
-				<option value="${game.gameId}">${game.gameName}</option>
+			<option selected="selected">Category</option>
+			<c:forEach items="${categories}" var="category">
+				<option value="${category.categoryId}">${category.categoryName}</option>
 			</c:forEach>
 		</select>
 	</div>
-	<div id = "gameName" name="gameName"></div>
-	<div></div>
-
+	
+	<div name="gameName" id="gameName"></div>
+	</div>
 </body>
 </html>

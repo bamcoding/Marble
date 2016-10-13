@@ -118,3 +118,6 @@ body {
 	position: fixed;
 	z-index: 89;
 }
+.selected {
+	background-color: #80ff80;
+}
