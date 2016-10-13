@@ -257,4 +257,14 @@
     <servlet-name>ViewAddGamesServlet</servlet-name>
     <url-pattern>/addGames</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>doADoAddGamesServlet</display-name>
+    <servlet-name>doADoAddGamesServlet</servlet-name>
+    <servlet-class>net.ktds.drink.games.web.DoAddGamesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>doADoAddGamesServlet</servlet-name>
+    <url-pattern>/doAddGames</url-pattern>
+  </servlet-mapping>
 </web-app>
