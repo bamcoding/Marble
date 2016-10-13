@@ -8,8 +8,7 @@
 <link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/carousel.css" />
 
 <script type="text/javascript">
-	$(document).ready(
-			function() {
+	$(document).ready( function() {
 				var move = "x+";
 				var cellX = 6;
 				var cellY = 6;
@@ -71,59 +70,45 @@
 							+ " }");
 				}
 
-				// 카드 플립부분
-				var check = 0;
-				$("#container").click(function() {
-					if (check == 0) {
-						$("#flipper").addClass("clickFlip");
-						check = 1;
-					} else if (check == 1) {
-						$("#flipper").removeClass("clickFlip");
-						check = 0;
-					}
-				});
 
-				var preNum = 0;
+
 				//던지기 부분
 				$(".cubeFrame").click(function() {
-
-					$.post("/Marble/doThrowCube", function(data) {
-
 						var showTime = 1000;
-						var number = parseInt(data);
-						$("#blingEffect").addClass("blingEffect");
+						var randomNum = parseInt(Math.random()*6) + 1;
+						
+						//큐브 애니메이션을 실행한다.
 						$("#cube").addClass("throwAction");
 
+						//큐브가 떨어지면 실행
 						setTimeout(function() {
 							$("#cube").removeClass("throwAction");
+							$("#cube").removeClass("cube");
+							$("#cube").addClass("show" + randomNum);
+							$("#blingEffect").addClass("blingEffect");
 						}, showTime);
-
-						console.log("전꺼:" + preNum + " 지금:" + number);
-						$("#cube").removeClass("cube");
-						if (preNum != 0) {
-							$("#cube").addClass("show" + number);
-							$("#cube").removeClass("show" + preNum + "");
-						} else {
-							$("#cube").addClass("show" + number);
-						}
-						preNum = number;
-
-						for (var i = 0; i < number; i++) {
+						
+						for (var i = 0; i < randomNum; i++) {
 							showTime += 400;
 							setTimeout(moveUnit, showTime);
 						}
+						showTime += 400
 						setTimeout(function() {
+							//블링이 끝나면 모든 기능을 제거
+							$("#cube").addClass("cube");
+							$("#cube").removeClass("show" + randomNum);
 							$("#blingEffect").removeClass("blingEffect");
+						}, showTime);	
+						
+						setTimeout(function() {
 							getPenalty();
-						}, showTime + 700);
-					});
+						}, showTime);
 				});
 				
 		function getPenalty(){
 			var x = pointX/pxX;
 			var y = pointY/pxY;
 			var positionIndex = 0;
-			
 				if(y == 0){
 					positionIndex = x;
 				}else if(x == 6){
@@ -131,36 +116,79 @@
 				}else if(y == -6){
 					positionIndex = cellX + (cellX- x) - y;
 				}else if(x == 0){
-					positionIndex = (2 * cellX) + cellY + (cellY + y);
-					
+					positionIndex = (2 * cellX) + cellY + (cellY + y);					
 				}
-					actionGoldKey(positionIndex);
-			
-		}
-		
-		function actionGoldKey(date){
-			var result = 0;
-			var currdeg = 0;
-			var div = $("#cell"+date+" .gameType").text();
+			var div = $("#cell"+positionIndex+" .gameType").text();
 			alert(div);
 			if(div == "GOLD_KEY"){
-				result = parseInt(Math.random()*6)+1;
-				currdeg = currdeg + result*600;
-				$("#keyCard").addClass("actionSpinGoldKey");	
-				$("#keyCardFrame").css("display","block");
-				$("#disabledEffect").css("display","block");
-				//황금카드를 랜덤 하게 보여주는 부분
-				setTimeout(function(){
-				$("#keyCard").addClass("pick" + 6);
-				},4000);
-				//기다렸다가 카드를 사라지게 하는 함수를 실행
-				/* setTimeout(function(){
-					$("#keyCard").removeClass("actionSpinGoldKey");	
-					$("#keyCardFrame").css("display","none");
-					$("#disabledEffect").css("display","none");
-				},4000); */
+				actionSpinGoldKey();
 			}
 		}
+
+		function actionSpinGoldKey(){
+			var showTime = 0;
+			var randomNum = 0;
+			var extraDeg =0;
+				randomNum = parseInt(Math.random()*6)+1;
+				console.log("회전카드 랜덤값 : "+(randomNum));
+				
+				if(randomNum > 1){
+					extraDeg = (randomNum) * 60;
+					console.log("회전카드 추가 각도 : "+ extraDeg);
+				}
+					
+				$("#keyCard").addClass("actionSpinGoldKey");
+				showTime += 4000;
+				setTimeout(function(){					
+					$("#keyCard").removeClass("actionSpinGoldKey");
+				},showTime);
+				
+				$("#keyCardFrame").css("display","block");
+				$("#disabledEffect").css("display","block");
+				//애니메이션이 끝날 때까지 기다리다가 카드를 랜덤 하게 보여주는 부분
+				setTimeout(function(){
+					randomNum = 3;
+				
+				// pick 클래스로 카드를 하나 뽑는다.	
+				$("#keyCard").addClass("pick" + randomNum);
+				//클릭하면 뒤집기
+				var deg=0;
+				$(".item.card"+randomNum).click(function(){
+				$(this).mousedown(function(){
+					$(this).css({"transform":"rotateY(180deg)"});	
+								});
+				$(".item.card"+randomNum).dblclick(function(){
+					actionSpinGoldKey();
+				});
+				});
+				
+				
+				}, showTime);
+				
+				//클릭하면 확대
+/* 				$(".item.card"+6).click(function(){
+					$(this).css("zoom","2");
+					
+					//기다렸다가 카드를 사라지게 하는 함수를 실행
+				 	$(this).click(function(){
+						$("#keyCard").removeClass("actionSpinGoldKey");	
+						$("#keyCardFrame").css("display","none");
+						$("#disabledEffect").css("display","none");
+						$(this).css("zoom","1");
+					}); 
+				}); */
+		}
+				// 카드 플립부분
+		var check = 0;
+		$("#container").click(function() {
+			if (check == 0) {
+				$("#flipper").addClass("clickFlip");
+				check = 1;
+			} else if (check == 1) {
+				$("#flipper").removeClass("clickFlip");
+				check = 0;
+			}
+		});
 	});
 </script>
 <div id="marble">
@@ -320,10 +348,22 @@
 		</div>
 		<div id="blingEffect"></div>
 		<div id="disabledEffect"></div>
-		<!-- 카드 뒤집기 부분 -->
+		<!-- 황금 열쇠 ( 1.연출 부분 ) -->
+		<div id="keyCardFrame">
+		  <div id="keyCard">
+		    <div class="item card1">A</div>
+		    <div class="item card2">B</div>
+		    <div class="item card3">C</div>
+		    <div class="item card4">D</div>
+		    <div class="item card5">E</div>
+		    <div class="item card6">F</div>
+		  </div>
+		</div>
+		<!--  황금 열쇠 ( 2.카드 뒤집기 부분 ) -->
 		<div id="container">
 			<div id="flipper">
 				<div class="flip_front">
+					열쇠
 					<span class="name">Post it</span>
 				</div>
 				<div class="flip_back">
@@ -331,17 +371,6 @@
 					<p>고온다습 직사광선을 피해 보관하시기 바랍니다.</p>
 				</div>
 			</div>
-		</div>
-		<!-- 황금 열쇠 연출 부분 -->
-		<div id="keyCardFrame">
-		  <div id="keyCard">
-		    <div class="item a">A</div>
-		    <div class="item b">B</div>
-		    <div class="item c">C</div>
-		    <div class="item d">D</div>
-		    <div class="item e">E</div>
-		    <div class="item f">F</div>
-		  </div>
 		</div>
 		<div id="viewInfo"></div>
 		<div id="goldenCard"></div>
