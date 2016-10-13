@@ -1,0 +1,147 @@
+@CHARSET "UTF-8";
+.side {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 90px;
+  font-size: 4em;
+  text-align: center;
+  color: #FFF;
+  opacity: 0.9;
+  border-radius: 10px;
+}
+
+.front{
+	transform : translateZ(50px);
+	background: red;
+}
+.back{
+	transform : rotateY(180deg) translateZ(50px);
+	background: blue;
+}
+.left{
+	transform : rotateY(-90deg) translateX(-50px);
+	transform-origin: left;
+	background: pink;
+}
+.right{
+	transform : rotateY(90deg) translateX(50px);
+	transform-origin: right;
+	background: yellow;
+}
+.top{
+	transform : rotateX(-90deg) translateY(-50px);
+	transform-origin: top;
+	background: brown;
+}
+.bottom{
+	transform : rotateX(90deg) translateY(50px);
+	transform-origin: bottom;
+	background: green;
+}
+.bling { 
+	background: url(/Mables/img/star.png);
+	top:40%;
+	left:40%;
+	position:absolute;
+	width: 200px;
+	height: 160px;
+	border-radius: 50px;
+}
+
+.cubeFrame {
+    perspective: 400px;
+    perspective-origin: 50% 100px;
+	top:45%;
+	left:45%;
+	position:absolute;
+	width: 100px;
+	height: 100px;
+}
+
+.cube {
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	animation: spin 5s infinite linear;
+	
+}
+
+.show1 {/*front*/
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	transform : rotateX(0deg);	
+}
+
+.show2 {/*bottom*/
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	transform : rotateX(90deg);
+}
+
+.show3 {/*left*/
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	transform : rotateY(90deg);
+	
+}
+
+.show4 {/*right*/
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	transform : rotateY(-90deg);	
+}
+
+.show5 {/*top*/
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	transform : rotateX(-90deg);	
+}
+
+.show6 {/*back*/
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	transform : rotateX(180deg);	
+}
+
+
+
+@keyframes spin {
+	from { transform: rotateX(0) rotateY(0);  }
+	to { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* 주사위 던지는 애니메이션*/
+.actionMove{
+    animation-name: throw;
+    animation-duration: 1s;
+	/*
+    -webkit-animation-name: throw;
+    -webkit-animation-duration: 4s;
+    */
+}
+
+
+@keyframes throw {
+    0%   {transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0) rotateZ(0deg);}    
+    1%   {transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(180deg) rotateZ(0deg);}    
+    50%   {transform: translateX(0px) translateY(-300px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);}    
+    60%   {transform: translateX(0px) translateY(-350px) translateZ(0px) rotateX(0deg) rotateY(360deg) rotateZ(0deg);}    
+    70%   {transform: translateX(0px) translateY(-300px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);}    
+    
+    100%   {transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(720deg);}    
+}

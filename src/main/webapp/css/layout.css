@@ -1,0 +1,159 @@
+@CHARSET "UTF-8";
+
+#wrapper body, div, p, span, input, select, textarea, td, th, li, b, file {
+	font-size: 12px;
+	color: #333;
+	font-family: "나눔고딕", "고딕체", "고딕"
+}
+
+
+#wrapper body {
+	background-color: #ffffff;
+}
+
+#wrapper {
+	width: 700px;
+	margin: 0 auto;
+}
+
+#wrapper a:ACTIVE, a:VISITED, a:LINK {
+	font-size: 12px;
+	color: #666;
+	text-decoration: none;
+}
+
+#wrapper a:HOVER {
+	font-size: 12px;
+	color: #888;
+	text-decoration: underline;
+}
+
+#wrapper .round {
+	border-radius: 7px;
+}
+
+#wrapper input {
+	padding: 5px;
+	padding-left: 15px;
+	border-radius: 7px;
+	border: 1px solid #BBBBBB;
+}
+
+#wrapper input[type=file] {
+	border: none;
+}
+
+#wrapper input[type=button], select, textarea {
+	padding: 5px;
+	border: 1px solid #BBBBBB;
+	border-radius: 7px;
+}
+
+#wrapper textarea {
+	padding-left: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border: 1px solid #BBBBBB;
+}
+
+#wrapper input[type=button]:HOVER {
+	border: 1px solid RED;
+}
+
+#wrapper input:FOCUS, textarea:FOCUS {
+	border: 1px solid #ff0000;
+}
+
+#wrapper #registForm, #loginForm {
+	margin: 0 auto;
+	text-align: center;
+	width: 275px;
+}
+
+#wrapper #registForm input[type=text], input[type=password] {
+	width: 250px;
+	margin-top: 5px;
+}
+
+#wrapper #loginForm input[type=text], input[type=password] {
+	width: 250px;
+	margin-top: 5px;
+}
+
+#wrapper #registForm, #loginForm input:FIRST-CHILD {
+	margin-top: 0px;
+}
+
+#wrapper #writeForm input[type="text"], textarea{
+	width: 100%;
+	margin-top: 5px;
+}
+
+#wrapper #writeForm textarea {
+	height: 300px;
+}
+
+#wrapper .left {
+	float: left;
+}
+
+#wrapper .right {
+	float: right;
+}
+
+#wrapper .clear {
+	clear: both;
+}
+
+#wrapper #article {
+	background-color: #FFFFFF;
+	padding: 15px;
+	border-radius: 7px;
+}
+
+
+#wrapper #article #articleHeader p {
+	margin: 0px;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+#wrapper #article #articleHeader #articleInfo span {
+	font-size: 13px;
+	margin-right: 15px;
+}
+
+#wrapper #article #articleHeader #articleInfo span img {
+	width: 15px;
+	margin-right: 5px;
+}
+
+#wrapper #article #articleHeader #attachedFile span {
+	font-size: 13px;
+	margin-right: 15px;
+}
+
+#wrapper #article #articleHeader #attachedFile span img {
+	width: 15px;
+	margin-top: 10px;
+	margin-right: 5px;
+}
+
+#wrapper #article #articleBody {
+	margin-top: 10px;
+}
+
+#wrapper #articleFooter {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+#wrapper .warning {
+	background-color: #FFB7DB;
+}
+
+#wrapper .pass {
+	background-color: #A0FEAC;
+}
+
+

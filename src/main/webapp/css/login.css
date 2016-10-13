@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+
+
+.warning {
+	background-color: #FFB7DB;
+}
+
+.pass {
+	background-color: #A0FEAC;
+}
+
+.inline{
+	display: inline-block;
+}
+
+.input[type=button]{
+	barckground
+}
+
+.login{
+	margin-right : 0px;
+}
