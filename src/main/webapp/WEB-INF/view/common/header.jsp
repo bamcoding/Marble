@@ -8,6 +8,7 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 <link rel="stylesheet" type="text/css" href="/Marble/css/interface.css" />
+<link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/gamePan.css" />
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -54,7 +55,6 @@
 </script>
 </head>
 <body>
-
 	<div class="nav" id="nav">
 		<ul>
 			<li><label>주루마블</label></li>

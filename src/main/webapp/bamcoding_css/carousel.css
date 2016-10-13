@@ -1,8 +1,13 @@
 @CHARSET "UTF-8";
+/*
+<index>
+#keyCardFrame 21
+*/
+
 #keyCardFrame {
 	display:none;
-	z-index:999;
-  top:25%;
+	z-index:21;
+  top:35%;
   left:38%;
   width: 250px;
   height: 200px;
@@ -70,19 +75,16 @@
   font-size: 5em;
   text-align: center;
   color: #FFF;
-  opacity: 0.9;
   border-radius: 10px;
 }
 
 .card1 {
   transform: rotateY(0deg) translateZ(250px);
   background: #ed1c24;
-  transition : transform 0.6s;
 }
 .card2 {
   transform: rotateY(60deg) translateZ(250px);
   background: #0072bc;
-  transition : transform 0.6s;
 }
 .card3 {
   transform: rotateY(120deg) translateZ(250px);
@@ -100,7 +102,6 @@
   transform: rotateY(300deg) translateZ(250px);
   background: #8c6239;
 }
-
 
 .actionSpinGoldKey{
 	animation : spinGoldKey 1.5s linear;

@@ -9,101 +9,91 @@
 
 <script type="text/javascript">
 	$(document).ready( function() {
-				var move = "x+";
-				var cellX = 6;
-				var cellY = 6;
-				var pointX = 0;
-				var pointY = 0;
-				var pxX = 146;
-				var pxY = 102;
-				var count = 0;
+		//상수
+		var move = "x+";
+		//게임판 셀의 수
+		var cellX = 6;
+		var cellY = 6;
+		//한번에 이동하는 거리
+		var pxX = 146;
+		var pxY = 102;
+		//현재까지 이동한 거리
+		var pointX = 0;
+		var pointY = 0;
+		//
+		var count = 0;
 
-				function moveUnit() {
-					if (move == "x+") {
-						pointX += pxX;
-						count += 1;
-						if (count == cellX) {
-							count = 0;
-							move = "y-";
-						}
-						$(".object").css(
-								"transform",
-								"translateX(" + pointX + "px) translateY("
-										+ pointY + "px)");
-					} else if (move == "y-") {
-						pointY -= pxY;
-						count += 1;
-						$(".object").css(
-								"transform",
-								"translateX(" + pointX + "px) translateY("
-										+ pointY + "px)");
-						if (count == cellY) {
-							count = 0;
-							move = "x-";
-						}
-
-					} else if (move == "x-") {
-						pointX -= pxX;
-						count += 1;
-						$(".object").css(
-								"transform",
-								"translateX(" + pointX + "px) translateY("
-										+ pointY + "px)");
-						if (count == cellX) {
-							count = 0;
-							move = "y+";
-						}
-					} else if (move == "y+") {
-						pointY += pxY;
-						count += 1;
-						$(".object").css(
-								"transform",
-								"translateX(" + pointX + "px) translateY("
-										+ pointY + "px)");
-						if (count == cellY) {
-							count = 0;
-							move = "x+";
-						}
-					}
-
-					console.log("point { X : " + pointX + ", Y :" + pointY
-							+ " }");
+		function moveUnit() {
+			if (move == "x+") {
+				pointX += pxX;
+				count += 1;
+				if (count == cellX) {
+					count = 0;
+					move = "y-";
 				}
+				$(".object").css("transform","translateX(" + pointX + 
+							"px) translateY("+ pointY + "px)");
+			} else if (move == "y-") {
+				pointY -= pxY;
+				count += 1;
+				$(".object").css("transform","translateX(" + pointX + 
+							"px) translateY(" + pointY + "px)");
+				if (count == cellY) {
+					count = 0;
+					move = "x-";
+				}
+			} else if (move == "x-") {
+				pointX -= pxX;
+				count += 1;
+				$(".object").css("transform","translateX(" + pointX +
+							"px) translateY("+ pointY + "px)");
+				if (count == cellX) {
+					count = 0;
+					move = "y+";
+				}
+			} else if (move == "y+") {
+				pointY += pxY;
+				count += 1;
+				$(".object").css("transform","translateX(" + pointX + 
+							"px) translateY("+ pointY + "px)");
+				if (count == cellY) {
+					count = 0;
+					move = "x+";
+				}
+			}
+		}
+		//던지기 부분
+		$(".cubeFrame").click(function() {
+			var showTime = 1000;
+			var randomNum = parseInt(Math.random()*6) + 1;
+			
+			//큐브 애니메이션을 실행한다.
+			$("#cube").addClass("throwAction");
 
-
-
-				//던지기 부분
-				$(".cubeFrame").click(function() {
-						var showTime = 1000;
-						var randomNum = parseInt(Math.random()*6) + 1;
-						
-						//큐브 애니메이션을 실행한다.
-						$("#cube").addClass("throwAction");
-
-						//큐브가 떨어지면 실행
-						setTimeout(function() {
-							$("#cube").removeClass("throwAction");
-							$("#cube").removeClass("cube");
-							$("#cube").addClass("show" + randomNum);
-							$("#blingEffect").addClass("blingEffect");
-						}, showTime);
-						
-						for (var i = 0; i < randomNum; i++) {
-							showTime += 400;
-							setTimeout(moveUnit, showTime);
-						}
-						showTime += 400
-						setTimeout(function() {
-							//블링이 끝나면 모든 기능을 제거
-							$("#cube").addClass("cube");
-							$("#cube").removeClass("show" + randomNum);
-							$("#blingEffect").removeClass("blingEffect");
-						}, showTime);	
-						
-						setTimeout(function() {
-							getPenalty();
-						}, showTime);
-				});
+			//큐브가 떨어지면 실행
+			setTimeout(function() {
+				$("#cube").removeClass("throwAction");
+				$("#cube").removeClass("cube");
+				$("#cube").addClass("show" + randomNum);
+				$("#blingEffect").addClass("blingEffect");
+			}, showTime);
+			
+			for (var i = 0; i < randomNum; i++) {
+				showTime += 400;
+				setTimeout(moveUnit, showTime);
+			}
+			showTime += 400
+			setTimeout(function() {
+				//블링이 끝나면 모든 기능을 제거
+				$("#cube").addClass("cube");
+				$("#cube").removeClass("show" + randomNum);
+				$("#blingEffect").removeClass("blingEffect");
+			}, showTime);	
+			
+			setTimeout(function() {
+				getPenalty();
+			}, showTime);
+		});
 				
 		function getPenalty(){
 			var x = pointX/pxX;
@@ -126,57 +116,41 @@
 		}
 
 		function actionSpinGoldKey(){
+			$("#keyCardFrame").css("display","block");
+			$("#disabledEffect").css("display","block");
 			var showTime = 0;
 			var randomNum = 0;
 			var extraDeg =0;
 				randomNum = parseInt(Math.random()*6)+1;
-				console.log("회전카드 랜덤값 : "+(randomNum));
 				
-				if(randomNum > 1){
-					extraDeg = (randomNum) * 60;
-					console.log("회전카드 추가 각도 : "+ extraDeg);
-				}
-					
+				// 카드 돌리기 애니메이션 시작
 				$("#keyCard").addClass("actionSpinGoldKey");
-				showTime += 4000;
-				setTimeout(function(){					
-					$("#keyCard").removeClass("actionSpinGoldKey");
-				},showTime);
+				showTime += 1500;
 				
-				$("#keyCardFrame").css("display","block");
-				$("#disabledEffect").css("display","block");
 				//애니메이션이 끝날 때까지 기다리다가 카드를 랜덤 하게 보여주는 부분
 				setTimeout(function(){
-					randomNum = 3;
-				
+					$("#keyCard").removeClass("actionSpinGoldKey");
 				// pick 클래스로 카드를 하나 뽑는다.	
+				$("#keyCard").removeClass("keyCard");
 				$("#keyCard").addClass("pick" + randomNum);
 				//클릭하면 뒤집기
-				var deg=0;
-				$(".item.card"+randomNum).click(function(){
-				$(this).mousedown(function(){
-					$(this).css({"transform":"rotateY(180deg)"});	
-								});
-				$(".item.card"+randomNum).dblclick(function(){
-					actionSpinGoldKey();
-				});
+				var degNum = (randomNum - 1)*60;
+				
+				$(".card"+randomNum).click(function(){
+					$("#container").css("display","block");					
+					$(this).css("display","none");	
 				});
 				
-				
-				}, showTime);
-				
-				//클릭하면 확대
-/* 				$(".item.card"+6).click(function(){
-					$(this).css("zoom","2");
+				$("#container").dblclick(function(){
+					$(".card"+randomNum).css("display","block");					
+					$(this).css("display","none");	
 					
-					//기다렸다가 카드를 사라지게 하는 함수를 실행
-				 	$(this).click(function(){
-						$("#keyCard").removeClass("actionSpinGoldKey");	
-						$("#keyCardFrame").css("display","none");
-						$("#disabledEffect").css("display","none");
-						$(this).css("zoom","1");
-					}); 
-				}); */
+					$("#keyCard").removeClass("pick" + randomNum);
+					$("#keyCard").addClass("keyCard");
+					$("#keyCardFrame").css("display","none");
+					$("#disabledEffect").css("display","none");
+				});
+				}, showTime);
 		}
 				// 카드 플립부분
 		var check = 0;
@@ -237,7 +211,7 @@
 				<div class="gameInfo">${plays[19].games.gameInfo }</div>
 				<div class="gameType">${plays[19].games.typeId }</div>
 				</td>
-				<th colspan="5" rowspan="5"></th>
+				<th id="goodPlace" colspan="5" rowspan="5"></th>
 				<td id="cell11">
 				<div class="gameName">${plays[11].games.gameName }</div>
 				<div class="gameInfo">${plays[11].games.gameInfo }</div>
