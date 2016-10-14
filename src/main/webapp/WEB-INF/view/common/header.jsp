@@ -13,12 +13,15 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		moveToCenter("#sign-in");
+		moveToCenter("#sign-up");
 		
 		$("#sign-in").load("/Marble/signIn");
 		$("#sign-up").load("/Marble/signUp");
 
 		$("#nav ul li").click(function() {
 			var index = $(this).index();
+			console.log("메뉴 인댁스 : "+index);
 			if (index == 1) {
 				$("#marbleBoard").load("/Marble/setMarbleBoard");
 			}
@@ -61,12 +64,26 @@
 				}
 
 			}
-			
-			
-
 		});
-
 	});
+	
+	$(window).resize(function() {
+		moveToCenter("#sign-in");
+		moveToCenter("#sign-up");
+	});
+	
+	function moveToCenter(data) {
+		var windowHeight = $(window).height();
+		var wrapperHeight = $(data).height();
+		var middlePosition = (windowHeight / 2) 
+								- (parseInt(wrapperHeight) / 2);
+		
+		$(data).css({
+			"position": "relative"
+			, "top": middlePosition+ "px"
+			, "margin": "auto"
+		});
+	}
 </script>
 </head>
 <body>
@@ -92,10 +109,10 @@
 
 	</div>
 
-	<div class="sign-in" id="sign-in" style="display: none">
+	<div class="sign-in" id="sign-in">
 		
 	</div>
-	<div class="sign-up" id="sign-up"" style="display: none">
+	<div class="sign-up" id="sign-up">
 		
 	</div>
 
