@@ -118,9 +118,27 @@ body {
     color: white;
 }
 
-.sign-in{
-	top: 10%;
-	margin: auto;
-	position: fixed;
+.sign-in, .sign-up{
+	display: none;
+	width:500px;
+	height:500px;
+	border:10px solid #00fff9; 
+	border-radius:20px;
 	z-index: 39;
+	position:absolute;
+	background:#00ff99;
+	opacity:0.95;
 }
+
+.sign-title {
+	font-weight: bold;
+	color: #00304a;
+	top: 30px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	text-shadow: 0.1em 0.1em 0.05em #acd7e5;
+	font-family: Courier;
+	font-size: 5em;
+}
+
