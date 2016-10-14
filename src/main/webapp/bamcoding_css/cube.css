@@ -41,7 +41,7 @@ blingEffect 10
 	transform-origin: right;
 }
 .top{/*5*/
-	background: url(/Marble/img/cube/cube5.png);
+	background: url(/Marble/img/cube/cube5-2.png);
 	background-size: 100% 100%;
 	transform : rotateX(-90deg) translateY(-50px);
 	transform-origin: top;
