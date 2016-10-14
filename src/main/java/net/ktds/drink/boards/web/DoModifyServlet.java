@@ -37,6 +37,7 @@ public class DoModifyServlet extends HttpServlet {
 		String boardSubject = multipartRequest.getParameter("boardSubject");
 		String boardContent = multipartRequest.getParameter("boardContent");
 		String fileDeleteBtn = multipartRequest.getParameter("fileDeleteBtn");
+		String categoryId = multipartRequest.getParameter("categoryId");
 		
 		boardContent = boardContent.replaceAll("\n", "<br/>")
 									.replaceAll("\r", "");
@@ -46,6 +47,7 @@ public class DoModifyServlet extends HttpServlet {
 		board.setBoardId(boardId);
 		board.setBoardSubject(boardSubject);
 		board.setBoardContent(boardContent);
+		board.setCategoryId(categoryId);
 		
 		if ( fileDeleteBtn != null && fileDeleteBtn.equals("delete")) {
 			String fileName = boardBiz.getFileNameOfBoardBy(boardId);
@@ -69,7 +71,7 @@ public class DoModifyServlet extends HttpServlet {
 		}
 		boolean isSuccess = boardBiz.updateBoard(board);
 		if ( isSuccess ) {
-			response.sendRedirect("/Marble/board/detail?boardId=" + boardId);
+			response.sendRedirect("/Marble/board/detail?boardId=" + boardId + "&categoryId=" + categoryId);
 		}
 		else{
 			response.sendRedirect("/Marble/board/write?errorCode=1");

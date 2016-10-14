@@ -14,7 +14,7 @@
 $(document).ready(function() {
 	$("#deleteBtn").click(function() {
 		if (confirm("\"${board.boardSubject }\"를 삭제하시겠습니까?")) {
-			location.href = "/Marble/doDelete?boardId=${board.boardId}";
+			location.href = "/Marble/doDelete?boardId=${board.boardId}&categoryId=${categoryId}";
 		}
 	});
 
@@ -58,10 +58,14 @@ $(document).ready(function() {
 
 	<c:if test="${sessionScope._USER_INFO_.userId eq board.userId }">
 		<a href="javascript:void(0);"  id="deleteBtn">삭제</a>
-		<a href="/Marble/board/modify?boardId=${board.boardId}">수정</a>
+		<a href="/Marble/board/modify?boardId=${board.boardId}&categoryId=${categoryId}">수정</a>
 	</c:if>
 
+<<<<<<< HEAD
 	<a href="/Marble/board/list?categoryId=${categoryId }">목록보기</a>
+=======
+	<a href="/Marble/board/list?categoryId=${categoryId}">목록보기</a>
+>>>>>>> 923c81e159f7a5d73030ceee76cbe3b216d40db9
 </div>
 </body>
 </html>

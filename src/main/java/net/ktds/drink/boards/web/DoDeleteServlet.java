@@ -29,13 +29,12 @@ public class DoDeleteServlet extends HttpServlet {
 
 		String boardId = Param.getStringParam(request, "boardId");
 		String categoryId = Param.getStringParam(request, "categoryId");
-		
 		BoardVO board = new BoardVO();
 		board.setCategoryId(categoryId);
 		
 		boolean isSuccess = boardBiz.removeBoard(boardId);
 		if ( isSuccess ){
-			response.sendRedirect("/Marble/board/list?categoryId=" +categoryId);
+			response.sendRedirect("/Marble/board/list?categoryId=" + categoryId);
 		}
 		else {
 			response.sendRedirect("/Marble/board/detail?boardId=" + boardId);

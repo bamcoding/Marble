@@ -33,7 +33,11 @@
 			<c:set var="number" value="${fn:split(board.boardId, '-')[2] }" />
 			<fmt:parseNumber var="number" type="number" value="${number }" />
 			<td>${number }</td>
+<<<<<<< HEAD
 			<td><a href="/Marble/board/detail?boardId=${board.boardId }&categoryId=${categoryId}">${board.boardSubject }</a></td>
+=======
+			<td><a href="/Marble/board/detail?boardId=${board.boardId}&categoryId=${categoryId}">${board.boardSubject }</a></td>
+>>>>>>> 923c81e159f7a5d73030ceee76cbe3b216d40db9
 			<td>${board.userVO.userNickname }</td>
 			<td>${board.createdDate }</td>
 			<td>${board.hitCount }</td>
