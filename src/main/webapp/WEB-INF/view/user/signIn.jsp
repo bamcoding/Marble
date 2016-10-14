@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="/Marble/css/login.css"/>
 <script type="text/javascript">
 	$(document).ready(function(){
-		
+
 		$("#signInBtn").click(function(){
 			$.post("/Marble/doSignIn",
 			$("#signInForm").serialize(),
@@ -62,9 +62,6 @@
 				$(this).removeClass("warning");
 			}
 		});
-		
-		
-		
 	});
 	
 </script>

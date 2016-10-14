@@ -3,7 +3,7 @@
 <index>
 
 .menubar 50
-.sign-in 49
+.sign-in 39
 .nav ul 40
 */
 
@@ -119,9 +119,8 @@ body {
 }
 
 .sign-in{
-	background-color: #555;
-	top: 60px;
-	right:0;
+	top: 10%;
+	margin: auto;
 	position: fixed;
-	z-index: 49;
+	z-index: 39;
 }
