@@ -249,7 +249,6 @@
   </filter-mapping>
   <servlet>
     <description></description>
-<<<<<<< HEAD
     <display-name>ViewAddGamesServlet</display-name>
     <servlet-name>ViewAddGamesServlet</servlet-name>
     <servlet-class>net.ktds.drink.games.web.ViewAddGamesServlet</servlet-class>
@@ -277,7 +276,9 @@
   <servlet-mapping>
     <servlet-name>DoDownloadServlet</servlet-name>
     <url-pattern>/doDownload</url-pattern>
-=======
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>ViewAdminPageServlet</display-name>
     <servlet-name>ViewAdminPageServlet</servlet-name>
     <servlet-class>net.ktds.drink.admin.web.ViewAdminPageServlet</servlet-class>
@@ -295,6 +296,5 @@
   <servlet-mapping>
     <servlet-name>ViewUserInfoListPageServlet</servlet-name>
     <url-pattern>/admin/userInfo</url-pattern>
->>>>>>> a3099c379739e77d5570851f71e949ca6fedaac5
   </servlet-mapping>
 </web-app>
