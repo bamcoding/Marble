@@ -67,9 +67,7 @@
 					placeholder="제목을 입력하세요" value="첫번째 게시물입니다." />
 	</div>
 	<div>
-		<textarea id="boardContent" name="boardContent" placeholder="내용을 입력 하세요.">
-		${board.boardContent}
-		</textarea>
+		<textarea id="boardContent" name="boardContent" placeholder="내용을 입력 하세요.">${board.boardContent}</textarea>
 	</div>
 	<c:if test="${not empty board.fileName }">
 	<div style="padding-top: 10px; padding-bottom: 10px" >
