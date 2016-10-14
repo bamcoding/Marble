@@ -1,10 +1,18 @@
 package net.ktds.drink.user.biz;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import net.ktds.drink.constants.Session;
 import net.ktds.drink.support.DaoSupport;
+import net.ktds.drink.support.QueryAndResult;
 import net.ktds.drink.user.dao.UserDao;
 import net.ktds.drink.user.dao.UserDaoImpl;
 import net.ktds.drink.user.vo.UserVO;
@@ -42,6 +50,11 @@ public class UserBizImpl extends DaoSupport implements UserBiz {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public List<UserVO> getListUserInfo() {
+		return userDao.getListUserInfo();
 	}
 	
 	
