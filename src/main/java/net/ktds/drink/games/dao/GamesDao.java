@@ -16,5 +16,5 @@ public interface GamesDao {
 	public int addGame(String gameName, String gameInfo);
 	public GamesVO getGameBy(String gameName, String gameInfo);
 	public int addCustom(GamesVO gamesVO, UserVO userInfo);
-	public int isExsistGameName(String gameName);
+	public int countGameName(String gameName);
 }

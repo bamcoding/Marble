@@ -13,12 +13,48 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
-	     
-		$("#addBtn").click(function(){
-			$.post( "/Marble/doAddGames", $( "#addGamesForm" ).serialize()) });
-		
-
+	
+	$("#gameName").keyup(function(){
+		$.post("/Marble/IsExistGameName", 
+				{"gameName": $("#gameName").val()},
+				function(data){
+					if(data == "false") {
+						$("#gameName").addClass("pass");
+						$("#gameName").removeClass("warning");
+					}
+					else {
+						$("#gameName").removeClass("pass");
+						$("#gameName").addClass("warning");
+					}
+		});
 	});
+	
+		$("#addBtn").click(function(){				
+				if($("#gameName").val() == "") {
+					alert("제목을 입력해주세요");
+					return;
+				}
+				else if($("#gameInfo").val() == "") {
+					alert("내용을 입력해주세요");
+					return;
+				}
+				else {
+					$.post("/Marble/IsExistGameName", 
+							{"gameName": $("#gameName").val()},
+							function(data){
+								if(data == "false") {
+									$.post( "/Marble/doAddGames", $( "#addGamesForm" ).serialize());
+								}
+								else {
+									alert("게임 이름이 중복됩니다.");
+								}
+					
+				});	
+				}
+		});
+
+});	
+
 </script>
 </head>
 <body>

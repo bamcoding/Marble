@@ -163,37 +163,10 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 
 	}
 
-	@Override
-	public int isExsistGameName(String gameName) {
-		return (int)selectOne(new QueryAndResult() {
+	
+	
 
-			@Override
-			public PreparedStatement query(Connection conn) throws SQLException {
-				StringBuffer query = new StringBuffer();
-				query.append(" SELECT	COUNT(1) CNT ");
-				query.append(" FROM		GAME ");
-				query.append(" WHERE	GM_NM = ? ");
-				
-				PreparedStatement pstmt = conn.prepareStatement(query.toString());
-				pstmt.setString(1, gameName);
-				
-				return pstmt;
-			}
-
-			@Override
-			public Object makeObject(ResultSet rs) throws SQLException {
-				
-				
-				if(rs.next()) {
-					return rs.getInt("CNT");
-
-				}
-				return 0;
-			}
-			
-		});
-
-	}
+	
 
 	@Override
 	public int addCustom(GamesVO gamesVO, UserVO userInfo) {
@@ -283,6 +256,37 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				}
 				return game;	
 			}
+		});
+	}
+
+	@Override
+	public int countGameName(String gameName) {
+		return (int)selectOne(new QueryAndResult() {
+
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	COUNT(1) CNT ");
+				query.append(" FROM		GAME ");
+				query.append(" WHERE	GM_NM = ? ");
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, gameName);
+				
+				return pstmt;
+			}
+
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				
+				
+				if(rs.next()) {
+					return rs.getInt("CNT");
+
+				}
+				return 0;
+			}
+			
 		});
 	}
 }

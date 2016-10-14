@@ -31,9 +31,10 @@ public class IsExistGameName extends HttpServlet {
 		String gameName = request.getParameter("gameName");
 		
 		boolean isExsistGameName = biz.isExsistGameName(gameName);
-		
+
+	
 		PrintWriter out = response.getWriter();
-		out.write("<div id='bo'><input type='text' value='" + isExsistGameName + "'/></div>");
+		out.write(isExsistGameName+"");
 		out.flush(); //보내줭
 		out.close();
 	}

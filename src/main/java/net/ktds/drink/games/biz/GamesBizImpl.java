@@ -41,7 +41,7 @@ public class GamesBizImpl implements GamesBiz {
 
 	@Override
 	public boolean isExsistGameName(String gameName) {
-		return dao.isExsistGameName(gameName) > 0;
+		return dao.countGameName(gameName) > 0;
 	}
 
 
