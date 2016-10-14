@@ -133,13 +133,13 @@
 				// pick 클래스로 카드를 하나 뽑는다.	
 				$("#keyCard").removeClass("keyCard");
 				$("#keyCard").addClass("pick" + randomNum);
-				//클릭하면 뒤집기
-				var degNum = (randomNum - 1)*60;
 				
-				$(".card"+randomNum).click(function(){
-					$("#container").css("display","block");					
-					$(this).css("display","none");	
-				});
+				// 뒤집을 수 있는 이미지와 교체한다.
+				$("#container").css("display","block");					
+				$(".card"+randomNum).css("display","none");	
+				
+				//확대할 때 쓰던 계산식
+				var degNum = (randomNum - 1)*60;
 				
 				$("#container").dblclick(function(){
 					$(".card"+randomNum).css("display","block");					
@@ -166,6 +166,7 @@
 	});
 </script>
 <div id="marble">
+		<div id="disabledEffect"></div>
 	<div id="gamePan">
 		<table border="1">
 			<tr>
