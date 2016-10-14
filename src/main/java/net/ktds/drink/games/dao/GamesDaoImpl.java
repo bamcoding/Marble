@@ -7,11 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import net.ktds.drink.games.vo.CategoryVO;
+import net.ktds.drink.games.vo.CustomVO;
 import net.ktds.drink.games.vo.GameTypeVO;
 import net.ktds.drink.games.vo.GamesVO;
 import net.ktds.drink.support.DaoSupport;
+import net.ktds.drink.support.Query;
 import net.ktds.drink.support.QueryAndResult;
+import net.ktds.drink.user.vo.UserVO;
 
 public class GamesDaoImpl extends DaoSupport implements GamesDao {
 	
@@ -66,7 +70,7 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				query.append(" FROM		GAME G ");			
 				query.append(" 			, CTGR C ");			
 				query.append(" 			, GAME_TYPE T ");			
-				query.append(" WHERE	G.CTGR_ID = C.USR_ID ");			
+				query.append(" WHERE	G.CTGR_ID = C.CTGR_ID ");			
 				query.append(" AND		G.TYP_ID = T.TYP_ID ");	
 				query.append(" AND		G.CTGR_ID = ? ");	
 				
@@ -104,4 +108,181 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 	});
 
 }
+
+
+	@Override
+	public List<GamesVO> allGetGames(GamesVO gamesVO) {
+			return selectList(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	G.GM_ID ");
+				query.append(" 			, G.GM_NM ");
+				query.append(" 			, G.GM_INFO ");
+				query.append(" 			, C.CTGR_ID ");
+				query.append(" 			, C.CTGR_NM ");
+				query.append(" 			, T.TYP_ID ");
+				query.append(" FROM		GAME G ");			
+				query.append(" 			, CTGR C ");			
+				query.append(" 			, GAME_TYPE T ");			
+				query.append(" WHERE	G.CTGR_ID = C.CTGR_ID ");			
+				query.append(" AND		G.TYP_ID = T.TYP_ID ");	
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				List<GamesVO> games = new ArrayList<GamesVO>();
+				GamesVO gameVO = null;
+				CategoryVO categoryVO = null;
+				GameTypeVO gameTypeVO = null;
+				
+				while(rs.next()){
+					gameVO = new GamesVO();
+					
+					gameVO.setGameId(rs.getString("GM_ID"));
+					gameVO.setGameName(rs.getString("GM_NM"));
+					gameVO.setGameInfo(rs.getString("GM_INFO"));
+					
+					categoryVO = gameVO.getCategoryVO();
+					gameVO.setCategoryId(rs.getString("CTGR_ID"));
+					categoryVO.setCategoryName(rs.getString("CTGR_NM"));
+					
+					gameTypeVO = gameVO.getGameTypeVO();
+					gameVO.setTypeId(rs.getString("TYP_ID"));
+					
+					games.add(gameVO);
+			}
+				return games;	
+		}
+		
+	});
+
+	}
+
+	@Override
+	public int isExsistGameName(String gameName) {
+		return (int)selectOne(new QueryAndResult() {
+
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	COUNT(1) CNT ");
+				query.append(" FROM		GAME ");
+				query.append(" WHERE	GM_NM = ? ");
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, gameName);
+				
+				return pstmt;
+			}
+
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				
+				
+				if(rs.next()) {
+					return rs.getInt("CNT");
+
+				}
+				return 0;
+			}
+			
+		});
+
+	}
+
+	@Override
+	public int addCustom(GamesVO gamesVO, UserVO userInfo) {
+		return insert(new Query() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				
+				query.append(" INSERT INTO CUSTOM ( ");
+				query.append(" 			 GM_ID ");
+				query.append(" 			, USR_ID ) ");
+				query.append(" VALUES ( ");
+				query.append(" ?, ? ) ");
+				
+			
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, gamesVO.getGameId());
+				pstmt.setString(2, userInfo.getUserId());
+
+				return pstmt;
+			}
+		});
+}
+
+	@Override
+	public int addGame(String gameName, String gameInfo) {
+		return insert(new Query() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				
+				query.append(" INSERT INTO GAME ( ");
+				query.append(" 			 GM_ID ");
+				query.append(" 			, GM_NM ");
+				query.append(" 			, GM_INFO ");
+				query.append(" 			, CTGR_ID ");
+				query.append(" 			, TYP_ID ) ");
+				query.append(" VALUES ( ");
+				query.append(" 'GM-' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || LPAD(GM_ID_SEQ.NEXTVAL,6,0) ");
+				query.append(" 	, ?, ?, '8', '4' ) ");
+				
+			
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, gameName);
+				pstmt.setString(2, gameInfo);
+
+				return pstmt;
+			}
+		});
+	}
+
+	@Override
+	public GamesVO getGameBy(String gameName, String gameInfo) {
+		return (GamesVO) selectOne(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	GM_ID ");
+				query.append(" 			, GM_NM ");
+				query.append(" 			, GM_INFO ");
+				query.append(" 			, CTGR_ID ");
+				query.append("			, TYP_ID ");
+				query.append(" FROM		GAME G");			
+				query.append(" WHERE	GM_NM = ? ");		
+			
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, gameName);
+
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				GamesVO game = null;
+				if(rs.next()){
+					game = new GamesVO();
+					
+					game.setGameId(rs.getString("GM_ID"));
+					game.setGameName(rs.getString("GM_NM"));
+					game.setGameInfo(rs.getString("GM_INFO"));
+					game.setCategoryId(rs.getString("CTGR_ID"));
+					game.setTypeId(rs.getString("TYP_ID"));
+					
+				}
+				return game;	
+			}
+		});
+	}
 }

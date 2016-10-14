@@ -9,42 +9,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/Marble/css/interface.css" />
+<link rel="stylesheet" type="text/css" href="/Marble/css/login.css" />
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
-
-
 $(document).ready(function () {
-	
-   $("select option:selected").each(function () {
-	   $( "#gameName" ).load( "/Marble/searchType", { "categoryId": $("#categoryId").val()} );
-		});
-
-     
-	$("#categoryId").change(function(){
-		$( "#gameName" ).load( "/Marble/searchType", { "categoryId": $("#categoryId").val()} );
-	});
-
-});
-
-
-
+	     
+		$("#addBtn").click(function(){
+			$.post( "/Marble/doAddGames", $( "#addGamesForm" ).serialize()) });
 		
-</script>
 
+	});
+</script>
 </head>
 <body>
-
-	<div id = "gamesSet_Wrapper">
-	<div>
-		<select id="categoryId" name="categoryId">
-			<option selected="selected">Category</option>
-			<c:forEach items="${categories}" var="category">
-				<option value="${category.categoryId}">${category.categoryName}</option>
-			</c:forEach>
-		</select>
-	</div>
-	
-	<div name="gameName" id="gameName"></div>
+	<div id = "gamesAdd_Wrapper">
+		<form id="addGamesForm" name="addGamesForm" >
+			<div>
+				<input type="text" id="gameName" name="gameName" placeholder="GameName" />
+			</div>
+			<div>
+				<textarea id="gameInfo" name="gameInfo" placeholder="Explanation"></textarea>
+			</div>
+			<div class="right">
+				<input type="button" id="addBtn" value="Add" />
+			</div>
+		</form>
+		
+		
 	</div>
 </body>
 </html>

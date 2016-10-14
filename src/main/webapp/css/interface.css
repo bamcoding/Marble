@@ -123,5 +123,13 @@ body {
 	top: 60px;
 	right:0;
 	position: fixed;
+<<<<<<< HEAD
 	z-index: 49;
 }
+=======
+	z-index: 89;
+}
+.selected {
+	background-color: #80ff80;
+}
+>>>>>>> 68e6f41da9706c44110f2f2ea153d6f3042e6045
