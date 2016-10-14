@@ -90,7 +90,6 @@
 				<input type="button" id="writeBtn" value="글쓰기" />
 			</div>
 			</div>
-			<input type="hidden" name="CategoryId" value="${board.categoryId}" />
 			<div class="clear"></div>
 			
 

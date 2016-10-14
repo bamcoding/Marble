@@ -19,7 +19,7 @@ import net.ktds.drink.user.biz.UserBizImpl;
 import net.ktds.drink.user.vo.UserVO;
 
 /**
- * 세션필터, 포인트 업데이트(글 읽었을때 포인트?)
+ * �꽭�뀡�븘�꽣, �룷�씤�듃 �뾽�뜲�씠�듃(湲� �씫�뿀�쓣�븣 �룷�씤�듃?)
  * @author Eun-joo
  *
  */
@@ -44,10 +44,10 @@ public class ViewDetailPageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		String boardId = Param.getStringParam(request, "boardId");
+		String categoryId = Param.getStringParam(request, "categoryId");
 		
 		boardBiz.updateHitCount(boardId);
 		BoardVO board = boardBiz.getBoardAt(boardId);
-		
 		//HttpSession session = request.getSession();
 		//UserVO userVO = (UserVO)session.getAttribute(Session.USER_INFO);
 		//String userId = userVO.getUserId();
@@ -55,6 +55,7 @@ public class ViewDetailPageServlet extends HttpServlet {
 		
 		String viewPath = "/WEB-INF/view/board/detail.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
+		request.setAttribute("categoryId", categoryId);
 		request.setAttribute("board", board);
 		rd.forward(request, response);
 	}
