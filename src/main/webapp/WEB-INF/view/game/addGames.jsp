@@ -9,16 +9,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/Marble/css/interface.css" />
+<link rel="stylesheet" type="text/css" href="/Marble/css/login.css" />
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
 	     
 		$("#addBtn").click(function(){
-			
-			$.post( "/Marble/doAddGames", $( "#addGamesForm" ).serialize() );
+			$.post( "/Marble/doAddGames", $( "#addGamesForm" ).serialize()) });
+		
 
 	});
-});
 </script>
 </head>
 <body>
