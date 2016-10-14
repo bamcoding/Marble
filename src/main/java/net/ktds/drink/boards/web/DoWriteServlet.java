@@ -71,9 +71,9 @@ public class DoWriteServlet extends HttpServlet {
 		boolean isSuccess = boardBiz.addBoard(board);
 
 		if (isSuccess) {
-			response.sendRedirect("/Mables/board/list");
+			response.sendRedirect("/Marble/board/list");
 		} else {
-			response.sendRedirect("/Mables/board/write?errorCode=1");
+			response.sendRedirect("/Marble/board/write?errorCode=1");
 		}
 	}
 }
