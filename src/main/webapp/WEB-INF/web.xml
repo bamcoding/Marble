@@ -218,4 +218,14 @@
     <servlet-name>DoModifyServlet</servlet-name>
     <url-pattern>/doModify</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoSetGamesServlet</display-name>
+    <servlet-name>DoSetGamesServlet</servlet-name>
+    <servlet-class>net.ktds.drink.games.web.DoSetGamesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoSetGamesServlet</servlet-name>
+    <url-pattern>/doSetGames</url-pattern>
+  </servlet-mapping>
 </web-app>
