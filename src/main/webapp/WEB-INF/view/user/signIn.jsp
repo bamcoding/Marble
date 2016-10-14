@@ -34,11 +34,11 @@
 		});
 		
 		
-		$("#userEmail").blur(function(){
-			$("#userEmail").keyup();
+		$("#signUserEmail").blur(function(){
+			$("#signUserEmail").keyup();
 		});
 		
-		$("#userEmail").keyup(function(){
+		$("#signUserEmail").keyup(function(){
 			if( $(this).val()=="" ){
 				$(this).addClass("warning");
 				$(this).removeClass("pass");
@@ -49,10 +49,10 @@
 			}
 		});
 		
-		$("#userPassword").blur(function(){
-			$("#userPassword").keyup();
+		$("#signUserPassword").blur(function(){
+			$("#signUserPassword").keyup();
 		});
-		$("#userPassword").keyup(function(){
+		$("#signUserPassword").keyup(function(){
 			if( $(this).val()=="" ){
 				$(this).addClass("warning");
 				$(this).removeClass("pass");
@@ -72,8 +72,8 @@
 		<div class="login">
 			<form id="signInForm" name="signInForm">
 				<div>
-					<div><input type="text" id="userEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"> </div>
-					<div><input type="password" id="userPassword" name="userPassword" placeholder="Password를 적어주세요"/></div>
+					<div><input type="text" id="signUserEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"> </div>
+					<div><input type="password" id="signUserPassword" name="userPassword" placeholder="Password를 적어주세요"/></div>
 				</div>
 				<div>
 					<div class="inline"><input type="button" id="signInBtn" value="Sign In"/></div>
