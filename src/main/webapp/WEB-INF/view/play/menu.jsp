@@ -9,6 +9,9 @@
 				$("#settings").load("/Marble/myInfo");
 				
 			}
+			if(index == 1){
+				$("#settings").load("/Marble/setGames");
+			}
 		});
 		
 		

@@ -121,3 +121,7 @@ body {
 .selected {
 	background-color: #80ff80;
 }
+
+#games-set {
+	position: relative;
+}

@@ -9,5 +9,6 @@ public interface GamesDao {
 
 	public List<CategoryVO> getCategory(CategoryVO categoryVO);
 	public List<GamesVO> getGames(GamesVO gamesVO);
-	public List<GamesVO> allGetGames(GamesVO gamesVO);
+	public List<GamesVO> allGetGames();
+	public GamesVO getGame(String gameId);
 }
