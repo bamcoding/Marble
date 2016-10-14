@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
+import java.util.ArrayList;
+import java.util.List;
 
 import net.ktds.drink.support.DaoSupport;
 import net.ktds.drink.support.Query;
@@ -135,6 +135,43 @@ public class UserDaoImpl extends DaoSupport implements UserDao {
 			}
 		});
 		return userInfo;
+	}
+
+	@Override
+	public List<UserVO> getListUserInfo() {
+		return (List)selectList(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	USR_ID ");				
+				query.append(" 			, USR_PWD ");
+				query.append("			, POINTS ");
+				query.append("			, USR_EML ");
+				query.append("			, USR_NICK_NM ");
+				query.append(" FROM		USR	");
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				
+				List<UserVO> userInfo = new ArrayList();
+				UserVO user = null;
+				while( rs.next()){
+					user = new UserVO();
+					user.setUserId(rs.getString("USR_ID"));
+					user.setUserEmail(rs.getString("USR_EML"));
+					user.setPoints(rs.getInt("POINTS"));
+					user.setUserNickname(rs.getString("USR_NICK_NM"));
+					
+					userInfo.add(user);
+				}
+				return userInfo;
+			}
+		});
 	}
 
 

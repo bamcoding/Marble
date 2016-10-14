@@ -1,5 +1,7 @@
 package net.ktds.drink.user.dao;
 
+import java.util.List;
+
 import net.ktds.drink.user.vo.UserVO;
 
 /**
@@ -22,5 +24,7 @@ public interface UserDao {
 	public int signUpUser(UserVO user);
 
 	public UserVO getUserBy(UserVO user);
+
+	public List<UserVO> getListUserInfo();
 
 }
