@@ -30,6 +30,12 @@ public class GamesBizImpl implements GamesBiz {
 	}
 
 
+	@Override
+	public List<GamesVO> allGetGames(GamesVO gamesVO) {
+		return dao.allGetGames(gamesVO);
+	}
+
+
 
 	
 

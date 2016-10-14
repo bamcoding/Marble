@@ -104,4 +104,58 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 	});
 
 }
+
+
+	@Override
+	public List<GamesVO> allGetGames(GamesVO gamesVO) {
+			return selectList(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	G.GM_ID ");
+				query.append(" 			, G.GM_NM ");
+				query.append(" 			, G.GM_INFO ");
+				query.append(" 			, C.CTGR_ID ");
+				query.append(" 			, C.CTGR_NM ");
+				query.append(" 			, T.TYP_ID ");
+				query.append(" FROM		GAME G ");			
+				query.append(" 			, CTGR C ");			
+				query.append(" 			, GAME_TYPE T ");			
+				query.append(" WHERE	G.CTGR_ID = C.CTGR_ID ");			
+				query.append(" AND		G.TYP_ID = T.TYP_ID ");	
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				List<GamesVO> games = new ArrayList<GamesVO>();
+				GamesVO gameVO = null;
+				CategoryVO categoryVO = null;
+				GameTypeVO gameTypeVO = null;
+				
+				while(rs.next()){
+					gameVO = new GamesVO();
+					
+					gameVO.setGameId(rs.getString("GM_ID"));
+					gameVO.setGameName(rs.getString("GM_NM"));
+					gameVO.setGameInfo(rs.getString("GM_INFO"));
+					
+					categoryVO = gameVO.getCategoryVO();
+					gameVO.setCategoryId(rs.getString("CTGR_ID"));
+					categoryVO.setCategoryName(rs.getString("CTGR_NM"));
+					
+					gameTypeVO = gameVO.getGameTypeVO();
+					gameVO.setTypeId(rs.getString("TYP_ID"));
+					
+					games.add(gameVO);
+			}
+				return games;	
+		}
+		
+	});
+
+	}
 }
