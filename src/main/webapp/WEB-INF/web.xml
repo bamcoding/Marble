@@ -317,4 +317,14 @@
     <servlet-name>ViewUserInfoListPageServlet</servlet-name>
     <url-pattern>/admin/userInfo</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchInitiateServlet</display-name>
+    <servlet-name>SearchInitiateServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.web.SearchInitiateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchInitiateServlet</servlet-name>
+    <url-pattern>/board/list/init</url-pattern>
+  </servlet-mapping>
 </web-app>

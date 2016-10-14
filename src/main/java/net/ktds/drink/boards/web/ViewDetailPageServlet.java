@@ -18,11 +18,6 @@ import net.ktds.drink.user.biz.UserBiz;
 import net.ktds.drink.user.biz.UserBizImpl;
 import net.ktds.drink.user.vo.UserVO;
 
-/**
- * �꽭�뀡�븘�꽣, �룷�씤�듃 �뾽�뜲�씠�듃(湲� �씫�뿀�쓣�븣 �룷�씤�듃?)
- * @author Eun-joo
- *
- */
 public class ViewDetailPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -43,8 +38,8 @@ public class ViewDetailPageServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		String boardId = Param.getStringParam(request, "boardId");
 		String categoryId = Param.getStringParam(request, "categoryId");
+		String boardId = Param.getStringParam(request, "boardId");
 		
 		boardBiz.updateHitCount(boardId);
 		BoardVO board = boardBiz.getBoardAt(boardId);
@@ -57,6 +52,7 @@ public class ViewDetailPageServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 		request.setAttribute("categoryId", categoryId);
 		request.setAttribute("board", board);
+		request.setAttribute("categoryId", categoryId);
 		rd.forward(request, response);
 	}
 

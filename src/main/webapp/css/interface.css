@@ -129,6 +129,7 @@ body {
 .selected {
 	background-color: #80ff80;
 }
+
 .sign-in, .sign-up{
 	display: none;
 	width:500px;
