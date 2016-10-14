@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,7 @@ import net.ktds.drink.support.Param;
 public class SearchTypeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private GamesBiz biz;
-       
+	private List<GamesVO> games;  
 
     public SearchTypeServlet() {
         super();
@@ -33,23 +34,25 @@ public class SearchTypeServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
+		String viewPath = "/WEB-INF/view/game/searchType.jsp";
+	    RequestDispatcher rd = request.getRequestDispatcher(viewPath);
+		
 		String categoryId = Param.getStringParam(request, "categoryId");
 		
 		GamesVO gamesVO = new GamesVO();
+		
 		gamesVO.setCategoryId(categoryId);
-		
-		List<GamesVO> games = biz.getGames(gamesVO);
-		
-		StringBuffer options = new StringBuffer();
-		
-		for (GamesVO game : games) {
-			options.append(String.format("%s", game.getGameId(), game.getGameName() ));
+		if( gamesVO.getCategoryId().equals("Category") ) {
+			games = biz.allGetGames(gamesVO);
 		}
-		
-		PrintWriter out = response.getWriter();
-		out.write(options.toString());
-		out.flush();
-		out.close();
+		else {
+			games = biz.getGames(gamesVO);
+		}
+		request.setAttribute("games", games);
+		rd.forward(request, response);
 	}
 }
 

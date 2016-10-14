@@ -10,6 +10,11 @@ public class GamesVO {
 	private CategoryVO categoryVO;
 	private GameTypeVO gameTypeVO;
 	
+	public GamesVO() {
+		categoryVO = new CategoryVO();
+		gameTypeVO = new GameTypeVO();
+	}
+	
 	public CategoryVO getCategoryVO() {
 		return categoryVO;
 	}
@@ -26,10 +31,6 @@ public class GamesVO {
 		this.gameTypeVO = gameTypeVO;
 	}
 
-	public GamesVO() {
-		categoryVO = new CategoryVO();
-		gameTypeVO = new GameTypeVO();
-	}
 	
 	public String getGameId() {
 		return gameId;

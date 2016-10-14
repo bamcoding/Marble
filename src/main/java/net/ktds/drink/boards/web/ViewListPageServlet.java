@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import net.ktds.drink.boards.biz.BoardBiz;
 import net.ktds.drink.boards.biz.BoardBizImpl;
 import net.ktds.drink.boards.vo.BoardListVO;
+import net.ktds.drink.boards.vo.BoardVO;
 import net.ktds.drink.boards.vo.SearchBoardVO;
 import net.ktds.drink.constants.Session;
 import net.ktds.drink.support.Param;
@@ -60,9 +61,12 @@ public class ViewListPageServlet extends HttpServlet {
 		session.setAttribute(Session.SEARCH_INFO, searchBoard);
 		BoardListVO boardList = boardBiz.getBoardListsOf(searchBoard);
 		
+		String boardId = Param.getStringParam(request, "boardId");
+		BoardVO board = boardBiz.getBoardAt(boardId);
 		String viewPath = "/WEB-INF/view/board/list.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 		
+		request.setAttribute("board", board);
 		request.setAttribute("boards", boardList.getBoardLists());
 		request.setAttribute("pager", boardList.getPager());
 		
@@ -71,7 +75,6 @@ public class ViewListPageServlet extends HttpServlet {
 		
 		request.setAttribute("paging", pager);
 		request.setAttribute("searchBoard", searchBoard);
-		
 		rd.forward(request, response);
 	}
 

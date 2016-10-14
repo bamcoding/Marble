@@ -46,7 +46,7 @@ $(document).ready(function() {
 		<c:if test="${not empty board.fileName }">
 			<div id="attachedFile">
 				<span><img src="/Board/img/text-file-3-xxl.png" /><a
-					href="/Marble/board/download?boardId=${board.boardId}">${board.fileName }</a></span>
+					href="/Marble/doDownload?boardId=${board.boardId}">${board.fileName }</a></span>
 			</div>
 		</c:if>
 	</div>

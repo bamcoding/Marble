@@ -10,7 +10,7 @@
 				
 			}
 		});
-		
+
 		
 	});
 </script>
@@ -22,8 +22,8 @@
 			<li><a href="#info">내 정보</a></li>
 			<li><a href="#setGame">게임 셋팅</a></li>
 			<li><a href="#addGame">게임 추가</a></li>
-			<li><a href="/Marble/board/list">커뮤니티</a></li>
-			<li><a href="#fna">문의사항</a></li>
+			<li><a href="/Marble/board/list?categoryId=12">커뮤니티</a></li>
+			<li><a href="/Marble/board/list?categoryId=13">문의사항</a></li>
 		</ul>
 
 
