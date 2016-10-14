@@ -276,5 +276,25 @@
   <servlet-mapping>
     <servlet-name>DoDownloadServlet</servlet-name>
     <url-pattern>/doDownload</url-pattern>
+ </servlet-mapping>
+ <servlet>
+ 	<description></description>
+    <display-name>doAddGamesServlet</display-name>
+    <servlet-name>doAddGamesServlet</servlet-name>
+    <servlet-class>net.ktds.drink.games.web.DoAddGamesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>doAddGamesServlet</servlet-name>
+    <url-pattern>/doAddGames</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IsExistGameName</display-name>
+    <servlet-name>IsExistGameName</servlet-name>
+    <servlet-class>net.ktds.drink.games.web.IsExistGameName</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IsExistGameName</servlet-name>
+    <url-pattern>/IsExistGameName</url-pattern>
   </servlet-mapping>
 </web-app>
