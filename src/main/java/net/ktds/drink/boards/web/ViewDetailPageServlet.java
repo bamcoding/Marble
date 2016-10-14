@@ -43,6 +43,7 @@ public class ViewDetailPageServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		String categoryId = Param.getStringParam(request, "categoryId");
 		String boardId = Param.getStringParam(request, "boardId");
 		
 		boardBiz.updateHitCount(boardId);
@@ -56,6 +57,7 @@ public class ViewDetailPageServlet extends HttpServlet {
 		String viewPath = "/WEB-INF/view/board/detail.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 		request.setAttribute("board", board);
+		request.setAttribute("categoryId", categoryId);
 		rd.forward(request, response);
 	}
 

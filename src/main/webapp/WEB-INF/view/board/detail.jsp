@@ -61,7 +61,7 @@ $(document).ready(function() {
 		<a href="/Marble/board/modify?boardId=${board.boardId}">수정</a>
 	</c:if>
 
-	<a href="/Marble/board/list">목록보기</a>
+	<a href="/Marble/board/list?categoryId=${categoryId }">목록보기</a>
 </div>
 </body>
 </html>
