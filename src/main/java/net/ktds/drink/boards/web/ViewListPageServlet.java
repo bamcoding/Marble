@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import net.ktds.drink.boards.biz.BoardBiz;
 import net.ktds.drink.boards.biz.BoardBizImpl;
 import net.ktds.drink.boards.vo.BoardListVO;
-import net.ktds.drink.boards.vo.BoardVO;
 import net.ktds.drink.boards.vo.SearchBoardVO;
 import net.ktds.drink.constants.Session;
 import net.ktds.drink.support.Param;
@@ -42,6 +41,8 @@ public class ViewListPageServlet extends HttpServlet {
 		int pageNo = Param.getIntParam(request, "pageNo", -1);
 		int searchType = Param.getIntParam(request, "searchType");
 		String searchKeyword = Param.getStringParam(request, "searchKeyword");
+		String categoryId = Param.getStringParam(request, "categoryId");
+		
 		
 		SearchBoardVO searchBoard = null;
 		if (pageNo == -1) {
@@ -57,24 +58,22 @@ public class ViewListPageServlet extends HttpServlet {
 			searchBoard.setSearchType(searchType);
 			searchBoard.setSearchKeyword(searchKeyword);
 		}
+		searchBoard.setCategoryId(categoryId);
 		
 		session.setAttribute(Session.SEARCH_INFO, searchBoard);
 		BoardListVO boardList = boardBiz.getBoardListsOf(searchBoard);
 		
-		String boardId = Param.getStringParam(request, "boardId");
-		BoardVO board = boardBiz.getBoardAt(boardId);
 		String viewPath = "/WEB-INF/view/board/list.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
-		
-		request.setAttribute("board", board);
 		request.setAttribute("boards", boardList.getBoardLists());
 		request.setAttribute("pager", boardList.getPager());
-		
+		request.setAttribute("categoryId", categoryId);
 		PageExplorer page = new ClassicPageExplorer(boardList.getPager());
 		String pager = page.getPagingList("pageNo", "[@]", "<< prev", "next >>", "searchForm");
 		
 		request.setAttribute("paging", pager);
 		request.setAttribute("searchBoard", searchBoard);
+		
 		rd.forward(request, response);
 	}
 

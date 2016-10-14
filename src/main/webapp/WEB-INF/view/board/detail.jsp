@@ -57,7 +57,7 @@ $(document).ready(function() {
 	<a href="javascript:void(0);" id="recommendBtn">추천</a>
 
 	<c:if test="${sessionScope._USER_INFO_.userId eq board.userId }">
-		<a href="javascript:void(0);" id="deleteBtn">삭제</a>
+		<a href="javascript:void(0);"  id="deleteBtn">삭제</a>
 		<a href="/Marble/board/modify?boardId=${board.boardId}">수정</a>
 	</c:if>
 

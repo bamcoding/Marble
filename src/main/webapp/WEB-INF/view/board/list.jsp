@@ -48,6 +48,7 @@
 	
 	<form id = "searchForm" name="searchForm">
 	<div style="padding-top: 10px;">
+	<input type="hidden" name="categoryId" value="${param.categoryId }" />
 		<div class="left">
 			<a href="/Marble/board/write?categoryId=${param.categoryId}">글쓰기</a>
 		</div>

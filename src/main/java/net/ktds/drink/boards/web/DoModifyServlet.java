@@ -69,10 +69,10 @@ public class DoModifyServlet extends HttpServlet {
 		}
 		boolean isSuccess = boardBiz.updateBoard(board);
 		if ( isSuccess ) {
-			response.sendRedirect("/Mables/board/detail?boardId=" + boardId);
+			response.sendRedirect("/Marble/board/detail?boardId=" + boardId);
 		}
 		else{
-			response.sendRedirect("/Mables/board/write?errorCode=1");
+			response.sendRedirect("/Marble/board/write?errorCode=1");
 		}
 	}
 	
