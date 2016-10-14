@@ -1,7 +1,7 @@
 package net.ktds.drink.boards.comments.vo;
 
 public class CommentVO {
-
+//ㅎ
 	private String commentId;
 	private String boardId;
 	private String commentContent;
