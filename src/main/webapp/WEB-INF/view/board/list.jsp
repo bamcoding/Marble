@@ -63,9 +63,6 @@
 	<div style="text-align:center; margin-top:10px; margin-bottom:10px;">
 		${paging}
 	</div>
-
-	<form id = "searchForm" name="searchForm">
-		${paging}
 	
 	<div style="padding-top: 10px;">
 	<input type="hidden" name="categoryId" value="${param.categoryId }" />
