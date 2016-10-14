@@ -69,7 +69,7 @@
 
 <body>
 	<form id="writeForm" name="writeForm" enctype="multipart/form-data">
-	<input type="hidden" name="categoryId" value="${param.categoryId }">
+	<input type="hidden" name="categoryId" value="${param.categoryId }" />
 		<div>
 			<input type="text" id="boardSubject" name="boardSubject"
 				placeholder="제목을 입력하세요">
