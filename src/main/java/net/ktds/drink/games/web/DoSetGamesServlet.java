@@ -1,8 +1,6 @@
-package net.ktds.drink.boards.web;
+package net.ktds.drink.games.web;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,24 +8,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.ktds.drink.support.Param;
 
-public class ViewWritePageServlet extends HttpServlet {
+
+public class DoSetGamesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ViewWritePageServlet() {
+
+
+    public DoSetGamesServlet() {
         super();
     }
 
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String categoryId = Param.getStringParam(request, "categoryId");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
-		String viewPath = "/WEB-INF/view/board/write.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
-		request.setAttribute("categoryId", categoryId);
-		rd.forward(request, response);
+		String games = Param.getStringParam(request, "games");
+		String numbers = Param.getStringParam(request, "numbers");
+		
+		System.out.println("num" + numbers);
 	}
 
 }

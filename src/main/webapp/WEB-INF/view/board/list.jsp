@@ -49,7 +49,7 @@
 	<form id = "searchForm" name="searchForm">
 	<div style="padding-top: 10px;">
 		<div class="left">
-			<a href="/Marble/board/write">글쓰기</a>
+			<a href="/Marble/board/write?categoryId=${param.categoryId}">글쓰기</a>
 		</div>
 		<div class="right">
 			<select id="searchType" name="searchType">

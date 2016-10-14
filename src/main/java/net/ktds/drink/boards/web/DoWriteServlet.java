@@ -42,7 +42,7 @@ public class DoWriteServlet extends HttpServlet {
 		
 		String boardSubject = multipartRequest.getParameter("boardSubject");
 		String boardContent = multipartRequest.getParameter("boardContent");
-		String categoryId = "categoryName";
+		String categoryId = multipartRequest.getParameter("categoryId");
 		
 		String fileName = "";
 		MultipartFile uploadFile = multipartRequest.getFile("file");
@@ -67,13 +67,12 @@ public class DoWriteServlet extends HttpServlet {
 		board.setUserId(userVO.getUserId());
 		board.setFileName(fileName);
 		board.setCategoryId(categoryId);
-		
 		boolean isSuccess = boardBiz.addBoard(board);
 
 		if (isSuccess) {
-			response.sendRedirect("/Mables/board/list");
+			response.sendRedirect("/Marble/board/list?categoryId=" + categoryId);
 		} else {
-			response.sendRedirect("/Mables/board/write?errorCode=1");
+			response.sendRedirect("/Marble/board/write?errorCode=1");
 		}
 	}
 }
