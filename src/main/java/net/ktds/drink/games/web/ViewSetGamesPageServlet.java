@@ -30,24 +30,18 @@ public class ViewSetGamesPageServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* SearchGamesVO searchGames = new SearchGamesVO();
-	     int searchType = Param.getIntParam(request, "searchType");
-	     searchGames.setSearchType(searchType);
-	     
-	     GamesListVO dummyGames = biz.getAllArticles(searchGames);*/
-		
 		String viewPath = "/WEB-INF/view/game/setGames.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 		
 		
 		CategoryVO categoryVO = new CategoryVO();
-		categoryVO.setCategoryId("5");
+		//부모 카테고리 = 게임 
+		categoryVO.setParentCategoryId("5");
 		List<CategoryVO> categories = biz.getCategory(categoryVO);
 		
+		
+		request.setAttribute("categories", categories);
 
-		request.setAttribute("categoryVO", categoryVO);
-/*		request.setAttribute("games", dummyGames.getGames());
-		request.setAttribute("searchGames", searchGames);*/
 		   
 		rd.forward(request, response);
 		
