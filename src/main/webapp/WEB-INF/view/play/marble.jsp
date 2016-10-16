@@ -116,7 +116,7 @@
 		}
 
 		function actionSpinGoldKey(){
-			$("#keyCardFrame").css("display","block");
+			$("#rollCardGroup").css("display","block");
 			$("#disabledEffect").css("display","block");
 			var showTime = 0;
 			var randomNum = 0;
@@ -124,37 +124,35 @@
 				randomNum = parseInt(Math.random()*6)+1;
 				
 				// 카드 돌리기 애니메이션 시작
-				$("#keyCard").addClass("actionSpinGoldKey");
+				$("#cardGroup").addClass("actionSpinGoldKey");
 				showTime += 1500;
 				
 				//애니메이션이 끝날 때까지 기다리다가 카드를 랜덤 하게 보여주는 부분
 				setTimeout(function(){
-					$("#keyCard").removeClass("actionSpinGoldKey");
-				// pick 클래스로 카드를 하나 뽑는다.	
-				$("#keyCard").removeClass("keyCard");
-				$("#keyCard").addClass("pick" + randomNum);
-				//클릭하면 뒤집기
-				var degNum = (randomNum - 1)*60;
-				
-				$(".card"+randomNum).click(function(){
-					$("#container").css("display","block");					
-					$(this).css("display","none");	
+				$("#cardGroup").removeClass("actionSpinGoldKey");
+				$("#cardGroup").css({
+					"transform":"rotateY(-"+((randomNum-1)*60)+"deg)"
 				});
+				// pick 클래스로 카드를 하나 뽑는다.	
 				
-				$("#container").dblclick(function(){
+				console.log("random_value : "+randomNum);
+				// 동시에 그 카드를 안보이게 한다.
+				$(".card"+randomNum).css("display","none");	
+				
+				// 동시에 뒤집는 카드를 보이게 한다.
+				$("#selectedCard").css("display","block");					
+				
+				$("#selectedCard").dblclick(function(){
 					$(".card"+randomNum).css("display","block");					
 					$(this).css("display","none");	
-					
-					$("#keyCard").removeClass("pick" + randomNum);
-					$("#keyCard").addClass("keyCard");
-					$("#keyCardFrame").css("display","none");
+					$("#rollCardGroup").css("display","none");
 					$("#disabledEffect").css("display","none");
 				});
 				}, showTime);
 		}
 				// 카드 플립부분
 		var check = 0;
-		$("#container").click(function() {
+		$("#selectedCard").click(function() {
 			if (check == 0) {
 				$("#flipper").addClass("clickFlip");
 				check = 1;
@@ -322,22 +320,24 @@
 		</div>
 		<div id="blingEffect"></div>
 		<div id="disabledEffect"></div>
+		
 		<!-- 황금 열쇠 ( 1.연출 부분 ) -->
-		<div id="keyCardFrame">
-		  <div id="keyCard">
-		    <div class="item card1">A</div>
-		    <div class="item card2">B</div>
-		    <div class="item card3">C</div>
-		    <div class="item card4">D</div>
-		    <div class="item card5">E</div>
-		    <div class="item card6">F</div>
+		<div id="keyWrapper" style="top:35%;left:40%;position:absolute;">
+		<div id="rollCardGroup">
+		  <div id="cardGroup">
+		    <div class="card1 item"><img src="/Marble/img/key.png"/></div>
+		    <div class="card2 item"><img src="/Marble/img/key.png"/></div>
+		    <div class="card3 item"><img src="/Marble/img/key.png"/></div>
+		    <div class="card4 item"><img src="/Marble/img/key.png"/></div>
+		    <div class="card5 item"><img src="/Marble/img/key.png"/></div>
+		    <div class="card6 item"><img src="/Marble/img/key.png"/></div>
 		  </div>
 		</div>
 		<!--  황금 열쇠 ( 2.카드 뒤집기 부분 ) -->
-		<div id="container">
+		<div id="selectedCard">
 			<div id="flipper">
 				<div class="flip_front">
-					열쇠
+					<img src="/Marble/img/key.png"/>
 					<span class="name">Post it</span>
 				</div>
 				<div class="flip_back">
@@ -345,7 +345,7 @@
 					<p>고온다습 직사광선을 피해 보관하시기 바랍니다.</p>
 				</div>
 			</div>
-		</div>
+		</div></div>
 		<div id="viewInfo"></div>
 		<div id="goldenCard"></div>
 		<div id="drink"></div>
