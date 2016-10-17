@@ -7,10 +7,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
+<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
 <script type="text/javascript">
-
 </script>
 <title>Insert title here</title>
 </head>
@@ -19,7 +18,7 @@
 
 
 		<div class="userList">
-		   <table>
+		   <table class="grid">
 				<tr>
 					<td>번호</td>
 					<td>아이디</td>

@@ -151,6 +151,7 @@ public class UserDaoImpl extends DaoSupport implements UserDao {
 				query.append("			, USR_EML ");
 				query.append("			, USR_NICK_NM ");
 				query.append(" FROM		USR	");
+				query.append(" ORDER BY USR_ID ASC ");
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				return pstmt;
 			}
