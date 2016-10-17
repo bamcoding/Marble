@@ -118,7 +118,18 @@ body {
     color: white;
 }
 
-<<<<<<< HEAD
+.sign-in{
+	background-color: #555;
+	top: 60px;
+	right:0;
+	position: fixed;
+	z-index: 49;
+}
+
+.selected {
+	background-color: #80ff80;
+}
+
 .sign-in, .sign-up{
 	display: none;
 	width:500px;
@@ -142,21 +153,5 @@ body {
 	font-family: Courier;
 	font-size: 5em;
 }
-
-=======
-.sign-in{
-	background-color: #555;
-	top: 60px;
-	right:0;
-	position: fixed;
-<<<<<<< HEAD
-	z-index: 49;
-}
-=======
-	z-index: 89;
-}
 .selected {
 	background-color: #80ff80;
-}
->>>>>>> b8a644b27415b439ce501997e8698d06ed40eb60
->>>>>>> 성정한-관리자

@@ -279,6 +279,26 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>doAddGamesServlet</display-name>
+    <servlet-name>doAddGamesServlet</servlet-name>
+    <servlet-class>net.ktds.drink.games.web.DoAddGamesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>doAddGamesServlet</servlet-name>
+    <url-pattern>/doAddGames</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IsExistGameName</display-name>
+    <servlet-name>IsExistGameName</servlet-name>
+    <servlet-class>net.ktds.drink.games.web.IsExistGameName</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IsExistGameName</servlet-name>
+    <url-pattern>/IsExistGameName</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>ViewAdminPageServlet</display-name>
     <servlet-name>ViewAdminPageServlet</servlet-name>
     <servlet-class>net.ktds.drink.admin.web.ViewAdminPageServlet</servlet-class>
@@ -296,5 +316,25 @@
   <servlet-mapping>
     <servlet-name>ViewUserInfoListPageServlet</servlet-name>
     <url-pattern>/admin/userInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchInitiateServlet</display-name>
+    <servlet-name>SearchInitiateServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.web.SearchInitiateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchInitiateServlet</servlet-name>
+    <url-pattern>/board/list/init</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoUserInfoDelete</display-name>
+    <servlet-name>DoUserInfoDelete</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.DoUserInfoDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoUserInfoDelete</servlet-name>
+    <url-pattern>/doUserInfoDelete</url-pattern>
   </servlet-mapping>
 </web-app>

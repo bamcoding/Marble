@@ -9,14 +9,22 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
+<link rel="stylesheet" type="text/css" href="/Marble/css/grid.css" />
 <script type="text/javascript">
 	$(document).ready(function(){
 		
 		$("#nav ul li").click(function(){
 			var index = $(this).index();
 			if( index == 0){
-				$("#member-info").click(function(){
-					$("#playList").load("/Marble/admin/userInfo");
+				$("#member-info").mousedown(function(){
+					$("#playList").addClass("display-block")
+					$("#playList").removeClass("display-none")
+					//$("#playList").load("/Marble/admin/userInfo");
+					
+				});
+				$("#member-info").mouseup(function(){
+					$("#playList").addClass("display-none")
+					$("#playList").removeClass("display-block")
 				});
 			}
 		});
@@ -30,9 +38,13 @@
 		<div id="nav" style="width:100%; height:49px;">
 			<ul>
 			  <li class="member">
+			  	
+			  		<a href="/Marble/admin" class=memberBtn>Home</a>
+			  </li>
+			  <li class="member">
 			  	  <a href="javascript:void(0);" class="memberBtn">회원관리 </a>
 			  	  <div class="member-content">
-			  	  	<a href="javascript:void(0);" id="member-info">회원정보</a>
+			  	  	<a href="/Marble/admin/userInfo" id="member-info">회원정보</a>
 			  	  </div>
 			  </li>
 			  <li class="member">
@@ -50,7 +62,7 @@
 			  		</div>
 			  </li>
 			  <div style="float:right">
-			  	<li style="color:white; padding:12px 16px">안녕하세요 성정한님</li>
+			  	<li style="color:white; padding:12px 16px">안녕하세요 관리자님</li>
 			  </div>
 			</ul>
 		</div>
