@@ -11,17 +11,20 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		
 		$("#nav ul li").click(function(){
 			var index = $(this).index();
+			console.log(index);
 			if( index == 0){
 				$("#member-info").click(function(){
 					$("#playList").load("/Marble/admin/userInfo");
 				});
 			}
+			if( index == 1){
+				$("#article-info").click(function(){
+					$("#playList").load("/Marble/admin/articleInfo");
+				});
+			}
 		});
-		
-		
 	});
 </script>
 <body>
@@ -36,9 +39,9 @@
 			  	  </div>
 			  </li>
 			  <li class="member">
-			  		<a href="" class=memberBtn>게시판관리</a>
+			  		<a href="javascript:void(0);"  class="articleBtn">게시판관리</a>
 			  		<div class="member-content">
-			  			<a href="">글 검색</a>
+			  			<a href="javascript:void(0);"  id="article-info">게시판 정보</a>
 			  			<a href="">글 삭제</a>
 			  		</div>
 	  		 </li>
