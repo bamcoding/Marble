@@ -67,14 +67,16 @@
 </script>
 	<form id="signInForm" name="signInForm">
 		<div class="sign-title">LOGIN</div>
-		<div>
-			<div><input type="text" id="signUserEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"> </div>
-			<div><input type="password" id="signUserPassword" name="userPassword" placeholder="Password를 적어주세요"/></div>
-		</div>
-		<div>
-			<div class="inline"><input type="button" id="signInBtn" value="Sign In"/></div>
-			<div class="inline"><input type="button" id="signUpBtn" value="Sign Up"/></div>
-			<div class="inline"><input type="button" id="cancleBtn" value="Cancle"/></div>
-		</div>
+		<input type="text" id="signUserEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"/> </div>
+		<br/>
+		<input type="password" id="signUserPassword" name="userPassword" placeholder="Password를 적어주세요"/></div>
+		<br/>
+		<input type="checkbox">ID 저장 
+		<a href="javascript:void(0);">비밀번호찾기</a>
+		<br/>
+		<input type="button" id="signInBtn" value="Sign In"/>
+		<input type="button" id="cancleBtn" value="Cancle"/>
+		
+		<div class="sign-bottom">계정이 없으세요?&nbsp;&nbsp;<a id="signUpBtn" href="javascript:void(0);">가입하기</a></div>
 	</form>
 

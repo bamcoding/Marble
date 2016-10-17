@@ -5,6 +5,7 @@
 .menubar 50
 .sign-in 39
 .nav ul 40
+cover 30
 */
 
 body {
@@ -108,6 +109,18 @@ body {
     background-color: #4CAF50;
 }
 
+.right{
+	float:right;
+}
+
+.left{
+	float: left;
+}
+
+.clear{
+	clear: both;
+}
+
 .inline {
 	display: inline-block;
     color: white;
@@ -119,15 +132,43 @@ body {
 }
 
 .sign-in, .sign-up{
+	text-align: center;
 	display: none;
-	width:500px;
-	height:500px;
-	border:10px solid #00fff9; 
-	border-radius:20px;
+	width:600px;
+	height:350px;
+	border-radius:10px;
 	z-index: 39;
 	position:absolute;
 	background:#00ff99;
 	opacity:0.95;
+}
+
+#signUserEmail, #signUserPassword{
+	width:250px;
+	height:25px;
+	margin:3px;
+	border:1px solid #cccccc;
+	border-radius: 5px;
+	
+}
+
+.sign-bottom{
+	border-top:1px solid gray;
+	margin-top:50px;	
+	
+}
+
+
+#cover {
+	position: absolute;
+	z-index:50;
+	top:0px;
+	left:0px;
+	bottom:0px;
+	width:100%;
+	height:100%;
+	opacity:0.5;
+	background:gray;
 }
 
 .sign-title {
@@ -140,15 +181,9 @@ body {
 	text-shadow: 0.1em 0.1em 0.05em #acd7e5;
 	font-family: Courier;
 	font-size: 5em;
+	border-bottom:1px solid gray;
 }
 
-.sign-in{
-	background-color: #555;
-	top: 60px;
-	right:0;
-	position: fixed;
-	z-index: 49;
-}
 
 .selected {
 	background-color: #80ff80;
