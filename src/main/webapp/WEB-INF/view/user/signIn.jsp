@@ -66,17 +66,21 @@
 	
 </script>
 	<form id="signInForm" name="signInForm">
-		<div class="sign-title">LOGIN</div>
-		<input type="text" id="signUserEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"/> </div>
+		<div class="sign_head inline2">주루마블에 로그인하기</div>
+		<div class="inline2 right"><input type="button" id="cancleBtn" value="X"/></div>
+		<div class="clear"></div>
+		<div id="signContent">
+		<div class="sign-title">주루마블</div>
+		<input type="text" id="signUserEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"/>
 		<br/>
-		<input type="password" id="signUserPassword" name="userPassword" placeholder="Password를 적어주세요"/></div>
+		<input type="password" id="signUserPassword" name="userPassword" placeholder="Password를 적어주세요"/>
 		<br/>
+		<div class="small">
 		<input type="checkbox">ID 저장 
-		<a href="javascript:void(0);">비밀번호찾기</a>
+		<a href="javascript:void(0);">비밀번호찾기</a></div>
+		<input type="button" id="signInBtn" value="SIGN IN"/>
 		<br/>
-		<input type="button" id="signInBtn" value="Sign In"/>
-		<input type="button" id="cancleBtn" value="Cancle"/>
-		
-		<div class="sign-bottom">계정이 없으세요?&nbsp;&nbsp;<a id="signUpBtn" href="javascript:void(0);">가입하기</a></div>
+		</div>
+		<div class="sign_footer">계정이 없으세요?&nbsp;&nbsp;<a id="signUpBtn" href="javascript:void(0);">가입하기</a></div>
 	</form>
 
