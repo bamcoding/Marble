@@ -119,3 +119,7 @@
 <jsp:include page="/WEB-INF/view/play/menu.jsp" />
 
 	<div id="wrapper">
+<<<<<<< HEAD
+=======
+	<div id="cover"></div>
+>>>>>>> 근재정한
