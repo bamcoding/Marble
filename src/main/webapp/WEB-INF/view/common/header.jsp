@@ -119,3 +119,4 @@
 <jsp:include page="/WEB-INF/view/play/menu.jsp" />
 
 	<div id="wrapper">
+	<div id="cover"></div>
