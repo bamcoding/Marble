@@ -249,6 +249,56 @@
   </filter-mapping>
   <servlet>
     <description></description>
+    <display-name>ViewAddGamesServlet</display-name>
+    <servlet-name>ViewAddGamesServlet</servlet-name>
+    <servlet-class>net.ktds.drink.games.web.ViewAddGamesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAddGamesServlet</servlet-name>
+    <url-pattern>/addGames</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoUpdateRecommendCountServlet</display-name>
+    <servlet-name>DoUpdateRecommendCountServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.web.DoUpdateRecommendCountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoUpdateRecommendCountServlet</servlet-name>
+    <url-pattern>/doUpdateRecommend</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDownloadServlet</display-name>
+    <servlet-name>DoDownloadServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.web.DoDownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDownloadServlet</servlet-name>
+    <url-pattern>/doDownload</url-pattern>
+ </servlet-mapping>
+ <servlet>
+ 	<description></description>
+    <display-name>doAddGamesServlet</display-name>
+    <servlet-name>doAddGamesServlet</servlet-name>
+    <servlet-class>net.ktds.drink.games.web.DoAddGamesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>doAddGamesServlet</servlet-name>
+    <url-pattern>/doAddGames</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IsExistGameName</display-name>
+    <servlet-name>IsExistGameName</servlet-name>
+    <servlet-class>net.ktds.drink.games.web.IsExistGameName</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IsExistGameName</servlet-name>
+    <url-pattern>/IsExistGameName</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>ViewAdminPageServlet</display-name>
     <servlet-name>ViewAdminPageServlet</servlet-name>
     <servlet-class>net.ktds.drink.admin.web.ViewAdminPageServlet</servlet-class>
@@ -266,5 +316,15 @@
   <servlet-mapping>
     <servlet-name>ViewUserInfoListPageServlet</servlet-name>
     <url-pattern>/admin/userInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchInitiateServlet</display-name>
+    <servlet-name>SearchInitiateServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.web.SearchInitiateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchInitiateServlet</servlet-name>
+    <url-pattern>/board/list/init</url-pattern>
   </servlet-mapping>
 </web-app>

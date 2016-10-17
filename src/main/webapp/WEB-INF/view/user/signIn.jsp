@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="/Marble/css/login.css"/>
 <script type="text/javascript">
 	$(document).ready(function(){
-		
+
 		$("#signInBtn").click(function(){
 			$.post("/Marble/doSignIn",
 			$("#signInForm").serialize(),
@@ -62,24 +62,19 @@
 				$(this).removeClass("warning");
 			}
 		});
-		
-		
-		
 	});
 	
 </script>
-		
-		<div class="login">
-			<form id="signInForm" name="signInForm">
-				<div>
-					<div><input type="text" id="signUserEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"> </div>
-					<div><input type="password" id="signUserPassword" name="userPassword" placeholder="Password를 적어주세요"/></div>
-				</div>
-				<div>
-					<div class="inline"><input type="button" id="signInBtn" value="Sign In"/></div>
-					<div class="inline"><input type="button" id="signUpBtn" value="Sign Up"/></div>
-					<div class="inline"><input type="button" id="cancleBtn" value="Cancle"/></div>
-				</div>
-			</form>
+	<form id="signInForm" name="signInForm">
+		<div class="sign-title">LOGIN</div>
+		<div>
+			<div><input type="text" id="signUserEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"> </div>
+			<div><input type="password" id="signUserPassword" name="userPassword" placeholder="Password를 적어주세요"/></div>
 		</div>
+		<div>
+			<div class="inline"><input type="button" id="signInBtn" value="Sign In"/></div>
+			<div class="inline"><input type="button" id="signUpBtn" value="Sign Up"/></div>
+			<div class="inline"><input type="button" id="cancleBtn" value="Cancle"/></div>
+		</div>
+	</form>
 

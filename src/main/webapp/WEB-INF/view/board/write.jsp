@@ -53,7 +53,7 @@
 			}).submit();
 		});
 		
-		$("#categoryId").val("categoryId;");
+		
 			
 
 		function isVisibleWriteBtn() {
@@ -69,6 +69,7 @@
 
 <body>
 	<form id="writeForm" name="writeForm" enctype="multipart/form-data">
+	<input type="hidden" name="categoryId" value="${param.categoryId }" />
 		<div>
 			<input type="text" id="boardSubject" name="boardSubject"
 				placeholder="제목을 입력하세요">
@@ -89,7 +90,6 @@
 				<input type="button" id="writeBtn" value="글쓰기" />
 			</div>
 			</div>
-			<input type="hidden" name="CategoryId" value="${board.categoryId}" />
 			<div class="clear"></div>
 			
 
