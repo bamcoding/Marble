@@ -97,15 +97,13 @@ $(document).ready(function () {
 				var num = $(this).find(".gameCnt").text();
 				for(i=0; i<num; i++){
 					param += $(this).attr("id");
-					if(i != num-1){
-						param+=",";
-					}
+					param+=",";
 				}
 			}
 		});
 		
-		$.post("/Marble/doSetGames", {games : param}, function(){
-			
+		$.post("/Marble/doSetGames", {games : param}, function(data){
+			showWarning(data);
 		});
 		
 		

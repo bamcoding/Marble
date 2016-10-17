@@ -189,12 +189,10 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 			@Override
 			public Object makeObject(ResultSet rs) throws SQLException {
 
-				GamesVO gameVO = null;
+				GamesVO gameVO = new GamesVO();
 				CategoryVO categoryVO = null;
-				GameTypeVO gameTypeVO = null;
 
-				while (rs.next()) {
-					gameVO = new GamesVO();
+				if (rs.next()) {
 
 					gameVO.setGameId(rs.getString("GM_ID"));
 					gameVO.setGameName(rs.getString("GM_NM"));
@@ -204,7 +202,6 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 					gameVO.setCategoryId(rs.getString("CTGR_ID"));
 					categoryVO.setCategoryName(rs.getString("CTGR_NM"));
 
-					gameTypeVO = gameVO.getGameTypeVO();
 					gameVO.setTypeId(rs.getString("TYP_ID"));
 
 				}

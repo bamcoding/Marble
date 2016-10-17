@@ -40,7 +40,7 @@ public class GamesBizImpl implements GamesBiz {
 
 	@Override
 	public GamesVO getGame(String gameId) {
-		return null;
+		return dao.getGame(gameId);
 	}
 
 

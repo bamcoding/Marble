@@ -7,10 +7,12 @@
 			var index = $(this).index();
 			if(index == 0){
 				$("#settings").load("/Marble/myInfo");
-				
 			}
 			if(index == 1){
 				$("#settings").load("/Marble/setGames");
+			}
+			if(index == 2){
+				$("#settings").load("/Marble/addGames");
 			}
 		});
 
