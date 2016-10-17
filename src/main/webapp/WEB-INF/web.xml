@@ -337,4 +337,14 @@
     <servlet-name>ViewArticleInfoServlet</servlet-name>
     <url-pattern>/admin/articleInfo</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewCategoryServlet</display-name>
+    <servlet-name>ViewCategoryServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.ViewCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewCategoryServlet</servlet-name>
+    <url-pattern>/admin/category</url-pattern>
+  </servlet-mapping>
 </web-app>

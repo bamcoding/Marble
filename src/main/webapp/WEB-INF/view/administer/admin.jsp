@@ -11,6 +11,7 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
 		$("#nav ul li").click(function(){
 			var index = $(this).index();
 			console.log(index);
@@ -22,6 +23,11 @@
 			if( index == 1){
 				$("#article-info").click(function(){
 					$("#playList").load("/Marble/admin/articleInfo");
+				});
+			}
+			if( index == 3){
+				$("#category-info").click(function(){
+					$("#playList").load("/Marble/admin/category");
 				});
 			}
 		});
@@ -50,6 +56,13 @@
 			  		<div class="member-content">
 			  			<a href="">게임 목록</a>
 			  			<a href="">게임 삭제</a>
+			  		</div>
+			  </li>
+			  <li class="member">
+			  	<a href="javascript:void(0);"  class="categoryBtn">카테고리관리</a>
+			  		<div class="member-content">
+			  			<a href="javascript:void(0);" id="category-info">카테고리 목록</a>
+			  			<a href="">카테고리 삭제</a>
 			  		</div>
 			  </li>
 			  <div style="float:right">

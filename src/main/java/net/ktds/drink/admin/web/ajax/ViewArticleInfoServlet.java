@@ -52,7 +52,7 @@ public class ViewArticleInfoServlet extends HttpServlet {
 			searchBoard.setSearchType(searchType);
 			searchBoard.setSearchKeyword(searchKeyword);
 		}
-		searchBoard.setCategoryId(categoryId);
+		searchBoard.setCategoryId("12");
 		
 		session.setAttribute(Session.SEARCH_INFO, searchBoard);
 		BoardListVO boardList = boardBiz.getBoardListsOf(searchBoard);
