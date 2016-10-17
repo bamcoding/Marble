@@ -125,19 +125,19 @@
 </script>
 
 <body>
-	<div id="wrapper">
-		<form id="registForm">
-			<div id="container">
-				<div><input type="text" id="userEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"> </div>
-				<div><input type="text" id="userNickname" name="userNickname" placeholder="닉네임을 적어주세요"/>  </div>
-				<div><input type="password" id="userPassword1" name="userPassword1" placeholder="Password를 적어주세요"/></div>
-				<div><input type="password" id="userPassword2" name="userPassword2" placeholder="Password를 한번더 적어주세요"/></div>
-			</div>
-			<div>
-				<div><input type="button" id="joinBtn" value="Join"/></div>
-				<div><input type="button" id="cancleBtn" value="Cancle"/></div>
-			</div>
-		</form>
-	</div>
+	<form id="registForm">
+		<div class="sign_head inline2">주루마블에 회원가입하기</div>
+		<div class="inline2 right"><input type="button" id="cancleBtn" value="X"/></div>
+		<div class="clear"></div>
+		<div id="signContent">
+		<div class="sign-title2">회원가입</div>
+		<div><input type="text" id="userEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"> </div>
+		<div><input type="text" id="userNickname" name="userNickname" placeholder="닉네임을 적어주세요"/>  </div>
+		<div><input type="password" id="userPassword1" name="userPassword1" placeholder="Password를 적어주세요"/></div>
+		<div><input type="password" id="userPassword2" name="userPassword2" placeholder="Password를 한번더 적어주세요"/></div>
+		<div><input type="button" id="joinBtn" value="JOIN"/></div>
+		</div>
+		<div class="sign_footer">회원가입 페이지입니다.</div>
+	</form>
 </body>
 </html>

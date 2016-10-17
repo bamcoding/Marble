@@ -108,7 +108,7 @@
 				}else if(x == 0){
 					positionIndex = (2 * cellX) + cellY + (cellY + y);					
 				}
-			var div = $("#cell"+positionIndex+" .gameType").text();
+			var div = $("#cell"+positionIndex+".gameType").text();
 			alert(div);
 			if(div == "GOLD_KEY"){
 				actionSpinGoldKey();
