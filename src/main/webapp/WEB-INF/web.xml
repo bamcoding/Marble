@@ -260,6 +260,9 @@
   <servlet>
     <description></description>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ktds_pc_이근재
     <display-name>DoUpdateRecommendCountServlet</display-name>
     <servlet-name>DoUpdateRecommendCountServlet</servlet-name>
     <servlet-class>net.ktds.drink.boards.web.DoUpdateRecommendCountServlet</servlet-class>
@@ -277,7 +280,9 @@
   <servlet-mapping>
     <servlet-name>DoDownloadServlet</servlet-name>
     <url-pattern>/doDownload</url-pattern>
-=======
+ </servlet-mapping>
+ <servlet>
+ 	<description></description>
     <display-name>doAddGamesServlet</display-name>
     <servlet-name>doAddGamesServlet</servlet-name>
     <servlet-class>net.ktds.drink.games.web.DoAddGamesServlet</servlet-class>
@@ -295,6 +300,39 @@
   <servlet-mapping>
     <servlet-name>IsExistGameName</servlet-name>
     <url-pattern>/IsExistGameName</url-pattern>
+<<<<<<< HEAD
 >>>>>>> 예비_통합
+=======
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewAdminPageServlet</display-name>
+    <servlet-name>ViewAdminPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ViewAdminPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAdminPageServlet</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewUserInfoListPageServlet</display-name>
+    <servlet-name>ViewUserInfoListPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.ViewUserInfoListPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewUserInfoListPageServlet</servlet-name>
+    <url-pattern>/admin/userInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchInitiateServlet</display-name>
+    <servlet-name>SearchInitiateServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.web.SearchInitiateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchInitiateServlet</servlet-name>
+    <url-pattern>/board/list/init</url-pattern>
+>>>>>>> ktds_pc_이근재
   </servlet-mapping>
 </web-app>

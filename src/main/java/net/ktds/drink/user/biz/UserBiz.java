@@ -1,4 +1,6 @@
 package net.ktds.drink.user.biz;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import net.ktds.drink.user.vo.UserVO;
@@ -21,5 +23,7 @@ public interface UserBiz {
 	public boolean signUpUser(UserVO user);
 
 	public boolean signIn(UserVO user, HttpServletRequest request);
+
+	public List<UserVO> getListUserInfo();
 
 }

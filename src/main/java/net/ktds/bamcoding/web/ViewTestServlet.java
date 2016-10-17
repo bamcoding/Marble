@@ -7,8 +7,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 /***
  * 이근재가 만든 jsp파일을 브라우저에 뿌려주기 위해 만든 서블릿이다.
+=======
+/**
+ * 이근재가 만든 jsp파일을 브라우저에 뿌려주기 위해 만든 서블릿이다
+>>>>>>> ktds_pc_이근재
  * 경로목록
  * /WEB-INF/view/bamcoding/test.jsp
  * /WEB-INF/view/bamcoding/resources/carousel.jsp

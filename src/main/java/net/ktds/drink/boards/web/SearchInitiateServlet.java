@@ -5,18 +5,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.ktds.drink.boards.biz.BoardBiz;
 import net.ktds.drink.boards.biz.BoardBizImpl;
-import net.ktds.drink.boards.vo.BoardVO;
-import net.ktds.drink.support.MultipartHttpServletRequest;
+import net.ktds.drink.constants.Session;
 import net.ktds.drink.support.Param;
 
-public class DoDeleteServlet extends HttpServlet {
+public class SearchInitiateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-		private BoardBiz boardBiz;
+	private BoardBiz boardBiz;
        
-    public DoDeleteServlet() {
+    public SearchInitiateServlet() {
         super();
         boardBiz = new BoardBizImpl();
     }
@@ -26,18 +26,13 @@ public class DoDeleteServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String boardId = Param.getStringParam(request, "boardId");
 		String categoryId = Param.getStringParam(request, "categoryId");
-		BoardVO board = new BoardVO();
-		board.setCategoryId(categoryId);
 		
-		boolean isSuccess = boardBiz.removeBoard(boardId);
-		if ( isSuccess ){
-			response.sendRedirect("/Marble/board/list?categoryId=" + categoryId);
-		}
-		else {
-			response.sendRedirect("/Marble/board/detail?boardId=" + boardId);
-		}
+		HttpSession session = request.getSession();
+		session.removeAttribute(Session.SEARCH_INFO);
+		request.setAttribute("categoryId", categoryId);
+		
+		response.sendRedirect("/Marble/board/list?categoryId=" + categoryId);
 	}
+
 }
