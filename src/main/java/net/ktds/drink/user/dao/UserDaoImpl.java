@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.ktds.drink.admin.vo.SearchUserVO;
 import net.ktds.drink.support.DaoSupport;
 import net.ktds.drink.support.Query;
 import net.ktds.drink.support.QueryAndResult;
@@ -82,9 +83,10 @@ public class UserDaoImpl extends DaoSupport implements UserDao {
 				query.append("				, USR_PWD	  ");
 				query.append("              , POINTS      ");
 				query.append("				, USR_NICK_NM ) ");
+				query.append("				, CRT_DT ");
 				query.append(" VALUES ( ");
 				query.append(" 'UR-' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || LPAD(USR_ID_SEQ.NEXTVAL,6,0) ");
-				query.append("	, ? , ? , 0 , ? 		");
+				query.append("	, ? , ? , 0 , ? , SYSDATE ");
 				query.append("        )  ");
 				
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
@@ -110,6 +112,7 @@ public class UserDaoImpl extends DaoSupport implements UserDao {
 				query.append(" 			, USR_PWD ");
 				query.append(" 			, POINTS ");
 				query.append(" 			, USR_NICK_NM ");
+				query.append("			, CRT_DT");
 				query.append(" FROM		USR	");
 				query.append(" WHERE	USR_EML = ?	");
 				query.append(" AND		USR_PWD = ? ");
@@ -129,6 +132,7 @@ public class UserDaoImpl extends DaoSupport implements UserDao {
 					userInfo.setUserPassword(rs.getString("USR_PWD"));
 					userInfo.setUserNickname(rs.getString("USR_NICK_NM"));
 					userInfo.setPoints(rs.getInt("POINTS"));
+					userInfo.setCreatedDate(rs.getString("CRT_DT"));
 				}
 				return userInfo;
 				
@@ -150,6 +154,7 @@ public class UserDaoImpl extends DaoSupport implements UserDao {
 				query.append("			, POINTS ");
 				query.append("			, USR_EML ");
 				query.append("			, USR_NICK_NM ");
+				query.append("			, CRT_DT");
 				query.append(" FROM		USR	");
 				query.append(" ORDER BY USR_ID ASC ");
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
@@ -167,6 +172,7 @@ public class UserDaoImpl extends DaoSupport implements UserDao {
 					user.setUserEmail(rs.getString("USR_EML"));
 					user.setPoints(rs.getInt("POINTS"));
 					user.setUserNickname(rs.getString("USR_NICK_NM"));
+					user.setCreatedDate(rs.getString("CRT_DT"));
 					
 					userInfo.add(user);
 				}
@@ -174,6 +180,49 @@ public class UserDaoImpl extends DaoSupport implements UserDao {
 			}
 		});
 	}
+
+	@Override
+	public int deleteUserInfo(String userId) {
+		return (int)insert(new Query(){
+
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" DELETE ");
+				query.append(" FROM	USR ");
+				query.append(" WHERE USR_ID = ? ");
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, userId);
+				return pstmt;
+			}
+			
+		});
+	}
+
+	@Override
+	public int getCountUsers(SearchUserVO searchUserVO) {
+		return (int) selectOne(new QueryAndResult(){
+
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	COUNT(1) CNT ");
+				query.append(" FROM 	USR ");
+				query.append(" ORDER BY USR_ID DESC ");
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				return pstmt;
+			}
+
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				rs.next();
+				return rs.getInt("CNT");
+			}
+			
+		});
+	}
+
 
 
 

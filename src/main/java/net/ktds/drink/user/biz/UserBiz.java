@@ -3,6 +3,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.ktds.drink.admin.vo.SearchUserVO;
 import net.ktds.drink.user.vo.UserVO;
 
 
@@ -24,6 +25,8 @@ public interface UserBiz {
 
 	public boolean signIn(UserVO user, HttpServletRequest request);
 
-	public List<UserVO> getListUserInfo();
+	public List<UserVO> getListUserInfo(SearchUserVO searchUserVO);
+	
+	public boolean deleteUserInfo(String userId);
 
 }
