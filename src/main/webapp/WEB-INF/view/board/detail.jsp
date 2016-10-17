@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 	$("#recommendBtn").click(function() {
 		if (confirm("\"${board.boardSubject }\"를 추천하시겠습니까?")) {
-			$.post("/Marble/recommendCount",{boardId : "${board.boardId}"},function(data) {
+			$.post("/Marble/doUpdateRecommend",{boardId : "${board.boardId}"},function(data) {
 				if (data == "true") {
 					var count = parseInt($("#recommendCount").text());
 					$("#recommendCount").text(count + 1);
@@ -46,7 +46,7 @@ $(document).ready(function() {
 		<c:if test="${not empty board.fileName }">
 			<div id="attachedFile">
 				<span><img src="/Board/img/text-file-3-xxl.png" /><a
-					href="/Marble/board/download?boardId=${board.boardId}">${board.fileName }</a></span>
+					href="/Marble/doDownload?boardId=${board.boardId}">${board.fileName }</a></span>
 			</div>
 		</c:if>
 	</div>

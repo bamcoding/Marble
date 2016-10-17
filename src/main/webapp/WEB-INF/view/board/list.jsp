@@ -27,6 +27,12 @@
 			<th>조회수</th>
 			<th>추천수</th>
 		</tr>
+		
+		<c:if test="${empty boards}">
+			<tr>
+				<td colspan="6" style="text-align:center;">등록된 게시물이 없습니다.</td>
+			</tr>
+		</c:if>
 
 		<c:forEach items="${boards}" var="board">
 		<tr>
@@ -42,14 +48,13 @@
 		</c:forEach>
 	</table>
 	
-	<div id = "paging">
+	<form id = "searchForm" name="searchForm">
+	<div style="text-align:center; margin-top:10px; margin-bottom:10px;">
 		${paging}
 	</div>
-	
-	<form id = "searchForm" name="searchForm">
 	<div style="padding-top: 10px;">
 		<div class="left">
-			<a href="/Marble/board/write">글쓰기</a>
+			<a href="/Marble/board/write?categoryId=${param.categoryId}">글쓰기</a>
 		</div>
 		<div class="right">
 			<select id="searchType" name="searchType">

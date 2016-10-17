@@ -28,10 +28,10 @@ public class DoDeleteServlet extends HttpServlet {
 		
 		boolean isSuccess = boardBiz.removeBoard(boardId);
 		if ( isSuccess ){
-			response.sendRedirect("/Mables/board/list");
+			response.sendRedirect("/Marble/board/list");
 		}
 		else {
-			response.sendRedirect("/Mables/board/detail?boardId=" + boardId);
+			response.sendRedirect("/Marble/board/detail?boardId=" + boardId);
 		}
 	}
 }
