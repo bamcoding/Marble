@@ -42,12 +42,16 @@
 				if (!$(this).hasClass("active")) {
 					$("#sign-in").slideDown();
 					$(this).addClass("active");
-
 					$("#menubar").fadeOut();
+					$("#cover").css({"display":"block"});
 				} else {
 					$(this).parents().find("li").removeClass("active");
 					$("#sign-in").slideUp();
 					$("#menubar").fadeOut();
+					
+					setTimeout(function(){
+						$("#cover").css({"display":"none"});
+					},400);
 				}
 
 			}
@@ -55,12 +59,16 @@
 				if (!$(this).hasClass("active")) {
 					$("#sign-up").slideDown();
 					$(this).addClass("active");
-
 					$("#menubar").fadeOut();
+					$("#cover").css({"display":"block"});
 				} else {
 					$(this).parents().find("li").removeClass("active");
 					$("#sign-up").slideUp();
 					$("#menubar").fadeOut();
+					setTimeout(function(){
+						$("#cover").css({"display":"none"});
+					},400);
+					
 				}
 
 			}
@@ -109,6 +117,7 @@
 
 	</div>
 
+	<div id="cover"></div>
 	<div class="sign-in" id="sign-in">
 		
 	</div>
@@ -119,4 +128,3 @@
 <jsp:include page="/WEB-INF/view/play/menu.jsp" />
 
 	<div id="wrapper">
-	<div id="cover"></div>
