@@ -67,7 +67,6 @@ public class DoSetGamesServlet extends HttpServlet {
 			
 		}
 		
-		System.out.println(plays.size());
 		PrintWriter out = response.getWriter();
 		for(int i=0; i<plays.size(); i++){
 			out.write(plays.get(i).getGames().getGameName()+"\n\r");
