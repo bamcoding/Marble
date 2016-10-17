@@ -1,26 +1,22 @@
 @CHARSET "UTF-8";
 
-#container {
+#selectedCard {
 	position:absolute;
-	display:none;
-	top:30%;
-	left:34%;
+	display:none;	
 }
 
 .clickFlip{
-		transform: rotateY(180deg);
-	}
-	
-.zoom1{
-	position:absolute;
-	top:25%;
-	left:293px;
-}
+	transform: rotateY(180deg);
+}	
 
-#container, .flip_front, .flip_back {
+
+#selectedCard, .flip_front, .flip_back {
 	z-index:25;
-	width: 335px;
-	height: 270px;
+	top:-25px;
+	left:-25px;
+	width: 250px;
+	height: 250px;
+	opacity:0.9;
 	border-radius: 10px;
 }
 
@@ -38,10 +34,32 @@
 }
 
 .flip_front {
-	background: url(/Marble/img/key.png);
-	background-size: 100% 100%;
-    background-repeat: no-repeat;
 	z-index: 2;
+}
+
+.flip_front img{
+  width:100%;
+  height:100%;
+  border-radius: 10px;
+}
+
+.flip_front .name {
+	font-size: 1em;
+	display: inline-block;
+	background: rgba(33, 33, 33, 0.9);
+	color: #f8f8f8;
+	font-family: Courier;
+	padding: 5px 10px;
+	border-radius: 5px;
+	bottom: 60px;
+	left: 25%;
+	position: absolute;
+	text-shadow: 0.1em 0.1em 0.05em #333;
+
+	-webkit-transform: rotate(-20deg);
+	-moz-transform: rotate(-20deg);
+  -o-transform: rotate(-20deg);
+	transform: rotate(-20deg);
 }
 
 .flip_back {
