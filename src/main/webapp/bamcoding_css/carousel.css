@@ -1,106 +1,55 @@
 @CHARSET "UTF-8";
 /*
 <index>
-#keyCardFrame 21
+#rollCardGroup 21
 */
 
-#keyCardFrame {
+#rollCardGroup {
 	display:none;
 	z-index:21;
-  top:35%;
-  left:38%;
-  width: 250px;
+  width: 200px;
   height: 200px;
   position: absolute;
   perspective: 1000px;
 }
 
-#keyCard, .keyCard {
+#cardGroup, .cardGroup {
   height: 100%;
   width: 100%;
   position: absolute;
   transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.pick1{
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	transform-style: preserve-3d;
-}
-.pick2{
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	transform-style: preserve-3d;
-	transform: rotateY(-60deg);
-}
-.pick3{
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	transform-style: preserve-3d;
-	transform: rotateY(-120deg);
-}
-.pick4{
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	transform-style: preserve-3d;
-	transform: rotateY(-180deg);
-}
-.pick5{
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	transform-style: preserve-3d;
-	transform: rotateY(-240deg);
-}
-.pick6{
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	transform-style: preserve-3d;
-	transform: rotateY(-300deg);
 }
 
 .item {
   display: block;
   position: absolute;
-  background: #000;
-  width: 250px;
+  width: 200px;
   height: 200px;
-  line-height: 200px;
-  font-size: 5em;
-  text-align: center;
-  color: #FFF;
+}
+
+div .item img{
+  width:100%;
+  height:100%;
   border-radius: 10px;
 }
 
 .card1 {
-  transform: rotateY(0deg) translateZ(250px);
-  background: #ed1c24;
+  transform: rotateY(0deg) translateZ(200px);
 }
 .card2 {
-  transform: rotateY(60deg) translateZ(250px);
-  background: #0072bc;
+  transform: rotateY(60deg) translateZ(200px);
 }
 .card3 {
-  transform: rotateY(120deg) translateZ(250px);
-  background: #39b54a;
+  transform: rotateY(120deg) translateZ(200px);
 }
 .card4 {
-  transform: rotateY(180deg) translateZ(250px);
-  background: #f26522;
+  transform: rotateY(180deg) translateZ(200px);
 }
 .card5 {
-  transform: rotateY(240deg) translateZ(250px);
-  background: #630460;
+  transform: rotateY(240deg) translateZ(200px);
 } 
 .card6 {
-  transform: rotateY(300deg) translateZ(250px);
-  background: #8c6239;
+  transform: rotateY(300deg) translateZ(200px);
 }
 
 .actionSpinGoldKey{
