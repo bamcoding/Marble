@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.ktds.drink.support.Param;
+
 public class ViewWritePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -20,8 +22,11 @@ public class ViewWritePageServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String categoryId = Param.getStringParam(request, "categoryId");
+		
 		String viewPath = "/WEB-INF/view/board/write.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
+		request.setAttribute("categoryId", categoryId);
 		rd.forward(request, response);
 	}
 

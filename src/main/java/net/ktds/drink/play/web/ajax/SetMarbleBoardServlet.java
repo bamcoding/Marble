@@ -42,7 +42,7 @@ public class SetMarbleBoardServlet extends HttpServlet {
 			play.getGames().setGameId("play"+ i%7 +"GameId");
 			play.getGames().setGameName("play"+ i%7 +"GameName");
 			play.getGames().setGameInfo("play"+ i%7 +"GameInfo");
-			play.getGames().setTypeId("play"+ i%7 + "TypeId");
+			play.getGames().setTypeId("GOLD_KEY");
 			plays.add(play);
 		}
 		

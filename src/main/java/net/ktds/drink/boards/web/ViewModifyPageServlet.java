@@ -35,7 +35,8 @@ public class ViewModifyPageServlet extends HttpServlet {
 		BoardVO board = boardBiz.getBoardForModify(boardId);
 		
 		String content = board.getBoardContent();
-		content = content.replaceAll("<br/>", "\n");
+		content = content.replaceAll("<br/>", "\n").replaceAll("\r", "");
+						
 		content = content.trim();
 		content.trim();
 		board.setBoardContent(content);

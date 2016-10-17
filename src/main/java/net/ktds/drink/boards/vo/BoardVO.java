@@ -1,5 +1,6 @@
 package net.ktds.drink.boards.vo;
 
+import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.user.vo.UserVO;
 
 public class BoardVO {
@@ -15,6 +16,7 @@ public class BoardVO {
 	private int recommendCount;
 	
 	private UserVO userVO;
+	private CategoryVO categoryVO;
 	
 	public String getBoardId() {
 		return boardId;
@@ -81,6 +83,12 @@ public class BoardVO {
 	}
 	public void setUserVO(UserVO userVO) {
 		this.userVO = userVO;
+	}
+	public CategoryVO getCategoryVO() {
+		return categoryVO;
+	}
+	public void setCategoryVO(CategoryVO categoryVO) {
+		this.categoryVO = categoryVO;
 	}
 	
 }

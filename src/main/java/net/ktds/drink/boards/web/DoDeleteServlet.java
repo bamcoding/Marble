@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.ktds.drink.boards.biz.BoardBiz;
 import net.ktds.drink.boards.biz.BoardBizImpl;
+import net.ktds.drink.boards.vo.BoardVO;
+import net.ktds.drink.support.MultipartHttpServletRequest;
 import net.ktds.drink.support.Param;
 
 public class DoDeleteServlet extends HttpServlet {
@@ -24,14 +26,18 @@ public class DoDeleteServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String boardId = Param.getStringParam(request, "boardId");
+		String categoryId = Param.getStringParam(request, "categoryId");
+		BoardVO board = new BoardVO();
+		board.setCategoryId(categoryId);
 		
 		boolean isSuccess = boardBiz.removeBoard(boardId);
 		if ( isSuccess ){
-			response.sendRedirect("/Mables/board/list");
+			response.sendRedirect("/Marble/board/list?categoryId=" + categoryId);
 		}
 		else {
-			response.sendRedirect("/Mables/board/detail?boardId=" + boardId);
+			response.sendRedirect("/Marble/board/detail?boardId=" + boardId);
 		}
 	}
 }

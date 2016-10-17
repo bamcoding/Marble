@@ -1,4 +1,11 @@
 @CHARSET "UTF-8";
+/*
+<index>
+
+.menubar 50
+.sign-in 39
+.nav ul 40
+*/
 
 body {
 	margin: 0;
@@ -28,7 +35,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 80;
+    z-index: 40;
 }
 
 
@@ -71,7 +78,7 @@ body {
 	overflow: auto;
 	top: 50px;
 	background-color: #CCC;
-	z-index: 90;
+	z-index: 50;
 }
 
 .menubar .menu ul {
@@ -116,8 +123,9 @@ body {
 	top: 60px;
 	right:0;
 	position: fixed;
-	z-index: 89;
+	z-index: 49;
 }
+
 .selected {
 	background-color: #80ff80;
 }
@@ -125,3 +133,28 @@ body {
 #games-set {
 	position: relative;
 }
+
+.sign-in, .sign-up{
+	display: none;
+	width:500px;
+	height:500px;
+	border:10px solid #00fff9; 
+	border-radius:20px;
+	z-index: 39;
+	position:absolute;
+	background:#00ff99;
+	opacity:0.95;
+}
+
+.sign-title {
+	font-weight: bold;
+	color: #00304a;
+	top: 30px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	text-shadow: 0.1em 0.1em 0.05em #acd7e5;
+	font-family: Courier;
+	font-size: 5em;
+}
+

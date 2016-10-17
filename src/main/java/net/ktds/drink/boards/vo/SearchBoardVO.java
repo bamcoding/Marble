@@ -5,6 +5,7 @@ public class SearchBoardVO {
 	private int pageNo;
 	private int startRowNumber;
 	private int endRowNumber;
+	private String categoryId;
 	
 	private int searchType;
 	private String searchKeyword;
@@ -38,6 +39,12 @@ public class SearchBoardVO {
 	}
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
+	}
+	public String getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
 	}
 	
 	

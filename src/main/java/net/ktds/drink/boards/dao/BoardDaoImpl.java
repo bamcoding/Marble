@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import net.ktds.drink.boards.vo.BoardVO;
 import net.ktds.drink.boards.vo.SearchBoardVO;
+import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.support.DaoSupport;
 import net.ktds.drink.support.Query;
 import net.ktds.drink.support.QueryAndResult;
@@ -64,9 +64,14 @@ public class BoardDaoImpl extends DaoSupport implements BoardDao{
 				query.append(" 			, B.USR_ID ");
 				query.append(" 			, U.USR_NICK_NM ");
 				query.append(" 			, U.USR_EML ");
+				query.append("			, C.CTGR_NM ");
+				query.append("			, C.PRNT_CTGR_ID ");
 				query.append(" FROM		BOARD B ");
 				query.append(" 			, USR U ");
+				query.append("			, CTGR C");
 				query.append(" WHERE	B.USR_ID = U.USR_ID(+) ");
+				query.append(" AND		B.CTGR_ID = C.CTGR_ID	");
+				query.append(" AND		B.CTGR_ID = ? ");
 				
 				if (searchBoard.getSearchType() == 1) {
 					query.append(" AND ( B.BRD_SBJ LIKE '%' || ? || '%' ");
@@ -87,8 +92,8 @@ public class BoardDaoImpl extends DaoSupport implements BoardDao{
 				
 				PreparedStatement pstmt = conn.prepareStatement(pagingQuery);
 				
-				int index = 1;
-				
+				pstmt.setString(1, searchBoard.getCategoryId());
+				int index = 2;
 				if (searchBoard.getSearchType() == 1) {
 					pstmt.setString(index++, searchBoard.getSearchKeyword());
 					pstmt.setString(index++, searchBoard.getSearchKeyword());
@@ -129,6 +134,10 @@ public class BoardDaoImpl extends DaoSupport implements BoardDao{
 					board.setUserVO(new UserVO());
 					board.getUserVO().setUserNickname(rs.getString("USR_NICK_NM"));
 					board.getUserVO().setUserEmail(rs.getString("USR_EML"));
+					
+					board.setCategoryVO(new CategoryVO());
+					board.getCategoryVO().setCategoryName(rs.getString("CTGR_NM"));
+					board.getCategoryVO().setParentCategoryId(rs.getString("PRNT_CTGR_ID"));
 					
 					boards.add(board);
 				}
@@ -336,7 +345,7 @@ public class BoardDaoImpl extends DaoSupport implements BoardDao{
 			public PreparedStatement query(Connection conn) throws SQLException {
 				StringBuffer query = new StringBuffer();
 				query.append(" UPDATE	BOARD ");
-				query.append(" SET		RCMD_CNT ");
+				query.append(" SET		RCMD_CNT = RCMD_CNT + 1 ");
 				query.append(" WHERE	BRD_ID = ? ");
 				
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
