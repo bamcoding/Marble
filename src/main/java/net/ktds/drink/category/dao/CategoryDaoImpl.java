@@ -1,4 +1,4 @@
-package net.ktds.category.dao;
+package net.ktds.drink.category.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,14 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.ktds.category.vo.CategoryVO;
+import net.ktds.drink.category.vo.CategoryVO;
 import net.ktds.drink.support.DaoSupport;
 import net.ktds.drink.support.QueryAndResult;
 
 public class CategoryDaoImpl extends DaoSupport implements CategoryDao {
 
 	@Override
-	public List<CategoryVO> getAllCategory() {
+	public List<CategoryVO> getAllCategory(String parentCategoryId) {
 		return selectList(new QueryAndResult(){
 
 			public PreparedStatement query(Connection conn) throws SQLException {
@@ -23,8 +23,10 @@ public class CategoryDaoImpl extends DaoSupport implements CategoryDao {
 				query.append(" 			, CTGR_NM ");
 				query.append(" 			, PRNT_CTGR_ID ");
 				query.append(" FROM		CTGR ");
+				query.append(" WHERE	PRNT_CTGR_ID = ? ");
 
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, parentCategoryId);
 				return pstmt;
 			}
 
