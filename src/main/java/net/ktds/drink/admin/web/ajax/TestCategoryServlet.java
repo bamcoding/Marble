@@ -14,12 +14,11 @@ import net.ktds.drink.category.biz.CategoryBiz;
 import net.ktds.drink.category.biz.CategoryBizImpl;
 import net.ktds.drink.category.vo.CategoryVO;
 
-public class DoCategoryServlet extends HttpServlet {
+public class TestCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private CategoryBiz biz;
 	private List<CategoryVO> categories;;
-    
-	public DoCategoryServlet() {
+	private CategoryBiz biz;
+	public TestCategoryServlet() {
     	super();
     	biz = new CategoryBizImpl();
     	categories = new ArrayList<CategoryVO>();
@@ -30,22 +29,10 @@ public class DoCategoryServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String categoryId = request.getParameter("categoryId");
-		String parentCategoryId = request.getParameter("parentCategoryId");
-		if (categoryId == null || categoryId.length()==0) {
-			categoryId = "0";
-		}
-		if (parentCategoryId == null && categoryId.length()==0) {
-			parentCategoryId = "0";
-		}
-
-		boolean isLeafNode = biz.isCategoryLeafNode(categoryId);
-		if (isLeafNode) {
-			categories = biz.getAllCategory(parentCategoryId);
-		} else {
-			categories = biz.getAllCategory(categoryId);
-		}
-		
+		categories = biz.setCategoryLevel();
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/administer/test.jsp");
+		request.setAttribute("categories", categories);
+		rd.forward(request, response);
 	}
 
 }
