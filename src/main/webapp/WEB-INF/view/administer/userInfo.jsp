@@ -45,7 +45,7 @@
 						<td>${number}</td>
 						<td>${user.userEmail}</td>
 						<td>${user.userNickname}</td>
-						<td></td>
+						<td>${user.createdDate }</td>
 						<td>${user.points}</td>
 					</tr>
 				</c:forEach>
