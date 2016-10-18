@@ -80,13 +80,13 @@ ul li ul li:last-child:after, ul li:last-child:after {
 	<form id="categoryForm" name="categoryForm">
 		<div class="container">
 			<ul>
-				<li><a href="#">Root <input type="checkbox" name="checks" /></a>
+				<li><a href="#">Root<input type="checkbox" name="checks" /></a>
 <c:forEach items="${categories }" var="category">
 					<ul>
 						<li>
 						
 	<a href="/Marble/admin/category?categoryId=${category.categoryId}&parentCategoryId=${category.parentCategoryId}">
-	${category.categoryName}
+	${category.categoryName} ;
 	<input type="checkbox" name="checks" />
 	</a>
 						</li>
