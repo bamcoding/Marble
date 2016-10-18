@@ -13,16 +13,18 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("#marbleBoard").load("/Marble/setMarbleBoard");
 		$("#nav ul li").click(function() {
 			var index = $(this).index();
 			console.log("메뉴 인댁스 : "+index);
 			//게임 스타트
 			if (index == 1) {
-				$("#marbleBoard").load("/Marble/setMarbleBoard");
+				$("#marbleBoard").css({"display":"block"});
 			}
 			//메뉴 목록
 			if (index == 2) {
 				if (!$(this).hasClass("active")) {
+					$(this).parents().find("li").removeClass("active");
 					$(this).addClass("active");
 					$("#menubar").fadeIn();
 					$("#sign-in").fadeOut();
@@ -38,6 +40,7 @@
 			//로그인
 			if (index == 3) {
 				if (!$(this).hasClass("active")) {
+					$(this).parents().find("li").removeClass("active");
 					$(this).addClass("active");
 					$("#menubar").fadeOut();
 					$("#sign-in").fadeIn();
@@ -52,6 +55,7 @@
 			//회원가입
 			if (index == 4) {
 				if (!$(this).hasClass("active")) {
+					$(this).parents().find("li").removeClass("active");
 					$(this).addClass("active");
 					$("#menubar").fadeOut();
 					$("#sign-in").fadeOut(600);

@@ -152,8 +152,10 @@ body {
 .sign-in, .sign-up{
 	display: none;
 	text-align: center;
-	width:600px;
-	height:350px;
+	top:25%;
+	left:30%;
+	width:40%;
+	height:36%;
 	border-radius:10px;
 	z-index: 39;
 	position:fixed;
