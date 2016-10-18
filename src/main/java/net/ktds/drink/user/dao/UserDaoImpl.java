@@ -82,8 +82,8 @@ public class UserDaoImpl extends DaoSupport implements UserDao {
 				query.append(" 				, USR_EML ");
 				query.append("				, USR_PWD	  ");
 				query.append("              , POINTS      ");
-				query.append("				, USR_NICK_NM ) ");
-				query.append("				, CRT_DT ");
+				query.append("				, USR_NICK_NM  ");
+				query.append("				, CRT_DT ) ");
 				query.append(" VALUES ( ");
 				query.append(" 'UR-' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || LPAD(USR_ID_SEQ.NEXTVAL,6,0) ");
 				query.append("	, ? , ? , 0 , ? , SYSDATE ");

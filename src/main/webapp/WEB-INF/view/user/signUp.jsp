@@ -8,7 +8,7 @@
 	 		$.post("/Marble/doSignUp",
 	 				$( "#registForm" ).serialize(), function(data){
 	 			if( data == "success"){	 				
-	 				location.href="/Marble/signIn";
+	 				location.href="/Marble/play/index";
 	 			}
 	 			else{
 	 				alert(data);
