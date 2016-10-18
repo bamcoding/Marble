@@ -99,66 +99,83 @@
 			var x = pointX/pxX;
 			var y = pointY/pxY;
 			var positionIndex = 0;
-				if(y == 0){
-					positionIndex = x;
-				}else if(x == 6){
-					positionIndex = x - y;
-				}else if(y == -6){
-					positionIndex = cellX + (cellX- x) - y;
-				}else if(x == 0){
-					positionIndex = (2 * cellX) + cellY + (cellY + y);					
-				}
-			var div = $("#cell"+positionIndex+".gameType").text();
-			alert(div);
-			if(div == "GOLD_KEY"){
-				actionSpinGoldKey();
+			if(y == 0){
+				positionIndex = x;
+			}else if(x == 6){
+				positionIndex = x - y;
+			}else if(y == -6){
+				positionIndex = cellX + (cellX- x) - y;
+			}else if(x == 0){
+				positionIndex = (2 * cellX) + cellY + (cellY + y);					
+			}
+				
+			var cellDiv = $("#cell"+positionIndex);
+			if(cellDiv.hasClass("golden-card")){
+				$.post("/Marble/getCard", function(data){
+					$(".flip_back").html(data);
+					actionSpinGoldKey();
+				});	
+			}else if(cellDiv.hasClass("island")){
+				$("#gameInfoBox").html("한번 쉬어가세요~");
+				$("#gameInfoBox").fadeIn(300).fadeOut(1000);
+			}else{
+				var str = "<h2>"+cellDiv.children(".gameName").text()+"</h2>";
+				str += "<div>" + cellDiv.children(".gameInfo").text()+"</div>";
+				$("#gameInfoBox").html(str);
+				$("#gameInfoBox").show();
 			}
 		}
+		
+		$("#gameInfoBox").click(function(){
+			$("#gameInfoBox").html("");
+			$("#gameInfoBox").hide();
+		});
 
+		var randomNum = 0;
 		function actionSpinGoldKey(){
 			$("#rollCardGroup").css("display","block");
 			$("#disabledEffect").css("display","block");
 			var showTime = 0;
-			var randomNum = 0;
 			var extraDeg =0;
-				randomNum = parseInt(Math.random()*6)+1;
+			randomNum = parseInt(Math.random()*6)+1;
 				
-				// 카드 돌리기 애니메이션 시작
-				$("#cardGroup").addClass("actionSpinGoldKey");
-				showTime += 1500;
+			// 카드 돌리기 애니메이션 시작
+			$("#cardGroup").addClass("actionSpinGoldKey");
+			showTime += 1500;
 				
-				//애니메이션이 끝날 때까지 기다리다가 카드를 랜덤 하게 보여주는 부분
-				setTimeout(function(){
+			//애니메이션이 끝날 때까지 기다리다가 카드를 랜덤 하게 보여주는 부분
+			setTimeout(function(){
 				$("#cardGroup").removeClass("actionSpinGoldKey");
 				$("#cardGroup").css({
 					"transform":"rotateY(-"+((randomNum-1)*60)+"deg)"
 				});
 				console.log("random_value : "+randomNum);
+			
 				// 동시에 그 카드를 안보이게 한다.
 				$(".card"+randomNum).css("display","none");	
 				
 				// 동시에 뒤집는 카드를 보이게 한다.
 				$("#selectedCard").css("display","block");					
 				
-				$("#selectedCard").dblclick(function(){
-					$(".card"+randomNum).css("display","block");					
-					$(this).css("display","none");	
-					$("#rollCardGroup").css("display","none");
-					$("#disabledEffect").css("display","none");
-				});
-				}, showTime);
-		}
-				// 카드 플립부분
-		var check = 0;
+			}, showTime);
+			
+		}			
+		
+		// 카드 플립부분
 		$("#selectedCard").click(function() {
-			if (check == 0) {
-				$("#flipper").addClass("clickFlip");
-				check = 1;
-			} else if (check == 1) {
+				
+			if($("#flipper").hasClass("clickFlip")){
 				$("#flipper").removeClass("clickFlip");
-				check = 0;
+				
+				$(".card"+randomNum).css("display","block");					
+				$("#selectedCard").css("display","none");	
+				$("#rollCardGroup").css("display","none");
+				$("#disabledEffect").css("display","none");
+			}else{
+				$("#flipper").addClass("clickFlip");						
 			}
 		});
+		
 	});
 </script>
 <div id="marble">
@@ -167,83 +184,83 @@
 		<table border="1">
 			<tr>
 				<td id="cell18">
-				<div class="gameName">${plays[17].games.gameName }</div>
-				<div class="gameInfo">${plays[17].games.gameInfo }</div>
-				<div class="gameType">${plays[17].games.typeId }</div>
-				</td>
-				<td id="cell17">
-				<div class="gameName">${plays[16].games.gameName }</div>
-				<div class="gameInfo">${plays[16].games.gameInfo }</div>
-				<div class="gameType">${plays[16].games.typeId }</div>
-				</td>
-				<td id="cell16">
 				<div class="gameName">${plays[15].games.gameName }</div>
 				<div class="gameInfo">${plays[15].games.gameInfo }</div>
 				<div class="gameType">${plays[15].games.typeId }</div>
 				</td>
-				<td id="cell15">
+				<td id="cell17">
 				<div class="gameName">${plays[14].games.gameName }</div>
 				<div class="gameInfo">${plays[14].games.gameInfo }</div>
 				<div class="gameType">${plays[14].games.typeId }</div>
 				</td>
-				<td id="cell14">
+				<td id="cell16">
 				<div class="gameName">${plays[13].games.gameName }</div>
 				<div class="gameInfo">${plays[13].games.gameInfo }</div>
 				<div class="gameType">${plays[13].games.typeId }</div>
 				</td>
-				<td id="cell13">
+				<td id="cell15" class="golden-card">
+				<div class="gameName">황금열쇠</div>
+				<div class="gameInfo"></div>
+				<div class="gameType">5</div>
+				</td>
+				<td id="cell14">
 				<div class="gameName">${plays[12].games.gameName }</div>
 				<div class="gameInfo">${plays[12].games.gameInfo }</div>
 				<div class="gameType">${plays[12].games.typeId }</div>
 				</td>
-				<td id="cell12">
+				<td id="cell13">
 				<div class="gameName">${plays[11].games.gameName }</div>
 				<div class="gameInfo">${plays[11].games.gameInfo }</div>
 				<div class="gameType">${plays[11].games.typeId }</div>
 				</td>
+				<td id="cell12">
+				<div class="gameName">${plays[10].games.gameName }</div>
+				<div class="gameInfo">${plays[10].games.gameInfo }</div>
+				<div class="gameType">${plays[10].games.typeId }</div>
+				</td>
 			</tr>
 			<tr>
 				<td id="cell19">
-				<div class="gameName">${plays[18].games.gameName }</div>
-				<div class="gameInfo">${plays[18].games.gameInfo }</div>
-				<div class="gameType">${plays[18].games.typeId }</div>
+				<div class="gameName">${plays[16].games.gameName }</div>
+				<div class="gameInfo">${plays[16].games.gameInfo }</div>
+				<div class="gameType">${plays[16].games.typeId }</div>
 				</td>
 				<th id="goodPlace" colspan="5" rowspan="5"></th>
 				<td id="cell11">
-				<div class="gameName">${plays[17].games.gameName }</div>
-				<div class="gameInfo">${plays[17].games.gameInfo }</div>
-				<div class="gameType">${plays[17].games.typeId }</div>
-				</td>
-			</tr>
-			<tr>
-				<td id="cell20">
-				<div class="gameName">${plays[19].games.gameName }</div>
-				<div class="gameInfo">${plays[19].games.gameInfo }</div>
-				<div class="gameType">${plays[19].games.typeId }</div>
-				</td>
-				<td id="cell10">
 				<div class="gameName">${plays[9].games.gameName }</div>
 				<div class="gameInfo">${plays[9].games.gameInfo }</div>
 				<div class="gameType">${plays[9].games.typeId }</div>
 				</td>
 			</tr>
 			<tr>
-				<td id="cell21">
-				<div class="gameName">${plays[20].games.gameName }</div>
-				<div class="gameInfo">${plays[20].games.gameInfo }</div>
-				<div class="gameType">${plays[20].games.typeId }</div>
+				<td id="cell20">
+				<div class="gameName">${plays[17].games.gameName }</div>
+				<div class="gameInfo">${plays[17].games.gameInfo }</div>
+				<div class="gameType">${plays[17].games.typeId }</div>
 				</td>
-				<td id="cell9">
+				<td id="cell10">
 				<div class="gameName">${plays[8].games.gameName }</div>
 				<div class="gameInfo">${plays[8].games.gameInfo }</div>
 				<div class="gameType">${plays[8].games.typeId }</div>
 				</td>
 			</tr>
 			<tr>
+				<td id="cell21" class="golden-card">
+				<div class="gameName">황금열쇠</div>
+				<div class="gameInfo"></div>
+				<div class="gameType">5</div>
+				</td>
+				<td id="cell9" class="golden-card">
+				<div class="gameName">황금열쇠</div>
+				<div class="gameInfo"></div>
+				<div class="gameType">5</div>
+				</td>
+			</tr>
+			<tr>
 				<td id="cell22">
-				<div class="gameName">${plays[21].games.gameName }</div>
-				<div class="gameInfo">${plays[21].games.gameInfo }</div>
-				<div class="gameType">${plays[21].games.typeId }</div>
+				<div class="gameName">${plays[18].games.gameName }</div>
+				<div class="gameInfo">${plays[18].games.gameInfo }</div>
+				<div class="gameType">${plays[18].games.typeId }</div>
 				</td>
 				<td id="cell8">
 				<div class="gameName">${plays[7].games.gameName }</div>
@@ -253,9 +270,9 @@
 			</tr>
 			<tr>
 				<td id="cell23">
-				<div class="gameName">${plays[22].games.gameName }</div>
-				<div class="gameInfo">${plays[22].games.gameInfo }</div>
-				<div class="gameType">${plays[22].games.typeId }</div>
+				<div class="gameName">${plays[19].games.gameName }</div>
+				<div class="gameInfo">${plays[19].games.gameInfo }</div>
+				<div class="gameType">${plays[19].games.typeId }</div>
 				</td>
 				<td id="cell7">
 				<div class="gameName">${plays[6].games.gameName }</div>
@@ -294,10 +311,10 @@
 				<div class="gameInfo">${plays[5].games.gameInfo }</div>
 				<div class="gameType">${plays[5].games.typeId }</div>
 				</td>
-				<td id="cell6">
-				<div class="gameName">${plays[6].games.gameName }</div>
-				<div class="gameInfo">${plays[6].games.gameInfo }</div>
-				<div class="gameType">${plays[6].games.typeId }</div>
+				<td id="cell6" class="island">
+				<div class="gameName">무인도</div>
+				<div class="gameInfo">한번 쉬어가세요~</div>
+				<div class="gameType">6</div>
 				</td>
 			</tr>
 
@@ -320,6 +337,8 @@
 		<div id="blingEffect"></div>
 		<div id="disabledEffect"></div>
 		
+		<div id="gameInfoBox"></div>
+		
 		<!-- 황금 열쇠 ( 1.연출 부분 ) -->
 		<div id="keyWrapper" style="top:35%;left:40%;position:absolute;">
 		<div id="rollCardGroup">
@@ -340,8 +359,6 @@
 					<span class="name">Post it</span>
 				</div>
 				<div class="flip_back">
-					<div class="back-title">황금열쇠</div>
-					<p>고온다습 직사광선을 피해 보관하시기 바랍니다.</p>
 				</div>
 			</div>
 		</div></div>

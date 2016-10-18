@@ -276,9 +276,9 @@
   <servlet-mapping>
     <servlet-name>DoDownloadServlet</servlet-name>
     <url-pattern>/doDownload</url-pattern>
- </servlet-mapping>
- <servlet>
- 	<description></description>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>doAddGamesServlet</display-name>
     <servlet-name>doAddGamesServlet</servlet-name>
     <servlet-class>net.ktds.drink.games.web.DoAddGamesServlet</servlet-class>
@@ -326,5 +326,15 @@
   <servlet-mapping>
     <servlet-name>SearchInitiateServlet</servlet-name>
     <url-pattern>/board/list/init</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetGoldenCardServlet</display-name>
+    <servlet-name>GetGoldenCardServlet</servlet-name>
+    <servlet-class>net.ktds.drink.play.web.ajax.GetGoldenCardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetGoldenCardServlet</servlet-name>
+    <url-pattern>/getCard</url-pattern>
   </servlet-mapping>
 </web-app>
