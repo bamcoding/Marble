@@ -68,6 +68,12 @@ public class GamesBizImpl implements GamesBiz {
 	}
 
 
+	@Override
+	public List<GamesVO> getGoldenCards() {
+		return dao.getGoldenCards();
+	}
+
+
 
 	
 

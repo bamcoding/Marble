@@ -65,7 +65,7 @@ $(document).ready(function () {
 	
 	$(".pBtn").click(function(){
 		var num = $(this).parents().children(".gameCnt").text();
-		if(gameCnt < 23){
+		if(gameCnt < 19){
 			$(this).parents().children(".gameCnt").text(parseInt(num)+1);
 			gameCnt++;
 		}else{
@@ -85,7 +85,7 @@ $(document).ready(function () {
 	
 	$("#setBtn").click(function() {
 		
-		if(gameCnt < 23){
+		if(gameCnt < 19){
 			var txt = "게임을 23개 선택하셔야합니다.";
 			showWarning(txt);
 			return;

@@ -16,4 +16,5 @@ public interface GamesDao {
 	public GamesVO getGameBy(String gameName, String gameInfo);
 	public int addCustom(GamesVO gamesVO, UserVO userInfo);
 	public int countGameName(String gameName);
+	public List<GamesVO> getGoldenCards();
 }

@@ -3,6 +3,7 @@
 <index>
 
 #disabledEffect 20
+#gameInfoBox	19
  */
 #disabledEffect{
 	display:none;
@@ -15,6 +16,18 @@
 	opacity:0.5;
 	background:gray;
 	position: absolute;
+}
+
+#gameInfoBox {
+	display:none;
+	z-index:19;
+	top:20%;
+	left:20%;
+	width: 60%;
+	height: 60%;
+	background:gray;
+	position: absolute;
+	text-align: center;
 }
 
 #gamePan .object {

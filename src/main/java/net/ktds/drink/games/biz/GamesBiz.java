@@ -15,4 +15,5 @@ public interface GamesBiz {
 	public GamesVO getGameBy(String gameName, String gameInfo);
 	public boolean addGame(String gameName, String gameInfo);
 	public boolean isExsistGameName(String gameName);
+	public List<GamesVO> getGoldenCards();
 }
