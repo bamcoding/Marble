@@ -176,7 +176,7 @@ body {
 	height:350px;
 	border-radius:10px;
 	z-index: 39;
-	position:absolute;
+	position:fixed;
 	background:#fff;
 	opacity:0.95;
 	overflow: hidden;

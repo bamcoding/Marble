@@ -10,13 +10,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-게임 관리 페이지입니다.
 <style>
+.grid{
+	width:100%;
+	border: 1px solid black; 
+}
 
+#tableHead{
+	border: 1px solid black; 
+}
 </style>
 <div id ="list">
 	<table class="grid">
 		<tr id="tableHead">
+			<td><input type="checkbox"></td>
 			<th>글번호</th>
 			<th>제목</th>
 			<th>닉네임</th>
@@ -33,11 +40,11 @@
 
 		<c:forEach items="${boards}" var="board">
 		<tr>
+			<td><input type="checkbox"></td>
 			<c:set var="number" value="${fn:split(board.boardId, '-')[2] }" />
 			<fmt:parseNumber var="number" type="number" value="${number }" />
 			<td>${number }</td>
 			<td><a href="/Marble/board/detail?boardId=${board.boardId }&categoryId=${categoryId}">${board.boardSubject }</a></td>
-			<td><a href="/Marble/board/detail?boardId=${board.boardId}&categoryId=${categoryId}">${board.boardSubject }</a></td>
 			<td>${board.userVO.userNickname }</td>
 			<td>${board.createdDate }</td>
 			<td>${board.hitCount }</td>

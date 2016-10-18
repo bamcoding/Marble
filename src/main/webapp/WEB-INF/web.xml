@@ -347,6 +347,7 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+<<<<<<< HEAD
     <display-name>DoUserInfoDelete</display-name>
     <servlet-name>DoUserInfoDelete</servlet-name>
     <servlet-class>net.ktds.drink.admin.web.ajax.DoUserInfoDelete</servlet-class>
@@ -354,5 +355,14 @@
   <servlet-mapping>
     <servlet-name>DoUserInfoDelete</servlet-name>
     <url-pattern>/doUserInfoDelete</url-pattern>
+=======
+    <display-name>ViewCategoryServlet</display-name>
+    <servlet-name>ViewCategoryServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.ViewCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewCategoryServlet</servlet-name>
+    <url-pattern>/admin/category</url-pattern>
+>>>>>>> 통합수정용
   </servlet-mapping>
 </web-app>
