@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import javafx.beans.binding.SetExpression;
 import net.ktds.drink.boards.biz.BoardBiz;
 import net.ktds.drink.boards.biz.BoardBizImpl;
 import net.ktds.drink.boards.vo.BoardListVO;
@@ -36,7 +37,6 @@ public class ViewArticleInfoServlet extends HttpServlet {
 		int searchType = Param.getIntParam(request, "searchType");
 		String searchKeyword = Param.getStringParam(request, "searchKeyword");
 		String categoryId = Param.getStringParam(request, "categoryId");
-		
 		
 		SearchBoardVO searchBoard = null;
 		if (pageNo == -1) {

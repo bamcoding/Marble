@@ -11,11 +11,32 @@
 <jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
 		$("#deleteBtn").click(function(){
-					$.post( "/Marble/doUserInfoDelete",$("#registForm").serialize(),function(data){
-						alert(data);
-					} );	
+			
+			$.post( "/Marble/doUserInfoDelete",$("#registForm").serialize(),function(data){
+				if ( data == "true"){
+					location.href=("/Marble/admin/userInfo");
+				}
+				else if( data == "false" ){
+					alert("delete할 유저를 한명이상을 고르시오");
+				}
+			} );	
 		});
+		
+		$("#passwordResetBtn").click(function(){
+			$.post("/Marble/admin/doPasswordReset",$("#registForm").serialize(),function(data){
+				if ( data == "false"){
+					alert("초기화할 유저를 1명 이상 골라주세요");
+				}
+				else if( data == "true"){
+					alert("비밀번호가 초기화 되었습니다.");
+				}
+				
+			
+			});
+		});
+		
 	});
 </script>
 	
@@ -45,21 +66,22 @@
 						<td>${number}</td>
 						<td>${user.userEmail}</td>
 						<td>${user.userNickname}</td>
-						<td></td>
+						<td>${user.createdDate }</td>
 						<td>${user.points}</td>
 					</tr>
 				</c:forEach>
 				</table>
+				${paging}
 				<div class="right">
 					<select id="searchType" name="searchType">
-							<option value="1" ${ searchArticle.searchType eq 1 ? 'selected' : '' }>아이디+닉네임</option>
-							<option value="2" ${ searchArticle.searchType eq 2 ? 'selected' : '' }>아이디</option>
-							<option value="3" ${ searchArticle.searchType eq 3 ? 'selected' : '' }>닉네임</option>
+							<option value="1" ${searchUser.searchType eq 1 ?'selected':''}>아이디+닉네임</option>
+							<option value="2" ${searchUser.searchType eq 2 ?'selected':''}>아이디</option>
+							<option value="3" ${searchUser.searchType eq 3 ?'selected':''}>닉네임</option>
 					</select>
-					<div class="inline"><input type="text" id="searchKeyword" name="searchKeyword"/></div>				
-					<div class="inline"><input type="submit" id="searchBtn" value="검색"/></div>
-					<div class="inline"><input type="submit" id="deleteBtn" value="삭제"/></div>
-					<div class="inline"><input type="submit" id="modifyBtn" value="수정"/></div>
+					<div class="inline"><input type="text" id="searchKeyword" name="searchKeyword"  value="${searchUser.searchKeyword}"/></div>				
+					<div class="inline"><input type="button" id="searchBtn" value="검색" onclick="movePage(0)"/></div>
+					<div class="inline"><input type="button" id="deleteBtn" value="삭제"/></div>
+					<div class="inline"><input type="button" id="passwordResetBtn" value="비밀번호 초기화"/></div>
 					<div class="clear"></div>
 				</div>
 			</form>
