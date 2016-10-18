@@ -10,7 +10,6 @@ cover 30
 
 body {
 	margin: 0;
-	
 }
 
 #wrapper {
@@ -72,12 +71,15 @@ body {
 }
 
 .menubar {
+	display: none;
 	right: 0;
 	width: 500px;
 	position: fixed;
 	height: 60%;
 	overflow: auto;
-	top: 50px;
+	top: 57px;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
 	background-color: #CCC;
 	z-index: 50;
 }
@@ -131,6 +133,13 @@ body {
     color: white;
 }
 
+.sign-in{
+	background-color: #555;
+	top: 60px;
+	right:0;
+	position: fixed;
+	z-index: 49;
+}
 
 .selected {
 	background-color: #80ff80;
@@ -141,14 +150,16 @@ body {
 }
 
 .sign-in, .sign-up{
-	text-align: center;
 	display: none;
-	width:600px;
-	height:350px;
+	text-align: center;
+	top:25%;
+	left:30%;
+	width:40%;
+	height:36%;
 	border-radius:10px;
 	z-index: 39;
 	position:fixed;
-	background:#fff;
+	background:#eeeeee;
 	opacity:0.95;
 	overflow: hidden;
 }
@@ -228,8 +239,9 @@ body {
 	text-align: center;
 	text-shadow: 0.1em 0.1em 0.05em #acd7e5;
 	font-family: Courier;
-	font-size: 4em;
+	font-size: 5em;
 }
+
 .sign-title2{
 	font-weight: bold;
 	color: #ff671e;
@@ -240,6 +252,3 @@ body {
 	font-size: 3em;
 }
 
-.selected {
-	background-color: #80ff80;
-}

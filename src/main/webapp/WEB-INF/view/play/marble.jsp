@@ -149,16 +149,15 @@
 				$("#cardGroup").css({
 					"transform":"rotateY(-"+((randomNum-1)*60)+"deg)"
 				});
-				console.log("random_value : "+randomNum);
-			
-				// 동시에 그 카드를 안보이게 한다.
+				// pick 클래스로 카드를 하나 뽑는다.	
+				$("#keyCard").removeClass("keyCard");
+				$("#keyCard").addClass("pick" + randomNum);
+				
+				// 뒤집을 수 있는 이미지와 교체한다.
+				$("#selectedCard").css("display","block");					
 				$(".card"+randomNum).css("display","none");	
 				
-				// 동시에 뒤집는 카드를 보이게 한다.
-				$("#selectedCard").css("display","block");					
-				
 			}, showTime);
-			
 		}			
 		
 		// 카드 플립부분
