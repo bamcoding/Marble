@@ -16,8 +16,13 @@ import net.ktds.drink.category.vo.CategoryVO;
 
 public class DoCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public DoCategoryServlet() {
+	private CategoryBiz biz;
+	private List<CategoryVO> categories;;
+    
+	public DoCategoryServlet() {
     	super();
+    	biz = new CategoryBizImpl();
+    	categories = new ArrayList<CategoryVO>();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,8 +30,22 @@ public class DoCategoryServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/administer/categoryInfo.jsp");
-		rd.forward(request, response);
+		String categoryId = request.getParameter("categoryId");
+		String parentCategoryId = request.getParameter("parentCategoryId");
+		if (categoryId == null || categoryId.length()==0) {
+			categoryId = "0";
+		}
+		if (parentCategoryId == null && categoryId.length()==0) {
+			parentCategoryId = "0";
+		}
+
+		boolean isLeafNode = biz.isCategoryLeafNode(categoryId);
+		if (isLeafNode) {
+			categories = biz.getAllCategory(parentCategoryId);
+		} else {
+			categories = biz.getAllCategory(categoryId);
+		}
+		
 	}
 
 }

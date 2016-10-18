@@ -1,10 +1,3 @@
-<%@page import="net.ktds.drink.category.biz.CategoryBizImpl"%>
-<%@page import="net.ktds.drink.category.biz.CategoryBiz"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="net.ktds.drink.category.vo.CategoryVO"%>
-<%@page import="java.util.List"%>
-<%@page import="net.ktds.drink.category.dao.CategoryDao"%>
-<%@page import="net.ktds.drink.category.dao.CategoryDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -85,46 +78,20 @@ ul li ul li:last-child:after, ul li:last-child:after {
 
 <body>
 	<form id="categoryForm" name="categoryForm">
-
-<%
-	CategoryBiz biz = new CategoryBizImpl();
-	List<CategoryVO> categories = new ArrayList<CategoryVO>();
-
-	String categoryId = request.getParameter("categoryId");
-	String parentCategoryId = request.getParameter("parentCategoryId");
-	if (categoryId == null) {
-		categoryId = "0";
-	}
-	if (parentCategoryId == null) {
-		parentCategoryId = "0";
-	}
-
-
-	boolean isLeafNode = biz.isCategoryLeafNode(categoryId);
-	if (isLeafNode) {
-		categories = biz.getAllCategory(parentCategoryId);
-	} else {
-		categories = biz.getAllCategory(categoryId);
-	}
-%>
-		
-
-
-		
 		<div class="container">
 			<ul>
-				<li><a href="#">Root<input type="checkbox" name="checks" value="${category}"/></a>
-<%for(CategoryVO category:categories){%>
+				<li><a href="#">Root <input type="checkbox" name="checks" /></a>
+<c:forEach items="${categories }" var="category">
 					<ul>
 						<li>
 						
-	<a href="./categoryInfo.jsp?categoryId=<%= category.getCategoryId() %>&parentCategoryId=<%= category.getParentCategoryId() %>">
-	<%= category.getCategoryName() %>
-	<input type="checkbox" name="checks" value="${category}"/>
+	<a href="/Marble/admin/category?categoryId=${category.categoryId}&parentCategoryId=${category.parentCategoryId}">
+	${category.categoryName}
+	<input type="checkbox" name="checks" />
 	</a>
 						</li>
 					</ul>
-<%} %>
+</c:forEach>
 				</li>
 			</ul>
 		</div>	
