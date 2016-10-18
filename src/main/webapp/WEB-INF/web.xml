@@ -259,10 +259,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ktds_pc_이근재
     <display-name>DoUpdateRecommendCountServlet</display-name>
     <servlet-name>DoUpdateRecommendCountServlet</servlet-name>
     <servlet-class>net.ktds.drink.boards.web.DoUpdateRecommendCountServlet</servlet-class>
@@ -300,9 +296,6 @@
   <servlet-mapping>
     <servlet-name>IsExistGameName</servlet-name>
     <url-pattern>/IsExistGameName</url-pattern>
-<<<<<<< HEAD
->>>>>>> 예비_통합
-=======
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -333,7 +326,6 @@
   <servlet-mapping>
     <servlet-name>SearchInitiateServlet</servlet-name>
     <url-pattern>/board/list/init</url-pattern>
->>>>>>> ktds_pc_이근재
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -347,7 +339,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-<<<<<<< HEAD
     <display-name>DoUserInfoDelete</display-name>
     <servlet-name>DoUserInfoDelete</servlet-name>
     <servlet-class>net.ktds.drink.admin.web.ajax.DoUserInfoDelete</servlet-class>
@@ -355,7 +346,9 @@
   <servlet-mapping>
     <servlet-name>DoUserInfoDelete</servlet-name>
     <url-pattern>/doUserInfoDelete</url-pattern>
-=======
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>ViewCategoryServlet</display-name>
     <servlet-name>ViewCategoryServlet</servlet-name>
     <servlet-class>net.ktds.drink.admin.web.ajax.ViewCategoryServlet</servlet-class>
@@ -363,6 +356,5 @@
   <servlet-mapping>
     <servlet-name>ViewCategoryServlet</servlet-name>
     <url-pattern>/admin/category</url-pattern>
->>>>>>> 통합수정용
   </servlet-mapping>
 </web-app>

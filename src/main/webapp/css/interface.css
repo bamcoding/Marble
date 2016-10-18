@@ -10,7 +10,6 @@ cover 30
 
 body {
 	margin: 0;
-	
 }
 
 #wrapper {
@@ -72,12 +71,15 @@ body {
 }
 
 .menubar {
+	display: none;
 	right: 0;
 	width: 500px;
 	position: fixed;
 	height: 60%;
 	overflow: auto;
-	top: 50px;
+	top: 57px;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
 	background-color: #CCC;
 	z-index: 50;
 }
@@ -131,53 +133,31 @@ body {
     color: white;
 }
 
-<<<<<<< HEAD
 .sign-in{
 	background-color: #555;
 	top: 60px;
 	right:0;
 	position: fixed;
-<<<<<<< HEAD
-	z-index: 49;
-=======
-<<<<<<< HEAD
 	z-index: 49;
 }
-=======
-	z-index: 89;
->>>>>>> 예비_이치훈
-}
-=======
->>>>>>> c62b67bbf4cf163cfd48fc16869af8ea8e2cc6b9
 
 .selected {
 	background-color: #80ff80;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> b8a644b27415b439ce501997e8698d06ed40eb60
-=======
->>>>>>> 68e6f41da9706c44110f2f2ea153d6f3042e6045
->>>>>>> 예비_통합
-=======
 
-<<<<<<< HEAD
-=======
 #games-set {
 	position: relative;
 }
 
->>>>>>> c62b67bbf4cf163cfd48fc16869af8ea8e2cc6b9
 .sign-in, .sign-up{
-	text-align: center;
 	display: none;
+	text-align: center;
 	width:600px;
 	height:350px;
 	border-radius:10px;
 	z-index: 39;
 	position:fixed;
-	background:#fff;
+	background:#eeeeee;
 	opacity:0.95;
 	overflow: hidden;
 }
@@ -257,24 +237,14 @@ body {
 	text-align: center;
 	text-shadow: 0.1em 0.1em 0.05em #acd7e5;
 	font-family: Courier;
-<<<<<<< HEAD
 	font-size: 5em;
 }
-<<<<<<< HEAD
 
->>>>>>> ktds_pc_이근재
-=======
->>>>>>> d0106047f383b59849a5e8b20f9dee33a7678372
->>>>>>> 예비_이치훈
-=======
 .selected {
 	background-color: #80ff80;
-<<<<<<< HEAD
->>>>>>> 321
-=======
-=======
 	font-size: 4em;
 }
+
 .sign-title2{
 	font-weight: bold;
 	color: #ff671e;
@@ -285,8 +255,3 @@ body {
 	font-size: 3em;
 }
 
-.selected {
-	background-color: #80ff80;
-}
->>>>>>> c62b67bbf4cf163cfd48fc16869af8ea8e2cc6b9
->>>>>>> 123
