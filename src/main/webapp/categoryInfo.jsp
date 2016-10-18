@@ -87,6 +87,9 @@ ul li ul li:last-child:after, ul li:last-child:after {
 	<form id="categoryForm" name="categoryForm">
 
 <%
+	CategoryBiz biz = new CategoryBizImpl();
+	List<CategoryVO> categories = new ArrayList<CategoryVO>();
+
 	String categoryId = request.getParameter("categoryId");
 	String parentCategoryId = request.getParameter("parentCategoryId");
 	if (categoryId == null) {
@@ -96,8 +99,6 @@ ul li ul li:last-child:after, ul li:last-child:after {
 		parentCategoryId = "0";
 	}
 
-	CategoryBiz biz = new CategoryBizImpl();
-	List<CategoryVO> categories = new ArrayList<CategoryVO>();
 
 	boolean isLeafNode = biz.isCategoryLeafNode(categoryId);
 	if (isLeafNode) {
@@ -107,22 +108,23 @@ ul li ul li:last-child:after, ul li:last-child:after {
 	}
 %>
 		
-<% 
-	for(CategoryVO category:categories){
-	
-	%>
-	<a href="./categoryInfo.jsp?categoryId=<%=category.getCategoryId() %>&parentCategoryId=<%= category.getParentCategoryId() %>">
-	<%= category.getCategoryName() %>
-	</a>&nbsp;|&nbsp;
 
-<%} %>
+
 		
 		<div class="container">
 			<ul>
-				<li>
-					<a href="#">Root
-					<input type="checkbox" name="checks" value="${category}"/>
-					</a>
+				<li><a href="#">Root<input type="checkbox" name="checks" value="${category}"/></a>
+<%for(CategoryVO category:categories){%>
+					<ul>
+						<li>
+						
+	<a href="./categoryInfo.jsp?categoryId=<%= category.getCategoryId() %>&parentCategoryId=<%= category.getParentCategoryId() %>">
+	<%= category.getCategoryName() %>
+	<input type="checkbox" name="checks" value="${category}"/>
+	</a>
+						</li>
+					</ul>
+<%} %>
 				</li>
 			</ul>
 		</div>	

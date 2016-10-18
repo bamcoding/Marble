@@ -1,4 +1,4 @@
-package net.ktds.category.vo;
+package net.ktds.drink.category.vo;
 
 public class CategoryVO {
 	private String categoryId;
