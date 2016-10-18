@@ -5,7 +5,6 @@ import java.util.List;
 import net.ktds.drink.games.dao.GamesDao;
 import net.ktds.drink.games.dao.GamesDaoImpl;
 import net.ktds.drink.games.vo.CategoryVO;
-import net.ktds.drink.games.vo.CustomVO;
 import net.ktds.drink.games.vo.GamesVO;
 import net.ktds.drink.user.dao.UserDao;
 import net.ktds.drink.user.dao.UserDaoImpl;
@@ -34,8 +33,14 @@ public class GamesBizImpl implements GamesBiz {
 
 
 	@Override
-	public List<GamesVO> allGetGames(GamesVO gamesVO) {
-		return dao.allGetGames(gamesVO);
+	public List<GamesVO> allGetGames() {
+		return dao.allGetGames();
+	}
+
+
+	@Override
+	public GamesVO getGame(String gameId) {
+		return dao.getGame(gameId);
 	}
 
 

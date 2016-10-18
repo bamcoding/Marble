@@ -108,7 +108,7 @@
 				}else if(x == 0){
 					positionIndex = (2 * cellX) + cellY + (cellY + y);					
 				}
-			var div = $("#cell"+positionIndex+" .gameType").text();
+			var div = $("#cell"+positionIndex+".gameType").text();
 			alert(div);
 			if(div == "GOLD_KEY"){
 				actionSpinGoldKey();
@@ -167,122 +167,122 @@
 		<table border="1">
 			<tr>
 				<td id="cell18">
-				<div class="gameName">${plays[18].games.gameName }</div>
-				<div class="gameInfo">${plays[18].games.gameInfo }</div>
-				<div class="gameType">${plays[18].games.typeId }</div>
-				</td>
-				<td id="cell17">
 				<div class="gameName">${plays[17].games.gameName }</div>
 				<div class="gameInfo">${plays[17].games.gameInfo }</div>
 				<div class="gameType">${plays[17].games.typeId }</div>
 				</td>
-				<td id="cell16">
+				<td id="cell17">
 				<div class="gameName">${plays[16].games.gameName }</div>
 				<div class="gameInfo">${plays[16].games.gameInfo }</div>
 				<div class="gameType">${plays[16].games.typeId }</div>
 				</td>
-				<td id="cell15">
+				<td id="cell16">
 				<div class="gameName">${plays[15].games.gameName }</div>
 				<div class="gameInfo">${plays[15].games.gameInfo }</div>
 				<div class="gameType">${plays[15].games.typeId }</div>
 				</td>
-				<td id="cell14">
+				<td id="cell15">
 				<div class="gameName">${plays[14].games.gameName }</div>
 				<div class="gameInfo">${plays[14].games.gameInfo }</div>
 				<div class="gameType">${plays[14].games.typeId }</div>
 				</td>
-				<td id="cell13">
+				<td id="cell14">
 				<div class="gameName">${plays[13].games.gameName }</div>
 				<div class="gameInfo">${plays[13].games.gameInfo }</div>
 				<div class="gameType">${plays[13].games.typeId }</div>
 				</td>
-				<td id="cell12">
+				<td id="cell13">
 				<div class="gameName">${plays[12].games.gameName }</div>
 				<div class="gameInfo">${plays[12].games.gameInfo }</div>
 				<div class="gameType">${plays[12].games.typeId }</div>
 				</td>
-			</tr>
-			<tr>
-				<td id="cell19">
-				<div class="gameName">${plays[19].games.gameName }</div>
-				<div class="gameInfo">${plays[19].games.gameInfo }</div>
-				<div class="gameType">${plays[19].games.typeId }</div>
-				</td>
-				<th id="goodPlace" colspan="5" rowspan="5"></th>
-				<td id="cell11">
+				<td id="cell12">
 				<div class="gameName">${plays[11].games.gameName }</div>
 				<div class="gameInfo">${plays[11].games.gameInfo }</div>
 				<div class="gameType">${plays[11].games.typeId }</div>
 				</td>
 			</tr>
 			<tr>
-				<td id="cell20">
-				<div class="gameName">${plays[20].games.gameName }</div>
-				<div class="gameInfo">${plays[20].games.gameInfo }</div>
-				<div class="gameType">${plays[20].games.typeId }</div>
+				<td id="cell19">
+				<div class="gameName">${plays[18].games.gameName }</div>
+				<div class="gameInfo">${plays[18].games.gameInfo }</div>
+				<div class="gameType">${plays[18].games.typeId }</div>
 				</td>
-				<td id="cell10">
-				<div class="gameName">${plays[10].games.gameName }</div>
-				<div class="gameInfo">${plays[10].games.gameInfo }</div>
-				<div class="gameType">${plays[10].games.typeId }</div>
+				<th id="goodPlace" colspan="5" rowspan="5"></th>
+				<td id="cell11">
+				<div class="gameName">${plays[17].games.gameName }</div>
+				<div class="gameInfo">${plays[17].games.gameInfo }</div>
+				<div class="gameType">${plays[17].games.typeId }</div>
 				</td>
 			</tr>
 			<tr>
-				<td id="cell21">
-				<div class="gameName">${plays[21].games.gameName }</div>
-				<div class="gameInfo">${plays[21].games.gameInfo }</div>
-				<div class="gameType">${plays[21].games.typeId }</div>
+				<td id="cell20">
+				<div class="gameName">${plays[19].games.gameName }</div>
+				<div class="gameInfo">${plays[19].games.gameInfo }</div>
+				<div class="gameType">${plays[19].games.typeId }</div>
 				</td>
-				<td id="cell9">
+				<td id="cell10">
 				<div class="gameName">${plays[9].games.gameName }</div>
 				<div class="gameInfo">${plays[9].games.gameInfo }</div>
 				<div class="gameType">${plays[9].games.typeId }</div>
 				</td>
 			</tr>
 			<tr>
-				<td id="cell22">
-				<div class="gameName">${plays[22].games.gameName }</div>
-				<div class="gameInfo">${plays[22].games.gameInfo }</div>
-				<div class="gameType">${plays[22].games.typeId }</div>
+				<td id="cell21">
+				<div class="gameName">${plays[20].games.gameName }</div>
+				<div class="gameInfo">${plays[20].games.gameInfo }</div>
+				<div class="gameType">${plays[20].games.typeId }</div>
 				</td>
-				<td id="cell8">
+				<td id="cell9">
 				<div class="gameName">${plays[8].games.gameName }</div>
 				<div class="gameInfo">${plays[8].games.gameInfo }</div>
 				<div class="gameType">${plays[8].games.typeId }</div>
 				</td>
 			</tr>
 			<tr>
-				<td id="cell23">
-				<div class="gameName">${plays[23].games.gameName }</div>
-				<div class="gameInfo">${plays[23].games.gameInfo }</div>
-				<div class="gameType">${plays[23].games.typeId }</div>
+				<td id="cell22">
+				<div class="gameName">${plays[21].games.gameName }</div>
+				<div class="gameInfo">${plays[21].games.gameInfo }</div>
+				<div class="gameType">${plays[21].games.typeId }</div>
 				</td>
-				<td id="cell7">
+				<td id="cell8">
 				<div class="gameName">${plays[7].games.gameName }</div>
 				<div class="gameInfo">${plays[7].games.gameInfo }</div>
 				<div class="gameType">${plays[7].games.typeId }</div>
 				</td>
 			</tr>
 			<tr>
+				<td id="cell23">
+				<div class="gameName">${plays[22].games.gameName }</div>
+				<div class="gameInfo">${plays[22].games.gameInfo }</div>
+				<div class="gameType">${plays[22].games.typeId }</div>
+				</td>
+				<td id="cell7">
+				<div class="gameName">${plays[6].games.gameName }</div>
+				<div class="gameInfo">${plays[6].games.gameInfo }</div>
+				<div class="gameType">${plays[6].games.typeId }</div>
+				</td>
+			</tr>
+			<tr>
 				<td id="cell0">
+				<div class="gameName">${start.games.gameName }</div>
+				<div class="gameInfo">${start.games.gameInfo }</div>
+				<div class="gameType">${start.games.typeId }</div>
+				</td>
+				<td id="cell1">
 				<div class="gameName">${plays[0].games.gameName }</div>
 				<div class="gameInfo">${plays[0].games.gameInfo }</div>
 				<div class="gameType">${plays[0].games.typeId }</div>
 				</td>
-				<td id="cell1">
+				<td id="cell2">
 				<div class="gameName">${plays[1].games.gameName }</div>
 				<div class="gameInfo">${plays[1].games.gameInfo }</div>
 				<div class="gameType">${plays[1].games.typeId }</div>
 				</td>
-				<td id="cell2">
+				<td id="cell3">
 				<div class="gameName">${plays[2].games.gameName }</div>
 				<div class="gameInfo">${plays[2].games.gameInfo }</div>
 				<div class="gameType">${plays[2].games.typeId }</div>
-				</td>
-				<td id="cell3">
-				<div class="gameName">${plays[3].games.gameName }</div>
-				<div class="gameInfo">${plays[3].games.gameInfo }</div>
-				<div class="gameType">${plays[3].games.typeId }</div>
 				</td>
 				<td id="cell4">
 				<div class="gameName">${plays[4].games.gameName }</div>

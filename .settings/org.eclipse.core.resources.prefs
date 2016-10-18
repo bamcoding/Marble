@@ -1,3 +1,7 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
+encoding//src/main/java/net/ktds/drink/games/web/ViewSetGamesPageServlet.java=UTF-8
+=======
 encoding//src/main/java/net/ktds/drink/boards/web/ViewDetailPageServlet.java=UTF-8
 encoding//src/main/java/net/ktds/drink/filter/SessionCheckFilter.java=UTF-8
+>>>>>>> 01f2e814b1e0baae617f87c4f3e08f821b25c2a8

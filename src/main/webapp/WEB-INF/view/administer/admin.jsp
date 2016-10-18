@@ -12,9 +12,9 @@
 <link rel="stylesheet" type="text/css" href="/Marble/css/grid.css" />
 <script type="text/javascript">
 	$(document).ready(function(){
-		
 		$("#nav ul li").click(function(){
 			var index = $(this).index();
+			console.log(index);
 			if( index == 0){
 				$("#member-info").mousedown(function(){
 					$("#playList").addClass("display-block")
@@ -27,9 +27,12 @@
 					$("#playList").removeClass("display-block")
 				});
 			}
+			if( index == 1){
+				$("#article-info").click(function(){
+					$("#playList").load("/Marble/admin/articleInfo");
+				});
+			}
 		});
-		
-		
 	});
 </script>
 <body>
@@ -48,9 +51,9 @@
 			  	  </div>
 			  </li>
 			  <li class="member">
-			  		<a href="" class=memberBtn>게시판관리</a>
+			  		<a href="javascript:void(0);"  class="articleBtn">게시판관리</a>
 			  		<div class="member-content">
-			  			<a href="">글 검색</a>
+			  			<a href="javascript:void(0);"  id="article-info">게시판 정보</a>
 			  			<a href="">글 삭제</a>
 			  		</div>
 	  		 </li>

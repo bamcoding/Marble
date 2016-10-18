@@ -6,11 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale.Category;
 
 import net.ktds.drink.boards.vo.BoardVO;
-import net.ktds.drink.boards.vo.CategoryVO;
 import net.ktds.drink.boards.vo.SearchBoardVO;
+import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.support.DaoSupport;
 import net.ktds.drink.support.Query;
 import net.ktds.drink.support.QueryAndResult;
