@@ -16,64 +16,55 @@
 		moveToCenter("#sign-in");
 		moveToCenter("#sign-up");
 		
-		$("#sign-in").load("/Marble/signIn");
-		$("#sign-up").load("/Marble/signUp");
-
 		$("#nav ul li").click(function() {
 			var index = $(this).index();
 			console.log("메뉴 인댁스 : "+index);
+			//게임 스타트
 			if (index == 1) {
 				$("#marbleBoard").load("/Marble/setMarbleBoard");
 			}
-			
+			//메뉴 목록
 			if (index == 2) {
 				if (!$(this).hasClass("active")) {
 					$(this).addClass("active");
 					$("#menubar").fadeIn();
 					$("#sign-in").fadeOut();
 					$("#sign-up").fadeOut();
-					$("#cover").css({"display":"block"});
 					
 				} else {
 					$(this).parents().find("li").removeClass("active");
 					$("#menubar").fadeOut();
 					$("#sign-in").fadeOut();
 					$("#sign-up").fadeOut();
-					$("#cover").css({"display":"none"});
 				}
 			}
+			//로그인
 			if (index == 3) {
 				if (!$(this).hasClass("active")) {
 					$(this).addClass("active");
 					$("#menubar").fadeOut();
 					$("#sign-in").fadeIn();
-					$("#sign-up").fadeOut();
-					$("#cover").css({"display":"block"});
+					$("#sign-up").fadeOut(600);
 				} else {
 					$(this).parents().find("li").removeClass("active");
-					$("#menubar").fadeOut();
-					$("#sign-in").fadeOut();
-					$("#sign-up").fadeOut();
-					$("#cover").css({"display":"none"});
+					$("#menubar").fadeOut(600);
+					$("#sign-in").fadeOut(600);
+					$("#sign-up").fadeOut(600);
 				}
-
 			}
+			//회원가입
 			if (index == 4) {
 				if (!$(this).hasClass("active")) {
 					$(this).addClass("active");
 					$("#menubar").fadeOut();
-					$("#sign-in").fadeOut();
+					$("#sign-in").fadeOut(600);
 					$("#sign-up").fadeIn();
-					$("#cover").css({"display":"block"});
 				} else {
 					$(this).parents().find("li").removeClass("active");
-					$("#menubar").fadeOut();
-					$("#sign-in").fadeOut();
-					$("#sign-up").fadeOut();
-					$("#cover").css({"display":"none"});
-					
+					$("#menubar").fadeOut(600);
+					$("#sign-in").fadeOut(600);
+					$("#sign-up").fadeOut(600);
 				}
-
 			}
 		});
 	});
@@ -88,7 +79,6 @@
 		var wrapperHeight = $(data).height();
 		var middlePosition = (windowHeight / 2) 
 								- (parseInt(wrapperHeight) / 2);
-		
 		$(data).css({
 			"position": "relative"
 			, "top": middlePosition+ "px"
@@ -122,14 +112,19 @@
 
 	<div id="cover"></div>
 	
-	<div class="center">
-	<div class="sign-in" id="sign-in"></div>
+	<!-- 로그인 -->
+	<div class="sign-in" id="sign-in">
+		<jsp:include page="/WEB-INF/view/user/signIn.jsp" />
 	</div>
 	
-	<div class="center">
-	<div class="sign-up" id="sign-up"></div>
+	<!-- 회원가입 -->
+	<div class="sign-up" id="sign-up">
+		<jsp:include page="/WEB-INF/view/user/signUp.jsp" />		
 	</div>
-
-<jsp:include page="/WEB-INF/view/play/menu.jsp" />
-
+	
+	<!-- 메뉴목록 -->
+	<div class="menubar" id="menubar">
+		<jsp:include page="/WEB-INF/view/play/menu.jsp" />
+	</div>
+	
 	<div id="wrapper">
