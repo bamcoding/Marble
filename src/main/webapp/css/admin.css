@@ -54,11 +54,40 @@ li.member {
     display: block;
 }
 
-.printList{
+.userList{
 	
 	width:1200px; 
 	height:500px; 
 	border: 2px solid;
 	background-color: #ffffff; 
 	margin:auto;
+}
+
+.userList input[type=button]{
+	padding:10px;
+	border-radius:7px;
+	border: 1px solid #bbbbbb;
+	margin: 3px;
+}
+
+.userList input[type=button]:hover{
+	border-radius:7px;
+	border: 2px solid #00ffff;
+}
+
+
+.grid tr td{
+	text-align:center;
+}
+
+.display-none{display:none;}
+.display-block{display:block;}
+.inline{
+	display: inline-block;
+}
+.right{
+	float:right;
+}
+.clear{
+	clear:right;
 }

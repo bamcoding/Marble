@@ -280,9 +280,9 @@
   <servlet-mapping>
     <servlet-name>DoDownloadServlet</servlet-name>
     <url-pattern>/doDownload</url-pattern>
- </servlet-mapping>
- <servlet>
- 	<description></description>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>doAddGamesServlet</display-name>
     <servlet-name>doAddGamesServlet</servlet-name>
     <servlet-class>net.ktds.drink.games.web.DoAddGamesServlet</servlet-class>
@@ -334,5 +334,15 @@
     <servlet-name>SearchInitiateServlet</servlet-name>
     <url-pattern>/board/list/init</url-pattern>
 >>>>>>> ktds_pc_이근재
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoUserInfoDelete</display-name>
+    <servlet-name>DoUserInfoDelete</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.DoUserInfoDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoUserInfoDelete</servlet-name>
+    <url-pattern>/doUserInfoDelete</url-pattern>
   </servlet-mapping>
 </web-app>

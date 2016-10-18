@@ -169,8 +169,13 @@ body {
 	font-family: Courier;
 	font-size: 5em;
 }
+<<<<<<< HEAD
 
 >>>>>>> ktds_pc_이근재
 =======
 >>>>>>> d0106047f383b59849a5e8b20f9dee33a7678372
 >>>>>>> 예비_이치훈
+=======
+.selected {
+	background-color: #80ff80;
+>>>>>>> 321
