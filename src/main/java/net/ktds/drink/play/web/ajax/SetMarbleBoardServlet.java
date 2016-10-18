@@ -12,20 +12,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.ktds.drink.constants.Games;
 import net.ktds.drink.constants.Session;
 import net.ktds.drink.games.biz.GamesBiz;
 import net.ktds.drink.games.biz.GamesBizImpl;
 import net.ktds.drink.games.vo.GamesVO;
+import net.ktds.drink.play.biz.PlayBiz;
+import net.ktds.drink.play.biz.PlayBizImpl;
 import net.ktds.drink.play.vo.PlayVO;
 
 public class SetMarbleBoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private GamesBiz gamesBiz;
+	private PlayBiz playBiz;
 	
     public SetMarbleBoardServlet() {
         super();
         gamesBiz = new GamesBizImpl();
+        playBiz = new PlayBizImpl();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,14 +53,14 @@ public class SetMarbleBoardServlet extends HttpServlet {
 			plays = new ArrayList<PlayVO>();
 			allGames = gamesBiz.allGetGames();
 			int gamesSize = allGames.size();
-			for(int i=0; i<19; i++){
+			for(int i=0; i<Games.CELL_SIZE; i++){
 				play = new PlayVO();
 				play.setGames(allGames.get(rnd.nextInt(gamesSize)));
 				plays.add(play);
 			}
 		}
 		
-		
+		playBiz.registerHistory(plays);
 		
 		int random;
 		int size = plays.size();

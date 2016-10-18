@@ -356,7 +356,7 @@
   <servlet-mapping>
     <servlet-name>DoUserInfoDelete</servlet-name>
     <url-pattern>/doUserInfoDelete</url-pattern>
-   </servlet-mapping>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>ViewCategoryServlet</display-name>
@@ -366,5 +366,15 @@
   <servlet-mapping>
     <servlet-name>ViewCategoryServlet</servlet-name>
     <url-pattern>/admin/category</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConfirmPlaysServlet</display-name>
+    <servlet-name>ConfirmPlaysServlet</servlet-name>
+    <servlet-class>net.ktds.drink.play.web.ajax.ConfirmPlaysServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmPlaysServlet</servlet-name>
+    <url-pattern>/confirmPlays</url-pattern>
   </servlet-mapping>
 </web-app>
