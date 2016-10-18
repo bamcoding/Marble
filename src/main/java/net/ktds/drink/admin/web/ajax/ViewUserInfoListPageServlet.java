@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.ktds.drink.admin.vo.SearchUserVO;
 import net.ktds.drink.user.biz.UserBiz;
 import net.ktds.drink.user.biz.UserBizImpl;
 import net.ktds.drink.user.vo.UserVO;
@@ -31,8 +32,8 @@ public class ViewUserInfoListPageServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		List<UserVO> users = userBiz.getListUserInfo();  
+		SearchUserVO searchUser = null; 
+		List<UserVO> users = userBiz.getListUserInfo(searchUser);  
 		String viewPath = "/WEB-INF/view/administer/userInfo.jsp";
 		request.setAttribute("users", users);
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);

@@ -28,46 +28,49 @@
 			
 			if (index == 2) {
 				if (!$(this).hasClass("active")) {
-					$("#menubar").fadeIn();
 					$(this).addClass("active");
-
-					$("#sign-in").slideUp();
+					$("#menubar").fadeIn();
+					$("#sign-in").fadeOut();
+					$("#sign-up").fadeOut();
+					$("#cover").css({"display":"block"});
+					
 				} else {
 					$(this).parents().find("li").removeClass("active");
-					$("#sign-in").slideUp();
 					$("#menubar").fadeOut();
+					$("#sign-in").fadeOut();
+					$("#sign-up").fadeOut();
+					$("#cover").css({"display":"none"});
 				}
 			}
 			if (index == 3) {
 				if (!$(this).hasClass("active")) {
-					$("#sign-in").slideDown();
 					$(this).addClass("active");
 					$("#menubar").fadeOut();
+					$("#sign-in").fadeIn();
+					$("#sign-up").fadeOut();
 					$("#cover").css({"display":"block"});
 				} else {
 					$(this).parents().find("li").removeClass("active");
-					$("#sign-in").slideUp();
 					$("#menubar").fadeOut();
-					
-					setTimeout(function(){
-						$("#cover").css({"display":"none"});
-					},400);
+					$("#sign-in").fadeOut();
+					$("#sign-up").fadeOut();
+					$("#cover").css({"display":"none"});
 				}
 
 			}
 			if (index == 4) {
 				if (!$(this).hasClass("active")) {
-					$("#sign-up").slideDown();
 					$(this).addClass("active");
 					$("#menubar").fadeOut();
+					$("#sign-in").fadeOut();
+					$("#sign-up").fadeIn();
 					$("#cover").css({"display":"block"});
 				} else {
 					$(this).parents().find("li").removeClass("active");
-					$("#sign-up").slideUp();
 					$("#menubar").fadeOut();
-					setTimeout(function(){
-						$("#cover").css({"display":"none"});
-					},400);
+					$("#sign-in").fadeOut();
+					$("#sign-up").fadeOut();
+					$("#cover").css({"display":"none"});
 					
 				}
 
@@ -118,11 +121,13 @@
 	</div>
 
 	<div id="cover"></div>
-	<div class="sign-in" id="sign-in">
-		
+	
+	<div class="center">
+	<div class="sign-in" id="sign-in"></div>
 	</div>
-	<div class="sign-up" id="sign-up">
-		
+	
+	<div class="center">
+	<div class="sign-up" id="sign-up"></div>
 	</div>
 
 <jsp:include page="/WEB-INF/view/play/menu.jsp" />

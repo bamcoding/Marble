@@ -337,4 +337,33 @@
     <servlet-name>GetGoldenCardServlet</servlet-name>
     <url-pattern>/getCard</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>ViewArticleInfoServlet</display-name>
+    <servlet-name>ViewArticleInfoServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.ViewArticleInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewArticleInfoServlet</servlet-name>
+    <url-pattern>/admin/articleInfo</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>DoUserInfoDelete</display-name>
+    <servlet-name>DoUserInfoDelete</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.DoUserInfoDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoUserInfoDelete</servlet-name>
+    <url-pattern>/doUserInfoDelete</url-pattern>
+   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewCategoryServlet</display-name>
+    <servlet-name>ViewCategoryServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.ViewCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewCategoryServlet</servlet-name>
+    <url-pattern>/admin/category</url-pattern>
+  </servlet-mapping>
 </web-app>
