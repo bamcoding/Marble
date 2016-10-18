@@ -5,6 +5,7 @@
 .menubar 50
 .sign-in 39
 .nav ul 40
+cover 30
 */
 
 body {
@@ -108,6 +109,18 @@ body {
     background-color: #4CAF50;
 }
 
+.right{
+	float:right;
+}
+
+.left{
+	float: left;
+}
+
+.clear{
+	clear: both;
+}
+
 .inline {
 	display: inline-block;
     color: white;
@@ -118,6 +131,7 @@ body {
     color: white;
 }
 
+<<<<<<< HEAD
 .sign-in{
 	background-color: #555;
 	top: 60px;
@@ -133,6 +147,8 @@ body {
 	z-index: 89;
 >>>>>>> 예비_이치훈
 }
+=======
+>>>>>>> c62b67bbf4cf163cfd48fc16869af8ea8e2cc6b9
 
 .selected {
 	background-color: #80ff80;
@@ -146,27 +162,102 @@ body {
 >>>>>>> 예비_통합
 =======
 
+<<<<<<< HEAD
+=======
+#games-set {
+	position: relative;
+}
+
+>>>>>>> c62b67bbf4cf163cfd48fc16869af8ea8e2cc6b9
 .sign-in, .sign-up{
+	text-align: center;
 	display: none;
-	width:500px;
-	height:500px;
-	border:10px solid #00fff9; 
-	border-radius:20px;
+	width:600px;
+	height:350px;
+	border-radius:10px;
 	z-index: 39;
 	position:absolute;
-	background:#00ff99;
+	background:#fff;
 	opacity:0.95;
+	overflow: hidden;
+}
+
+#signContent{
+	border-top:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
+	width:100%;
+	height:290px;
+}
+
+#signUserEmail, #signUserPassword, #userEmail, #userNickname
+,#userPassword1,#userPassword2
+{
+	width:250px;
+	height:25px;
+	margin:3px;
+	border:1px solid #cccccc;
+	border-radius: 5px;
+	
+}
+
+
+#cover {
+	position: absolute;
+	display:none;
+	z-index:30;
+	top:0px;
+	left:0px;
+	bottom:0px;
+	width:100%;
+	height:100%;
+	opacity:0.5;
+	background:gray;
+}
+
+.sign_head{
+	top:0px;
+	color:#cccccc;
+	margin:5px;
+	font-size: 15px;
+}
+.sign_footer{
+	color:#cccccc;
+	margin:3px;
+	font-size: 14px;
+}
+
+#signInBtn, #joinBtn{
+	margin:5px;
+	border:0px;
+	border-radius:5px;
+	width:255px;
+	height:40px;
+	color:white;
+	background:#00b9ff;
+}
+
+#cancleBtn{
+	margin:8px 5px 0px 0px;
+	background:#fff;
+	border:0px;
+	color:#cccccc;
+}
+
+
+.small{
+	font-size: 13px;
+	text-align:left;
+	margin: 5px 5px 8px 170px;
 }
 
 .sign-title {
 	font-weight: bold;
-	color: #00304a;
-	top: 30px;
-	left: 0;
-	right: 0;
+	color: #ff671e;
+	margin :5px;
 	text-align: center;
 	text-shadow: 0.1em 0.1em 0.05em #acd7e5;
 	font-family: Courier;
+<<<<<<< HEAD
 	font-size: 5em;
 }
 <<<<<<< HEAD
@@ -178,4 +269,24 @@ body {
 =======
 .selected {
 	background-color: #80ff80;
+<<<<<<< HEAD
 >>>>>>> 321
+=======
+=======
+	font-size: 4em;
+}
+.sign-title2{
+	font-weight: bold;
+	color: #ff671e;
+	margin :5px;
+	text-align: center;
+	text-shadow: 0.1em 0.1em 0.05em #acd7e5;
+	font-family: Courier;
+	font-size: 3em;
+}
+
+.selected {
+	background-color: #80ff80;
+}
+>>>>>>> c62b67bbf4cf163cfd48fc16869af8ea8e2cc6b9
+>>>>>>> 123
