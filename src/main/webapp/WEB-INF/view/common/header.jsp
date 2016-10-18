@@ -44,12 +44,12 @@
 					$(this).addClass("active");
 					$("#menubar").fadeOut();
 					$("#sign-in").fadeIn();
-					$("#sign-up").fadeOut(600);
+					$("#sign-up").fadeOut();
 				} else {
 					$(this).parents().find("li").removeClass("active");
-					$("#menubar").fadeOut(600);
-					$("#sign-in").fadeOut(600);
-					$("#sign-up").fadeOut(600);
+					$("#menubar").fadeOut();
+					$("#sign-in").fadeOut();
+					$("#sign-up").fadeOut();
 				}
 			}
 			//회원가입
@@ -58,13 +58,13 @@
 					$(this).parents().find("li").removeClass("active");
 					$(this).addClass("active");
 					$("#menubar").fadeOut();
-					$("#sign-in").fadeOut(600);
+					$("#sign-in").fadeOut();
 					$("#sign-up").fadeIn();
 				} else {
 					$(this).parents().find("li").removeClass("active");
-					$("#menubar").fadeOut(600);
-					$("#sign-in").fadeOut(600);
-					$("#sign-up").fadeOut(600);
+					$("#menubar").fadeOut();
+					$("#sign-in").fadeOut();
+					$("#sign-up").fadeOut();
 				}
 			}
 		});
