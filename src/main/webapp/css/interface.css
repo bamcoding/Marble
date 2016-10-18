@@ -155,7 +155,7 @@ body {
 	top:25%;
 	left:30%;
 	width:40%;
-	height:36%;
+	height:355px;
 	border-radius:10px;
 	z-index: 39;
 	position:fixed;
@@ -228,8 +228,6 @@ body {
 
 .small{
 	font-size: 13px;
-	text-align:left;
-	margin: 5px 5px 8px 170px;
 }
 
 .sign-title {

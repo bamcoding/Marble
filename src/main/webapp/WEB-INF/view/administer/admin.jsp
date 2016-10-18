@@ -33,7 +33,7 @@
 					$("#playList").load("/Marble/admin/articleInfo");
 				});
 			}
-			if( index == 3){
+			if( index == 4){
 				$("#category-info").click(function(){
 					$("#playList").load("/Marble/admin/category");
 				});

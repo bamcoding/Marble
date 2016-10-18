@@ -19,7 +19,6 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 
 	public List<CategoryVO> getCategory(CategoryVO categoryVO) {
 		return selectList(new QueryAndResult() {
-
 			@Override
 			public PreparedStatement query(Connection conn) throws SQLException {
 				StringBuffer query = new StringBuffer();
