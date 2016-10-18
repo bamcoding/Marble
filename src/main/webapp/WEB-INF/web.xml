@@ -361,10 +361,20 @@
     <description></description>
     <display-name>ViewCategoryServlet</display-name>
     <servlet-name>ViewCategoryServlet</servlet-name>
-    <servlet-class>net.ktds.drink.admin.web.ajax.ViewCategoryServlet</servlet-class>
+    <servlet-class>net.ktds.drink.admin.web.ViewCategoryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewCategoryServlet</servlet-name>
     <url-pattern>/admin/category</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>DoCategoryServlet</display-name>
+    <servlet-name>DoCategoryServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.DoCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoCategoryServlet</servlet-name>
+    <url-pattern>/admin/doCategory</url-pattern>
   </servlet-mapping>
 </web-app>

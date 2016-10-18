@@ -1,4 +1,4 @@
-package net.ktds.drink.admin.web.ajax;
+package net.ktds.drink.admin.web;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,11 +16,8 @@ import net.ktds.drink.category.vo.CategoryVO;
 
 public class ViewCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private List<CategoryVO> categories;
-    private CategoryBiz biz = new CategoryBizImpl();
     public ViewCategoryServlet() {
     	super();
-    	categories = new ArrayList<CategoryVO>();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,19 +25,7 @@ public class ViewCategoryServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		categories = biz.getAllCategory("0"); 
-
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/administer/categoryInfo.jsp");
-		List<CategoryVO> tempList = null;
-		for(CategoryVO categoryVO : categories){
-			String temp = null;
-			if(categoryVO.getCategoryId() != temp){
-				tempList = new ArrayList<CategoryVO>();
-			}
-			request.setAttribute(categoryVO.getCategoryId(), categories);
-		}
-		
-		request.setAttribute("categories", categories);
 		rd.forward(request, response);
 	}
 
