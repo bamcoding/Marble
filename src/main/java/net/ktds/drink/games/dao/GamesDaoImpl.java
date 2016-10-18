@@ -28,7 +28,7 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				query.append(" 			, PRNT_CTGR_ID ");
 				query.append(" FROM		CTGR ");
 				query.append(" WHERE	PRNT_CTGR_ID = ? ");
-				query.append(" AND		CTGR_ID NOT IN (SELECT CTGR_ID FROM CTGR WHERE CTGR_NM = 'È²±Ý¿­¼è') ");
+				query.append(" AND		CTGR_ID NOT IN (SELECT CTGR_ID FROM CTGR WHERE CTGR_NM = 'í™©ê¸ˆì—´ì‡ ') ");
 
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				pstmt.setString(1, categoryVO.getParentCategoryId());
@@ -126,7 +126,7 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				query.append(" 			, GAME_TYPE T ");
 				query.append(" WHERE	G.CTGR_ID = C.CTGR_ID ");
 				query.append(" AND		G.TYP_ID = T.TYP_ID ");
-				query.append(" AND		G.TYP_ID NOT IN (SELECT TYP_ID FROM GAME_TYPE WHERE TYP_NM = 'È²±Ý¿­¼è' AND TYP_NM = '³»°ÔÀÓ') ");
+				query.append(" AND		G.TYP_ID NOT IN (SELECT TYP_ID FROM GAME_TYPE WHERE TYP_NM = 'í™©ê¸ˆì—´ì‡ ' AND TYP_NM = 'ë‚´ê²Œìž„') ");
 
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				return pstmt;
@@ -349,7 +349,7 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				query.append(" 			, GAME_TYPE T ");
 				query.append(" WHERE	G.CTGR_ID = C.CTGR_ID ");
 				query.append(" AND		G.TYP_ID = T.TYP_ID ");
-				query.append(" AND		G.TYP_ID = (SELECT TYP_ID FROM GAME_TYPE WHERE TYP_NM = 'È²±Ý¿­¼è') ");
+				query.append(" AND		G.TYP_ID = (SELECT TYP_ID FROM GAME_TYPE WHERE TYP_NM = 'í™©ê¸ˆì—´ì‡ ') ");
 
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				return pstmt;
