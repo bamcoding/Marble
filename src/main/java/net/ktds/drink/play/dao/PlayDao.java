@@ -5,12 +5,12 @@ import java.util.List;
 import net.ktds.drink.play.vo.HistoryVO;
 import net.ktds.drink.play.vo.PlayVO;
 
-public interface PlayBiz {
+public interface PlayDao {
 	public List<HistoryVO> getHistoryByUserId(String userId);
 	
 	public List<PlayVO> getPlayById(String playInfo);
 	
-	public boolean addHistory(HistoryVO historyVO);
+	public int addHistory(String userId);
 	
-	public boolean addPlays(PlayVO playVO);
+	public int addPlays(PlayVO playVO);
 }

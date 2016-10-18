@@ -126,7 +126,7 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				query.append(" 			, GAME_TYPE T ");
 				query.append(" WHERE	G.CTGR_ID = C.CTGR_ID ");
 				query.append(" AND		G.TYP_ID = T.TYP_ID ");
-				query.append(" AND		G.TYP_ID NOT IN (SELECT TYP_ID FROM GAME_TYPE WHERE TYP_NM = '황금열쇠') ");
+				query.append(" AND		G.TYP_ID NOT IN (SELECT TYP_ID FROM GAME_TYPE WHERE TYP_NM = '황금열쇠' AND TYP_NM = '내게임') ");
 
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				return pstmt;
