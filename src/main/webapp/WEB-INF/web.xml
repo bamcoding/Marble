@@ -356,7 +356,7 @@
   <servlet-mapping>
     <servlet-name>DoUserInfoDelete</servlet-name>
     <url-pattern>/doUserInfoDelete</url-pattern>
-   </servlet-mapping>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>ViewCategoryServlet</display-name>
@@ -376,5 +376,15 @@
   <servlet-mapping>
     <servlet-name>TestCategoryServlet</servlet-name>
     <url-pattern>/admin/test</url-pattern>
+    </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoPasswordResetServlet</display-name>
+    <servlet-name>DoPasswordResetServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.DoPasswordResetServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoPasswordResetServlet</servlet-name>
+    <url-pattern>/admin/doPasswordReset</url-pattern>
   </servlet-mapping>
 </web-app>
