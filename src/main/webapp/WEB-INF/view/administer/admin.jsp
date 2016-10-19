@@ -15,8 +15,7 @@
 		
 		$("#nav ul li").click(function(){
 			var index = $(this).index();
-			console.log(index);
-			if( index == 0){
+			if( index == 1){
 				$("#member-info").mousedown(function(){
 					$("#playList").addClass("display-block")
 					$("#playList").removeClass("display-none")
@@ -26,11 +25,6 @@
 				$("#member-info").mouseup(function(){
 					$("#playList").addClass("display-none")
 					$("#playList").removeClass("display-block")
-				});
-			}
-			if( index == 2){
-				$("#article-info").click(function(){
-					$("#playList").load("/Marble/admin/articleInfo");
 				});
 			}
 			if( index == 4){
@@ -59,7 +53,7 @@
 			  <li class="member">
 			  		<a href="javascript:void(0);"  class="articleBtn">게시판관리</a>
 			  		<div class="member-content">
-			  			<a href="javascript:void(0);"  id="article-info">게시판 정보</a>
+			  			<a href="/Marble/admin/articleInfo"  id="article-info">게시판 정보</a>
 			  			<a href="">글 삭제</a>
 			  		</div>
 	  		 </li>
