@@ -4,6 +4,10 @@
 #marble 1
 
  */
+
+#marbleBoard {
+}
+ 
 #marble {
 	width: 100%;
 	position: relative;

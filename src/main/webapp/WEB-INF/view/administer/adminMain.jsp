@@ -8,6 +8,6 @@
 <jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
 </head>
 <body>
-cvczxcvzxcv
+
 </body>
 </html>

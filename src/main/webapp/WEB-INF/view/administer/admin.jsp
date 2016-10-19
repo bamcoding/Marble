@@ -15,7 +15,7 @@
 		
 		$("#nav ul li").click(function(){
 			var index = $(this).index();
-			if( index == 0){
+			if( index == 1){
 				$("#member-info").mousedown(function(){
 					$("#playList").addClass("display-block")
 					$("#playList").removeClass("display-none")
@@ -27,9 +27,12 @@
 					$("#playList").removeClass("display-block")
 				});
 			}
+			if( index == 4){
+				$("#category-info").click(function(){
+					$("#playList").load("/Marble/admin/category");
+				});
+			}
 		});
-		
-		
 	});
 </script>
 <body>
@@ -48,9 +51,9 @@
 			  	  </div>
 			  </li>
 			  <li class="member">
-			  		<a href="" class=memberBtn>게시판관리</a>
+			  		<a href="javascript:void(0);"  class="articleBtn">게시판관리</a>
 			  		<div class="member-content">
-			  			<a href="">글 검색</a>
+			  			<a href="/Marble/admin/articleInfo"  id="article-info">게시판 정보</a>
 			  			<a href="">글 삭제</a>
 			  		</div>
 	  		 </li>
@@ -59,6 +62,13 @@
 			  		<div class="member-content">
 			  			<a href="/Marble/admin/gameList" id="member-info">게임목록</a>
 			  			<a href="/Marble/admin/customList" >사용자 게임</a>
+			  		</div>
+			  </li>
+			  <li class="member">
+			  	<a href="javascript:void(0);"  class="categoryBtn">카테고리관리</a>
+			  		<div class="member-content">
+			  			<a href="javascript:void(0);" id="category-info">카테고리 목록</a>
+			  			<a href="">카테고리 삭제</a>
 			  		</div>
 			  </li>
 			  <div style="float:right">

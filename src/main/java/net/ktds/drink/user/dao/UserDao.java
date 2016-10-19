@@ -2,6 +2,7 @@ package net.ktds.drink.user.dao;
 
 import java.util.List;
 
+import net.ktds.drink.admin.vo.SearchUserVO;
 import net.ktds.drink.user.vo.UserVO;
 
 /**
@@ -25,6 +26,12 @@ public interface UserDao {
 
 	public UserVO getUserBy(UserVO user);
 
-	public List<UserVO> getListUserInfo();
+	public List<UserVO> getListUserInfo(SearchUserVO searchUserVO);
+
+	public int deleteUserInfo(String userId);
+	
+	public int getCountUsers(SearchUserVO searchUser);
+	
+	public int userPasswordReset(String userId);
 
 }

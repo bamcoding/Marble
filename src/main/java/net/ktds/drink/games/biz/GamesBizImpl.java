@@ -42,8 +42,14 @@ public class GamesBizImpl implements GamesBiz {
 
 
 	@Override
-	public List<GamesVO> allGetGames(GamesVO gamesVO) {
-		return dao.allGetGames(gamesVO);
+	public List<GamesVO> allGetGames() {
+		return dao.allGetGames();
+	}
+
+
+	@Override
+	public GamesVO getGame(String gameId) {
+		return dao.getGame(gameId);
 	}
 
 
@@ -137,16 +143,8 @@ public class GamesBizImpl implements GamesBiz {
 		return customList;
 	}
 
-
-	
-
-
-
-
-
-
-
-
-	
+	public List<GamesVO> getGoldenCards() {
+		return dao.getGoldenCards();
+	}
 
 }

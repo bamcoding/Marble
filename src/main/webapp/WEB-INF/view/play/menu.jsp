@@ -5,17 +5,21 @@
 	$(document).ready(function() {
 		$("#menu ul li").click(function(){
 			var index = $(this).index();
+			console.log("메뉴목록 인덱스 : "+index);
 			if(index == 0){
 				$("#settings").load("/Marble/myInfo");
-				
+			}
+			if(index == 1){
+				$("#settings").load("/Marble/setGames");
+			}
+			if(index == 2){
+				$("#settings").load("/Marble/addGames");
 			}
 		});
-
-		
 	});
 </script>
 
-<div class="menubar" id="menubar" style="display: none">
+
 	<div class="menu" id="menu">
 
 		<ul>
@@ -38,4 +42,4 @@
 		v fdfd<br /> v fdfd<br /> v fdfd<br /> vfdfd<br />
 
 	</div>
-</div>
+

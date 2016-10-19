@@ -14,17 +14,14 @@ public class Param {
 		
 		String value = request.getParameter(paramName);
 		
-		//paramName?´ null ?˜?Š” ê¸¸ì´ê°? 0 ?´?¼ë©? defaultValue?¸ ""ë¥? ë¦¬í„´?•œ?‹¤.
 		if( value == null || value.length() == 0 ) {
 			value = defaultValue;
 		}
-		//paramName?˜ ê°’ì´ ?ˆ?‹¤ë©? ê·? ê°’ì„ ë¦¬í„´?•œ?‹¤. 
 		return value;
 				
 	}
 	
 	public static int getIntParam( HttpServletRequest request, String paramName ) {
-		//defaultValue?— 0?„ ?ŒŒ?¼ë¯¸í„°ë¡? ?„£?–´ ë¦¬í„´?•œ?‹¤. 
 		return getIntParam(request, paramName, 0);
 	}
 	

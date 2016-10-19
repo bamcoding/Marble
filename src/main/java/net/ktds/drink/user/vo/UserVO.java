@@ -7,7 +7,14 @@ public class UserVO {
 	int points;
 	String userEmail;
 	String userNickname;
+	String createdDate;
 	
+	public String getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
 	public String getUserId() {
 		return userId;
 	}

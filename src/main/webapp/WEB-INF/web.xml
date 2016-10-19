@@ -446,5 +446,74 @@
   <servlet-mapping>
     <servlet-name>ViewCustomListPageServlet</servlet-name>
     <url-pattern>/admin/customList</url-pattern>
+    </servlet-mapping>
+  <servlet>
+    <display-name>GetGoldenCardServlet</display-name>
+    <servlet-name>GetGoldenCardServlet</servlet-name>
+    <servlet-class>net.ktds.drink.play.web.ajax.GetGoldenCardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetGoldenCardServlet</servlet-name>
+    <url-pattern>/getCard</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewArticleInfoServlet</display-name>
+    <servlet-name>ViewArticleInfoServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.ViewArticleInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewArticleInfoServlet</servlet-name>
+    <url-pattern>/admin/articleInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoUserInfoDelete</display-name>
+    <servlet-name>DoUserInfoDelete</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.DoUserInfoDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoUserInfoDelete</servlet-name>
+    <url-pattern>/doUserInfoDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewCategoryServlet</display-name>
+    <servlet-name>ViewCategoryServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ViewCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewCategoryServlet</servlet-name>
+    <url-pattern>/admin/category</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConfirmPlaysServlet</display-name>
+    <servlet-name>ConfirmPlaysServlet</servlet-name>
+    <servlet-class>net.ktds.drink.play.web.ajax.ConfirmPlaysServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmPlaysServlet</servlet-name>
+    <url-pattern>/confirmPlays</url-pattern>
+</servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>TestCategoryServlet</display-name>
+    <servlet-name>TestCategoryServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.TestCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestCategoryServlet</servlet-name>
+    <url-pattern>/admin/test</url-pattern>
+    </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoPasswordResetServlet</display-name>
+    <servlet-name>DoPasswordResetServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.DoPasswordResetServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoPasswordResetServlet</servlet-name>
+    <url-pattern>/admin/doPasswordReset</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -17,7 +17,8 @@ public interface GamesBiz {
 	public CustomListVO getCustomGames(SearchGamesVO searchGames);
 	
 	public List<GamesVO> getGames(GamesVO gamesVO);
-	public List<GamesVO> allGetGames(GamesVO gamesVO);
+	public List<GamesVO> allGetGames();
+	public GamesVO getGame(String gameId);
 	public boolean addCustom(GamesVO gameVO, UserVO userInfo);
 	public GamesVO getGameBy(String gameName);
 	public GamesVO getGameDetailBy(String gameId);
@@ -25,5 +26,5 @@ public interface GamesBiz {
 	public boolean updateGame(GamesVO gamesVO);
 	public boolean deleteGames(String gameId);
 	public boolean isExsistGameName(String gameName);
-
+	public List<GamesVO> getGoldenCards();
 }

@@ -7,9 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import net.ktds.drink.constants.Session;
+import net.ktds.drink.play.biz.PlayBiz;
+import net.ktds.drink.play.biz.PlayBizImpl;
 import net.ktds.drink.support.Param;
 import net.ktds.drink.user.biz.UserBiz;
 import net.ktds.drink.user.biz.UserBizImpl;
@@ -18,10 +18,12 @@ import net.ktds.drink.user.vo.UserVO;
 public class DoSignInPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserBiz userBiz;
+	private PlayBiz playBiz;
 
 	public DoSignInPageServlet() {
 		super();
 		userBiz = new UserBizImpl();
+		playBiz = new PlayBizImpl();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -51,6 +53,8 @@ public class DoSignInPageServlet extends HttpServlet {
 			
 			isSucessSignIn = userBiz.signIn(user,request);
 			if ( isSucessSignIn ){
+				playBiz.setLatestPlays(request);
+				
 				message = "true";
 				out.write(message+"");
 			}
