@@ -81,7 +81,10 @@ public class GamesBizImpl implements GamesBiz {
 	public GamesVO getGameDetailBy(String gameId) {
 		return dao.getGameDetailBy(gameId);
 	}
-
+	@Override
+	public CustomVO getCustomDetailBy(String gameId) {
+		return dao.getCustomDetailBy(gameId);
+	}
 
 	@Override
 	public boolean deleteGames(String gameId) {
@@ -92,6 +95,15 @@ public class GamesBizImpl implements GamesBiz {
 	@Override
 	public boolean updateGame(GamesVO gamesVO) {
 		return dao.updateGame(gamesVO)> 0;
+	}
+	
+	
+	@Override
+	public boolean updateCustom(GamesVO gamesVO) {
+		
+		
+		
+		return dao.updateCustom(gamesVO)>0;
 	}
 
 
@@ -146,5 +158,18 @@ public class GamesBizImpl implements GamesBiz {
 	public List<GamesVO> getGoldenCards() {
 		return dao.getGoldenCards();
 	}
+
+
+	@Override
+	public boolean deleteCustom(String gameId) {
+		return dao.deleteCustom(gameId)> 0;
+	}
+
+
+
+	
+
+
+
 
 }

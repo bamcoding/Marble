@@ -480,6 +480,63 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 		});
 	}
 
+	
+	
+	@Override
+	public CustomVO getCustomDetailBy(String gameId) {
+	return (CustomVO) selectOne(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	CT.GM_ID ");
+				query.append(" 			, CT.USR_ID ");
+				query.append(" 			, G.GM_NM ");
+				query.append(" 			, G.GM_INFO ");
+				query.append(" 			, G.CTGR_ID ");
+				query.append(" 			, G.TYP_ID ");
+				query.append(" 			, U.USR_NICK_NM ");
+				query.append(" FROM		CUSTOM CT ");			
+				query.append(" 			, GAME G ");			
+				query.append(" 			, USR U ");			
+				query.append(" WHERE	CT.GM_ID = G.GM_ID ");	
+				query.append(" AND		CT.USR_ID = U.USR_ID ");	
+				query.append(" AND		CT.GM_ID = ? ");		
+			
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, gameId);
+
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				CustomVO customVO = null;
+				GamesVO gameVO = null;
+				UserVO userVO = null;
+				if(rs.next()){
+					
+					customVO = new CustomVO();
+					
+					customVO.setGameId(rs.getString("GM_ID"));
+					customVO.setUserId(rs.getString("USR_ID"));
+					
+					gameVO = customVO.getGamesVO();
+					
+					gameVO.setGameName(rs.getString("GM_NM"));
+					gameVO.setGameInfo(rs.getString("GM_INFO"));
+					gameVO.setCategoryId(rs.getString("CTGR_ID"));
+					gameVO.setTypeId(rs.getString("TYP_ID"));
+					
+					userVO = customVO.getUserVO();
+					userVO.setUserNickname(rs.getString("USR_NICK_NM"));
+					
+				}
+				return customVO;	
+			}
+		});
+	}
+	
 	@Override
 	public int deleteGames(String gameId) {
 	return insert(new Query() {
@@ -501,6 +558,30 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 		});
 	}
 
+	
+
+	@Override
+	public int deleteCustom(String gameId) {
+		return insert(new Query() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				
+				query.append(" DELETE ");
+				query.append(" FROM		CUSTOM ");
+				query.append(" WHERE	GM_ID = ? ");
+
+			
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, gameId);
+
+				return pstmt;
+			}
+		});
+	}
+
+	
 	@Override
 	public int updateGame(GamesVO gamesVO) {
 		return insert(new Query() {
@@ -540,6 +621,43 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 		});
 	}
 
+	
+	@Override
+	public int updateCustom(GamesVO gamesVO) {
+	return insert(new Query() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" UPDATE	GAME ");
+				if( gamesVO.getGameName() != null ) {
+					query.append(" SET		GM_NM = ? ");
+				}
+				if( gamesVO.getGameInfo() != null ) {
+					query.append(" , GM_INFO = ? ");
+				}
+				query.append(" WHERE	GM_ID = ? ");
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+			
+				int index = 1;
+				
+				if( gamesVO.getGameName() != null ) {
+					pstmt.setString(index++, gamesVO.getGameName());
+				}
+				if( gamesVO.getGameInfo() != null  ) {
+					pstmt.setString(index++, gamesVO.getGameInfo());
+				}
+
+				
+				pstmt.setString(index++, gamesVO.getGameId());
+				return pstmt;
+			}
+		});
+	}
+
+	
+	
 	@Override
 	public int getConutOfGames(SearchGamesVO searchGames) {
 		return (int) selectOne(new QueryAndResult() {
@@ -695,7 +813,7 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 
 	@Override
 	public int getConutOfCustomGames(SearchGamesVO searchGames) {
-return (int) selectOne(new QueryAndResult() {
+		return (int) selectOne(new QueryAndResult() {
 			
 			@Override
 			public PreparedStatement query(Connection conn) throws SQLException {
@@ -709,7 +827,7 @@ return (int) selectOne(new QueryAndResult() {
 				query.append(" AND		G.CTGR_ID = '16' ");	
 				
 				if ( searchGames.getSearchType() == 1 ) {
-					query.append(" AND	  CT.USR_ID LIKE '%' || ? || '%' ");
+					query.append(" AND	  U.USR_NICK_NM LIKE '%' || ? || '%' ");
 				}
 				else if ( searchGames.getSearchType() == 2 ) {
 					query.append(" AND	( G.GM_NM LIKE '%' || ? || '%' ");
@@ -778,7 +896,7 @@ return (int) selectOne(new QueryAndResult() {
 				query.append(" AND		G.CTGR_ID = '16' ");								
 
 				if ( searchGames.getSearchType() == 1 ) {
-					query.append(" AND	  CT.USR_ID LIKE '%' || ? || '%' ");
+					query.append(" AND	  U.USR_NICK_NM LIKE '%' || ? || '%' ");
 				}
 				else if ( searchGames.getSearchType() == 2 ) {
 					query.append(" AND	( G.GM_NM LIKE '%' || ? || '%' ");
@@ -853,6 +971,11 @@ return (int) selectOne(new QueryAndResult() {
 			}
 		});
 	}
+
+	
+
+
+
 
 
 

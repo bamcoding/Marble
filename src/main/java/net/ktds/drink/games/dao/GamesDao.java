@@ -20,15 +20,18 @@ public interface GamesDao {
 	public int addGame(GamesVO gamesVO);
 	public GamesVO getGameBy(String gameName);
 	public GamesVO getGameDetailBy(String gameId);
+	public CustomVO getCustomDetailBy(String gameId);
 
 	public List<GamesVO> allGetGames();
 	public GamesVO getGame(String gameId);
 
 	public int addCustom(GamesVO gamesVO, UserVO userInfo);
 	public int updateGame(GamesVO gamesVO);
+	public int updateCustom(GamesVO gamesVO);
 	public int countGameName(String gameName);
 
 	public int deleteGames(String gameId);
+	public int deleteCustom(String gameId);
 	
 	public int getConutOfGames(SearchGamesVO searchGames);
 	public int getConutOfCustomGames(SearchGamesVO searchGames);

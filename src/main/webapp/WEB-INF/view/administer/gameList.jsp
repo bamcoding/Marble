@@ -74,8 +74,8 @@
 	</table>
 	
 	</form>
-	<div style="float: right;"><input type="submit" id="addBtn" value="게임추가"></div>
-	<div style="float: right;"><input type="submit" id="deleteBtn" value="선택삭제" onclick="movePage(0)"></div>
+	<div style="float: left;"><input type="submit" id="addBtn" value="게임추가"></div>
+	<div style="float: left;"><input type="submit" id="deleteBtn" value="선택삭제" onclick="movePage(0)"></div>
 	
 	<form id="searchForm" name="searchForm">
 			<div style="padding-top: 5px;">

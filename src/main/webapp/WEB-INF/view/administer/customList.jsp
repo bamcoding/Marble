@@ -30,9 +30,9 @@
 	<table class="grid">
 	<tr>
 		<td>선택</td>
-		<td>카테고리</td>
 		<td>게임번호</td>
 		<td>게임이름</td>
+		<td>회원아이디</td>
 	</tr>
 	
 	<c:forEach items="${customs}" var="custom">
@@ -41,13 +41,14 @@
 		<c:set var="number" value="${fn:split(custom.gameId,'-')[2]}"/>
 		<fmt:parseNumber var="number" type="number" value="${number}"/>
 		<td>${number}</td>
-		<td><a href="/Marble/admin/gameDetail?gameId=${custom.gameId}" >${custom.gamesVO.gameName}</a></td>
+		<td><a href="/Marble/admin/customDetail?gameId=${custom.gameId}" >${custom.gamesVO.gameName}</a></td>
+		<td>${custom.userVO.userNickname}</td>
 	</tr>
 	</c:forEach>
 	</table>
 	
 	</form>
-	<div style="float: right;"><input type="submit" id="deleteBtn" value="선택삭제" onclick="movePage(0)"></div>
+	<div style="float: left;"><input type="submit" id="deleteBtn" value="선택삭제" onclick="movePage(0)"></div>
 	
 	<form id="searchForm" name="searchForm">
 			<div style="padding-top: 5px;">
@@ -63,7 +64,7 @@
 						</select>
 						<input type="text" id="searchKeyword" name="searchKeyword"  value="${searchGame.searchKeyword}"/>
 						<input type="button" id="searchBtn" value="검색" onclick="movePage(0)"/>
-						<a href="/Marble/admin/searchInit">검색 초기화</a>
+						<a href="/Marble/admin/searchCustomInit">검색 초기화</a>
 				</div>
 				<div class="clear"></div>
 			</div>

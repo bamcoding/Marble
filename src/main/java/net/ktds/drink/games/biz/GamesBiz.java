@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.games.vo.CustomListVO;
+import net.ktds.drink.games.vo.CustomVO;
 import net.ktds.drink.games.vo.GamesListVO;
 import net.ktds.drink.games.vo.GamesVO;
 import net.ktds.drink.games.vo.SearchGamesVO;
@@ -22,9 +23,14 @@ public interface GamesBiz {
 	public boolean addCustom(GamesVO gameVO, UserVO userInfo);
 	public GamesVO getGameBy(String gameName);
 	public GamesVO getGameDetailBy(String gameId);
+	public CustomVO getCustomDetailBy(String gameId);
+	
+	
 	public boolean addGame(GamesVO gamesVO);
 	public boolean updateGame(GamesVO gamesVO);
+	public boolean updateCustom(GamesVO gamesVO);
 	public boolean deleteGames(String gameId);
+	public boolean deleteCustom(String gameId);
 	public boolean isExsistGameName(String gameName);
 	public List<GamesVO> getGoldenCards();
 }
