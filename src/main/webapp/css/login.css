@@ -14,6 +14,10 @@
 	display: inline-block;
 }
 
+.left{
+	float: left;	
+}
+
 .right{
 	float: right;	
 }

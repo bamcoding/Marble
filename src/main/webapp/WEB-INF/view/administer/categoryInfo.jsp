@@ -23,6 +23,9 @@ function getCategoryTree(){
 
 <body>
 	<form id="categoryForm" name="categoryForm">
+		<c:forEach items="${categories }" var="category">
+			${category.level}
+		</c:forEach>
 		<div class="container">
 			<ul>
 				<li>루트
@@ -31,7 +34,7 @@ function getCategoryTree(){
 					</li></ul>
 					</li></ul>
 					<ul><li>카테고리3</li></ul>
-<c:forEach items="${categories }" var="category">
+
 					<ul>
 						<li>
 						
@@ -41,7 +44,6 @@ function getCategoryTree(){
 	</a>
 						</li>
 					</ul>
-</c:forEach>
 				</li>
 			</ul>
 		</div>	

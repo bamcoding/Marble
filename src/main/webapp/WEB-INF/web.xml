@@ -329,6 +329,125 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>ViewGameInfoPageServlet</display-name>
+    <servlet-name>ViewGameInfoPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ViewGameInfoPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewGameInfoPageServlet</servlet-name>
+    <url-pattern>/admin/gameInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VIewGameListPageServlet</display-name>
+    <servlet-name>VIewGameListPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.VIewGameListPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VIewGameListPageServlet</servlet-name>
+    <url-pattern>/admin/gameList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewGameDetailPageServlet</display-name>
+    <servlet-name>ViewGameDetailPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ViewGameDetailPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewGameDetailPageServlet</servlet-name>
+    <url-pattern>/admin/gameDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteGameServlet</display-name>
+    <servlet-name>DoDeleteGameServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.DoDeleteGameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteGameServlet</servlet-name>
+    <url-pattern>/admin/deleteGame</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewAddGamePageServlet</display-name>
+    <servlet-name>ViewAddGamePageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ViewAddGamePageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAddGamePageServlet</servlet-name>
+    <url-pattern>/admin/addGame</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoAddGameServlet</display-name>
+    <servlet-name>DoAddGameServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.DoAddGameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoAddGameServlet</servlet-name>
+    <url-pattern>/admin/doAdd</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteDetailServlet</display-name>
+    <servlet-name>DoDeleteDetailServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.DoDeleteDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteDetailServlet</servlet-name>
+    <url-pattern>/admin/doDeleteDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewUpdateGamePageServlet</display-name>
+    <servlet-name>ViewUpdateGamePageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ViewUpdateGamePageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewUpdateGamePageServlet</servlet-name>
+    <url-pattern>/admin/updateGame</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoUpdateGameServlet</display-name>
+    <servlet-name>DoUpdateGameServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.DoUpdateGameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoUpdateGameServlet</servlet-name>
+    <url-pattern>/admin/doUpdateGame</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewGameCategoryListPageServlet</display-name>
+    <servlet-name>ViewGameCategoryListPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ViewGameCategoryListPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewGameCategoryListPageServlet</servlet-name>
+    <url-pattern>/admin/gameCategoryList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoSearchInitServlet</display-name>
+    <servlet-name>DoSearchInitServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.DoSearchInitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoSearchInitServlet</servlet-name>
+    <url-pattern>/admin/searchInit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewCustomListPageServlet</display-name>
+    <servlet-name>ViewCustomListPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ViewCustomListPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewCustomListPageServlet</servlet-name>
+    <url-pattern>/admin/customList</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <display-name>GetGoldenCardServlet</display-name>
     <servlet-name>GetGoldenCardServlet</servlet-name>
     <servlet-class>net.ktds.drink.play.web.ajax.GetGoldenCardServlet</servlet-class>
@@ -376,8 +495,8 @@
   <servlet-mapping>
     <servlet-name>ConfirmPlaysServlet</servlet-name>
     <url-pattern>/confirmPlays</url-pattern>
-</servlet-mapping>
-    <servlet>
+  </servlet-mapping>
+  <servlet>
     <description></description>
     <display-name>TestCategoryServlet</display-name>
     <servlet-name>TestCategoryServlet</servlet-name>
@@ -386,7 +505,7 @@
   <servlet-mapping>
     <servlet-name>TestCategoryServlet</servlet-name>
     <url-pattern>/admin/test</url-pattern>
-    </servlet-mapping>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>DoPasswordResetServlet</display-name>
@@ -396,5 +515,65 @@
   <servlet-mapping>
     <servlet-name>DoPasswordResetServlet</servlet-name>
     <url-pattern>/admin/doPasswordReset</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoSearchCustomInitServlet</display-name>
+    <servlet-name>DoSearchCustomInitServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.DoSearchCustomInitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoSearchCustomInitServlet</servlet-name>
+    <url-pattern>/admin/searchCustomInit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteCustomServlet</display-name>
+    <servlet-name>DoDeleteCustomServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.DoDeleteCustomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteCustomServlet</servlet-name>
+    <url-pattern>/admin/deleteCustom</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewCustomDetailPageServlet</display-name>
+    <servlet-name>ViewCustomDetailPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ViewCustomDetailPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewCustomDetailPageServlet</servlet-name>
+    <url-pattern>/admin/customDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteCustomDetailServlet</display-name>
+    <servlet-name>DoDeleteCustomDetailServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.DoDeleteCustomDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteCustomDetailServlet</servlet-name>
+    <url-pattern>/admin/doDeleteCustomDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewUpdateCustomPageServlet</display-name>
+    <servlet-name>ViewUpdateCustomPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ViewUpdateCustomPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewUpdateCustomPageServlet</servlet-name>
+    <url-pattern>/admin/updateCustom</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoUpdateCustomServlet</display-name>
+    <servlet-name>DoUpdateCustomServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.DoUpdateCustomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoUpdateCustomServlet</servlet-name>
+    <url-pattern>/admin/doUpdateCustom</url-pattern>
   </servlet-mapping>
 </web-app>
