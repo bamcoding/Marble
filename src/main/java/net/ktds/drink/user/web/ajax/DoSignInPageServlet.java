@@ -43,6 +43,9 @@ public class DoSignInPageServlet extends HttpServlet {
 		if( userEmail.length() == 0 && userPassword.length() == 0) {
 			message = "필수값을 입력하지 않았습니다.";
 			out.write(message+"");
+			out.flush();
+			out.close();
+			return;
 		}
 		else{
 			UserVO user = new UserVO();
