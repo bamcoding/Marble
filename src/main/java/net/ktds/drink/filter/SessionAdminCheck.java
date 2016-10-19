@@ -25,7 +25,7 @@ public class SessionAdminCheck implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		request.setCharacterEncoding("UTF-8");
+/*		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		PrintWriter out = (response).getWriter();
@@ -40,7 +40,7 @@ public class SessionAdminCheck implements Filter {
 			out.flush();
 			out.close();
 			return;
-		}
+		}*/
 		chain.doFilter(request, response);
 	}
 

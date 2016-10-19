@@ -80,6 +80,7 @@ ul li ul li:last-child:after, ul li:last-child:after {
 
 
 <div class="container">
+
 <ul>
 	<li><a href="#">1</a>
 		<ul>
@@ -99,33 +100,10 @@ ul li ul li:last-child:after, ul li:last-child:after {
 				<li><a href="#">1-2-4</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Joy Division</a>
-				<ul>
-				<li><a href="#">Unknown Pleasures</a></li>
-				<li><a href="#">Closer</a></li>
-				<li><a href="#">Still</a></li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-	<li><a href="#">Liverpool</a>
-		<ul>
-			<li><a href="#">OMD</a>
-				<ul>
-					<li><a href="#">OMD</a></li>
-					<li><a href="#">Organisation</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Echo & the Bunnymen</a>
-				<ul>
-					<li><a href="#">Crocodiles</a></li>
-					<li><a href="#">Heaven Up Here</a></li>
-					<li><a href="#">Porcupine</a></li>
-				</ul>
-			</li>
 		</ul>
 	</li>
 </ul>
+
 </div>
 
 

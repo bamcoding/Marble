@@ -10,7 +10,6 @@
 <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="/Marble/css/blueGrid.css">
-<script type="text/javascript" src="/Marble/js/blueGrid.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
@@ -59,7 +58,8 @@
 	<!-- 이전 레벨과 현재 레벨이 다를 경우 ul -->
 	<div id="ctgr_content">
 	<div class="container">
-	<ul><li>전체보기
+	<ul>
+		<li>전체보기
 		<c:set var="pr" value="0" />
 		<c:forEach items="${categories }" var="category" >
 		<c:set var="nr" value="${category.level }" />
@@ -72,7 +72,8 @@
 				<c:when test="${pr gt nr }">
 					
 					<c:forEach begin="1" end="${pr-nr }" step="1">
-						</ul></li>
+						</li>
+						</ul>
 					</c:forEach>
 					<li><a href="#">${category.categoryName}(${pr},${nr})</a></li>
 					<c:set var="pr" value="${nr}"/>
@@ -84,7 +85,8 @@
 			</c:choose>
 		</c:forEach>
 		</li>
-	</ul>		
+	</ul>
+	<script type="text/javascript" src="/Marble/js/blueGrid.js"></script>
 	</div>
 	
 	</div>
