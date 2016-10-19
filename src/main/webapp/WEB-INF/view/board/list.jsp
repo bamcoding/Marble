@@ -28,6 +28,7 @@
 </script>
 
 <div id ="list">
+<h1>게시판</h1>
 	<table class="grid">
 		<tr>
 			<th>글번호</th>
