@@ -5,7 +5,6 @@
 <link rel="stylesheet" type="text/css" href="/Marble/css/login.css"/>
 <script type="text/javascript">
 	$(document).ready(function(){
-
 		$("#signInBtn").click(function(){
 			$.post("/Marble/doSignIn",
 			$("#signInForm").serialize(),
@@ -22,11 +21,6 @@
 			}
 			);
 			
-		});
-		
-		$("#signUpBtn").click(function(){
-			$("#wrapper").load("/Marble/signUp", function(data){
-			});
 		});
 		
 		$("#cancleBtn").click(function(){
@@ -81,6 +75,6 @@
 		<input type="button" id="signInBtn" value="SIGN IN"/>
 		<br/>
 		</div>
-		<div class="sign_footer">계정이 없으세요?&nbsp;&nbsp;<a id="signUpBtn" href="javascript:void(0);">가입하기</a></div>
+		<div class="sign_footer"> 주루마블은 사랑입니다. </a></div>
 	</form>
 

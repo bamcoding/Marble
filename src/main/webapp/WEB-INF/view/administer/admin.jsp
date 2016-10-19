@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 	
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="/Marble/css/admin.css"/>
+<link rel="stylesheet" type="text/css" href="/Marble/css/grid.css" />
 
 <title>Insert title here</title>
 </head>
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
-<link rel="stylesheet" type="text/css" href="/Marble/css/grid.css" />
 <script type="text/javascript">
 	$(document).ready(function(){
 		
@@ -19,7 +19,6 @@
 				$("#member-info").mousedown(function(){
 					$("#playList").addClass("display-block")
 					$("#playList").removeClass("display-none")
-					//$("#playList").load("/Marble/admin/userInfo");
 					
 				});
 				$("#member-info").mouseup(function(){

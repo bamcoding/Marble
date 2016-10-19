@@ -26,6 +26,7 @@ public class SearchInitiateServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String categoryId = Param.getStringParam(request, "categoryId");
 		
 		HttpSession session = request.getSession();

@@ -516,6 +516,25 @@
     <servlet-name>DoPasswordResetServlet</servlet-name>
     <url-pattern>/admin/doPasswordReset</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>SessionAdminCheck</display-name>
+    <filter-name>SessionAdminCheck</filter-name>
+    <filter-class>net.ktds.drink.filter.SessionAdminCheck</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SessionAdminCheck</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminBoardSearchInitServlet</display-name>
+    <servlet-name>AdminBoardSearchInitServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.AdminBoardSearchInitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminBoardSearchInitServlet</servlet-name>
+    <url-pattern>/admin/list/init</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>DoSearchCustomInitServlet</display-name>

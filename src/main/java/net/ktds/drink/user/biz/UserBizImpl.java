@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import net.ktds.drink.admin.vo.SearchUserVO;
 import net.ktds.drink.admin.vo.UserListVO;
+import net.ktds.drink.constants.Admin;
 import net.ktds.drink.constants.Session;
 import net.ktds.drink.support.DaoSupport;
 import net.ktds.drink.support.pager.Pager;
@@ -41,11 +42,13 @@ public class UserBizImpl extends DaoSupport implements UserBiz {
 	@Override
 	public boolean signIn(UserVO user, HttpServletRequest request) {
 		UserVO userInfo = userDao.getUserBy(user);
-		//System.out.println(userInfo.getUserId());
+		
 		if ( userInfo != null && userInfo.getUserId() != null && userInfo.getUserId().length() > 0) {
-			HttpSession session = request.getSession();
-			session.setAttribute(Session.USER_INFO, userInfo);
-			return true;
+	
+				HttpSession session = request.getSession();
+				session.setAttribute(Session.USER_INFO, userInfo);
+				return true;
+			
 		}
 		return false;
 	}
