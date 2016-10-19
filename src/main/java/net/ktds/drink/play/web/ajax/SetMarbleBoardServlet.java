@@ -20,6 +20,7 @@ import net.ktds.drink.games.vo.GamesVO;
 import net.ktds.drink.play.biz.PlayBiz;
 import net.ktds.drink.play.biz.PlayBizImpl;
 import net.ktds.drink.play.vo.PlayVO;
+import net.ktds.drink.user.vo.UserVO;
 
 public class SetMarbleBoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -60,7 +61,11 @@ public class SetMarbleBoardServlet extends HttpServlet {
 			}
 		}
 		
-		playBiz.registerHistory(plays);
+		UserVO user = (UserVO) session.getAttribute(Session.USER_INFO);
+		if(user != null){
+			plays.get(0).setUserId(user.getUserId());
+			playBiz.registerHistory(plays);			
+		}
 		
 		int random;
 		int size = plays.size();

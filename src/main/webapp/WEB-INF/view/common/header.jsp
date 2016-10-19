@@ -18,9 +18,6 @@
 			console.log("메뉴 인댁스 : "+index);
 			//게임 스타트
 			if (index == 1) {
-				$.post("", function(data){
-					
-				});
 				$("#marbleBoard").load("/Marble/setMarbleBoard");
 			}
 			//메뉴 목록

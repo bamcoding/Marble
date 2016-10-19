@@ -35,7 +35,7 @@ public class PlayBizImpl implements PlayBiz{
 	@Override
 	public boolean setLatestPlays(HttpServletRequest request) {
 		List<HistoryVO> history = getHistory(request);
-		if(history == null){
+		if(history.size() == 0){
 			return false;
 		}
 		
