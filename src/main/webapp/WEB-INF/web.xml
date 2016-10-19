@@ -396,6 +396,5 @@
   <servlet-mapping>
     <servlet-name>DoPasswordResetServlet</servlet-name>
     <url-pattern>/admin/doPasswordReset</url-pattern>
->>>>>>> fddcc00d4e929599e5e380873fb3fb855139e758
   </servlet-mapping>
 </web-app>
