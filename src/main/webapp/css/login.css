@@ -14,7 +14,10 @@
 	display: inline-block;
 }
 
-.input[type=button]{
-	barckground
+.right{
+	float: right;	
 }
 
+.clear{
+	clear: both;
+}
