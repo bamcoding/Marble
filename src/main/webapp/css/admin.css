@@ -4,7 +4,7 @@ body{
 	padding: 0;
 }
 
-ul {
+#admin ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -12,11 +12,15 @@ ul {
     background-color: #333;
 }
 
-li {
+#admin li {
     float: left;
 }
 
-li a, memberBtn{
+#admin .underBtn{
+	color:black;
+}
+
+#admin li a, memberBtn{
 	width:114px ;
     display: inline-block;
     color: white;
@@ -25,11 +29,11 @@ li a, memberBtn{
     text-decoration: none;
 }
 
-li a:hover {
+#admin li a:hover {
     background-color: red;
 }
 
-li.member {
+#admin li.member {
     display: inline-block;
 }
 

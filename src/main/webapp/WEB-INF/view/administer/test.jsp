@@ -1,16 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html>
-<html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="/Marble/css/login.css"/>
-<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/Marble/css/blueGrid.css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <title>Insert title here</title>
 </head>
 
@@ -56,12 +51,12 @@
 		<div class="clear"></div>
 	</div>
 	<!-- 이전 레벨과 현재 레벨이 다를 경우 ul -->
-	<div id="ctgr_content">
-	<div class="container">
+	<div id="ctgr_content" >
 	<ul>
 		<li>전체보기
 		<c:set var="pr" value="0" />
 		<c:forEach items="${categories }" var="category" >
+ 	
 		<c:set var="nr" value="${category.level }" />
 			<c:choose>
 				<c:when test="${pr lt nr }">
@@ -83,11 +78,11 @@
 				<li><a href="#">${category.categoryName}(${pr},${nr})</a></li>
 				</c:otherwise>
 			</c:choose>
+
 		</c:forEach>
 		</li>
 	</ul>
 	<script type="text/javascript" src="/Marble/js/blueGrid.js"></script>
-	</div>
 	
 	</div>
 	</div>
