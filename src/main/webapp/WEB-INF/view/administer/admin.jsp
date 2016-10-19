@@ -59,8 +59,8 @@
 			  <li class="member">
 			  	<a href="">게임관리</a>
 			  		<div class="member-content">
-			  			<a href="">게임 목록</a>
-			  			<a href="">게임 삭제</a>
+			  			<a href="/Marble/admin/gameList" id="member-info">게임목록</a>
+			  			<a href="/Marble/admin/customList" >사용자 게임</a>
 			  		</div>
 			  </li>
 			  <li class="member">
