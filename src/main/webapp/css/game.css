@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+
+.gameOption {
+	
+	
+	background-color: #ffffff; 
+	width:1200px; 
+	margin:auto;
+}
+
+
+.gameList{
+	
+	width:1200px; 
+	height:500px; 
+	border: 2px solid;
+	background-color: #ffffff; 
+	margin:auto;
+}
+
+.grid{
+	text-align:center;
+}
+.inline {
+	display: inline-block;
+    color: white;
+}
+
+
+#writeForm input[type="text"], textarea{
+	width: 100%;
+	margin-top: 5px;
+}
+
+#writeForm textarea {
+	height: 300px;
+}
+
+
+
+
+.display-none{display:none;}
+.display-block{display:block;}
