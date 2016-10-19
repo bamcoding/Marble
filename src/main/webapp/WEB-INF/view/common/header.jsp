@@ -13,8 +13,6 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		
-		
 		$("#nav ul li").click(function() {
 			var index = $(this).index();
 			console.log("메뉴 인댁스 : "+index);
