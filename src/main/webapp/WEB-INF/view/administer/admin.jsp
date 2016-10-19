@@ -28,7 +28,7 @@
 					$("#playList").removeClass("display-block")
 				});
 			}
-			if( index == 1){
+			if( index == 2){
 				$("#article-info").click(function(){
 					$("#playList").load("/Marble/admin/articleInfo");
 				});

@@ -1,9 +1,18 @@
-package net.ktds.category.vo;
+package net.ktds.drink.category.vo;
 
 public class CategoryVO {
 	private String categoryId;
 	private String categoryName;
 	private String parentCategoryId;
+	private String level;
+	
+
+	public String getLevel() {
+		return level;
+	}
+	public void setLevel(String level) {
+		this.level = level;
+	}
 	public String getCategoryId() {
 		return categoryId;
 	}

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import net.ktds.drink.admin.vo.SearchUserVO;
+import net.ktds.drink.admin.vo.UserListVO;
 import net.ktds.drink.constants.Session;
 import net.ktds.drink.support.DaoSupport;
 import net.ktds.drink.support.pager.Pager;
@@ -50,20 +51,34 @@ public class UserBizImpl extends DaoSupport implements UserBiz {
 	}
 
 	@Override
-	public List<UserVO> getListUserInfo(SearchUserVO searchUserVO) {
+	public UserListVO  getListUserInfo(SearchUserVO searchUserVO) {
+		
 		int totalCount = userDao.getCountUsers(searchUserVO);
 		Pager pager = PagerFactory.getPager(true); //페이저 불러오기
 		pager.setTotalArticleCount(totalCount); //토탈카운트 할당하기
-		pager.setPageNumber(0); // 첫페이지:자동계산됨
-		int startRowNumber = pager.getStartArticleNumber();
-		int endRowNumber = pager.getEndArticleNumber();
+		pager.setPageNumber(searchUserVO.getPageNumber()); // 첫페이지:자동계산됨
 		
-		return userDao.getListUserInfo();
+	    searchUserVO.setStartRowNumber(pager.getStartArticleNumber());
+	    searchUserVO.setEndRowNumber(pager.getEndArticleNumber());
+		List<UserVO> users = userDao.getListUserInfo(searchUserVO);
+		
+		UserListVO userList = new UserListVO();
+		userList.setPager(pager);
+		userList.setUsers(users);
+		
+		return userList;
+		
+		
 	}
 
 	@Override
 	public boolean deleteUserInfo(String userId) {
 		return userDao.deleteUserInfo(userId) > 0;
+	}
+
+	@Override
+	public boolean userPasswordReset(String userId) {
+		return userDao.userPasswordReset(userId) > 0;
 	}
 	
 	
