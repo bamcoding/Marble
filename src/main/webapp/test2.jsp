@@ -81,22 +81,22 @@ ul li ul li:last-child:after, ul li:last-child:after {
 
 <div class="container">
 <ul>
-	<li><a href="#">Manchester</a>
+	<li><a href="#">1</a>
 		<ul>
-			<li><a href="#">Magazine</a>
+			<li><a href="#">1-1</a>
 					<ul>
-					<li><a href="#">Spiral Scratch</a></li>
-					<li><a href="#">Real Life</a></li>
-					<li><a href="#">Secondhand Daylight</a></li>
-					<li><a href="#">The Correct Use</a></li>
+					<li><a href="#">1-1-1</a></li>
+					<li><a href="#">1-1-2</a></li>
+					<li><a href="#">1-1-3</a></li>
+					<li><a href="#">1-1-4</a></li>
 					</ul>
 			</li>
-			<li><a href="#">Buzzcocks</a>
+			<li><a href="#">1-2</a>
 				<ul>
-				<li><a href="#">Time's Up</a></li>
-				<li><a href="#">Another Music in A Different Kitchen</a></li>
-				<li><a href="#">Love Bites</a></li>
-				<li><a href="#">A Different Kind Of Tension</a></li>
+				<li><a href="#">1-2-1</a></li>
+				<li><a href="#">1-2-2</a></li>
+				<li><a href="#">1-2-3</a></li>
+				<li><a href="#">1-2-4</a></li>
 				</ul>
 			</li>
 			<li><a href="#">Joy Division</a>

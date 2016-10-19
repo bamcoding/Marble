@@ -53,10 +53,10 @@ public class CategoryDaoImpl extends DaoSupport implements CategoryDao {
 
 			public PreparedStatement query(Connection conn) throws SQLException {
 				StringBuffer query = new StringBuffer();
-				query.append(" SELECT	CTGR_ID ");
-				query.append(" 			, CTGR_NM ");
-				query.append(" 			, PRNT_CTGR_ID ");
-				query.append(" FROM		CTGR ");
+				query.append(" SELECT *			");
+				query.append(" FROM CTGR C 			");
+				query.append(" CONNECT BY PRIOR C.CTGR_ID = C.PRNT_CTGR_ID			");
+				query.append(" START WITH C.PRNT_CTGR_ID = 0 AND C.CTGR_NM != 'ROOT'			");
 
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				return pstmt;

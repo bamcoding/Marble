@@ -34,12 +34,7 @@ public class CategoryBizImpl implements CategoryBiz {
 
 	public List<CategoryVO> setCategoryLevel() {
 		List<CategoryVO> categoryVOs = dao.getAllCategory();
-		
 		List<CategoryVO> hasLevel = setLevel("0", 0, categoryVOs, new ArrayList<CategoryVO>());
-		for(int i=0; i<hasLevel.size();i++){
-			System.out.printf("이름:%s, 레벨:%s\n",hasLevel.get(i).getCategoryName(),hasLevel.get(i).getLevel());
-		}
-		
 		return hasLevel;
 	}
 
@@ -59,9 +54,4 @@ public class CategoryBizImpl implements CategoryBiz {
 		}
 		return arrayList;
 	}
-
-	public static void main(String[] args) {
-		new CategoryBizImpl().setCategoryLevel();
-	}
-
 }
