@@ -29,23 +29,23 @@ public class DoUserInfoDelete extends HttpServlet {
 		
 		String[] checks = request.getParameterValues("checks");
 		PrintWriter out = response.getWriter();	
-		
 		if(checks == null || checks.length == 0 || checks.equals("")){
-			out.write("delete할 유저 1명이상을 고르시오");
+			out.write(false+"");
 			out.flush();
 			out.close();
-			return;
 		}
-		else
-		{	
+		else{	
+				
 			for ( int i = 0 ;  i< checks.length ;i++ ){
-				out.write( userBiz.deleteUserInfo(checks[i]) );
+				userBiz.deleteUserInfo(checks[i]);
 			}
-			
+			System.out.println("된당");
+			out.write(true+"");
+			out.flush();
+			out.close();
 		}
 		
-		out.flush();
-		out.close();
+		
 		
 	}
 

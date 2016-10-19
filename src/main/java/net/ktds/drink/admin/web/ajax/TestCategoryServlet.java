@@ -10,16 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.ktds.category.biz.CategoryBiz;
-import net.ktds.category.biz.CategoryBizImpl;
-import net.ktds.category.vo.CategoryVO;
+import net.ktds.drink.category.biz.CategoryBiz;
+import net.ktds.drink.category.biz.CategoryBizImpl;
+import net.ktds.drink.category.vo.CategoryVO;
 
-public class ViewCategoryServlet extends HttpServlet {
+public class TestCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private List<CategoryVO> categories;
-    private CategoryBiz biz = new CategoryBizImpl();
-    public ViewCategoryServlet() {
+	private List<CategoryVO> categories;;
+	private CategoryBiz biz;
+	public TestCategoryServlet() {
     	super();
+    	biz = new CategoryBizImpl();
     	categories = new ArrayList<CategoryVO>();
     }
 
@@ -28,8 +29,8 @@ public class ViewCategoryServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		categories = biz.getAllCategory(); 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/administer/categoryInfo.jsp");
+		categories = biz.setCategoryLevel();
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/administer/test.jsp");
 		request.setAttribute("categories", categories);
 		rd.forward(request, response);
 	}
