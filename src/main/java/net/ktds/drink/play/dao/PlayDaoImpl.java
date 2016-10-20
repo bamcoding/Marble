@@ -94,8 +94,8 @@ public class PlayDaoImpl extends DaoSupport implements PlayDao{
 					
 					play.setGames(new GamesVO());
 					play.getGames().setGameId(rs.getString("GM_ID"));
-					play.getGames().setGameName(rs.getString("GM_INFO"));
-					play.getGames().setGameInfo(rs.getString(""));
+					play.getGames().setGameName(rs.getString("GM_NM"));
+					play.getGames().setGameInfo(rs.getString("GM_INFO"));
 					play.getGames().setCategoryId(rs.getString("CTGR_ID"));
 					play.getGames().setTypeId(rs.getString("TYP_ID"));
 					

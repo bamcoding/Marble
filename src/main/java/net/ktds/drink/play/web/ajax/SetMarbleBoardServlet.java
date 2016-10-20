@@ -52,25 +52,30 @@ public class SetMarbleBoardServlet extends HttpServlet {
 		}
 		
 		List<PlayVO> plays = (List<PlayVO>) session.getAttribute(Session.GAME_SETTING);
-		
+		UserVO user = (UserVO) session.getAttribute(Session.USER_INFO);
 		
 		
 		Random rnd = new Random();
 
 		PlayVO play = null;
 		List<GamesVO> allGames = null;
+		GamesVO game = null;
 		if(plays == null) {
 			plays = new ArrayList<PlayVO>();
 			allGames = gamesBiz.allGetGames();
 			int gamesSize = allGames.size();
 			for(int i=0; i<Games.CELL_SIZE; i++){
 				play = new PlayVO();
-				play.setGames(allGames.get(rnd.nextInt(gamesSize)));
+				game = allGames.get(rnd.nextInt(gamesSize));
+				play.setGames(game);
+				play.setGameId(game.getGameId());
+				if(user!=null){
+					play.setUserId(user.getUserId());
+				}
 				plays.add(play);
 			}
 		}
 		
-		UserVO user = (UserVO) session.getAttribute(Session.USER_INFO);
 		if(user != null){
 			playBiz.registerHistory(plays);			
 		}
