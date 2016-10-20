@@ -595,4 +595,24 @@
     <servlet-name>DoUpdateCustomServlet</servlet-name>
     <url-pattern>/admin/doUpdateCustom</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoArticleInfoDeleteServlet</display-name>
+    <servlet-name>DoArticleInfoDeleteServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.DoArticleInfoDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoArticleInfoDeleteServlet</servlet-name>
+    <url-pattern>/doArticleInfoDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GoToListServlet</display-name>
+    <servlet-name>GoToListServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.web.GoToListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoToListServlet</servlet-name>
+    <url-pattern>/goToList</url-pattern>
+  </servlet-mapping>
 </web-app>

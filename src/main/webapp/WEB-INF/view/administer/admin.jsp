@@ -52,8 +52,8 @@
 			  <li class="member">
 			  		<a href="javascript:void(0);"  class="articleBtn">게시판관리</a>
 			  		<div class="member-content">
-			  			<a href="/Marble/admin/articleInfo"  id="article-info">게시판 정보</a>
-			  			<a href="">글 삭제</a>
+			  			<a href="/Marble/admin/articleInfo?categoryId=12"  id="article-info">커뮤니티</a>
+			  			<a href="/Marble/admin/articleInfo?categoryId=13">문의사항</a>
 			  		</div>
 	  		 </li>
 			  <li class="member">
