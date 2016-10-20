@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/Marble/css/layout.css" />
 <link rel="stylesheet" type="text/css" href="/Marble/css/grid.css" />
-<script type="text/javascript" src="/Board/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <jsp:include page="/WEB-INF/view/common/header.jsp" />
 <script type="text/javascript">
 $(document).ready(function() {
