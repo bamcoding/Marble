@@ -31,6 +31,9 @@ $(document).ready(function() {
 
 		}
 	});
+	$("#listBtn").click(function() {
+		location.href = "/Marble/goToList?categoryId=${categoryId}";
+	});
 
 });
 </script>
@@ -56,12 +59,12 @@ $(document).ready(function() {
 <div id="boardFooter">
 	<a href="javascript:void(0);" id="recommendBtn">추천</a>
 
-	<c:if test="${sessionScope._USER_INFO_.userId eq board.userId }">
+	<c:if test="${sessionScope._USER_INFO_.userId eq board.userId || sessionScope._USER_INFO_.userEmail eq 'admin' }">
 		<a href="javascript:void(0);"  id="deleteBtn">삭제</a>
 		<a href="/Marble/board/modify?boardId=${board.boardId}&categoryId=${categoryId}">수정</a>
+    	<a href="javascript:void(0);"  id="listBtn">목록보기</a>
 	</c:if>
 
-	<a href="/Marble/board/list?categoryId=${categoryId}">목록보기</a>
 </div>
 </body>
 </html>

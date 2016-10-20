@@ -256,6 +256,7 @@ public class BoardDaoImpl extends DaoSupport implements BoardDao{
 				query.append(" FROM		BOARD B ");
 				query.append(" 			, USR U ");
 				query.append(" WHERE	B.USR_ID = U.USR_ID ");
+				query.append(" AND		CTGR_ID=? ");
 				
 				if (searchBoard.getSearchType() ==1) {
 					query.append(" AND	( B.BRD_SBJ LIKE '%' || ? || '%' ");
@@ -273,18 +274,19 @@ public class BoardDaoImpl extends DaoSupport implements BoardDao{
 
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				
+				pstmt.setString(1, searchBoard.getCategoryId());
 				if (searchBoard.getSearchType() == 1) {
-					pstmt.setString(1, searchBoard.getSearchKeyword());
 					pstmt.setString(2, searchBoard.getSearchKeyword());
+					pstmt.setString(3, searchBoard.getSearchKeyword());
 				}
 				else if (searchBoard.getSearchType() == 2) {
-					pstmt.setString(1, searchBoard.getSearchKeyword());
+					pstmt.setString(2, searchBoard.getSearchKeyword());
 				}
 				else if (searchBoard.getSearchType() == 3) {
-					pstmt.setString(1, searchBoard.getSearchKeyword());
+					pstmt.setString(2, searchBoard.getSearchKeyword());
 				}
 				else if (searchBoard.getSearchType() == 4) {
-					pstmt.setString(1, searchBoard.getSearchKeyword());
+					pstmt.setString(2, searchBoard.getSearchKeyword());
 				}
 				
 				return pstmt;
@@ -306,7 +308,8 @@ public class BoardDaoImpl extends DaoSupport implements BoardDao{
 			@Override
 			public PreparedStatement query(Connection conn) throws SQLException {
 				StringBuffer query = new StringBuffer();
-				query.append(" DELETE	FROM	BOARD ");
+				query.append(" DELETE ");
+				query.append(" FROM BOARD ");				
 				query.append(" WHERE			BRD_ID = ? ");
 				
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
