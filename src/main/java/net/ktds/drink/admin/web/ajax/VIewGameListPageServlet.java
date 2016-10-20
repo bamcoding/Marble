@@ -62,7 +62,7 @@ public class VIewGameListPageServlet extends HttpServlet {
 		
         if ( pageNo == -1 ) { 
         	searchGame = (SearchGamesVO)
-                    session.getAttribute(Session.SEARCH_INFO);
+                    session.getAttribute(Session.SEARCH_GAME_INFO);
             if ( searchGame == null ) {
             	searchGame = new SearchGamesVO();
             	searchGame.setPageNumber(0);
