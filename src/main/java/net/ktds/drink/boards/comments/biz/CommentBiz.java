@@ -10,6 +10,8 @@ public interface CommentBiz {
 	
 	public List<CommentVO> getCommentsOf(String boardId);
 	
+	public CommentVO getCommentForModify(String commentId);
+	
 	public boolean modifyComment(CommentVO comment);
 	
 	public boolean removeComment(String commentId);

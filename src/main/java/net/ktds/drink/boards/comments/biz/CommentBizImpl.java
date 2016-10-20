@@ -26,7 +26,19 @@ public class CommentBizImpl extends DaoSupport implements CommentBiz{
 	}
 
 	@Override
+	public CommentVO getCommentForModify(String commentId) {
+		return commentDao.selectComment(commentId);
+	}
+	
+	@Override
 	public boolean modifyComment(CommentVO comment) {
+		CommentVO originalComment = commentDao.selectComment(comment.getCommentId());
+		
+		if (originalComment.getCommentContent().equals(comment.getCommentContent())){
+			comment.setCommentContent(null);
+			return true;
+		}
+		
 		return commentDao.updateComment(comment) > 0;
 	}
 

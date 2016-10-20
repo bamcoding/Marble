@@ -31,15 +31,9 @@ $(document).ready(function() {
 
 		}
 	});
-	// zzu
-	$("#writeCmtBtn").click(function(){
-		$.post("/Marble/board/doWriteCmt" , $("#writeCmtForm").serialize() , function(data){
-			$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
-		});
-		$("#commentContent").val("");
-	});
-	$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
 	
+	// zzu
+	$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
 	
 });	
 </script>
@@ -73,20 +67,6 @@ $(document).ready(function() {
 	<a href="/Marble/board/list?categoryId=${categoryId}">목록보기</a>
 </div>
 
-<!-- zzu -->
-<div id="comment" style="border:1px solid black; height:100px;">
-	<form id="writeCmtForm" name="writeCmtForm">
-	<div>
-		<div>
-			<textarea id="commentContent" name="commentContent"></textarea>
-			<input type="hidden" name="boardId" value="${board.boardId}" />
-		</div>
-		<div>
-			<input type="button" id="writeCmtBtn" value="등록" />
-		</div>
-	</div>
-	</form>
-</div>
 <div id="commentList" style="border:1px solid black; height:500px;"></div>
 </body>
 </html>

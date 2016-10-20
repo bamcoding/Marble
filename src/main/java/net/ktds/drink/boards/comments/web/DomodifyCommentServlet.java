@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.ktds.drink.boards.comments.biz.CommentBiz;
 import net.ktds.drink.boards.comments.biz.CommentBizImpl;
 import net.ktds.drink.boards.comments.vo.CommentVO;
+import net.ktds.drink.support.MultipartHttpServletRequest;
 import net.ktds.drink.support.Param;
 
 public class DomodifyCommentServlet extends HttpServlet {
@@ -30,8 +31,17 @@ public class DomodifyCommentServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		String commentId = Param.getStringParam(request, "commentId");
+		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
 		
+		String commentId = multipartRequest.getParameter("commentId");
+		String commentContent = multipartRequest.getParameter("commentContent");
+		
+		commentContent = commentContent.replaceAll("\n", "<br/>") .replaceAll("\r", "");
+	
+		CommentVO comment = new CommentVO();
+		comment.setCommentId(commentId);
+		comment.setCommentContent(commentContent);
+			
 	}
 
 }

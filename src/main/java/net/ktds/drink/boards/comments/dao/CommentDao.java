@@ -10,6 +10,8 @@ public interface CommentDao {
 	
 	public List<CommentVO> selectComments(String boardId);
 	
+	public CommentVO selectComment(String commentId);
+	
 	public int updateComment(CommentVO comment);
 	
 	public int deleteComment(String commentId);

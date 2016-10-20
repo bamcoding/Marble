@@ -92,6 +92,44 @@ public class CommentDaoImpl extends DaoSupport implements CommentDao{
 	}
 
 	@Override
+	public CommentVO selectComment(String commentId) {
+		return (CommentVO) selectOne(new QueryAndResult(){
+
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	C.CMMNT_ID ");
+				query.append(" 			, C.CMMNT_CONT ");
+				query.append(" 			, U.USR_NICK_NM ");
+				query.append(" FROM		COMMENTS C ");
+				query.append(" 			, USR U ");
+				query.append(" WHERE	C.USR_ID = U.USR_ID ");
+				query.append(" AND		CMMNT_ID = ? ");
+
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, commentId);
+				return pstmt;
+			}
+
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				CommentVO comment = null;
+				
+				if(rs.next()) {
+					comment = new CommentVO();
+					comment.setCommentId(rs.getString("commentId"));
+					comment.setCommentContent(rs.getString("commentContent"));
+					
+					comment.setUserVO(new UserVO());
+					comment.getUserVO().setUserNickname(rs.getString("USR_NICK_NM"));
+				}
+				return comment;
+			}
+			
+		});
+	}
+	
+	@Override
 	public int updateComment(CommentVO comment) {
 		return insert(new Query(){
 
