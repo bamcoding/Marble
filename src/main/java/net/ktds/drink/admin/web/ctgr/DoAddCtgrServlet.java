@@ -35,7 +35,6 @@ public class DoAddCtgrServlet extends HttpServlet {
 		if(!isExist){
 			isTrue = biz.addCategory(name, parentName);
 		}
-		System.out.println("추가 : "+isTrue);
 		PrintWriter out = response.getWriter();
 		out.write(isTrue+"");
 		out.flush();
