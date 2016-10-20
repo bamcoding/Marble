@@ -1,7 +1,6 @@
 package net.ktds.drink.admin.web.ajax;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -18,7 +17,6 @@ import net.ktds.drink.games.biz.GamesBiz;
 import net.ktds.drink.games.biz.GamesBizImpl;
 import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.games.vo.GamesListVO;
-import net.ktds.drink.games.vo.GamesVO;
 import net.ktds.drink.games.vo.SearchGamesVO;
 import net.ktds.drink.support.Param;
 import net.ktds.drink.support.pager.ClassicPageExplorer;
