@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/Marble/css/layout.css" />
 <link rel="stylesheet" type="text/css" href="/Marble/css/grid.css" />
-<script type="text/javascript" src="/Board/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <jsp:include page="/WEB-INF/view/common/header.jsp" />
 <script type="text/javascript">
 $(document).ready(function() {
@@ -35,7 +35,16 @@ $(document).ready(function() {
 		location.href = "/Marble/goToList?categoryId=${categoryId}";
 	});
 
-});
+	$("#writeCmtBtn").click(function(){
+		$.post("/Marble/board/doWriteCmt" , $("#writeCmtForm").serialize() , function(data){
+			$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
+		});
+		$("#commentContent").val("");
+	});
+	$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
+	
+	
+});	
 </script>
 <div id="article">
 	<div id="articleHeader">
@@ -66,5 +75,21 @@ $(document).ready(function() {
 	</c:if>
 
 </div>
+
+<!-- zzu -->
+<div id="comment" style="border:1px solid black; height:100px;">
+	<form id="writeCmtForm" name="writeCmtForm">
+	<div>
+		<div>
+			<textarea id="commentContent" name="commentContent"></textarea>
+			<input type="hidden" name="boardId" value="${board.boardId}" />
+		</div>
+		<div>
+			<input type="button" id="writeCmtBtn" value="등록" />
+		</div>
+	</div>
+	</form>
+</div>
+<div id="commentList" style="border:1px solid black; height:500px;"></div>
 </body>
 </html>
