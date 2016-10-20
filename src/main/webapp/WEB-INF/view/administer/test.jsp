@@ -60,13 +60,15 @@
 		var clickedText =null;
 		$("#ctgr_content li a").click(function(){
 			//인덱스는 기대할 수 없음.
-			clickedText = $(this).text();
+			clickedText = $(this).parents().attr("id");
+			$("#categoryId").val(clickedText);
 			$("#selected_info").val($(this).text());
 			
 			console.log("click한 데이터 : "+clickedText);			
  			console.log("form으로 전달할 데이터 : "+$("#selected_info").val());
 			//선택된 태그에 클래스를 표시한다. 			
 			if (!$(this).hasClass("selected")){				
+				$("#ctgr_content a").removeClass("selected");
 				$(this).addClass("selected");
 			}	
 			else {
@@ -81,12 +83,13 @@
 						,function(data){
 							if(data=="true"){
 								alert("카테고리를 추가하였습니다.");
-								$("li a .selected").append("<ul><li>List item 2</li></ul>");
+								var categoryId = $("#categoryId").val();
+								$("#"+categoryId).after("<ul><li><a href='#'>"+$("#ctgr_input").val()+"</a></li></ul>");
 							}
 							else{
 								alert("중복되는 이름은 사용할 수 없습니다.");
 							}
-				})
+				});
 			}else{
 				alert("카테고리 이름을 입력해주세요.");				
 			}
@@ -98,14 +101,17 @@
 				$.post( "/Marble/admin/doModifyCtgr"
 						,$("#categoryForm").serialize()
 						,function(data){
+							alert(data);
 							if(data=="true"){
+								alert(data);
+								
 								$("a .selected").text($("ctgr_input").val());
 								console.log($("a .selected").text($("ctgr_input").val()));
 							}
 							else{
 								alert("중복되는 이름은 사용할 수 없습니다.");
 							}
-						})
+						});
 			}
 			else if($("#selected_info").val()==""){
 				alert("수정할 파일을 선택해주세요.");
@@ -114,6 +120,7 @@
 				alert("수정할 이름을 입력해주세요.");				
 			}
 		});
+		
 		$("#ctgr_title #deleteBtn").click(function(){
 			if($("#selected_info").val() != ""){
 				$.post( "/Marble/admin/doDeleteCtgr"
@@ -121,12 +128,13 @@
 						,function(data){
 							if(data=="true"){
 								alert("삭제하였습니다.");
-								$("li .selected").remove;
+								var categoryId = $("#categoryId").val();
+								$("#"+categoryId).remove();
 							}
 							else{
 								alert("하위 파일이 있으면 삭제할 수 없습니다.");
 							}
-				})
+				});
 			}else{
 				alert("삭제할 파일을 선택해주세요.");				
 			}
@@ -142,12 +150,18 @@
 		<div class="left">카테고리 미리보기</div>
 		<div class="right">
 			<input type="text" id="ctgr_input" name="ctgr_input">
-			<input type="submit" id="addBtn" value="추가"/>
-			<input type="submit" id="modifyBtn" value="수정"/>
-			<input type="submit" id="deleteBtn" value="삭제"/>
+			<input type="button" id="addBtn" value="추가"/>
+			<input type="button" id="modifyBtn" value="수정"/>
+			<input type="button" id="deleteBtn" value="삭제"/>
 		</div>
 		<div class="clear"></div>
 	</div>
+	
+	</div>
+	<input type="hidden" id="selected_info" name="selected_info">
+	<input type="hideen" id="categoryId" name="categoryId">
+	</div>
+	</form>
 	<!-- 이전 레벨과 현재 레벨이 다를 경우 ul -->
 	<div id="ctgr_content" >
 	<ul>
@@ -160,7 +174,7 @@
 			<c:choose>
 				<c:when test="${pr lt nr }">
 					<ul>
-					<li><a href="#">${category.categoryName}</a>(${pr},${nr})</li>
+					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</li>
 					<c:set var="pr" value="${nr}"/>
 				</c:when>
 				<c:when test="${pr gt nr }">
@@ -168,20 +182,18 @@
 					<c:forEach begin="1" end="${pr-nr }" step="1">
 						</ul>
 					</c:forEach>
-					<li><a href="#">${category.categoryName}</a>(${pr},${nr})</li>
+					
+					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</li>
 					<c:set var="pr" value="${nr}"/>
 				</c:when>
 				
 				<c:otherwise>
-					<li><a href="#">${category.categoryName}</a>(${pr},${nr})</li>
+					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 	</ul>
 	
-	</div>
-	<input type="text" id="selected_info" name="selected_info">
-	</div>
-	</form>
+	
 </body>
 </html>
