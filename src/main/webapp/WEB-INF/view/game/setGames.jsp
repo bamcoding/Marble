@@ -86,7 +86,7 @@ $(document).ready(function () {
 	$("#setBtn").click(function() {
 		
 		if(gameCnt < 19){
-			var txt = "게임을 23개 선택하셔야합니다.";
+			var txt = "게임을 19개 선택하셔야합니다.";
 			showWarning(txt);
 			return;
 		}
@@ -106,10 +106,25 @@ $(document).ready(function () {
 			showWarning(data);
 		});
 		
-		
-			
 	});
-
+	
+	if("${sessionScope._GAME_SETTING_ }" != ""){
+		$.post("/Marble/getGameSetting", function(data){
+			var plays = data.split(",");
+			$("#games_list ul li").each(function(){
+				var gameId = $(this).attr("id");
+				for(i=0; i<plays.length; i++){
+					if(gameId == plays[i]){
+						var num = $(this).find(".gameCnt").text();
+						$(this).find(".gameCnt").text(parseInt(num)+1);
+						$(this).addClass("selected");
+					}
+				}
+				
+			});
+		});
+	}
+	
 });
 
 
