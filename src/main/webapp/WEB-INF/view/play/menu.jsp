@@ -3,6 +3,8 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("#settings").load("/Marble/myInfo");
+		
 		$("#menu ul li").click(function(){
 			var index = $(this).index();
 			console.log("메뉴목록 인덱스 : "+index);
@@ -17,6 +19,8 @@
 			}
 		});
 	});
+	
+	
 </script>
 
 
@@ -33,13 +37,6 @@
 
 	</div>
 	<div class="settings" id="settings">
-		<p>asdfasdf</p>
-		<i class="material-icons">accessible</i> fdfd<br /> fdfd<br /> fdfd<br />
-		fdfd<br /> fdfd<br /> v <i class="material-icons">accessible</i> fdfd<br />
-		fdfd<br /> fdfd<br /> fdfd<br /> fdfd<br /> fdfd<br /> v <i
-			class="material-icons">accessible</i> fdfd<br /> fdfd<br /> fdfd<br />
-		fdfd<br /> fdfd<br /> v v fdfd<br /> fdfd<br /> fdfd<br /> fdfd<br />
-		v fdfd<br /> v fdfd<br /> v fdfd<br /> vfdfd<br />
 
 	</div>
 

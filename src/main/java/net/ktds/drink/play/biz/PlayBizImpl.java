@@ -24,9 +24,15 @@ public class PlayBizImpl implements PlayBiz{
 	@Override
 	public boolean registerHistory(List<PlayVO> plays) {
 		int result = 0;
-		result += playDao.addHistory(plays.get(0).getUserId());
+		String userId = plays.get(0).getUserId();
+		
+		result += playDao.addHistory(userId);
+		
+		String playInfo = playDao.getLatestHistory(userId);
+		
 		int playsSize = plays.size();
 		for(int i=0; i<playsSize; i++){
+			plays.get(i).setPlayInfoId(playInfo);
 			result += playDao.addPlays(plays.get(i));
 		}
 		return result == Games.CELL_SIZE+1;
@@ -34,15 +40,19 @@ public class PlayBizImpl implements PlayBiz{
 
 	@Override
 	public boolean setLatestPlays(HttpServletRequest request) {
-		List<HistoryVO> history = getHistory(request);
-		if(history.size() == 0){
+		
+		HttpSession session = request.getSession();
+		UserVO user = (UserVO) session.getAttribute(Session.USER_INFO);
+		if(user == null){
 			return false;
 		}
 		
-		HistoryVO latest = history.get(0);
-		List<PlayVO> plays = getPlaysByPlayInfo(latest.getPlayInfo());
+		String playInfo = playDao.getLatestHistory(user.getUserId());
+		if(playInfo == null){
+			return false;
+		}		
+		List<PlayVO> plays = getPlaysByPlayInfo(playInfo);
 		
-		HttpSession session = request.getSession();
 		if(session.getAttribute(Session.GAME_SETTING) != null){
 			session.removeAttribute(Session.GAME_SETTING);
 		}

@@ -2,8 +2,7 @@
     pageEncoding="EUC-KR"%>
     <script type="text/javascript">
     	$(document).ready(function() {
-    		alert("fdd");
     	});
     </script>
-<span>fdsa</span>
 
+<div>³» Á¤º¸~</div>
