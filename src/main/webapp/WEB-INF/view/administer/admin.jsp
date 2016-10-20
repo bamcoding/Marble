@@ -50,6 +50,8 @@
 			  		<div class="member-content">
 			  			<a href="/Marble/admin/articleInfo"  id="article-info" class="underBtn">게시판 정보</a>
 			  			<a href="" class="underBtn">글 삭제</a>
+			  			<a href="/Marble/admin/articleInfo?categoryId=12"  id="article-info">커뮤니티</a>
+			  			<a href="/Marble/admin/articleInfo?categoryId=13">문의사항</a>
 			  		</div>
 	  		 </li>
 			  <li class="member">
@@ -74,6 +76,3 @@
 
 </body>
 </html>
-
-
-
