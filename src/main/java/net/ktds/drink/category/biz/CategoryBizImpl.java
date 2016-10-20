@@ -54,4 +54,32 @@ public class CategoryBizImpl implements CategoryBiz {
 		}
 		return arrayList;
 	}
+
+	@Override
+	public boolean addCategory(String name, String parentName) {
+		if(parentName == null || parentName.length()==0 || parentName.equals("전체보기")){
+			parentName="ROOT";
+		}
+		return dao.addCategory(name, parentName) > 0;
+	}
+
+	@Override
+	public boolean modifyCategory(String input, String selectedName) {
+		return dao.modifyCategory(input, selectedName) > 0;
+	}
+
+	@Override
+	public boolean deleteCategory(String selectedName) {
+		return dao.deleteCategory(selectedName) > 0;
+	}
+
+	@Override
+	public boolean checkExistName(String input) {
+		return dao.countName(input) > 0;
+	}
+	
+	public boolean checkExistChild(String input){
+		return dao.countChild(input) > 0;
+	}
+	
 }
