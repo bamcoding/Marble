@@ -36,18 +36,9 @@ public class ConfirmPlaysServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String playInfo = Param.getStringParam(request, "playInfo");
-		
-		if(playInfo != null){
+		if(playInfo != null && playInfo != ""){
+			System.out.println(playInfo);
 			HttpSession session = request.getSession();
-			
-			UserVO user = (UserVO) session.getAttribute(Session.USER_INFO);
-			String userId = null;
-			if(user != null){
-				userId = user.getUserId();
-			}else{
-				userId = "anonymous";
-			}
-			
 			
 			List<PlayVO> plays = playBiz.getPlaysByPlayInfo(playInfo);
 			
