@@ -18,7 +18,7 @@
 <jsp:include page="/WEB-INF/view/common/header.jsp" />
 <script type="text/javascript">
 	$().ready(function() {
-		$("#searchType").change(function() {
+		$("#searchType").change(function() { 
 		//	alert($(this).val());
 
 
@@ -49,7 +49,6 @@
 			<c:set var="number" value="${fn:split(board.boardId, '-')[2] }" />
 			<fmt:parseNumber var="number" type="number" value="${number }" />
 			<td>${number }</td>
-			<td><a href="/Marble/board/detail?boardId=${board.boardId }&categoryId=${categoryId}">${board.boardSubject }</a></td>
 			<td><a href="/Marble/board/detail?boardId=${board.boardId}&categoryId=${categoryId}">${board.boardSubject }</a></td>
 			<td>${board.userVO.userNickname }</td>
 			<td>${board.createdDate }</td>
