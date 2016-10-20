@@ -13,12 +13,16 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
+		$( "#gameList" ).load( "/Marble/admin/gameCategory" );
+		
 		$("#nav ul li").click(function(){
 			var index = $(this).index();
 			if( index == 1){
 				$("#member-info").mousedown(function(){
 					$("#playList").addClass("display-block")
 					$("#playList").removeClass("display-none")
+					
+					
 					//$("#playList").load("/Marble/admin/userInfo");
 					
 				});
@@ -60,15 +64,25 @@
 			  <li class="member">
 			  	<a href="">게임관리</a>
 			  		<div class="member-content">
-			  			<a href="/Marble/admin/gameList" id="member-info">게임목록</a>
+			  			<a href="/Marble/admin/gameList">게임전체</a>
+			  			<div id= "gameList">
+			  			</div>
 			  			<a href="/Marble/admin/customList" >사용자 게임</a>
+			  		
 			  		</div>
+			  			
 			  </li>
 			  <li class="member">
 			  	<a href="javascript:void(0);"  class="categoryBtn">카테고리관리</a>
 			  		<div class="member-content">
 			  			<a href="javascript:void(0);" id="category-info">카테고리 목록</a>
 			  			<a href="">카테고리 삭제</a>
+			  		</div>
+			  </li>
+			  <li class="member">
+			  	<a href="javascript:void(0);"  class="categoryBtn">게임타입 관리</a>
+			  		<div class="member-content">
+			  			<a href="javascript:void(0);" id="category-info">게임타입</a>
 			  		</div>
 			  </li>
 			  <div style="float:right">
@@ -78,6 +92,7 @@
 		</div>
 		<div class="clear" style="width:100%; height:300px; background-color: lightblue;"></div>
 		<div class="printList" id="playList"></div>
+
 	</div>
 
 </body>

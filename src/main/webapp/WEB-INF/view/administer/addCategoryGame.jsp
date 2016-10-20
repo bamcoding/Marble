@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-
 <html>
 <head>
 <jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
@@ -30,7 +29,7 @@
 		
 		
 		$("#goBackBtn").click(function() {
-			location.href="/Marble/admin/gameDetail?gameId=${gamesVO.gameId}";
+			location.href="/Marble/admin/gameMenuList?categoryId=${categoryId}";
 		});
 		
 		$("#writeBtn").click(function (){	
@@ -54,18 +53,12 @@
 						{"gameName": $("#gameName").val()},
 						function(data){
 							if(data == "false") {
-								$.post( "/Marble/admin/doUpdateGame", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
-								alert("게임이 수정되었습니다.");
-							 	location.href="/Marble/admin/gameList"; 
-							}
-							else if( $("#gameName").val() == "${gamesVO.gameName}" ) {
-								$.post( "/Marble/admin/doUpdateGame", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
-								alert("게임이 수정되었습니다.");
-								location.href="/Marble/admin/gameList";
+								$.post( "/Marble/admin/doAddCategoryGame?categoryId=${categoryId}", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
+								alert("게임이 등록되었습니다.");
+							 	location.href="/Marble/admin/gameMenuList?categoryId=${categoryId}"; 
 							}
 							else {
 								alert("게임 이름이 중복됩니다.");
-									
 							}
 				
 			});	
@@ -78,22 +71,22 @@
 </head>
 <body>
 	<div class="gameList">
+	
 		<form id="writeForm" name="writeForm">
-		<input type="hidden" name="gameId" value="${gamesVO.gameId }"/>
 			<div>
 				<select class="categoryId" id="categoryId" name="categoryId" >
-				<option selected="selected" value="${gamesVO.categoryId}">${gamesVO.categoryVO.categoryName}</option>
+				<option selected="selected">카테고리를 선택해주세요</option>
 				<c:forEach items="${categories}" var="category">
 				<option value="${category.categoryId}">${category.categoryName}</option>
 				</c:forEach>
 				</select>
 			</div>
 			<div>
-				<input type="text" id="gameName" name="gameName" placeholder="게임 제목을 입력하세요." value="${gamesVO.gameName}" />
+				<input type="text" id="gameName" name="gameName" placeholder="게임 이름을 입력하세요." />
 			</div>
 			
 			<div>
-				<textarea id="gameInfo" name="gameInfo" placeholder="게임 설명을 입력하세요."  value="">${gamesVO.gameInfo}</textarea>
+				<textarea id="gameInfo" name="gameInfo" placeholder="게임 설명을 입력하세요."></textarea>
 			</div>
 			<div style="margin-top:5px;">
 				<div style="float: right;">
@@ -101,11 +94,12 @@
 						<input type="button" id="goBackBtn" value="뒤로가기" />
 					</div>
 					<div class="inline">
-						<input type="button" id="writeBtn" value="수정하기" />
+						<input type="button" id="writeBtn" value="글쓰기" />
 					</div>
 				</div>
 			</div>
 		</form>
+
 	</div>
 </body>
 </html>

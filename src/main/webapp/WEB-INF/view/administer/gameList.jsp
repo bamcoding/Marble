@@ -51,6 +51,7 @@
 	</div> --%>
 	
 	<div class="gameList">
+		
 	<div id="game" >
 	<form id="checkGame" name="checkGame">
 	<table class="grid">
@@ -74,13 +75,14 @@
 	</table>
 	
 	</form>
-	<div style="float: left;"><input type="submit" id="addBtn" value="게임추가"></div>
-	<div style="float: left;"><input type="submit" id="deleteBtn" value="선택삭제" onclick="movePage(0)"></div>
+	<div style="float: right;"><input type="submit" id="addBtn" value="게임추가"></div>
+	<div style="float: right;"><input type="submit" id="deleteBtn" value="선택삭제" onclick="movePage(0)"></div>
 	
 	<form id="searchForm" name="searchForm">
+	${paging}	
 			<div style="padding-top: 5px;">
-				<div class="right">
-			${paging}	
+			<div class="left">
+			
 						<select id="searchType" name="searchType">
 						//단항 조건문 
 							<option value="1" ${ searchGame.searchType eq 1 ? 'selected' : '' }>카테고리</option>
@@ -90,9 +92,10 @@
 				
 						</select>
 						<input type="text" id="searchKeyword" name="searchKeyword"  value="${searchGame.searchKeyword}"/>
-						<input type="button" id="searchBtn" value="검색" onclick="movePage(0)"/>
+						<input type="button" id="searchBtn" value="전체검색" onclick="movePage(0)"/>
 						<a href="/Marble/admin/searchInit">검색 초기화</a>
 				</div>
+			
 				<div class="clear"></div>
 			</div>
 	</form>

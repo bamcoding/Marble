@@ -30,7 +30,7 @@
 		
 		
 		$("#goBackBtn").click(function() {
-			location.href="/Marble/admin/gameDetail?gameId=${gamesVO.gameId}";
+			location.href="/Marble/admin/gameCategoryDetail?gameId=${gamesVO.gameId}";
 		});
 		
 		$("#writeBtn").click(function (){	
@@ -54,14 +54,14 @@
 						{"gameName": $("#gameName").val()},
 						function(data){
 							if(data == "false") {
-								$.post( "/Marble/admin/doUpdateGame", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
+								$.post( "/Marble/admin/doUpdateCategoryGame", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
 								alert("게임이 수정되었습니다.");
-							 	location.href="/Marble/admin/gameList"; 
+							 	location.href="/Marble/admin/gameMenuList?categoryId=${categoryId}"; 
 							}
 							else if( $("#gameName").val() == "${gamesVO.gameName}" ) {
-								$.post( "/Marble/admin/doUpdateGame", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
+								$.post( "/Marble/admin/doUpdateCategoryGame", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
 								alert("게임이 수정되었습니다.");
-								location.href="/Marble/admin/gameList";
+								location.href="/Marble/admin/gameMenuList?categoryId=${categoryId}";
 							}
 							else {
 								alert("게임 이름이 중복됩니다.");
