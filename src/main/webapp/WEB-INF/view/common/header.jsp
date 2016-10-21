@@ -10,6 +10,14 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 <link rel="stylesheet" type="text/css" href="/Marble/css/interface.css" />
 <link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/gamePan.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -73,6 +81,13 @@
 </script>
 </head>
 <body>
+
+			<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
 	<div class="nav" id="nav">
 		<ul>
 			<li><label>주루마블</label></li>
