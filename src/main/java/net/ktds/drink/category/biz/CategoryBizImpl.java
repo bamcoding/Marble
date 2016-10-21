@@ -34,12 +34,7 @@ public class CategoryBizImpl implements CategoryBiz {
 
 	public List<CategoryVO> setCategoryLevel() {
 		List<CategoryVO> categoryVOs = dao.getAllCategory();
-		
 		List<CategoryVO> hasLevel = setLevel("0", 0, categoryVOs, new ArrayList<CategoryVO>());
-		for(int i=0; i<hasLevel.size();i++){
-			System.out.printf("이름:%s, 레벨:%s\n",hasLevel.get(i).getCategoryName(),hasLevel.get(i).getLevel());
-		}
-		
 		return hasLevel;
 	}
 
@@ -60,8 +55,31 @@ public class CategoryBizImpl implements CategoryBiz {
 		return arrayList;
 	}
 
-	public static void main(String[] args) {
-		new CategoryBizImpl().setCategoryLevel();
+	@Override
+	public boolean addCategory(String name, String parentName) {
+		if(parentName == null || parentName.length()==0 || parentName.equals("전체보기")){
+			parentName="ROOT";
+		}
+		return dao.addCategory(name, parentName) > 0;
 	}
 
+	@Override
+	public boolean modifyCategory(String input, String selectedName) {
+		return dao.modifyCategory(input, selectedName) > 0;
+	}
+
+	@Override
+	public boolean deleteCategory(String selectedName) {
+		return dao.deleteCategory(selectedName) > 0;
+	}
+
+	@Override
+	public boolean checkExistName(String input) {
+		return dao.countName(input) > 0;
+	}
+	
+	public boolean checkExistChild(String input){
+		return dao.countChild(input) > 0;
+	}
+	
 }

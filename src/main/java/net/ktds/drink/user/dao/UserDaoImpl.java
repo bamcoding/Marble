@@ -155,7 +155,7 @@ public class UserDaoImpl extends DaoSupport implements UserDao {
 				query.append("			, POINTS ");
 				query.append("			, USR_EML ");
 				query.append("			, USR_NICK_NM ");
-				query.append("			, CRT_DT");
+				query.append("			, TO_CHAR(CRT_DT,'YYYY-MM-SS HH24:MI:SS') CRT_DT ");
 				query.append(" FROM		USR	");
 				
 				if(searchUserVO.getSearchType() == 1){

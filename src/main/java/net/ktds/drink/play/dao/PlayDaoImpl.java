@@ -69,8 +69,8 @@ public class PlayDaoImpl extends DaoSupport implements PlayDao{
 				query.append(" 			, G.GM_INFO ");
 				query.append(" 			, G.CTGR_ID ");
 				query.append(" 			, G.TYP_ID ");
-				query.append(" FROM		GAME_SET GS");
-				query.append(" 			GAME G");
+				query.append(" FROM		GAME_SET GS ");
+				query.append(" 			,GAME G ");
 				query.append(" WHERE	GS.GM_ID = G.GM_ID(+) ");
 				query.append(" AND		GS.PLY_INFO_ID = ? ");
 				
@@ -94,8 +94,8 @@ public class PlayDaoImpl extends DaoSupport implements PlayDao{
 					
 					play.setGames(new GamesVO());
 					play.getGames().setGameId(rs.getString("GM_ID"));
-					play.getGames().setGameName(rs.getString("GM_INFO"));
-					play.getGames().setGameInfo(rs.getString(""));
+					play.getGames().setGameName(rs.getString("GM_NM"));
+					play.getGames().setGameInfo(rs.getString("GM_INFO"));
 					play.getGames().setCategoryId(rs.getString("CTGR_ID"));
 					play.getGames().setTypeId(rs.getString("TYP_ID"));
 					
@@ -153,6 +153,37 @@ public class PlayDaoImpl extends DaoSupport implements PlayDao{
 				pstmt.setString(2, playVO.getUserId());
 				pstmt.setString(3, playVO.getGameId());
 				return pstmt;
+			}
+		});
+	}
+
+	@Override
+	public String getLatestHistory(String userId) {
+		return (String) selectOne(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	* ");
+				query.append(" FROM		( 	SELECT	PLY_INFO_ID ");
+				query.append(" 				FROM	PLAY_INFO ");
+				query.append(" 				WHERE	USR_ID = ? ");
+				query.append(" 				ORDER BY	PLY_TM	DESC ");
+				query.append(" 			) ");
+				query.append(" WHERE	ROWNUM = 1 ");
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, userId);
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				String playInfo = null;
+				if(rs.next()){
+					playInfo = rs.getString("PLY_INFO_ID");
+				}
+				return playInfo;
 			}
 		});
 	}

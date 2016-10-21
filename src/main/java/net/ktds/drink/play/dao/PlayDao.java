@@ -13,4 +13,6 @@ public interface PlayDao {
 	public int addHistory(String userId);
 	
 	public int addPlays(PlayVO playVO);
+	
+	public String getLatestHistory(String userId);
 }

@@ -516,6 +516,25 @@
     <servlet-name>DoPasswordResetServlet</servlet-name>
     <url-pattern>/admin/doPasswordReset</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>SessionAdminCheck</display-name>
+    <filter-name>SessionAdminCheck</filter-name>
+    <filter-class>net.ktds.drink.filter.SessionAdminCheck</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SessionAdminCheck</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminBoardSearchInitServlet</display-name>
+    <servlet-name>AdminBoardSearchInitServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.AdminBoardSearchInitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminBoardSearchInitServlet</servlet-name>
+    <url-pattern>/admin/list/init</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>DoSearchCustomInitServlet</display-name>
@@ -675,5 +694,95 @@
   <servlet-mapping>
     <servlet-name>DoUpdateCategoryGameServlet</servlet-name>
     <url-pattern>/admin/doUpdateCategoryGame</url-pattern>
+      </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoArticleInfoDeleteServlet</display-name>
+    <servlet-name>DoArticleInfoDeleteServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.DoArticleInfoDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoArticleInfoDeleteServlet</servlet-name>
+    <url-pattern>/doArticleInfoDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GoToListServlet</display-name>
+    <servlet-name>GoToListServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.web.GoToListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoToListServlet</servlet-name>
+    <url-pattern>/goToList</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>DoAddCtgrServlet</display-name>
+    <servlet-name>DoAddCtgrServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ctgr.DoAddCtgrServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoAddCtgrServlet</servlet-name>
+    <url-pattern>/admin/doAddCtgr</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteCtgrServlet</display-name>
+    <servlet-name>DoDeleteCtgrServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ctgr.DoDeleteCtgrServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteCtgrServlet</servlet-name>
+    <url-pattern>/admin/doDeleteCtgr</url-pattern>
+  </servlet-mapping>
+        <servlet>
+    <description></description>
+    <display-name>DoModifyCtgrServlet</display-name>
+    <servlet-name>DoModifyCtgrServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ctgr.DoModifyCtgrServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoModifyCtgrServlet</servlet-name>
+    <url-pattern>/admin/doModifyCtgr</url-pattern>
+  </servlet-mapping>
+    <servlet>
+  	<description></description>
+    <display-name>ViewListCommentServlet</display-name>
+    <servlet-name>ViewListCommentServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.comments.web.ViewListCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewListCommentServlet</servlet-name>
+    <url-pattern>/board/listCmt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoWriteCommentServlet</display-name>
+    <servlet-name>DoWriteCommentServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.comments.web.DoWriteCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoWriteCommentServlet</servlet-name>
+    <url-pattern>/board/doWriteCmt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DomodifyCommentServlet</display-name>
+    <servlet-name>DomodifyCommentServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.comments.web.DomodifyCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DomodifyCommentServlet</servlet-name>
+    <url-pattern>/board/doModifyCmt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteCommentServlet</display-name>
+    <servlet-name>DoDeleteCommentServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.comments.web.DoDeleteCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteCommentServlet</servlet-name>
+    <url-pattern>/board/doDeleteCmt</url-pattern>
   </servlet-mapping>
 </web-app>

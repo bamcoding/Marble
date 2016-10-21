@@ -44,17 +44,28 @@ public class DoSetGamesServlet extends HttpServlet {
 		String games = Param.getStringParam(request, "games");
 		String[] gamesArr = games.split(",");
 		
+		HttpSession session = request.getSession();
+		UserVO user = (UserVO) session.getAttribute(Session.USER_INFO);
+		String userId = null;
+		if(user != null){
+			userId = user.getUserId();
+		}else{
+			userId = "anonymous";
+		}
+		
+		
 		List<PlayVO> plays = new ArrayList<PlayVO>();
 		PlayVO play = null;
 		GamesVO game = null;
+		
 		for(int i=0; i<gamesArr.length; i++){
 			play = new PlayVO();
+			play.setUserId(userId);
 			game = gamesBiz.getGame(gamesArr[i]);
+			play.setGameId(game.getGameId());
 			play.setGames(game);
 			plays.add(play);
 		}
-		
-		HttpSession session = request.getSession();
 		
 		if(session.getAttribute(Session.GAME_SETTING) != null){
 			session.removeAttribute(Session.GAME_SETTING);
@@ -62,16 +73,11 @@ public class DoSetGamesServlet extends HttpServlet {
 		
 		session.setAttribute(Session.GAME_SETTING, plays);
 		
-		UserVO user = (UserVO)session.getAttribute(Session.USER_INFO);
-		if(user != null){
-			
-		}
-		
 		PrintWriter out = response.getWriter();
 		for(int i=0; i<plays.size(); i++){
 			out.write(plays.get(i).getGames().getGameName()+"\n\r");
 		}
-		out.write("°ÔÀÓÀÌ ¼ÂÆÃ µÇ¾ú½À´Ï´Ù.");
+		out.write("ì…‹íŒ…ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		out.flush();
 		out.close();
 		

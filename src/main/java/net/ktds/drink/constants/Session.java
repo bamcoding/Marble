@@ -13,8 +13,6 @@ public interface Session {
 	public static final String SEARCH_GAME_CATEGORY_INFO = "_SEARCH_GAME_CATEGORY_INFO_";
 
 	
-	public static final String ADMIN_INFO = "_ADMIN_INFO_";
-	
 	public static final String GAME_SETTING = "_GAME_SETTING_";
 
 }

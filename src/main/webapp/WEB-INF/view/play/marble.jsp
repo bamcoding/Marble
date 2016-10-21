@@ -117,7 +117,7 @@
 				});	
 			}else if(cellDiv.hasClass("island")){
 				$("#gameInfoBox").html("한번 쉬어가세요~");
-				$("#gameInfoBox").fadeIn(300).fadeOut(1000);
+				$("#gameInfoBox").show();
 			}else{
 				var str = "<h2>"+cellDiv.children(".gameName").text()+"</h2>";
 				str += "<div>" + cellDiv.children(".gameInfo").text()+"</div>";

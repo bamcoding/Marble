@@ -9,6 +9,7 @@ import java.util.List;
 
 import net.ktds.drink.category.vo.CategoryVO;
 import net.ktds.drink.support.DaoSupport;
+import net.ktds.drink.support.Query;
 import net.ktds.drink.support.QueryAndResult;
 
 public class CategoryDaoImpl extends DaoSupport implements CategoryDao {
@@ -53,10 +54,10 @@ public class CategoryDaoImpl extends DaoSupport implements CategoryDao {
 
 			public PreparedStatement query(Connection conn) throws SQLException {
 				StringBuffer query = new StringBuffer();
-				query.append(" SELECT	CTGR_ID ");
-				query.append(" 			, CTGR_NM ");
-				query.append(" 			, PRNT_CTGR_ID ");
-				query.append(" FROM		CTGR ");
+				query.append(" SELECT *			");
+				query.append(" FROM CTGR C 			");
+				query.append(" CONNECT BY PRIOR C.CTGR_ID = C.PRNT_CTGR_ID			");
+				query.append(" START WITH C.PRNT_CTGR_ID = 0 AND C.CTGR_NM != 'ROOT'			");
 
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				return pstmt;
@@ -74,6 +75,111 @@ public class CategoryDaoImpl extends DaoSupport implements CategoryDao {
 					categories.add(category);
 				}
 				return categories;
+			}
+		});
+	}
+
+	@Override
+	public int addCategory(String name, String parentName) {
+		return insert(new Query() {
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" INSERT INTO DRINK.CTGR (		");
+				query.append("    CTGR_ID, CTGR_NM, PRNT_CTGR_ID) 		");
+				query.append(" VALUES ( CTGR_ID_SEQ.NEXTVAL,			");
+				query.append("  ?, (SELECT 	CTGR_ID 			");
+				query.append("  	FROM	DRINK.CTGR 			");
+				query.append("  	WHERE	CTGR_NM = ?)			");
+				query.append("  )			");
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, name);
+				pstmt.setString(2, parentName);
+				return pstmt;
+			}
+		});
+	}
+
+	@Override
+	public int modifyCategory(String input, String selectedName) {
+		return insert(new Query() {
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" UPDATE	DRINK.CTGR 	");
+				query.append(" SET		CTGR_NM = ?	");
+				query.append(" WHERE	CTGR_NM = ?	");
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, input);
+				pstmt.setString(2, selectedName);
+				return pstmt;
+			}
+		});
+	}
+
+	@Override
+	public int deleteCategory(String selectedName) {
+		return insert(new Query() {
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" DELETE				");
+				query.append(" FROM		DRINK.CTGR 	");
+				query.append(" WHERE	CTGR_NM = ?	");
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, selectedName);
+				return pstmt;
+			}
+		});
+	}
+
+	@Override
+	public int countName(String input) {
+		return (int) selectOne(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	COUNT(1) CNT	");
+				query.append(" FROM		DRINK.CTGR 		");
+				query.append(" WHERE	CTGR_NM = ?		");
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, input);
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				int count=0;
+				if(rs.next()){
+					count = rs.getInt("CNT");
+				}
+				return count;
+			}
+		});
+	}
+
+	@Override
+	public int countChild(String input) {
+		// TODO Auto-generated method stub
+		return (int) selectOne(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	COUNT(1) CNT					");
+				query.append(" FROM	DRINK.CTGR C1, DRINK.CTGR C2 		");
+				query.append(" WHERE	C1.CTGR_ID = C2.PRNT_CTGR_ID	");
+				query.append(" AND     C1.CTGR_NM = ?					");
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, input);
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				int count=0;
+				if(rs.next()){
+					count = rs.getInt("CNT");
+				}
+				return count;
 			}
 		});
 	}

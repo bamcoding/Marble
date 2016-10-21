@@ -18,7 +18,8 @@
 			console.log("메뉴 인댁스 : "+index);
 			//게임 스타트
 			if (index == 1) {
-				$("#marbleBoard").load("/Marble/setMarbleBoard");
+				/* $("#marbleBoard").load("/Marble/setMarbleBoard"); */
+				$("#marbleBoard").load("../confirmPlays");
 			}
 			//메뉴 목록
 			if (index == 2) {

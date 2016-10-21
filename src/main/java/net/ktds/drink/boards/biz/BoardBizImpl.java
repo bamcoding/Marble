@@ -52,7 +52,7 @@ public class BoardBizImpl implements BoardBiz{
 
 	public BoardListVO getBoardListsOf(SearchBoardVO searchBoard) {
 		int totalCount = boardDao.getCountOfBoards(searchBoard);
-		Pager pager = PagerFactory.getPager(true, 10, 5);
+		Pager pager = PagerFactory.getPager(true);
 		pager.setTotalArticleCount(totalCount);
 		pager.setPageNumber(searchBoard.getPageNo());
 
@@ -78,10 +78,6 @@ public class BoardBizImpl implements BoardBiz{
 		return board.getFileName();
 	}
 
-	@Override
-	public BoardVO getBoardForModify(String boardId) {
-		return boardDao.selectBoard(boardId);
-	}
 
 	@Override
 	public boolean removeBoard(String boardId) {

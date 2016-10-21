@@ -1,22 +1,21 @@
-package net.ktds.drink.boards.web;
+package net.ktds.drink.admin.web.ajax;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import net.ktds.drink.boards.biz.BoardBiz;
 import net.ktds.drink.boards.biz.BoardBizImpl;
-import net.ktds.drink.constants.Session;
-import net.ktds.drink.support.Param;
 
-public class SearchInitiateServlet extends HttpServlet {
+public class DoArticleInfoDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardBiz boardBiz;
        
-    public SearchInitiateServlet() {
+    public DoArticleInfoDeleteServlet() {
         super();
         boardBiz = new BoardBizImpl();
     }
@@ -27,13 +26,22 @@ public class SearchInitiateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String categoryId = Param.getStringParam(request, "categoryId");
-		
-		HttpSession session = request.getSession();
-		session.removeAttribute(Session.SEARCH_INFO);
-		request.setAttribute("categoryId", categoryId);
-		
-		response.sendRedirect("/Marble/board/list?categoryId=" + categoryId);
+		String[] checks = request.getParameterValues("checks");
+		PrintWriter out = response.getWriter();
+		if( checks == null || checks.length == 0 || checks.equals("")){
+			out.write(false+"");
+			out.flush();
+			out.close();
+		}
+		else {
+			for( int i=0; i<checks.length; i++ ){
+				boardBiz.removeBoard(checks[i]);
+			}
+			
+			out.write(true+"");
+			out.flush();
+			out.close();
+		}
 	}
 
 }

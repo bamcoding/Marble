@@ -35,11 +35,9 @@ public class DoUserInfoDelete extends HttpServlet {
 			out.close();
 		}
 		else{	
-				
 			for ( int i = 0 ;  i< checks.length ;i++ ){
 				userBiz.deleteUserInfo(checks[i]);
 			}
-			System.out.println("된당");
 			out.write(true+"");
 			out.flush();
 			out.close();

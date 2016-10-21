@@ -20,6 +20,7 @@ import net.ktds.drink.games.vo.GamesVO;
 import net.ktds.drink.play.biz.PlayBiz;
 import net.ktds.drink.play.biz.PlayBizImpl;
 import net.ktds.drink.play.vo.PlayVO;
+import net.ktds.drink.support.Param;
 import net.ktds.drink.user.vo.UserVO;
 
 public class SetMarbleBoardServlet extends HttpServlet {
@@ -44,26 +45,38 @@ public class SetMarbleBoardServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession();
+
+		String randomPlays = Param.getStringParam(request, "random");
+		if(randomPlays.equals("true")){
+			session.removeAttribute(Session.GAME_SETTING);
+		}
+		
 		List<PlayVO> plays = (List<PlayVO>) session.getAttribute(Session.GAME_SETTING);
+		UserVO user = (UserVO) session.getAttribute(Session.USER_INFO);
+		
 		
 		Random rnd = new Random();
 
 		PlayVO play = null;
 		List<GamesVO> allGames = null;
+		GamesVO game = null;
 		if(plays == null) {
 			plays = new ArrayList<PlayVO>();
 			allGames = gamesBiz.allGetGames();
 			int gamesSize = allGames.size();
 			for(int i=0; i<Games.CELL_SIZE; i++){
 				play = new PlayVO();
-				play.setGames(allGames.get(rnd.nextInt(gamesSize)));
+				game = allGames.get(rnd.nextInt(gamesSize));
+				play.setGames(game);
+				play.setGameId(game.getGameId());
+				if(user!=null){
+					play.setUserId(user.getUserId());
+				}
 				plays.add(play);
 			}
 		}
 		
-		UserVO user = (UserVO) session.getAttribute(Session.USER_INFO);
 		if(user != null){
-			plays.get(0).setUserId(user.getUserId());
 			playBiz.registerHistory(plays);			
 		}
 		
