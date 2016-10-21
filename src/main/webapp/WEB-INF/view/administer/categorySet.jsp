@@ -4,11 +4,19 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<<<<<<< HEAD:src/main/webapp/WEB-INF/view/administer/categorySet.jsp
 <!-- 
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
  -->
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+=======
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+>>>>>>> b687009f7a36737c24c6ce1503f0801219f52f61:src/main/webapp/WEB-INF/view/administer/test.jsp
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -68,11 +76,14 @@
 .selected{
 	background : #cccccc;
 }
+<<<<<<< HEAD:src/main/webapp/WEB-INF/view/administer/categorySet.jsp
 
 #ctgr_content a{
 	font-weight:normal;
 	color:#428bca;
 }
+=======
+>>>>>>> b687009f7a36737c24c6ce1503f0801219f52f61:src/main/webapp/WEB-INF/view/administer/test.jsp
 </style>
 
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
@@ -236,6 +247,10 @@
 		</c:forEach>
 		</li>
 	</ul>
+<<<<<<< HEAD:src/main/webapp/WEB-INF/view/administer/categorySet.jsp
+=======
+	<script type="text/javascript" src="/Marble/js/blueGrid.js"></script>
+>>>>>>> b687009f7a36737c24c6ce1503f0801219f52f61:src/main/webapp/WEB-INF/view/administer/test.jsp
 	</div>
 </div>
 	

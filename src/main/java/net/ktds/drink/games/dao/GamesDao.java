@@ -11,6 +11,7 @@ import net.ktds.drink.user.vo.UserVO;
 public interface GamesDao {
 	
 	public List<GamesVO> getAllGames(SearchGamesVO searchGames);
+	public List<GamesVO> getCategoryGames(SearchGamesVO searchGames, String categoryId);
 	public List<CustomVO> getCustomGames(SearchGamesVO searchGames);
 	
 	public List<CategoryVO> getCategory(CategoryVO categoryVO);
@@ -34,6 +35,7 @@ public interface GamesDao {
 	public int deleteCustom(String gameId);
 	
 	public int getConutOfGames(SearchGamesVO searchGames);
+	public int getConutOfCategoryGames(SearchGamesVO searchGames, String categoryId);
 	public int getConutOfCustomGames(SearchGamesVO searchGames);
 
 	public List<GamesVO> getGoldenCards();

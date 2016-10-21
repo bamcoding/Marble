@@ -11,12 +11,13 @@
 	 				location.href="/Marble/play/index";
 	 			}
 	 			else{
-	 				alert(data);
-	 			}	
+	 				$(".small").html(data);
+	 			}
+	 			
 	 		});
 		}); 
 	 	
-	 	$("#cancleBtn").click(function(){
+	 	$(".cancleBtn").click(function(){
 	 		location.href="/Marble/play/index";		
 		}); 
 		
@@ -127,7 +128,7 @@
 <body>
 	<form id="registForm">
 		<div class="sign_head inline2">주루마블에 회원가입하기</div>
-		<div class="inline2 right"><input type="button" id="cancleBtn" value="X"/></div>
+		<div class="inline2 right"><input type="button" class="cancleBtn" value="X"/></div>
 		<div class="clear"></div>
 		<div id="signContent">
 		<div class="sign-title2">회원가입</div>
@@ -135,6 +136,7 @@
 		<div><input type="text" id="userNickname" name="userNickname" placeholder="닉네임을 적어주세요"/>  </div>
 		<div><input type="password" id="userPassword1" name="userPassword1" placeholder="Password를 적어주세요"/></div>
 		<div><input type="password" id="userPassword2" name="userPassword2" placeholder="Password를 한번더 적어주세요"/></div>
+		<div class="small"></div>
 		<div><input type="button" id="joinBtn" value="JOIN"/></div>
 		</div>
 		<div class="sign_footer">회원가입 페이지입니다.</div>

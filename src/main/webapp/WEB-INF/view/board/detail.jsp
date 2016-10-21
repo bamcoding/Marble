@@ -35,9 +35,21 @@ $(document).ready(function() {
 		location.href = "/Marble/goToList?categoryId=${categoryId}";
 	});
 
+<<<<<<< HEAD
 	// zzu
 	$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
 	
+=======
+	$("#writeCmtBtn").click(function(){
+		$.post("/Marble/board/doWriteCmt" , $("#writeCmtForm").serialize() , function(data){
+			$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
+		});
+		$("#commentContent").val("");
+	});
+	$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
+	
+	
+>>>>>>> b687009f7a36737c24c6ce1503f0801219f52f61
 });	
 </script>
 <div id="article">

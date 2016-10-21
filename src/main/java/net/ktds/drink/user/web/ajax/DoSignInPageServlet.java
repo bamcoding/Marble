@@ -42,8 +42,15 @@ public class DoSignInPageServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String message = null;
 		boolean isSucessSignIn = false;
-		if( userEmail.length() == 0 && userPassword.length() == 0) {
-			message = "필수값을 입력하지 않았습니다.";
+		if( userEmail.length() == 0 ){
+			message = "EmailNull";
+			out.write(message+"");
+			out.flush();
+			out.close();
+			return;
+		}
+		else if( userPassword.length() == 0){
+			message = "PasswordNull";
 			out.write(message+"");
 			out.flush();
 			out.close();
@@ -60,16 +67,16 @@ public class DoSignInPageServlet extends HttpServlet {
 				
 				message = "true";
 				out.write(message+"");
+				out.flush();
+				out.close();
 			}
 			else{
 				message = "false";
 				out.write(message+"");
+				out.flush();
+				out.close();
 			}
 		}
-		
-		out.flush();
-		out.close();
-		
 	
 	}
 

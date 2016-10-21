@@ -25,6 +25,7 @@
 </head>
 <body>
 	<div class="gameList">
+		
 	<div id="game" >
 	<form id="checkGame" name="checkGame">
 	<table class="grid">
@@ -48,12 +49,13 @@
 	</table>
 	
 	</form>
-	<div style="float: left;"><input type="submit" id="deleteBtn" value="선택삭제" onclick="movePage(0)"></div>
+	<div style="float: right;"><input type="submit" id="deleteBtn" value="선택삭제" onclick="movePage(0)"></div>
 	
 	<form id="searchForm" name="searchForm">
-			<div style="padding-top: 5px;">
-				<div class="right">
-			${paging}	
+	${paging}	
+			<div style="padding-top: 5px;">	
+			<div class="left">
+		
 						<select id="searchType" name="searchType">
 						//단항 조건문 
 							<option value="1" ${ searchGame.searchType eq 1 ? 'selected' : '' }>회원아이디</option>
