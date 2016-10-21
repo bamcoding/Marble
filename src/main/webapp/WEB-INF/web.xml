@@ -616,13 +616,13 @@
     <url-pattern>/goToList</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<description></description>
-  	<display-name>GetGameSettingServlet</display-name>
-  	<servlet-name>GetGameSettingServlet</servlet-name>
-  	<servlet-class>net.ktds.drink.games.web.GetGameSettingServlet</servlet-class>
+    <description></description>
+    <display-name>GetGameSettingServlet</display-name>
+    <servlet-name>GetGameSettingServlet</servlet-name>
+    <servlet-class>net.ktds.drink.games.web.GetGameSettingServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>GetGameSettingServlet</servlet-name>
-  	<url-pattern>getGameSetting</url-pattern>
+    <servlet-name>GetGameSettingServlet</servlet-name>
+    <url-pattern>/getGameSetting</url-pattern>
   </servlet-mapping>
 </web-app>
