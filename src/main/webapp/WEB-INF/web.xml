@@ -585,4 +585,14 @@
     <servlet-name>DoUpdateCustomServlet</servlet-name>
     <url-pattern>/admin/doUpdateCustom</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>viewAdvertisementVideoServlet</display-name>
+    <servlet-name>viewAdvertisementVideoServlet</servlet-name>
+    <servlet-class>net.ktds.drink.play.web.ajax.viewAdvertisementVideoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>viewAdvertisementVideoServlet</servlet-name>
+    <url-pattern>/play/video</url-pattern>
+  </servlet-mapping>
 </web-app>
