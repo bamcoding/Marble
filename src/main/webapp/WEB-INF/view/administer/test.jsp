@@ -1,21 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<!-- 
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ -->
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 
 <style>
-
-
 #ctgr_view{
 	border:1px solid black;
 	width:500px;
@@ -68,6 +67,11 @@
 
 .selected{
 	background : #cccccc;
+}
+
+#ctgr_content a{
+	font-weight:normal;
+	color:#428bca;
 }
 </style>
 
@@ -153,6 +157,40 @@
 				alert("삭제할 파일을 선택해주세요.");				
 			}
 		});
+		
+		//전체 리스트에서 ul을 가지고 있는 li에 클래스를 추가한다
+		//ul 왼쪽 대쉬 보더를 준다.
+		$("#ctgr_content ul").each(function(){
+			$(this).find("li").has("ul").addClass("hasSubmenu");
+			$(this).closest("ul").css("border-left", "1px dashed #cccccc");
+		});
+		
+		//li에 굵기를 준다.
+		$("#ctgr_content ul li").each(function(){
+			$(this).mouseenter(function(){
+				$(this).children("a").css({"font-weight":"bold","color":"#336b9b"});
+		  	});
+			
+			$(this).mouseleave(function(){
+				$(this).children("a").css({"font-weight":"normal","color":"#428bca"});
+		  	});
+		});
+		
+		// Add button to expand and condense - Using FontAwesome
+		$("#ctgr_content ul li.hasSubmenu").each(function(){
+			$this = $(this);
+			$this.prepend("<a href='#'><i class='fa fa-minus-circle'></i><i style='display:none;' class='fa fa-plus-circle'></i></a>");
+			$this.children("a").not(":last").removeClass().addClass("toogle");
+		});
+		
+		// Actions to expand and consense
+		$("#ctgr_content ul li.hasSubmenu a.toogle").click(function(){
+			$this = $(this);
+			$this.closest("li").children("ul").toggle("slow");
+		 	$this.children("i").toggle();
+		 	return false;
+		});
+		
 	});
 </script>
 
@@ -198,7 +236,6 @@
 		</c:forEach>
 		</li>
 	</ul>
-	<script type="text/javascript" src="/Marble/js/blueGrid.js"></script>
 	</div>
 </div>
 	
