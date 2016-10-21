@@ -110,6 +110,7 @@ $(document).ready(function () {
 	
 	if("${sessionScope._GAME_SETTING_ }" != ""){
 		$.post("/Marble/getGameSetting", function(data){
+			alert("a");
 			var plays = data.split(",");
 			$("#games_list ul li").each(function(){
 				var gameId = $(this).attr("id");
