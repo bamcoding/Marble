@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/Marble/css/layout.css" />
 <link rel="stylesheet" type="text/css" href="/Marble/css/grid.css" />
-<script type="text/javascript" src="/Board/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <jsp:include page="/WEB-INF/view/common/header.jsp" />
 <script type="text/javascript">
 $(document).ready(function() {
@@ -31,8 +31,20 @@ $(document).ready(function() {
 
 		}
 	});
+	$("#listBtn").click(function() {
+		location.href = "/Marble/goToList?categoryId=${categoryId}";
+	});
 
-});
+	$("#writeCmtBtn").click(function(){
+		$.post("/Marble/board/doWriteCmt" , $("#writeCmtForm").serialize() , function(data){
+			$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
+		});
+		$("#commentContent").val("");
+	});
+	$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
+	
+	
+});	
 </script>
 <div id="article">
 	<div id="articleHeader">
@@ -56,12 +68,12 @@ $(document).ready(function() {
 <div id="boardFooter">
 	<a href="javascript:void(0);" id="recommendBtn">추천</a>
 
-	<c:if test="${sessionScope._USER_INFO_.userId eq board.userId }">
+	<c:if test="${sessionScope._USER_INFO_.userId eq board.userId || sessionScope._USER_INFO_.userEmail eq 'admin' }">
 		<a href="javascript:void(0);"  id="deleteBtn">삭제</a>
 		<a href="/Marble/board/modify?boardId=${board.boardId}&categoryId=${categoryId}">수정</a>
+    	<a href="javascript:void(0);"  id="listBtn">목록보기</a>
 	</c:if>
 
-	<a href="/Marble/board/list?categoryId=${categoryId}">목록보기</a>
 </div>
 </body>
 </html>

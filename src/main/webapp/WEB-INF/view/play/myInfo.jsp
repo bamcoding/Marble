@@ -4,6 +4,19 @@
     <script type="text/javascript">
     	$(document).ready(function() {
     	});
+    	
+    	$(".history ul li").hover(function(){
+    		$(this).addClass("selected");
+    	})
+    	
+    	$(".history ul li").mouseleave(function(){
+    		$(this).removeClass("selected");
+    	});
+    	
+    	$(".history ul li").click(function(){
+    		playInfo = $(this).attr("id");
+    		$("#marbleBoard").load("../confirmPlays?playInfo="+playInfo);
+    	});
     </script>
 
 <div class="userInfo">
@@ -16,10 +29,10 @@
 	</div>
 </div>
 
-<div class="history">
-	
+<div class="history" style="position:absolute; height: 80%; width:60%; bottom: 0; overflow-y: scroll;">
+	<ul>
 	<c:forEach var="his" items="${history }">
-		<div id="${his.playInfo }">${his.playDate }</div>
+		<li id="${his.playInfo }"><label>${his.playDate }</label></li>
 	</c:forEach>
-		
+	</ul>	
 </div>

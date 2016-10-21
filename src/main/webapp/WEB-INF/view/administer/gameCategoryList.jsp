@@ -12,9 +12,20 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
 <script type="text/javascript">
+
 	$().ready(function () {
+
+		
+
+		$("#addBtn").click(function(){	
+			location.href="/Marble/admin/addCategoryGame?categoryId=${categoryId}";
+	
+			
+		});
+
+		
 		$("#deleteBtn").click(function(){	
-			$.post( "/Marble/admin/deleteCustom", $("#checkGame").serialize(), function( data ) {
+			$.post( "/Marble/admin/deleteCategoryGame", $("#checkGame").serialize(), function( data ) {
 				  alert( "" + data );
 			});
 			
@@ -24,6 +35,7 @@
 </script>
 </head>
 <body>
+
 	<div class="gameList">
 		
 	<div id="game" >
@@ -31,43 +43,45 @@
 	<table class="grid">
 	<tr>
 		<td>선택</td>
+		<td>카테고리</td>
 		<td>게임번호</td>
 		<td>게임이름</td>
-		<td>회원아이디</td>
 	</tr>
 	
-	<c:forEach items="${customs}" var="custom">
+	<c:forEach items="${games}" var="game">
 	<tr id="gemes"  >
-		<td><input type="checkbox" id="checkbox" name="checkbox" value="${custom.gameId}"></td>
-		<c:set var="number" value="${fn:split(custom.gameId,'-')[2]}"/>
+		<td><input type="checkbox" id="checkbox" name="checkbox" value="${game.gameId}"></td>
+		<td>${game.categoryVO.categoryName}</td>
+		<c:set var="number" value="${fn:split(game.gameId,'-')[2]}"/>
 		<fmt:parseNumber var="number" type="number" value="${number}"/>
 		<td>${number}</td>
-		<td><a href="/Marble/admin/customDetail?gameId=${custom.gameId}" >${custom.gamesVO.gameName}</a></td>
-		<td>${custom.userVO.userNickname}</td>
+		<td><a href="/Marble/admin/gameCategoryDetail?gameId=${game.gameId}" >${game.gameName}</a></td>
 	</tr>
 	</c:forEach>
 	</table>
 	
 	</form>
+	<div style="float: right;"><input type="submit" id="addBtn" value="게임추가"></div>
 	<div style="float: right;"><input type="submit" id="deleteBtn" value="선택삭제" onclick="movePage(0)"></div>
 	
 	<form id="searchForm" name="searchForm">
 	${paging}	
-			<div style="padding-top: 5px;">	
+			<div style="padding-top: 5px;">
 			<div class="left">
-		
+			
 						<select id="searchType" name="searchType">
 						//단항 조건문 
-							<option value="1" ${ searchGame.searchType eq 1 ? 'selected' : '' }>회원아이디</option>
+							<option value="1" ${ searchGame.searchType eq 1 ? 'selected' : '' }>카테고리</option>
 							<option value="2" ${ searchGame.searchType eq 2 ? 'selected' : '' }>제목+내용</option>
 							<option value="3" ${ searchGame.searchType eq 3 ? 'selected' : '' }>제목</option>
 							<option value="4" ${ searchGame.searchType eq 4 ? 'selected' : '' }>내용</option>
 				
 						</select>
 						<input type="text" id="searchKeyword" name="searchKeyword"  value="${searchGame.searchKeyword}"/>
-						<input type="button" id="searchBtn" value="검색" onclick="movePage(0)"/>
-						<a href="/Marble/admin/searchCustomInit">검색 초기화</a>
+						<input type="button" id="searchBtn" value="전체검색" onclick="movePage(0)"/>
+						<a href="/Marble/admin/doSearchCategoryInit?categoryId=${categoryId}">검색 초기화</a>
 				</div>
+			
 				<div class="clear"></div>
 			</div>
 	</form>

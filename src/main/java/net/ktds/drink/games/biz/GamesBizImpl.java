@@ -132,6 +132,28 @@ public class GamesBizImpl implements GamesBiz {
 
 
 	@Override
+	public GamesListVO getCategoryGames(SearchGamesVO searchGames, String categoryId) {
+		int totalCount = dao.getConutOfCategoryGames(searchGames, categoryId);
+		
+		//오라클 전용 페이지 만들어짐 
+		//한페이지 3개 게시물, 3개그룹 보여주겠다
+		Pager pager = PagerFactory.getPager(true);
+		pager.setTotalArticleCount(totalCount);
+		pager.setPageNumber(searchGames.getPageNumber());
+		
+		searchGames.setStartRowNumber(pager.getStartArticleNumber());
+		searchGames.setEndRowNumber(pager.getEndArticleNumber());
+		
+		List<GamesVO> games = dao.getCategoryGames(searchGames, categoryId);
+		
+		GamesListVO gamesList = new GamesListVO();
+		gamesList.setPager(pager);
+		gamesList.setGames(games);
+		
+		return gamesList;
+	}
+
+	@Override
 	public CustomListVO getCustomGames(SearchGamesVO searchGames) {
 		
 		int totalCount = dao.getConutOfCustomGames(searchGames);
@@ -164,6 +186,7 @@ public class GamesBizImpl implements GamesBiz {
 	public boolean deleteCustom(String gameId) {
 		return dao.deleteCustom(gameId)> 0;
 	}
+
 
 
 

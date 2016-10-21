@@ -811,6 +811,166 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 		});
 	}
 
+	
+	@Override
+	public int getConutOfCategoryGames(SearchGamesVO searchGames, String categoryId) {
+		return (int) selectOne(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	COUNT(1) CNT ");
+				query.append(" FROM		GAME G ");			
+				query.append(" 			,CTGR C ");					
+				query.append(" WHERE	G.CTGR_ID = C.CTGR_ID ");	
+				query.append(" AND		G.CTGR_ID = ? ");	
+				
+				if ( searchGames.getSearchType() == 1 ) {
+					query.append(" AND	  C.CTGR_NM LIKE '%' || ? || '%' ");
+				}
+				else if ( searchGames.getSearchType() == 2 ) {
+					query.append(" AND	( G.GM_NM LIKE '%' || ? || '%' ");
+					query.append(" OR	  G.GM_INFO LIKE '%' || ? || '%' ) ");
+				}
+				else if ( searchGames.getSearchType() == 3 ) {
+					query.append(" AND	G.GM_NM LIKE '%' || ? || '%' ");
+				}
+				else if ( searchGames.getSearchType() == 4 ) {
+					query.append(" AND	  G.GM_INFO LIKE '%' || ? || '%' ");
+				}
+			
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, categoryId);
+				
+				if ( searchGames.getSearchType() == 1  ) {
+					pstmt.setString(2, searchGames.getSearchKeyword());
+					
+				}
+				else if ( searchGames.getSearchType() == 2 ) {
+					pstmt.setString(2, searchGames.getSearchKeyword());
+					pstmt.setString(3, searchGames.getSearchKeyword());
+					
+				}
+				else if ( searchGames.getSearchType() == 3 ) {
+					pstmt.setString(2, searchGames.getSearchKeyword());
+					
+				}
+				else if ( searchGames.getSearchType() == 4 ) {
+					pstmt.setString(2, searchGames.getSearchKeyword());
+				}
+
+				
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				rs.next();
+				
+				return rs.getInt("CNT");
+			}
+		});
+	}
+	
+	@Override
+	public List<GamesVO> getCategoryGames(SearchGamesVO searchGames, String categoryId) {
+	return selectList(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	G.GM_ID ");
+				query.append(" 			, G.GM_NM ");
+				query.append(" 			, G.GM_INFO ");
+				query.append(" 			, C.CTGR_ID ");
+				query.append(" 			, C.CTGR_NM ");
+				query.append(" 			, G.TYP_ID ");
+				query.append(" FROM		GAME G ");			
+				query.append(" 			, CTGR C ");			
+				query.append(" WHERE	G.CTGR_ID = C.CTGR_ID ");					
+				query.append(" AND		C.CTGR_ID NOT IN '16' ");					
+				query.append(" AND		C.CTGR_ID = ? ");					
+
+	
+				if ( searchGames.getSearchType() == 1 ) {
+					query.append(" AND	  C.CTGR_NM LIKE '%' || ? || '%' ");
+				}
+				else if ( searchGames.getSearchType() == 2 ) {
+					query.append(" AND	( G.GM_NM LIKE '%' || ? || '%' ");
+					query.append(" OR	  G.GM_INFO LIKE '%' || ? || '%' ) ");
+				}
+				else if ( searchGames.getSearchType() == 3 ) {
+					query.append(" AND	G.GM_NM LIKE '%' || ? || '%' ");
+				}
+				else if ( searchGames.getSearchType() == 4 ) {
+					query.append(" AND	  G.GM_INFO LIKE '%' || ? || '%' ");
+				}
+
+				query.append(" ORDER	BY G.GM_ID DESC ");			
+				
+				String pagingQuery = appendPagingQueryFormat(query.toString());
+			
+				PreparedStatement pstmt = conn.prepareStatement(pagingQuery);
+		
+				pstmt.setString(1, categoryId);
+				int index = 2;
+				
+				if ( searchGames.getSearchType() == 1  ) {
+					pstmt.setString(index++, searchGames.getSearchKeyword());
+					
+				}
+				else if ( searchGames.getSearchType() == 2 ) {
+					pstmt.setString(index++, searchGames.getSearchKeyword());
+					pstmt.setString(index++, searchGames.getSearchKeyword());
+					
+				}
+				else if ( searchGames.getSearchType() == 3 ) {
+					pstmt.setString(index++, searchGames.getSearchKeyword());
+					
+				}
+				else if ( searchGames.getSearchType() == 4 ) {
+					pstmt.setString(index++, searchGames.getSearchKeyword());
+				}
+	
+				
+				pstmt.setInt(index++, searchGames.getEndRowNumber());
+				pstmt.setInt(index++, searchGames.getStartRowNumber());
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				List<GamesVO> games = new ArrayList<GamesVO>();
+				GamesVO gameVO = null;
+				CategoryVO categoryVO = null;
+
+				
+				while(rs.next()){
+					
+					gameVO = new GamesVO();
+					
+					gameVO.setGameId(rs.getString("GM_ID"));
+					gameVO.setGameName(rs.getString("GM_NM"));
+					gameVO.setGameInfo(rs.getString("GM_INFO"));
+					gameVO.setCategoryId(rs.getString("CTGR_ID"));
+					gameVO.setTypeId(rs.getString("TYP_ID"));
+					
+					categoryVO = gameVO.getCategoryVO();
+					categoryVO.setCategoryName(rs.getString("CTGR_NM"));
+
+					
+					games.add(gameVO);
+				}
+				return games;	
+			}
+		});
+	}
+
+
+
+	
+	
 	@Override
 	public int getConutOfCustomGames(SearchGamesVO searchGames) {
 		return (int) selectOne(new QueryAndResult() {

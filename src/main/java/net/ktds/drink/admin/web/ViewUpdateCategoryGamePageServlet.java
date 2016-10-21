@@ -16,27 +16,29 @@ import net.ktds.drink.games.vo.GamesVO;
 import net.ktds.drink.support.Param;
 
 
-public class ViewUpdateGamePageServlet extends HttpServlet {
+public class ViewUpdateCategoryGamePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private GamesBiz biz;
-  
-    public ViewUpdateGamePageServlet() {
+    
+
+    public ViewUpdateCategoryGamePageServlet() {
         super();
         biz = new GamesBizImpl();
     }
 
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewPath = "/WEB-INF/view/administer/updateGame.jsp";
+		String viewPath = "/WEB-INF/view/administer/updateCategoryGame.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 		
 		String gameId = Param.getStringParam(request, "gameId");
-
+		String categoryId = Param.getStringParam(request, "categoryId");
+		
 		GamesVO gamesVO = biz.getGameDetailBy(gameId);
 		String categoryName = gamesVO.getCategoryVO().getCategoryName();
 		
@@ -51,6 +53,7 @@ public class ViewUpdateGamePageServlet extends HttpServlet {
 		gameInfo = gameInfo.toString();
 		gamesVO.setGameInfo(gameInfo);
 		
+		request.setAttribute("categoryId", categoryId);
 		request.setAttribute("gamesVO", gamesVO);
 		request.setAttribute("categories", categories);
 		request.setAttribute("categoryName", categoryName);

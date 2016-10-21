@@ -13,6 +13,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
+		$( "#gameList" ).load( "/Marble/admin/gameCategory" );
+		
 		$("#nav ul li").click(function(){
 			var index = $(this).index();
 			if( index == 1){
@@ -48,19 +50,29 @@
 			  <li class="member">
 			  		<a href="javascript:void(0);"  class="articleBtn">게시판관리</a>
 			  		<div class="member-content">
-			  			<a href="/Marble/admin/articleInfo"  id="article-info" class="underBtn">게시판 정보</a>
-			  			<a href="" class="underBtn">글 삭제</a>
+			  			<a href="/Marble/admin/articleInfo?categoryId=12"  id="article-info" class="underBtn">커뮤니티</a>
+			  			<a href="/Marble/admin/articleInfo?categoryId=13" class="underBtn">문의사항</a>
 			  		</div>
 	  		 </li>
 			  <li class="member">
 			  	<a href="">게임관리</a>
 			  		<div class="member-content">
-			  			<a href="/Marble/admin/gameList" id="member-info" class="underBtn">게임목록</a>
-			  			<a href="/Marble/admin/customList" class="underBtn" >사용자 게임</a>
+			  			<a href="/Marble/admin/gameList" class="underBtn">게임전체</a>
+			  			<div id= "gameList" >
+			  			</div>
+			  			<a href="/Marble/admin/customList" class="underBtn">사용자 게임</a>
+
 			  		</div>
+			  			
 			  </li>
 			  <li class="member">
 			  	<a href="/Marble/admin/test" class="categoryBtn">카테고리관리</a>
+			  </li>
+			  <li class="member">
+			  	<a href="javascript:void(0);"  class="categoryBtn">게임타입 관리</a>
+			  		<div class="member-content">
+			  			<a href="javascript:void(0);" id="category-info" class="underBtn">게임타입</a>
+			  		</div>
 			  </li>
 			  <div style="float:right">
 			  	<li style="color:white; padding:12px 16px">안녕하세요 관리자님</li>
@@ -70,10 +82,8 @@
 		<div class="clear" style="width:100%; height:300px; background-color: lightblue;"></div>
 		<div class="printList" id="playList"></div>
 		</div>
+
 	</div>
 
 </body>
 </html>
-
-
-

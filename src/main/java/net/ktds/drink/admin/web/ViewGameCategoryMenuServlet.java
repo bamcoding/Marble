@@ -1,6 +1,7 @@
 package net.ktds.drink.admin.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,50 +13,43 @@ import javax.servlet.http.HttpServletResponse;
 import net.ktds.drink.games.biz.GamesBiz;
 import net.ktds.drink.games.biz.GamesBizImpl;
 import net.ktds.drink.games.vo.CategoryVO;
-import net.ktds.drink.games.vo.GamesVO;
-import net.ktds.drink.support.Param;
 
 
-public class ViewUpdateGamePageServlet extends HttpServlet {
+public class ViewGameCategoryMenuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private GamesBiz biz;
-  
-    public ViewUpdateGamePageServlet() {
+    
+    public ViewGameCategoryMenuServlet() {
         super();
         biz = new GamesBizImpl();
     }
 
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewPath = "/WEB-INF/view/administer/updateGame.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
-		
-		String gameId = Param.getStringParam(request, "gameId");
-
-		GamesVO gamesVO = biz.getGameDetailBy(gameId);
-		String categoryName = gamesVO.getCategoryVO().getCategoryName();
-		
 		
 		CategoryVO categoryVO = new CategoryVO();
 		//부모 카테고리 = 게임 
 		categoryVO.setParentCategoryId("10");
 		List<CategoryVO> categories = biz.getAdminCategory(categoryVO);
+
 		
-		String gameInfo = gamesVO.getGameInfo();
-		gameInfo = gameInfo.replaceAll("<br/>", "\n");
-		gameInfo = gameInfo.toString();
-		gamesVO.setGameInfo(gameInfo);
+		StringBuffer options = new StringBuffer();
+		for (CategoryVO category : categories) {
+			options.append(String.format("<a class=\"underBtn\" href=\"/Marble/admin/gameMenuList?categoryId=%s\">%s</a>", category.getCategoryId(), category.getCategoryName() ));
+		}
 		
-		request.setAttribute("gamesVO", gamesVO);
-		request.setAttribute("categories", categories);
-		request.setAttribute("categoryName", categoryName);
-		
-		rd.forward(request, response);
+		PrintWriter out = response.getWriter();
+		out.write(options.toString());
+		out.flush();
+		out.close();
+	
+	
+	
 	}
 
 }

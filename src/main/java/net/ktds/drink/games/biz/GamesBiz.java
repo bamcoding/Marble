@@ -14,6 +14,7 @@ public interface GamesBiz {
 	public List<CategoryVO> getCategory(CategoryVO categoryVO);
 	public List<CategoryVO> getAdminCategory(CategoryVO categoryVO);
 	
+	public GamesListVO getCategoryGames(SearchGamesVO searchGames, String categoryId);
 	public GamesListVO getAllGames(SearchGamesVO searchGames);
 	public CustomListVO getCustomGames(SearchGamesVO searchGames);
 	

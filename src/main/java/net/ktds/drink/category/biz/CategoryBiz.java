@@ -12,4 +12,14 @@ public interface CategoryBiz {
 	public List<CategoryVO> setCategoryLevel();
 	
 	public boolean isCategoryLeafNode(String parentCategoryId);
+	
+	
+	public boolean addCategory(String name, String parentName);
+
+	public boolean modifyCategory(String input, String selectedName);
+
+	public boolean deleteCategory(String selectedName);
+
+	public boolean checkExistName(String input);
+	public boolean checkExistChild(String input);
 }

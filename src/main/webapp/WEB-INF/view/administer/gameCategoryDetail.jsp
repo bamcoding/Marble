@@ -15,18 +15,17 @@
 	$(document).ready(function() {
 		$("#deleteBtn").click(function() {
 			if(confirm("\"${gameVO.gameName}.\"를 삭제하시겠습니까?")) {
-				location.href="/Marble/admin/doDeleteDetail?gameId=${gameVO.gameId}"
+				location.href="/Marble/admin/doDeleteCategoryDetail?gameId=${gameVO.gameId}&categoryId=${gameVO.categoryId}"
 			}
 		});	
 		
 		$("#updateBtn").click(function() {
-			location.href="/Marble/admin/updateGame?gameId=${gameVO.gameId}";
+			location.href="/Marble/admin/updateCategoryGame?gameId=${gameVO.gameId}&categoryId=${gameVO.categoryId}";
 		});
 		
 		
 		$("#goBackBtn").click(function() {
-	
-			location.href="/Marble/admin/gameList";
+			location.href="/Marble/admin/gameMenuList?categoryId=${gameVO.categoryId}";
 		});
 		
 		

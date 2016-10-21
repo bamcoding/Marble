@@ -22,7 +22,7 @@
 			alert("글 저장에 실패 하였습니다.");
 		}
 		$("#goBackBtn").click(function() {
-			location.href = "/Marble/board/list";
+			location.href = "/Marble/board/list?categoryId=${param.categoryId}";
 		});
 		$("#boardSubject").keyup(function() {
 			if ($(this).val() == "") {

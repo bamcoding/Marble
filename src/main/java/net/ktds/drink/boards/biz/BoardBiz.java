@@ -16,7 +16,6 @@ public interface BoardBiz {
 	
 	public String getFileNameOfBoardBy(String boardId);
 	
-	public BoardVO getBoardForModify(String boardId);
 	
 	public boolean removeBoard(String boardId);
 	

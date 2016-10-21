@@ -77,7 +77,7 @@ public class DoSetGamesServlet extends HttpServlet {
 		for(int i=0; i<plays.size(); i++){
 			out.write(plays.get(i).getGames().getGameName()+"\n\r");
 		}
-		out.write("������ ���� �Ǿ����ϴ�.");
+		out.write("셋팅되었습니다.");
 		out.flush();
 		out.close();
 		
