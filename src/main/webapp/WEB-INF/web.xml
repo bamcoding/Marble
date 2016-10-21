@@ -615,4 +615,36 @@
     <servlet-name>GoToListServlet</servlet-name>
     <url-pattern>/goToList</url-pattern>
   </servlet-mapping>
+  <!-- 카테고리부분 -->
+    <servlet>
+    <description></description>
+    <display-name>DoAddCtgrServlet</display-name>
+    <servlet-name>DoAddCtgrServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ctgr.DoAddCtgrServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoAddCtgrServlet</servlet-name>
+    <url-pattern>/admin/doAddCtgr</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>DoDeleteCtgrServlet</display-name>
+    <servlet-name>DoDeleteCtgrServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ctgr.DoDeleteCtgrServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteCtgrServlet</servlet-name>
+    <url-pattern>/admin/doDeleteCtgr</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>DoModifyCtgrServlet</display-name>
+    <servlet-name>DoModifyCtgrServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ctgr.DoModifyCtgrServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoModifyCtgrServlet</servlet-name>
+    <url-pattern>/admin/doModifyCtgr</url-pattern>
+  </servlet-mapping>
+  <!-- 카테고리부분 -->
 </web-app>
