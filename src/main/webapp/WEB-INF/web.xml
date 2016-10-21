@@ -636,4 +636,45 @@
     <servlet-name>DoModifyCtgrServlet</servlet-name>
     <url-pattern>/admin/doModifyCtgr</url-pattern>
   </servlet-mapping>
+  <!-- 댓글 -->
+    <servlet>
+    <description></description>
+    <display-name>ViewListCommentServlet</display-name>
+    <servlet-name>ViewListCommentServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.comments.web.ViewListCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewListCommentServlet</servlet-name>
+    <url-pattern>/board/listCmt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoWriteCommentServlet</display-name>
+    <servlet-name>DoWriteCommentServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.comments.web.DoWriteCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoWriteCommentServlet</servlet-name>
+    <url-pattern>/board/doWriteCmt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DomodifyCommentServlet</display-name>
+    <servlet-name>DomodifyCommentServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.comments.web.DomodifyCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DomodifyCommentServlet</servlet-name>
+    <url-pattern>/board/doModifyCmt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteCommentServlet</display-name>
+    <servlet-name>DoDeleteCommentServlet</servlet-name>
+    <servlet-class>net.ktds.drink.boards.comments.web.DoDeleteCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteCommentServlet</servlet-name>
+    <url-pattern>/board/doDeleteCmt</url-pattern>
+  </servlet-mapping>
 </web-app>
