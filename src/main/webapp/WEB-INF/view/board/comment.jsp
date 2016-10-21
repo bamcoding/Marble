@@ -24,7 +24,7 @@ $(".deleteBtn").click(function(){
  $(".mdfyBtn").click(function(){
 
  });
- //asd
+
  $("#writeCmtBtn").click(function(){
 	$.post("/Marble/board/doWriteCmt" , $("#writeCmtForm").serialize() , function(data){
 		$("#listCmtForm").prepend(makeDiv(data));
