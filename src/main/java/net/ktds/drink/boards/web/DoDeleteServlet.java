@@ -53,10 +53,10 @@ public class DoDeleteServlet extends HttpServlet {
 			}
 		}else{
 			if(isSuccess){
-				response.sendRedirect("/Marble/board/detail?boardId=" + boardId);
+				response.sendRedirect("/Marble/board/list?categoryId=" + categoryId);
 
 			}else{
-				response.sendRedirect("/Marble/board/detail?boardId=" + boardId);
+				response.sendRedirect("/Marble/board/list?categoryId=" + categoryId);
 				
 			}
 		}

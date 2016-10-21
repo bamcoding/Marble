@@ -16,4 +16,8 @@ public interface CommentBiz {
 	
 	public boolean removeComment(String commentId);
 	
+	public String getTime();
+	
+	public String getNewCommentId();
+	
 }

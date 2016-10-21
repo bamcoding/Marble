@@ -16,4 +16,8 @@ public interface CommentDao {
 	
 	public int deleteComment(String commentId);
 	
+	public String getTime();
+	
+	public String getNewCommentId();
+	
 }
