@@ -121,9 +121,9 @@ public class DaoSupport {
 	
 	private Connection getConnection() throws SQLException {
 		//성정한 주소
-		return DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.174:1521:XE","DRINK","DRINK");
+		//return DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.174:1521:XE","DRINK","DRINK");
 		//로컬 주소
-		//return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","DRINK","DRINK");
+		return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","DRINK","DRINK");
 	}
 	
 	private void close(ResultSet rs, PreparedStatement pstmt, Connection conn) {

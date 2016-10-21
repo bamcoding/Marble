@@ -13,6 +13,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
+		$( "#gameList" ).load( "/Marble/admin/gameCategory" );
+		
 		$("#nav ul li").click(function(){
 			var index = $(this).index();
 			if( index == 1){
@@ -55,12 +57,22 @@
 			  <li class="member">
 			  	<a href="">게임관리</a>
 			  		<div class="member-content">
-			  			<a href="/Marble/admin/gameList" id="member-info" class="underBtn">게임목록</a>
-			  			<a href="/Marble/admin/customList" class="underBtn" >사용자 게임</a>
+			  			<a href="/Marble/admin/gameList" class="underBtn">게임전체</a>
+			  			<div id= "gameList" >
+			  			</div>
+			  			<a href="/Marble/admin/customList" class="underBtn">사용자 게임</a>
+
 			  		</div>
+			  			
 			  </li>
 			  <li class="member">
 			  	<a href="/Marble/admin/categorySet" class="categoryBtn">카테고리 설정</a>
+			  </li>
+			  <li class="member">
+			  	<a href="javascript:void(0);"  class="categoryBtn">게임타입 관리</a>
+			  		<div class="member-content">
+			  			<a href="javascript:void(0);" id="category-info" class="underBtn">게임타입</a>
+			  		</div>
 			  </li>
 			  <div style="float:right">
 			  	<li style="color:white; padding:12px 16px">안녕하세요 관리자님</li>
@@ -70,6 +82,7 @@
 		<div class="clear" style="width:100%; height:300px; background-color: lightblue;"></div>
 		<div class="printList" id="playList"></div>
 		</div>
+
 	</div>
 
 </body>

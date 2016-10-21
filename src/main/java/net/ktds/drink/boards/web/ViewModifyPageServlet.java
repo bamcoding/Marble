@@ -32,7 +32,7 @@ public class ViewModifyPageServlet extends HttpServlet {
 		
 		
 		String boardId = Param.getStringParam(request, "boardId");
-		BoardVO board = boardBiz.getBoardForModify(boardId);
+		BoardVO board = boardBiz.getBoardAt(boardId);
 		
 		String content = board.getBoardContent();
 		content = content.replaceAll("<br/>", "\n").replaceAll("\r", "");
