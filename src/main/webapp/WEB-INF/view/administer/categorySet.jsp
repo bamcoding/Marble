@@ -10,6 +10,11 @@
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -218,24 +223,25 @@
 		
 		<c:set var="pr" value="0" />
 		<c:forEach items="${categories }" var="category" >
- 	
 		<c:set var="nr" value="${category.level }" />
-			<c:choose>
-			<c:when test="${pr lt nr }">
-					<ul><li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</c:when>
-			<c:when test="${pr gt nr }">
-					<c:forEach begin="1" end="${pr-nr }" step="1">
-					</li></ul>
-					</c:forEach>
-					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</c:when>
-			<c:otherwise>
-					</li>
-					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</c:otherwise>
-			</c:choose>
+				<c:choose>
+				<c:when test="${pr lt nr }">
+						<ul><li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})
+				</c:when>
+				<c:when test="${pr gt nr }">
+						<c:forEach begin="1" end="${pr-nr }" step="1">
+						</li></ul>
+						</c:forEach>
+						<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</c:when>
+				<c:otherwise>
+						</li>
+						<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</c:otherwise>
+				</c:choose>
 				<c:set var="pr" value="${nr}"/>
 		</c:forEach>
 		</li>
 	</ul>
+	<script type="text/javascript" src="/Marble/js/blueGrid.js"></script>
 	</div>
 </div>
 	

@@ -25,6 +25,7 @@
 		
 		
 		$("#goBackBtn").click(function() {
+	
 			location.href="/Marble/admin/gameList";
 		});
 		

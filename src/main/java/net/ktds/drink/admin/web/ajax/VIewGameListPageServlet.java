@@ -1,7 +1,6 @@
 package net.ktds.drink.admin.web.ajax;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -18,7 +17,6 @@ import net.ktds.drink.games.biz.GamesBiz;
 import net.ktds.drink.games.biz.GamesBizImpl;
 import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.games.vo.GamesListVO;
-import net.ktds.drink.games.vo.GamesVO;
 import net.ktds.drink.games.vo.SearchGamesVO;
 import net.ktds.drink.support.Param;
 import net.ktds.drink.support.pager.ClassicPageExplorer;
@@ -47,9 +45,8 @@ public class VIewGameListPageServlet extends HttpServlet {
 		CategoryVO categoryVO = new CategoryVO();
 		//부모 카테고리 = 게임 
 		categoryVO.setParentCategoryId("10");
-		List<CategoryVO> categories = biz.getCategory(categoryVO);
-		
-		
+		List<CategoryVO> categories = biz.getAdminCategory(categoryVO);
+
 		request.setAttribute("categories", categories);
 		
 		HttpSession session = request.getSession();
@@ -62,7 +59,7 @@ public class VIewGameListPageServlet extends HttpServlet {
 		
         if ( pageNo == -1 ) { 
         	searchGame = (SearchGamesVO)
-                    session.getAttribute(Session.SEARCH_INFO);
+                    session.getAttribute(Session.SEARCH_GAME_INFO);
             if ( searchGame == null ) {
             	searchGame = new SearchGamesVO();
             	searchGame.setPageNumber(0);

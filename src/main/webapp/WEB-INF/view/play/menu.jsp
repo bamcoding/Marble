@@ -4,6 +4,7 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
 		$("#settings").load("/Marble/myInfo");
 		
 		$("#menu ul li").click(function(){
