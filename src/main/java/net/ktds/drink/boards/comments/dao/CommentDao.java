@@ -1,9 +1,11 @@
 package net.ktds.drink.boards.comments.dao;
 
+import java.util.List;
+
+import net.ktds.drink.boards.comments.vo.CommentVO;
+
 public interface CommentDao {
 
-<<<<<<< HEAD
-=======
 	public int insert(CommentVO comment);
 	
 	public List<CommentVO> selectComments(String boardId);
@@ -14,5 +16,4 @@ public interface CommentDao {
 	
 	public int deleteComment(String commentId);
 	
->>>>>>> 3은주누나꺼_댓글
 }

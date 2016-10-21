@@ -636,5 +636,4 @@
     <servlet-name>DoModifyCtgrServlet</servlet-name>
     <url-pattern>/admin/doModifyCtgr</url-pattern>
   </servlet-mapping>
-  <!-- 카테고리부분 -->
 </web-app>

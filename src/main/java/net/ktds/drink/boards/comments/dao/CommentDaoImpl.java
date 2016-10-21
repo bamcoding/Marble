@@ -1,11 +1,20 @@
 package net.ktds.drink.boards.comments.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import net.ktds.drink.boards.comments.vo.CommentVO;
 import net.ktds.drink.support.DaoSupport;
+import net.ktds.drink.support.Query;
+import net.ktds.drink.support.QueryAndResult;
+import net.ktds.drink.user.vo.UserVO;
 
 public class CommentDaoImpl extends DaoSupport implements CommentDao{
 
-<<<<<<< HEAD
-=======
 	@Override
 	public int insert(CommentVO comment) {
 		return insert(new Query(){
@@ -168,5 +177,4 @@ public class CommentDaoImpl extends DaoSupport implements CommentDao{
 			
 		});
 	}
->>>>>>> 3은주누나꺼_댓글
 }
