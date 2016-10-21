@@ -61,7 +61,7 @@
 							else if( $("#gameName").val() == "${gamesVO.gameName}" ) {
 								$.post( "/Marble/admin/doUpdateGame", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
 								alert("게임이 수정되었습니다.");
-								location.href="/Marble/admin/gameList"; 
+								location.href="/Marble/admin/gameList";
 							}
 							else {
 								alert("게임 이름이 중복됩니다.");

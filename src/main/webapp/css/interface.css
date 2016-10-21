@@ -155,7 +155,7 @@ body {
 	top:25%;
 	left:30%;
 	width:40%;
-	height:355px;
+	height:390px;
 	border-radius:10px;
 	z-index: 39;
 	position:fixed;
@@ -168,7 +168,7 @@ body {
 	border-top:1px solid #cccccc;
 	border-bottom:1px solid #cccccc;
 	width:100%;
-	height:290px;
+	height:330px;
 }
 
 #signUserEmail, #signUserPassword, #userEmail, #userNickname
@@ -216,9 +216,10 @@ body {
 	height:40px;
 	color:white;
 	background:#00b9ff;
+	position:relative;
 }
 
-#cancleBtn{
+.cancleBtn{
 	margin:8px 5px 0px 0px;
 	background:#fff;
 	border:0px;
@@ -226,8 +227,8 @@ body {
 }
 
 
-.small{
-	font-size: 13px;
+.small p{
+	font-size: 14px;
 }
 
 .sign-title {
@@ -248,5 +249,12 @@ body {
 	text-shadow: 0.1em 0.1em 0.05em #acd7e5;
 	font-family: Courier;
 	font-size: 3em;
+}
+
+.adVideo{
+	position:absolute;
+	margin:auto;
+	width:1400px;
+	height:700px;
 }
 

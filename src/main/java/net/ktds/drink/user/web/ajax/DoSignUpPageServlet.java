@@ -42,25 +42,25 @@ public class DoSignUpPageServlet extends HttpServlet {
 		String errorMessage = null;
 		
 		if( userEmail.length() == 0){
-			errorMessage = "이메일을 입력하지 않았습니다.";
+			errorMessage = "<p>이메일을 입력하지 않았습니다.</p>";
 		}
 		else if(userNickname.length() == 0){
-			errorMessage = "닉네임을 입력하지 않았습니다.";
+			errorMessage = "<p>닉네임을 입력하지 않았습니다.</p>";
 		}
 		else if(userPassword1.length() == 0){
-			errorMessage = "패스워드를 입력하지 않았습니다.";
+			errorMessage = "<p>패스워드를 입력하지 않았습니다.</p>";
 		}
 		else if(userPassword2.length() == 0){
-			errorMessage = "패스워드를 입력하지 않았습니다.";
+			errorMessage = "<p>패스워드를 입력하지 않았습니다.</p>";
 		}
 		else if(userBiz.isExsistUserEmail(userEmail)){
-			errorMessage = "이메일이 중복됩니다.";
+			errorMessage = "<p>이메일이 중복됩니다.</p>";
 		}
 		else if(userBiz.isExsistUserNickname(userNickname)){
-			errorMessage = "닉네임이 중복됩니다.";
+			errorMessage = "<p>닉네임이 중복됩니다.</p>";
 		}
 		else if( !userPassword1.equals(userPassword2)) {
-			errorMessage = "비밀번호가 다릅니다.";
+			errorMessage = "<p>비밀번호가 다릅니다.</p>";
 		}
 		else{
 			

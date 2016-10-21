@@ -34,7 +34,9 @@ public class ViewUpdateGamePageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String viewPath = "/WEB-INF/view/administer/updateGame.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
+		
 		String gameId = Param.getStringParam(request, "gameId");
+
 		GamesVO gamesVO = biz.getGameDetailBy(gameId);
 		String categoryName = gamesVO.getCategoryVO().getCategoryName();
 		
@@ -42,7 +44,7 @@ public class ViewUpdateGamePageServlet extends HttpServlet {
 		CategoryVO categoryVO = new CategoryVO();
 		//부모 카테고리 = 게임 
 		categoryVO.setParentCategoryId("10");
-		List<CategoryVO> categories = biz.getCategory(categoryVO);
+		List<CategoryVO> categories = biz.getAdminCategory(categoryVO);
 		
 		String gameInfo = gamesVO.getGameInfo();
 		gameInfo = gameInfo.replaceAll("<br/>", "\n");

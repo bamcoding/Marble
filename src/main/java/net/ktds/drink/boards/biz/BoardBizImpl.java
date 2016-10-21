@@ -78,10 +78,6 @@ public class BoardBizImpl implements BoardBiz{
 		return board.getFileName();
 	}
 
-	@Override
-	public BoardVO getBoardForModify(String boardId) {
-		return boardDao.selectBoard(boardId);
-	}
 
 	@Override
 	public boolean removeBoard(String boardId) {

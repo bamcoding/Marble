@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/Marble/css/layout.css" />
 <link rel="stylesheet" type="text/css" href="/Marble/css/grid.css" />
-<script type="text/javascript" src="/Board/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <jsp:include page="/WEB-INF/view/common/header.jsp" />
 <script type="text/javascript">
 $(document).ready(function() {
@@ -35,9 +35,21 @@ $(document).ready(function() {
 		location.href = "/Marble/goToList?categoryId=${categoryId}";
 	});
 
+<<<<<<< HEAD
 	// zzu
 	$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
 	
+=======
+	$("#writeCmtBtn").click(function(){
+		$.post("/Marble/board/doWriteCmt" , $("#writeCmtForm").serialize() , function(data){
+			$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
+		});
+		$("#commentContent").val("");
+	});
+	$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
+	
+	
+>>>>>>> b687009f7a36737c24c6ce1503f0801219f52f61
 });	
 </script>
 <div id="article">
