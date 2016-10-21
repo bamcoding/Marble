@@ -1,4 +1,4 @@
-package net.ktds.bamcoding.web;
+package message;
 
 import java.io.IOException;
 
