@@ -35,7 +35,10 @@ $(document).ready(function() {
 		location.href = "/Marble/goToList?categoryId=${categoryId}";
 	});
 
-});
+	// zzu
+	$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
+	
+});	
 </script>
 <div id="article">
 	<div id="articleHeader">
@@ -65,6 +68,9 @@ $(document).ready(function() {
     	<a href="javascript:void(0);"  id="listBtn">목록보기</a>
 	</c:if>
 
+	<a href="/Marble/board/list?categoryId=${categoryId}">목록보기</a>
 </div>
+
+<div id="commentList" style="border:1px solid black; height:500px;"></div>
 </body>
 </html>

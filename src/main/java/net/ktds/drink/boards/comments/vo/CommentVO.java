@@ -1,5 +1,7 @@
 package net.ktds.drink.boards.comments.vo;
 
+import net.ktds.drink.user.vo.UserVO;
+
 public class CommentVO {
 
 	private String commentId;
@@ -9,6 +11,13 @@ public class CommentVO {
 	private String createdDate;
 	private String modifyDate;
 	private String parentCommentId;
+	
+	private UserVO userVO;
+	
+	public CommentVO() {
+		super();
+		userVO = new UserVO();
+	}
 	
 	public String getCommentId() {
 		return commentId;
@@ -51,6 +60,12 @@ public class CommentVO {
 	}
 	public void setParentCommentId(String parentCommentId) {
 		this.parentCommentId = parentCommentId;
+	}
+	public UserVO getUserVO() {
+		return userVO;
+	}
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
 	}
 	
 }
