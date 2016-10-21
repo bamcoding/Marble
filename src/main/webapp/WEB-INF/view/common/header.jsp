@@ -21,10 +21,14 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("#marbleBoard").load("/Marble/play/video");
 		$("#nav ul li").click(function() {
 			var index = $(this).index();
 			console.log("메뉴 인댁스 : "+index);
 			//게임 스타트
+			if ( index == 0 ){
+				location.href="/Marble/play/index";	
+			}
 			if (index == 1) {
 				/* $("#marbleBoard").load("/Marble/setMarbleBoard"); */
 				$("#marbleBoard").load("../confirmPlays");
