@@ -46,5 +46,4 @@ public class GetGameSettingServlet extends HttpServlet {
 		out.flush();
 		out.close();
 	}
-
 }
