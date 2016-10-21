@@ -3,6 +3,12 @@
 <jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -36,6 +42,18 @@
 	margin:10px 0 10px 0;
 }
 
+#ctgr_content a{
+	text-decoration: none;
+}
+
+#ctgr_content ul, #ctgr_content li{
+	list-style:none;
+}
+
+#start_tree{
+	padding-left:20px;
+}
+
 #ctgr_title > *{
 	display:inline-block;
 }
@@ -51,13 +69,14 @@
 .selected{
 	background : #cccccc;
 }
-
 </style>
 
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$().ready(function(){
-		var clickedText =null;
+		$("#categoryId").val("ctgr0");
+		//$("#ctgr0").find("ul").slideUp();
+		
 		$("#ctgr_content li a").click(function(){
 			//인덱스는 기대할 수 없음.
 			clickedText = $(this).parents().attr("id");
@@ -68,10 +87,12 @@
  			console.log("form으로 전달할 데이터 : "+$("#selected_info").val());
 			//선택된 태그에 클래스를 표시한다. 			
 			if (!$(this).hasClass("selected")){				
+				//$(this).closest("li").children("ul").slideDown();
 				$("#ctgr_content a").removeClass("selected");
 				$(this).addClass("selected");
 			}	
 			else {
+				//$(this).closest("li").children("ul").slideUp();
 				$(this).removeClass("selected");
 			}
 		});
@@ -82,7 +103,6 @@
 						,$("#categoryForm").serialize()
 						,function(data){
 							if(data=="true"){
-								alert("카테고리를 추가하였습니다.");
 								var categoryId = $("#categoryId").val();
 								$("#"+categoryId).after("<ul><li><a href='#'>"+$("#ctgr_input").val()+"</a></li></ul>");
 							}
@@ -94,19 +114,14 @@
 				alert("카테고리 이름을 입력해주세요.");				
 			}
 		});
-
 		$("#ctgr_title #modifyBtn").click(function(){
-			
 			if($("#ctgr_input").val() != ""){
 				$.post( "/Marble/admin/doModifyCtgr"
 						,$("#categoryForm").serialize()
 						,function(data){
-							alert(data);
 							if(data=="true"){
-								alert(data);
-								
-								$("a .selected").text($("ctgr_input").val());
-								console.log($("a .selected").text($("ctgr_input").val()));
+								var categoryId = $("#categoryId").val();
+								$("#"+categoryId).children("a").text($("#ctgr_input").val());
 							}
 							else{
 								alert("중복되는 이름은 사용할 수 없습니다.");
@@ -127,7 +142,6 @@
 						,$("#categoryForm").serialize()
 						,function(data){
 							if(data=="true"){
-								alert("삭제하였습니다.");
 								var categoryId = $("#categoryId").val();
 								$("#"+categoryId).remove();
 							}
@@ -156,44 +170,37 @@
 		</div>
 		<div class="clear"></div>
 	</div>
-	
-	</div>
 	<input type="hidden" id="selected_info" name="selected_info">
-	<input type="hideen" id="categoryId" name="categoryId">
-	</div>
+	<input type="hidden" id="categoryId" name="categoryId">
 	</form>
 	<!-- 이전 레벨과 현재 레벨이 다를 경우 ul -->
 	<div id="ctgr_content" >
-	<ul>
-		<li><a href="#">전체보기</a></li>
+	<ul id="start_tree">
+		<li id="ctgr0"><a href="#">전체보기</a>
 		
 		<c:set var="pr" value="0" />
 		<c:forEach items="${categories }" var="category" >
  	
 		<c:set var="nr" value="${category.level }" />
 			<c:choose>
-				<c:when test="${pr lt nr }">
-					<ul>
-					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</li>
-					<c:set var="pr" value="${nr}"/>
-				</c:when>
-				<c:when test="${pr gt nr }">
-					
+			<c:when test="${pr lt nr }">
+					<ul><li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</c:when>
+			<c:when test="${pr gt nr }">
 					<c:forEach begin="1" end="${pr-nr }" step="1">
-						</ul>
+					</li></ul>
 					</c:forEach>
-					
-					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</li>
-					<c:set var="pr" value="${nr}"/>
-				</c:when>
-				
-				<c:otherwise>
-					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</li>
-				</c:otherwise>
+					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</c:when>
+			<c:otherwise>
+					</li>
+					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</c:otherwise>
 			</c:choose>
+				<c:set var="pr" value="${nr}"/>
 		</c:forEach>
+		</li>
 	</ul>
-	
+	<script type="text/javascript" src="/Marble/js/blueGrid.js"></script>
+	</div>
+</div>
 	
 </body>
 </html>
