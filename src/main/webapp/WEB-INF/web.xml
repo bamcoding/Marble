@@ -478,16 +478,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ViewCategoryServlet</display-name>
-    <servlet-name>ViewCategoryServlet</servlet-name>
-    <servlet-class>net.ktds.drink.admin.web.ViewCategoryServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ViewCategoryServlet</servlet-name>
-    <url-pattern>/admin/category</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>ConfirmPlaysServlet</display-name>
     <servlet-name>ConfirmPlaysServlet</servlet-name>
     <servlet-class>net.ktds.drink.play.web.ajax.ConfirmPlaysServlet</servlet-class>
@@ -498,13 +488,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>TestCategoryServlet</display-name>
-    <servlet-name>TestCategoryServlet</servlet-name>
-    <servlet-class>net.ktds.drink.admin.web.ajax.TestCategoryServlet</servlet-class>
+    <display-name>ViewCategorySetServlet</display-name>
+    <servlet-name>ViewCategorySetServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ctgr.ViewCategorySetServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>TestCategoryServlet</servlet-name>
-    <url-pattern>/admin/test</url-pattern>
+    <servlet-name>ViewCategorySetServlet</servlet-name>
+    <url-pattern>/admin/categorySet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

@@ -60,7 +60,7 @@
 			  		</div>
 			  </li>
 			  <li class="member">
-			  	<a href="/Marble/admin/test" class="categoryBtn">카테고리관리</a>
+			  	<a href="/Marble/admin/categorySet" class="categoryBtn">카테고리 설정</a>
 			  </li>
 			  <div style="float:right">
 			  	<li style="color:white; padding:12px 16px">안녕하세요 관리자님</li>
