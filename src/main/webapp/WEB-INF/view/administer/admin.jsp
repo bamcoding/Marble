@@ -57,10 +57,10 @@
 			  <li class="member">
 			  	<a href="">게임관리</a>
 			  		<div class="member-content">
-			  			<a href="/Marble/admin/gameList">게임전체</a>
-			  			<div id= "gameList">
+			  			<a href="/Marble/admin/gameList" class="underBtn">게임전체</a>
+			  			<div id= "gameList" >
 			  			</div>
-			  			<a href="/Marble/admin/customList" >사용자 게임</a>
+			  			<a href="/Marble/admin/customList" class="underBtn">사용자 게임</a>
 
 			  		</div>
 			  			
@@ -71,7 +71,7 @@
 			  <li class="member">
 			  	<a href="javascript:void(0);"  class="categoryBtn">게임타입 관리</a>
 			  		<div class="member-content">
-			  			<a href="javascript:void(0);" id="category-info">게임타입</a>
+			  			<a href="javascript:void(0);" id="category-info" class="underBtn">게임타입</a>
 			  		</div>
 			  </li>
 			  <div style="float:right">
