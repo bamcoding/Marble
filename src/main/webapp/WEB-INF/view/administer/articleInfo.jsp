@@ -12,6 +12,7 @@ $(document).ready(function() {
 		
 		$.post( "/Marble/doArticleInfoDelete",$("#searchForm").serialize(),function(data){
 			if( data == "true" ){
+				alert("선택하신 게시물을 삭제 하시겠습니까?");
 				location.href = ("/Marble/admin/articleInfo?categoryId=${categoryId}");
 			}
 			else if( data == "false" ){

@@ -47,11 +47,11 @@ public class DoWriteServlet extends HttpServlet {
 		String fileName = "";
 		MultipartFile uploadFile = multipartRequest.getFile("file");
 		if ( uploadFile.getFileSize() > 0 ) {
-			File uploadFileDirectory = new File( "D:\\board\\uploadfiles" );
+			File uploadFileDirectory = new File("D:\\board\\uploadfiles");
 			if ( !uploadFileDirectory.exists() ){
 				uploadFileDirectory.mkdirs();
 			}
-			uploadFile.write("D:\\board\\uplaodfiles\\" + uploadFile.getFileName());
+			uploadFile.write("D:\\board\\uploadFiles\\" + uploadFile.getFileName());
 			fileName = uploadFile.getFileName();
 		}
 		
