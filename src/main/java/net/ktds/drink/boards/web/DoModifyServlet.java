@@ -51,7 +51,7 @@ public class DoModifyServlet extends HttpServlet {
 		
 		if ( fileDeleteBtn != null && fileDeleteBtn.equals("delete")) {
 			String fileName = boardBiz.getFileNameOfBoardBy(boardId);
-			File file = new File("D:\\board\\uploadfiles\\" + fileName );
+			File file = new File("D:\\board\\uploadFiles\\" + fileName );
 			file.delete();
 			
 			board.setFileName("");
@@ -60,12 +60,12 @@ public class DoModifyServlet extends HttpServlet {
 		MultipartFile uploadedFile = multipartRequest.getFile("file");
 		if( uploadedFile.getFileSize() > 0 ) {
 			
-			File uploadedFileDirectory = new File("D:\\board\\uploadfiles");
+			File uploadedFileDirectory = new File("D:\\board\\uploadFiles");
 			if( !uploadedFileDirectory.exists() ){
 				uploadedFileDirectory.mkdirs();
 			}
 			
-			uploadedFile.write("D:\\board\\uploadfiles\\" + uploadedFile.getFileName());
+			uploadedFile.write("D:\\board\\uploadFiles\\" + uploadedFile.getFileName());
 			String fileName = uploadedFile.getFileName();
 			board.setFileName(fileName);
 		}
