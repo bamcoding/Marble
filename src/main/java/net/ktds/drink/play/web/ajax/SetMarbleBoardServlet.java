@@ -62,7 +62,7 @@ public class SetMarbleBoardServlet extends HttpServlet {
 		GamesVO game = null;
 		if(plays == null) {
 			plays = new ArrayList<PlayVO>();
-			allGames = gamesBiz.allGetGames();
+			allGames = gamesBiz.allGetGames("all");
 			int gamesSize = allGames.size();
 			for(int i=0; i<Games.CELL_SIZE; i++){
 				play = new PlayVO();

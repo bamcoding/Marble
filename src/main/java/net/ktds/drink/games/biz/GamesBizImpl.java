@@ -42,8 +42,8 @@ public class GamesBizImpl implements GamesBiz {
 
 
 	@Override
-	public List<GamesVO> allGetGames() {
-		return dao.allGetGames();
+	public List<GamesVO> allGetGames(String userId) {
+		return dao.allGetGames(userId);
 	}
 
 

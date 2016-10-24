@@ -9,11 +9,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import net.ktds.drink.constants.Session;
 import net.ktds.drink.games.biz.GamesBiz;
 import net.ktds.drink.games.biz.GamesBizImpl;
 import net.ktds.drink.games.vo.GamesVO;
 import net.ktds.drink.support.Param;
+import net.ktds.drink.user.vo.UserVO;
 
 public class SearchTypeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,13 +39,22 @@ public class SearchTypeServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 
+		HttpSession session = request.getSession();
+		UserVO user = (UserVO) session.getAttribute(Session.USER_INFO);
+		
 		String categoryId = Param.getStringParam(request, "categoryId");
-
+		String userId;
+		if(user != null){
+			userId = user.getUserId();
+		}else{
+			userId = "anonymous";
+		}
+		
 		GamesVO gamesVO = new GamesVO();
 
 		gamesVO.setCategoryId(categoryId);
 		if (gamesVO.getCategoryId().equals("Category")) {
-			games = biz.allGetGames();
+			games = biz.allGetGames(userId);
 		} else {
 			games = biz.getGames(gamesVO);
 		}
