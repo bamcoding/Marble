@@ -25,13 +25,17 @@
 		$("#nav ul li").click(function() {
 			var index = $(this).index();
 			console.log("메뉴 인댁스 : "+index);
-			//게임 스타트
 			if ( index == 0 ){
 				location.href="/Marble/play/index";	
+
 			}
+			//게임 스타트
 			if (index == 1) {
 				/* $("#marbleBoard").load("/Marble/setMarbleBoard"); */
 				$("#marbleBoard").load("../confirmPlays");
+				$("#menubar").fadeOut();
+				$("#sign-in").fadeOut();
+				$("#sign-up").fadeOut();
 			}
 			//메뉴 목록
 			if (index == 2) {
