@@ -98,13 +98,20 @@
 			if (!$(this).hasClass("selected")){				
 				//클릭한 앵커 태그만 클래스가 추가되어야 하기 때문에 나머지 모든 태그는 클래스를 제거한다.
 				$("#ctgr_content a").removeClass("selected");
+				//선택한 태그에 클래스 추가
 				$(this).addClass("selected");
 			}	
 			else {
+				//selected 클래스를 가졌다면 클래스를 제거한다.
 				$(this).removeClass("selected");
 			}
+ 			
+
+			
 		});
 		
+		
+		//추가버튼 이벤트
 		$("#ctgr_title #addBtn").click(function(){
 			if($("#ctgr_input").val() != ""){
 				$.post( "/Marble/admin/doAddCtgr"
@@ -112,7 +119,37 @@
 						,function(data){
 							if(data!="false"){
 								var categoryId = $("#categoryId").val();
-								$("#"+categoryId).after("<ul><li id='ctgr"+data+"'><a href='javascript:addCategory("+data+");'>"+$("#ctgr_input").val()+"</a></li></ul>");
+								if($("#"+categoryId).has("ul").length){
+									$("#"+categoryId+" > ul").append("<li id='ctgr"+data+"'><a href='javascript:addCategory("+data+");'>"+$("#ctgr_input").val()+"</a></li>");
+								}else{
+									$("#"+categoryId).append("<ul><li id='ctgr"+data+"'><a href='javascript:addCategory("+data+");'>"+$("#ctgr_input").val()+"</a></li></ul>");							
+								}
+								
+								//추가와 동시에 효과도 추가한다.
+								if(!$("#"+categoryId).hasClass("hasSubmenu")){
+									$("#"+categoryId).prepend("<a href='javascript:void(0);'><i class='fa fa-minus-circle'></i><i style='display:none;' class='fa fa-plus-circle'></i></a>");
+									$("#"+categoryId).children("a").not(":last").removeClass().addClass("toogle");
+								}
+
+								$("#"+categoryId).addClass("hasSubmenu");
+								$("#"+categoryId).children("ul").css("border-left", "1px dashed #cccccc");
+								
+									
+								$("#ctgr"+data).mouseenter(function(){
+									$(this).children("a").css({"font-weight":"bold","color":"#336b9b"});
+								});
+									
+								$("#ctgr"+data).mouseleave(function(){
+									$(this).children("a").css({"font-weight":"normal","color":"#428bca"});
+								});
+									
+								$("#ctgr_content ul li.hasSubmenu a.toogle").click(function(){
+										// 클릭하면 하위 ul은 toggle 효과를 준다.
+										$(this).closest("li").children("ul").toggle("slow");
+										//toogle 클래스가 추가된 a 태그의 하위 i태그에 toggle효과를 준다.
+										$(this).children("i").toggle();
+									 	return false;
+								});	
 							}
 							else{
 								alert("중복되는 이름은 사용할 수 없습니다.");
@@ -122,6 +159,8 @@
 				alert("카테고리 이름을 입력해주세요.");				
 			}
 		});
+		
+		//수정버튼 이벤트
 		$("#ctgr_title #modifyBtn").click(function(){
 			if($("#ctgr_input").val() != ""){
 				$.post( "/Marble/admin/doModifyCtgr"
@@ -144,26 +183,41 @@
 			}
 		});
 		
+		//삭제버튼 이벤트
 		$("#ctgr_title #deleteBtn").click(function(){
+			var categoryId = $("#categoryId").val();
+			var grandParent = $("#"+categoryId).parent().parent();
 			if($("#selected_info").val() != ""){
 				$.post( "/Marble/admin/doDeleteCtgr"
-						,$("#categoryForm").serialize()
-						,function(data){
-							if(data=="true"){
-								if(confirm("정말 삭제하시겠습니까?")){
-									var categoryId = $("#categoryId").val();
-									$("#"+categoryId).remove();
+					,$("#categoryForm").serialize()
+					,function(data){
+						if(data=="true"){
+							if(confirm("정말 삭제하시겠습니까?")){
+								grandParent.addClass("the node child was deleted");
+								$("#"+categoryId).remove();
+								alert(grandParent.children("ul").children("li").length);
+								var count = grandParent.children("ul").children("li").length;
+								if(count ==0){
+									alert("지금.");
+									grandParent.children("a").children("i").remove();
 								}
 							}
-							else{
-								alert("하위 파일이 있으면 삭제할 수 없습니다.");
-							}
+						}
+						else{
+							alert(grandParent.children("ul").length);
+							alert("하위 파일이 있으면 삭제할 수 없습니다.");
+						}
 				});
 			}else{
 				alert("삭제할 파일을 선택해주세요.");				
 			}
 		});
 		
+		setTreeGrid();
+		
+	});
+	function setTreeGrid(){
+
 		//전체 리스트에서 ul을 가지고 있는 li에 클래스를 추가한다
 		//ul 왼쪽 대쉬 보더를 준다.
 		$("#ctgr_content ul").each(function(){
@@ -182,25 +236,27 @@
 		  	});
 		});
 		
-		// Add button to expand and condense - Using FontAwesome
+		// hasSubmenu 클래스를 가지고 있는 태그에 prepend한다.
 		$("#ctgr_content ul li.hasSubmenu").each(function(){
-			$this = $(this);
-			$this.prepend("<a href='#'><i class='fa fa-minus-circle'></i><i style='display:none;' class='fa fa-plus-circle'></i></a>");
-			$this.children("a").not(":last").removeClass().addClass("toogle");
+			//마이너스 이미지와 플러스 이미지를 추가한다.
+			$(this).prepend("<a href='javascript:void(0);'><i class='fa fa-minus-circle'></i><i style='display:none;' class='fa fa-plus-circle'></i></a>");
+			$(this).children("a").not(":last").removeClass().addClass("toogle");
 		});
 		
-		// Actions to expand and consense
+		//a 태그를 클릭했을 때 이벤트
 		$("#ctgr_content ul li.hasSubmenu a.toogle").click(function(){
-			$this = $(this);
-			$this.closest("li").children("ul").toggle("slow");
-		 	$this.children("i").toggle();
+			// 클릭하면 하위 ul은 toggle 효과를 준다.
+			$(this).closest("li").children("ul").toggle("slow");
+			//toogle 클래스가 추가된 a 태그의 하위 i태그에 toggle효과를 준다.
+			$(this).children("i").toggle();
 		 	return false;
 		});
-		
-	});
+	}
+	
+	
 	
 	function addCategory(categoryId){
-		
+		//li가 id를 가진다.
 		var category = $("#ctgr"+categoryId);
 		
 		$("#categoryId").val("ctgr"+categoryId);
@@ -209,6 +265,7 @@
 		console.log("click한 데이터 : "+clickedText);			
 			console.log("form으로 전달할 데이터 : "+$("#selected_info").val());
 		//선택된 태그에 클래스를 표시한다. 			
+	
 		if (!category.hasClass("selected")){				
 			//$(this).closest("li").children("ul").slideDown();
 			$("#ctgr_content a").removeClass("selected");
