@@ -9,17 +9,9 @@
  -->
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<<<<<<< HEAD
-=======
-
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-
->>>>>>> b687009f7a36737c24c6ce1503f0801219f52f61:src/main/webapp/WEB-INF/view/administer/test.jsp
-=======
->>>>>>> 795c871a84390c5465521d57e3d7413ca9a2dd36
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -78,20 +70,11 @@
 .selected{
 	background : #cccccc;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD:src/main/webapp/WEB-INF/view/administer/categorySet.jsp
-=======
->>>>>>> 795c871a84390c5465521d57e3d7413ca9a2dd36
 
 #ctgr_content a{
 	font-weight:normal;
 	color:#428bca;
 }
-<<<<<<< HEAD
-=======
->>>>>>> b687009f7a36737c24c6ce1503f0801219f52f61:src/main/webapp/WEB-INF/view/administer/test.jsp
-=======
->>>>>>> 795c871a84390c5465521d57e3d7413ca9a2dd36
 </style>
 
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
@@ -255,13 +238,7 @@
 		</c:forEach>
 		</li>
 	</ul>
-<<<<<<< HEAD
-<<<<<<< HEAD:src/main/webapp/WEB-INF/view/administer/categorySet.jsp
-=======
 	<script type="text/javascript" src="/Marble/js/blueGrid.js"></script>
->>>>>>> b687009f7a36737c24c6ce1503f0801219f52f61:src/main/webapp/WEB-INF/view/administer/test.jsp
-=======
->>>>>>> 795c871a84390c5465521d57e3d7413ca9a2dd36
 	</div>
 </div>
 	
