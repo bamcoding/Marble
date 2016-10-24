@@ -78,25 +78,29 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$().ready(function(){
+		//카테고리 아이디를 설정한다.
 		$("#categoryId").val("ctgr0");
-		//$("#ctgr0").find("ul").slideUp();
 		
+		//카테고리 이름을 클릭했을 때 이벤트		
 		$("#ctgr_content li a").click(function(){
-			//인덱스는 기대할 수 없음.
+			//현재 태그의 부모(li)의 id를 가져온다.
 			clickedText = $(this).parents().attr("id");
+			
+			//hidden input의 value에 id를 넣는다.
 			$("#categoryId").val(clickedText);
+			//hidden input의 value에 이름을 넣는다.
 			$("#selected_info").val($(this).text());
 			
 			console.log("click한 데이터 : "+clickedText);			
  			console.log("form으로 전달할 데이터 : "+$("#selected_info").val());
-			//선택된 태그에 클래스를 표시한다. 			
+			
+ 			//선택된 앵커 태그에 클래스를 추가한다. 			
 			if (!$(this).hasClass("selected")){				
-				//$(this).closest("li").children("ul").slideDown();
+				//클릭한 앵커 태그만 클래스가 추가되어야 하기 때문에 나머지 모든 태그는 클래스를 제거한다.
 				$("#ctgr_content a").removeClass("selected");
 				$(this).addClass("selected");
 			}	
 			else {
-				//$(this).closest("li").children("ul").slideUp();
 				$(this).removeClass("selected");
 			}
 		});
@@ -106,9 +110,9 @@
 				$.post( "/Marble/admin/doAddCtgr"
 						,$("#categoryForm").serialize()
 						,function(data){
-							if(data=="true"){
+							if(data!="false"){
 								var categoryId = $("#categoryId").val();
-								$("#"+categoryId).after("<ul><li><a href='#'>"+$("#ctgr_input").val()+"</a></li></ul>");
+								$("#"+categoryId).after("<ul><li id='ctgr"+data+"'><a href='javascript:addCategory("+data+");'>"+$("#ctgr_input").val()+"</a></li></ul>");
 							}
 							else{
 								alert("중복되는 이름은 사용할 수 없습니다.");
@@ -146,8 +150,10 @@
 						,$("#categoryForm").serialize()
 						,function(data){
 							if(data=="true"){
-								var categoryId = $("#categoryId").val();
-								$("#"+categoryId).remove();
+								if(confirm("정말 삭제하시겠습니까?")){
+									var categoryId = $("#categoryId").val();
+									$("#"+categoryId).remove();
+								}
 							}
 							else{
 								alert("하위 파일이 있으면 삭제할 수 없습니다.");
@@ -192,6 +198,27 @@
 		});
 		
 	});
+	
+	function addCategory(categoryId){
+		
+		var category = $("#ctgr"+categoryId);
+		
+		$("#categoryId").val("ctgr"+categoryId);
+		$("#selected_info").val(category.text());
+		
+		console.log("click한 데이터 : "+clickedText);			
+			console.log("form으로 전달할 데이터 : "+$("#selected_info").val());
+		//선택된 태그에 클래스를 표시한다. 			
+		if (!category.hasClass("selected")){				
+			//$(this).closest("li").children("ul").slideDown();
+			$("#ctgr_content a").removeClass("selected");
+			category.children("a").addClass("selected");
+		}	
+		else {
+			//$(this).closest("li").children("ul").slideUp();
+			category.children("a").removeClass("selected");
+		}
+	}
 </script>
 
 <body>
@@ -213,31 +240,31 @@
 	</form>
 	<!-- 이전 레벨과 현재 레벨이 다를 경우 ul -->
 	<div id="ctgr_content" >
-	<ul id="start_tree">
-		<li id="ctgr0"><a href="#">전체보기</a>
-		
-		<c:set var="pr" value="0" />
-		<c:forEach items="${categories }" var="category" >
- 	
-		<c:set var="nr" value="${category.level }" />
-			<c:choose>
-			<c:when test="${pr lt nr }">
-					<ul><li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</c:when>
-			<c:when test="${pr gt nr }">
-					<c:forEach begin="1" end="${pr-nr }" step="1">
-					</li></ul>
-					</c:forEach>
-					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</c:when>
-			<c:otherwise>
-					</li>
-					<li id="ctgr${category.categoryId }"><a href="#">${category.categoryName}</a>(${pr},${nr})</c:otherwise>
-			</c:choose>
-				<c:set var="pr" value="${nr}"/>
-		</c:forEach>
-		</li>
-	</ul>
+	<ul id='start_tree'>
+				<li id='ctgr0'><a href='javascript:void(0);'>ROOT</a>
+				
+				<c:set var='pr' value='0' />
+				<c:forEach items='${categories }' var='category' >
+		 	
+				<c:set var='nr' value='${category.level }' />
+					<c:choose>
+					<c:when test='${pr lt nr }'>
+							<ul><li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:when>
+					<c:when test='${pr gt nr }'>
+							<c:forEach begin='1' end='${pr-nr }' step='1'>
+							</li></ul>
+							</c:forEach>
+							<li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:when>
+					<c:otherwise>
+							</li>
+							<li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:otherwise>
+					</c:choose>
+						<c:set var='pr' value='${nr}'/>
+				</c:forEach>
+				</li>
+			</ul>
+
 	</div>
-</div>
-	
+	</div>
 </body>
 </html>

@@ -56,11 +56,8 @@ public class CategoryBizImpl implements CategoryBiz {
 	}
 
 	@Override
-	public boolean addCategory(String name, String parentName) {
-		if(parentName == null || parentName.length()==0 || parentName.equals("전체보기")){
-			parentName="ROOT";
-		}
-		return dao.addCategory(name, parentName) > 0;
+	public boolean addCategory(CategoryVO categoryVO) {
+		return dao.addCategory(categoryVO) > 0;
 	}
 
 	@Override
@@ -80,6 +77,11 @@ public class CategoryBizImpl implements CategoryBiz {
 	
 	public boolean checkExistChild(String input){
 		return dao.countChild(input) > 0;
+	}
+
+	@Override
+	public int getNewCategoryId() {
+		return dao.getNewCategoryId();
 	}
 	
 }

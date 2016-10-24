@@ -14,7 +14,7 @@ public interface CategoryBiz {
 	public boolean isCategoryLeafNode(String parentCategoryId);
 	
 	
-	public boolean addCategory(String name, String parentName);
+	public boolean addCategory(CategoryVO categoryVO);
 
 	public boolean modifyCategory(String input, String selectedName);
 
@@ -22,4 +22,6 @@ public interface CategoryBiz {
 
 	public boolean checkExistName(String input);
 	public boolean checkExistChild(String input);
+	
+	public int getNewCategoryId();
 }
