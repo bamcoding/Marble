@@ -223,7 +223,6 @@
 
 <body>
 	<form id="categoryForm" name="categoryForm">
-	
 	<div id="ctgr_view">
 	<div id="ctgr_title">
 		<div class="left">카테고리 미리보기</div>
@@ -241,29 +240,27 @@
 	<!-- 이전 레벨과 현재 레벨이 다를 경우 ul -->
 	<div id="ctgr_content" >
 	<ul id='start_tree'>
-				<li id='ctgr0'><a href='javascript:void(0);'>ROOT</a>
-				
-				<c:set var='pr' value='0' />
-				<c:forEach items='${categories }' var='category' >
-		 	
-				<c:set var='nr' value='${category.level }' />
-					<c:choose>
-					<c:when test='${pr lt nr }'>
-							<ul><li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:when>
-					<c:when test='${pr gt nr }'>
-							<c:forEach begin='1' end='${pr-nr }' step='1'>
-							</li></ul>
-							</c:forEach>
-							<li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:when>
-					<c:otherwise>
-							</li>
-							<li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:otherwise>
-					</c:choose>
-						<c:set var='pr' value='${nr}'/>
-				</c:forEach>
-				</li>
-			</ul>
-
+		<li id='ctgr0'><a href='javascript:void(0);'>ROOT</a>
+		<c:set var='pr' value='0' />
+		<c:forEach items='${categories }' var='category' >
+ 	
+		<c:set var='nr' value='${category.level }' />
+			<c:choose>
+			<c:when test='${pr lt nr }'>
+					<ul><li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:when>
+			<c:when test='${pr gt nr }'>
+					<c:forEach begin='1' end='${pr-nr }' step='1'>
+					</li></ul>
+					</c:forEach>
+					<li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:when>
+			<c:otherwise>
+					</li>
+					<li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:otherwise>
+			</c:choose>
+				<c:set var='pr' value='${nr}'/>
+		</c:forEach>
+		</li>
+	</ul>
 	</div>
 	</div>
 </body>

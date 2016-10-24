@@ -47,4 +47,14 @@ public class CommentBizImpl extends DaoSupport implements CommentBiz{
 		return commentDao.deleteComment(commentId) > 0;
 	}
 
+	@Override
+	public String getTime() {
+		return commentDao.getTime();
+	}
+
+	@Override
+	public String getNewCommentId() {
+		return commentDao.getNewCommentId();
+	}
+
 }

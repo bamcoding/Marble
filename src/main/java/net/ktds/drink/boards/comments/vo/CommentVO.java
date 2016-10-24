@@ -67,5 +67,12 @@ public class CommentVO {
 	public void setUserVO(UserVO userVO) {
 		this.userVO = userVO;
 	}
+
+	@Override
+	public String toString() {
+		return commentId + "," + commentContent
+				+ "," + createdDate + "," + userVO.getUserNickname();
+	}
+	
 	
 }

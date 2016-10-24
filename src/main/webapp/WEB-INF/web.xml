@@ -804,7 +804,7 @@
     <servlet-name>DoUpdateCategoryGameServlet</servlet-name>
     <url-pattern>/admin/doUpdateCategoryGame</url-pattern>
       </servlet-mapping>
-  <servlet>
+ <servlet>
     <description></description>
     <display-name>test</display-name>
     <servlet-name>test</servlet-name>

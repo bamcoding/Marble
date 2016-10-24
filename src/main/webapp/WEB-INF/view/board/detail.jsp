@@ -35,17 +35,7 @@ $(document).ready(function() {
 		location.href = "/Marble/goToList?categoryId=${categoryId}";
 	});
 
-	// zzu
 	$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
-	
-	$("#writeCmtBtn").click(function(){
-		$.post("/Marble/board/doWriteCmt" , $("#writeCmtForm").serialize() , function(data){
-			$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
-		});
-		$("#commentContent").val("");
-	});
-	$("#commentList").load("/Marble/board/listCmt?boardId=${board.boardId}");
-	
 	
 });	
 </script>
