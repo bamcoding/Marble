@@ -987,16 +987,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>test</display-name>
-    <servlet-name>test</servlet-name>
-    <servlet-class>net.ktds.bamcoding.web.test</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>test</servlet-name>
-    <url-pattern>/test11</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>ViewBoardInfoServlet</display-name>
     <servlet-name>ViewBoardInfoServlet</servlet-name>
     <servlet-class>net.ktds.drink.admin.web.view.ViewBoardInfoServlet</servlet-class>
@@ -1004,5 +994,25 @@
   <servlet-mapping>
     <servlet-name>ViewBoardInfoServlet</servlet-name>
     <url-pattern>/admin/boardInfo</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>ViewImageSetServlet</display-name>
+    <servlet-name>ViewImageSetServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.img.ViewImageSetServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewImageSetServlet</servlet-name>
+    <url-pattern>/admin/imageSet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoImageUpLoadServlet</display-name>
+    <servlet-name>DoImageUpLoadServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.img.DoImageUpLoadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoImageUpLoadServlet</servlet-name>
+    <url-pattern>/admin/doImageUpLoad</url-pattern>
   </servlet-mapping>
 </web-app>

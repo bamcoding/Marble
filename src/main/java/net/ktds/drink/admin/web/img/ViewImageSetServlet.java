@@ -1,4 +1,4 @@
-package net.ktds.bamcoding.web;
+package net.ktds.drink.admin.web.img;
 
 import java.io.IOException;
 
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class test extends HttpServlet {
+public class ViewImageSetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public test() {
+    public ViewImageSetServlet() {
         super();
     }
 
@@ -20,10 +20,8 @@ public class test extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewPath = "/WEB-INF/view/test/index.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/administer/imageSet.jsp");
 		rd.forward(request, response);
-	
 	}
 
 }
