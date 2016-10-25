@@ -62,8 +62,8 @@
 						<select id="searchType" name="searchType">
 						//단항 조건문 
 							<option value="1" ${ searchGame.searchType eq 1 ? 'selected' : '' }>회원닉네임</option>
-							<option value="2" ${ searchGame.searchType eq 2 ? 'selected' : '' }>제목+내용</option>
-							<option value="3" ${ searchGame.searchType eq 3 ? 'selected' : '' }>제목</option>
+							<option value="2" ${ searchGame.searchType eq 2 ? 'selected' : '' }>게임이름+내용</option>
+							<option value="3" ${ searchGame.searchType eq 3 ? 'selected' : '' }>게임이름</option>
 							<option value="4" ${ searchGame.searchType eq 4 ? 'selected' : '' }>내용</option>
 				
 						</select>

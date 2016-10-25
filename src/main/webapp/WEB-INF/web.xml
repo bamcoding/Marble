@@ -935,4 +935,54 @@
     <servlet-name>DoDeleteAdvertisementServlet</servlet-name>
     <url-pattern>/admin/doDeleteAdvertisement</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewHistoryPageServlet</display-name>
+    <servlet-name>ViewHistoryPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.history.ViewHistoryPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewHistoryPageServlet</servlet-name>
+    <url-pattern>/admin/historyList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteHistoryServlet</display-name>
+    <servlet-name>DoDeleteHistoryServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.history.DoDeleteHistoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteHistoryServlet</servlet-name>
+    <url-pattern>/admin/deleteHistory</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewHistoryDetailPageServlet</display-name>
+    <servlet-name>ViewHistoryDetailPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.history.ViewHistoryDetailPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewHistoryDetailPageServlet</servlet-name>
+    <url-pattern>/admin/historyDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteHistoryDetailServlet</display-name>
+    <servlet-name>DoDeleteHistoryDetailServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.history.DoDeleteHistoryDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteHistoryDetailServlet</servlet-name>
+    <url-pattern>/admin/doDeleteHistoryDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoSearchHistoryInitServlet</display-name>
+    <servlet-name>DoSearchHistoryInitServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.history.DoSearchHistoryInitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoSearchHistoryInitServlet</servlet-name>
+    <url-pattern>/admin/searchHistoryInit</url-pattern>
+  </servlet-mapping>
 </web-app>
