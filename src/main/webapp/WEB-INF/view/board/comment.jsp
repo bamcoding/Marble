@@ -20,9 +20,6 @@ $(".deleteBtn").click(function(){
 	}
  });
  
- $(".mdfyBtn").click(function(){
-
- });
  
  $("#writeCmtBtn").click(function(){
 	$.post("/Marble/board/doWriteCmt" , $("#writeCmtForm").serialize() , function(data){
@@ -39,6 +36,7 @@ function deleteAction(cmtId){
 		});
 	}
 }
+
  
 function makeDiv(data){
 	
@@ -49,7 +47,6 @@ function makeDiv(data){
 	str += '<div class="userInfo">';
 	str += '<div style="display:inline-block;">닉네임 : '+comment[3] +'</div>';
 	str += '<div style="display:inline-block; margin-left:15px;">작성 시간 : '+comment[2] +'</div>';
-	str += '<div style="display:inline=block; float:right;"><input type="button" class="mdfyBtn" value="수정" /></div>';
 	str += '<div style="display:inline=block; margin-left:15px; float:right;"><input type="button" class="deleteBtn"  name="deleteBtn" value="삭제" onclick="deleteAction(\''+comment[0]+'\')"/></div>';
 	str += '</div>';
 	str += '<div class="comment">';
@@ -64,6 +61,8 @@ function makeDiv(data){
 </script>
 <!-- 댓글 리스트 -->
 	<!-- zzu -->
+
+
 <div id="comment" style="border:1px solid black; height:100px;">
 	<form id="writeCmtForm" name="writeCmtForm">
 	<div>
@@ -85,7 +84,6 @@ function makeDiv(data){
 				<div class="userInfo">
 				<div style="display:inline-block;">닉네임 : ${comment.userVO.userNickname }</div>
 				<div style="display:inline-block; margin-left:15px;">작성 시간 : ${comment.createdDate }</div>
-				<div style="display:inline=block; float:right;"><input type="button" class="mdfyBtn" value="수정" /></div>
 				<div style="display:inline=block; margin-left:15px; float:right;"><input type="button" class="deleteBtn"  name="deleteBtn" value="삭제" /></div>
 				</div>
 				<div class="comment">

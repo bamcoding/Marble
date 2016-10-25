@@ -80,20 +80,19 @@ public class CategoryDaoImpl extends DaoSupport implements CategoryDao {
 	}
 
 	@Override
-	public int addCategory(String name, String parentName) {
+	public int addCategory(CategoryVO categoryVO) {
 		return insert(new Query() {
 			public PreparedStatement query(Connection conn) throws SQLException {
 				StringBuffer query = new StringBuffer();
 				query.append(" INSERT INTO DRINK.CTGR (		");
 				query.append("    CTGR_ID, CTGR_NM, PRNT_CTGR_ID) 		");
-				query.append(" VALUES ( CTGR_ID_SEQ.NEXTVAL,			");
-				query.append("  ?, (SELECT 	CTGR_ID 			");
-				query.append("  	FROM	DRINK.CTGR 			");
-				query.append("  	WHERE	CTGR_NM = ?)			");
+				query.append(" VALUES ( ?,			");
+				query.append("  ?, ?		");
 				query.append("  )			");
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
-				pstmt.setString(1, name);
-				pstmt.setString(2, parentName);
+				pstmt.setString(1, categoryVO.getCategoryId());
+				pstmt.setString(2, categoryVO.getCategoryName());
+				pstmt.setString(3, categoryVO.getParentCategoryId());
 				return pstmt;
 			}
 		});
@@ -180,6 +179,29 @@ public class CategoryDaoImpl extends DaoSupport implements CategoryDao {
 					count = rs.getInt("CNT");
 				}
 				return count;
+			}
+		});
+	}
+
+	@Override
+	public int getNewCategoryId() {
+		
+		return (int) selectOne(new QueryAndResult() {			
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	CTGR_ID_SEQ.NEXTVAL SEQ	");
+				query.append(" FROM		DRINK.CTGR 		");
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				int result = 0;
+				if(rs.next()){
+					result = rs.getInt(1);
+				}
+				return result;
 			}
 		});
 	}

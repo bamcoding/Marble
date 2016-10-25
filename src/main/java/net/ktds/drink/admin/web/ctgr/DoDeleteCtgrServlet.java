@@ -32,6 +32,7 @@ public class DoDeleteCtgrServlet extends HttpServlet {
 		if(!isChild){
 			isTrue = biz.deleteCategory(selectedName);			
 		}
+		System.out.println(isTrue);
 		PrintWriter out = response.getWriter();
 		out.write(isTrue+"");
 		out.flush();
