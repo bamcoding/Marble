@@ -13,18 +13,19 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#deleteBtn").click(function() {
-			if(confirm("\"${gameVO.gameName}.\"를 삭제하시겠습니까?")) {
-				location.href="/Marble/admin/doDeleteCustomDetail?gameId=${customVO.gameId}"
+			if(confirm("\"${typeVO.typeName}.\"를 삭제하시겠습니까?")) {
+				location.href="/Marble/admin/deleteTypeDetail?typeId=${typeVO.typeId}"
 			}
 		});	
 		
 		$("#updateBtn").click(function() {
-			location.href="/Marble/admin/updateCustom?gameId=${customVO.gameId}";
+			location.href="/Marble/admin/updateType?typeId=${typeVO.typeId}";
 		});
 		
 		
 		$("#goBackBtn").click(function() {
-			location.href="/Marble/admin/customList";
+	
+			location.href="/Marble/admin/typeList";
 		});
 		
 		
@@ -35,29 +36,22 @@
 <body>
 	<div class="gameList">
 	<table class="grid">
-	
 		<tr>
-			<td>게임번호</td>	
-			<c:set var="number" value="${fn:split(customVO.gameId,'-')[2]}"/>
-			<fmt:parseNumber var="number" type="number" value="${number}"/>
-			<td>${number}</td>
+			<td>타입번호</td>	
+			<td>${typeVO.typeId}</td>
 		</tr>
 		<tr>
-			<td>게임 이름</td>	
-			<td>${customVO.gamesVO.gameName}</td>
+			<td>타입이름</td>	
+			<td>${typeVO.typeName}</td>
 		</tr>
 		<tr>
-			<td>회원닉네임</td>	
-			<td>${customVO.userVO.userNickname}</td>
-		</tr>
-		<tr>
-			<td>게임설명</td>
-			<td>${customVO.gamesVO.gameInfo}</td>
+			<td>타입설명</td>
+			<td>${typeVO.typeInfo}</td>
 		</tr>
 	</table>
 	<div style="float: right;"><input type="submit" id="deleteBtn" value="삭제" onclick="movePage(0)"></div>
 	<div style="float: right;"><input type="submit" id="updateBtn" value="수정" onclick="movePage(0)"></div>
 	<div style="float: right;"><input type="submit" id="goBackBtn" value="목록보기" onclick="movePage(0)"></div>
-</div>
+	</div>
 </body>
 </html>

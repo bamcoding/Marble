@@ -8,18 +8,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import net.ktds.drink.constants.Session;
 import net.ktds.drink.games.biz.GamesBiz;
 import net.ktds.drink.games.biz.GamesBizImpl;
 import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.games.vo.GamesVO;
 import net.ktds.drink.support.Param;
+import net.ktds.drink.user.vo.UserVO;
 
 
 public class ViewSetGamesPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private GamesBiz biz;
-	private List<GamesVO> games;
+	
 
     public ViewSetGamesPageServlet() {
         super();
@@ -36,11 +39,15 @@ public class ViewSetGamesPageServlet extends HttpServlet {
 		String viewPath = "/WEB-INF/view/game/setGames.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 
-		games = biz.allGetGames();
+		HttpSession session =  request.getSession();
+		UserVO userInfo = (UserVO) session.getAttribute(Session.USER_INFO);
 		
 		CategoryVO categoryVO = new CategoryVO();
 		categoryVO.setParentCategoryId("10");
 		List<CategoryVO> categories = biz.getCategory(categoryVO);
+		
+		
+		List<GamesVO> games = biz.allGetGames();
 		
 		request.setAttribute("games", games);
 		request.setAttribute("categories", categories);

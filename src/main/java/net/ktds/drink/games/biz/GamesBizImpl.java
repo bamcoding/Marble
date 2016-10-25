@@ -35,6 +35,8 @@ public class GamesBizImpl implements GamesBiz {
 	public List<CategoryVO> getAdminCategory(CategoryVO categoryVO) {
 		return dao.getAdminCategory(categoryVO);
 	}
+	
+
 	@Override
 	public List<GamesVO> getGames(GamesVO gamesVO) {
 		return dao.getGames(gamesVO);
@@ -45,6 +47,7 @@ public class GamesBizImpl implements GamesBiz {
 	public List<GamesVO> allGetGames() {
 		return dao.allGetGames();
 	}
+
 
 
 	@Override
@@ -186,6 +189,11 @@ public class GamesBizImpl implements GamesBiz {
 	public boolean deleteCustom(String gameId) {
 		return dao.deleteCustom(gameId)> 0;
 	}
+
+
+
+
+
 
 
 
