@@ -74,6 +74,12 @@
 			  			<a href="javascript:void(0);" id="category-info" class="underBtn">게임타입</a>
 			  		</div>
 			  </li>
+			    <li class="member">
+			  	<a href="javascript:void(0);"  class="advertisemnetBtn">광고관리</a>
+			  		<div class="member-content">
+			  			<a href="/Marble/admin/advertisement" id="category-info" class="underBtn">광고 설정</a>
+			  		</div>
+			  </li>
 			  <div style="float:right">
 			  	<li style="color:white; padding:12px 16px">안녕하세요 관리자님</li>
 			  </div>

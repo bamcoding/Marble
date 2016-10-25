@@ -38,20 +38,20 @@ public class DoWriteServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String fileName = "";
 		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
 		
 		String boardSubject = multipartRequest.getParameter("boardSubject");
 		String boardContent = multipartRequest.getParameter("boardContent");
 		String categoryId = multipartRequest.getParameter("categoryId");
 		
-		String fileName = "";
 		MultipartFile uploadFile = multipartRequest.getFile("file");
 		if ( uploadFile.getFileSize() > 0 ) {
-			File uploadFileDirectory = new File( "D:\\board\\uploadfiles" );
+			File uploadFileDirectory = new File("D:\\board\\uploadfiles\\");
 			if ( !uploadFileDirectory.exists() ){
 				uploadFileDirectory.mkdirs();
 			}
-			uploadFile.write("D:\\board\\uplaodfiles\\" + uploadFile.getFileName());
+			uploadFile.write("D:\\board\\uploadfiles\\" + uploadFile.getFileName());
 			fileName = uploadFile.getFileName();
 		}
 		

@@ -1,4 +1,4 @@
-package net.ktds.drink.play.web.ajax;
+package net.ktds.drink.admin.web.advertisement;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,11 +13,11 @@ import net.ktds.drink.admin.biz.AdminBiz;
 import net.ktds.drink.admin.biz.AdminBizImpl;
 import net.ktds.drink.admin.vo.AdvertisementVO;
 
-public class viewAdvertisementVideoServlet extends HttpServlet {
+public class ViewAdvertisementPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private AdminBiz adminBiz;
 
-	public viewAdvertisementVideoServlet() {
+	public ViewAdvertisementPageServlet() {
 		super();
 		adminBiz = new AdminBizImpl();
 	}
@@ -25,13 +25,14 @@ public class viewAdvertisementVideoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
-		adminBiz = new AdminBizImpl();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		
+		String viewPath = "/WEB-INF/view/administer/advertisement.jsp";
 		List<AdvertisementVO> advertisements = adminBiz.getAdvertisementVideo();
-		String viewPath = "/WEB-INF/view/play/advertiseMent.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 		request.setAttribute("advertisements", advertisements);
 		rd.forward(request, response);
