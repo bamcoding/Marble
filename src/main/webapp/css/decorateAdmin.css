@@ -1,0 +1,268 @@
+@CHARSET "UTF-8";
+
+/* 
+
+관리자 css입니다.
+관리자 css입니다.
+관리자 css입니다.
+
+ */
+
+
+#admin_wrapper{
+	top:0;
+	left:0;
+	position:relative;
+	width:1000px;;
+	height:80px;
+	
+	box-shadow: 5px 10px 10px 5px #888888;
+	border-radius: 10px;
+}
+
+#admin_title{
+	top:0;
+	left:-5px;
+	width:100%;
+	height:80px;
+	background:#2ecc71;
+	border-radius : 10px;
+}
+#admin_content{
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius : 10px;
+}
+#admin_home{
+	width:100px;
+	height:100%;
+	background:#fa565a;
+	border-top-left-radius : 10px;
+	border-bottom-left-radius : 10px;
+	border:0px;
+	text-align: center;
+	line-height: 80px;
+	font-size: 15px; 
+	color: white;
+}
+
+#admin_home:hover{
+	background:#ff787b;
+}
+
+
+#admin_wrapper .menu{
+	width:100px;
+	height:100%;
+	background:#2ecc71;
+	border:0px;
+	text-align: center;
+	line-height: 80px;
+	font-size: 15px;
+	color: white; 
+}
+
+#admin_wrapper .menu:hover{
+	background:#33dc7b;
+	font-weight: bold
+}
+
+#admin_title .selected{
+	background:#33dc7b;
+	font-weight: bold
+}
+
+h3{
+	margin:30px 0px 10px 10px;
+}
+
+#admin_content_cover{
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	background:#ffffff;
+	
+}
+
+#listDiv{
+	overflow: auto;
+	width:800px;
+	height:500px;
+	margin:10px;
+	border-radius: 10px;
+	border:1px solid black;
+}
+
+#listTable {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#listTable th, td:not(:last-child) {
+	border-right: 1px solid #ffffff;
+}
+
+#listTable th, td {
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+}
+
+
+#listTable th {
+	background-color: #fa565a;
+	color:white;	
+}
+
+
+#listTable th:FIRST-CHILD {
+	width: 50px;
+	text-align: center
+}
+
+#listTable tr:NTH-CHILD(2n+1) {
+	background-color: #F3F3F4;
+}
+
+.right{
+	float:right;
+}
+
+.left{
+	float:left;
+}
+
+.clear{
+	clear:both;
+}
+
+.inline{
+	display: inline-block;
+}
+
+#ctgr_view{
+	border:1px solid black;
+	width:500px;
+	margin:10px;
+	border-radius: 10px;
+}
+#ctgr_title{
+	height:50px;
+	font-weight: bold;
+	background:#eeeeee;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+#ctgr_title .left{
+	margin:0 20px 0 20px;
+	line-height: 50px;
+}
+#ctgr_title .right, #selected_info{
+	margin:13px 20px 13px 20px;
+	height:50px;
+}
+
+#ctgr_content{
+	margin:10px 0 10px 0;
+}
+
+#ctgr_content a{
+	text-decoration: none;
+}
+
+#ctgr_content ul, #ctgr_content li{
+	list-style:none;
+}
+
+#start_tree{
+	padding-left:20px;
+}
+
+#ctgr_title > *{
+	display:inline-block;
+}
+
+#ctgr_title .right #ctgr_input{
+	width: 100px;
+}
+
+.displayBlock{
+	display : block;
+}
+
+.selected{
+	background : #cccccc;
+}
+
+#ctgr_content a{
+	font-weight:normal;
+	color:#428bca;
+}
+
+.divTable{
+	border: 1px solid black;
+	border-radius:10px;
+	margin: 10px;
+	display: inline-block; 	
+}
+.divTr:not(:last-child){
+	height:50px;
+	border-bottom: 1px solid black;
+}
+.divTr:last-child{
+	height:50px;
+}
+
+.divTd:not(:first-child){
+	margin-left:0px;
+	width: 100px;
+	line-height: 50px;
+	text-align: center;
+	border-left: 1px solid black;
+}
+.divTd:first-child{
+	margin-left:0px;
+	width: 100px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.tableHead{
+	background:#fa565a;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	color:white;
+}
+
+#admin_title ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#admin_title li {
+    float: left;
+}
+#admin_title li:last-child input{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;"
+}
+
+#admin_title .underMenu{
+	background:green;
+}
+
+
+.member-content {
+	display:none;
+    position: absolute;
+}
+.member-content input {
+    display: block;
+}
+	
+.member:hover .member-content {
+    display: block;
+}
+
+
+

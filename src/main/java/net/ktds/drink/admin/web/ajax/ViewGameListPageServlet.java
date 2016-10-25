@@ -22,12 +22,12 @@ import net.ktds.drink.support.Param;
 import net.ktds.drink.support.pager.ClassicPageExplorer;
 import net.ktds.drink.support.pager.PageExplorer;
 
-public class VIewGameListPageServlet extends HttpServlet {
+public class ViewGameListPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private GamesBiz biz;
 
  
-    public VIewGameListPageServlet() {
+    public ViewGameListPageServlet() {
         super();
         biz = new GamesBizImpl();
     }

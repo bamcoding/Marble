@@ -14,15 +14,9 @@
 <script type="text/javascript">
 
 	$().ready(function () {
-		
-
-
 		$("#addBtn").click(function(){	
 			location.href="/Marble/admin/addGame";
-	
-			
 		});
-
 		
 		$("#deleteBtn").click(function(){	
 			if(confirm("선택한 게임을 삭제하시겠습니까?")) {
@@ -30,10 +24,7 @@
 					  alert( "" + data );
 				});
 			}
-			
-			
 		});
-		
 	});
 </script>
 </head>

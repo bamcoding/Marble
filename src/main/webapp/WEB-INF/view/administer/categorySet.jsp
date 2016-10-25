@@ -1,80 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!-- 
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
- -->
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-
-<style>
-#ctgr_view{
-	border:1px solid black;
-	width:500px;
-	margin:10px;
-	border-radius: 10px;
-}
-#ctgr_title{
-	height:50px;
-	font-weight: bold;
-	background:#eeeeee;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-}
-#ctgr_title .left{
-	margin:0 20px 0 20px;
-	line-height: 50px;
-}
-#ctgr_title .right, #selected_info{
-	margin:13px 20px 13px 20px;
-	height:50px;
-}
-
-#ctgr_content{
-	margin:10px 0 10px 0;
-}
-
-#ctgr_content a{
-	text-decoration: none;
-}
-
-#ctgr_content ul, #ctgr_content li{
-	list-style:none;
-}
-
-#start_tree{
-	padding-left:20px;
-}
-
-#ctgr_title > *{
-	display:inline-block;
-}
-
-#ctgr_title .right #ctgr_input{
-	width: 100px;
-}
-
-.displayBlock{
-	display : block;
-}
-
-.selected{
-	background : #cccccc;
-}
-
-#ctgr_content a{
-	font-weight:normal;
-	color:#428bca;
-}
-</style>
-
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/Marble/css/decorateAdmin.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$().ready(function(){
@@ -278,7 +209,10 @@
 	}
 </script>
 
-<body>
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"></jsp:include>
+	
+	<h3>카테고리관리</h3>
+
 	<form id="categoryForm" name="categoryForm">
 	<div id="ctgr_view">
 	<div id="ctgr_title">

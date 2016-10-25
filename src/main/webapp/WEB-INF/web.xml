@@ -301,7 +301,7 @@
     <description></description>
     <display-name>ViewAdminPageServlet</display-name>
     <servlet-name>ViewAdminPageServlet</servlet-name>
-    <servlet-class>net.ktds.drink.admin.web.ViewAdminPageServlet</servlet-class>
+    <servlet-class>net.ktds.drink.admin.web.view.ViewAdminPageServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewAdminPageServlet</servlet-name>
@@ -339,12 +339,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>VIewGameListPageServlet</display-name>
-    <servlet-name>VIewGameListPageServlet</servlet-name>
-    <servlet-class>net.ktds.drink.admin.web.ajax.VIewGameListPageServlet</servlet-class>
+    <display-name>ViewGameListPageServlet</display-name>
+    <servlet-name>ViewGameListPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.ViewGameListPageServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>VIewGameListPageServlet</servlet-name>
+    <servlet-name>ViewGameListPageServlet</servlet-name>
     <url-pattern>/admin/gameList</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -685,7 +685,6 @@
     <servlet-name>DoDeleteCommentServlet</servlet-name>
     <url-pattern>/board/doDeleteCmt</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <description></description>
     <display-name>viewAdvertisementVideoServlet</display-name>
@@ -985,8 +984,8 @@
   <servlet-mapping>
     <servlet-name>DoSearchHistoryInitServlet</servlet-name>
     <url-pattern>/admin/searchHistoryInit</url-pattern>
-      </servlet-mapping>
- <servlet>
+  </servlet-mapping>
+  <servlet>
     <description></description>
     <display-name>test</display-name>
     <servlet-name>test</servlet-name>
@@ -995,5 +994,15 @@
   <servlet-mapping>
     <servlet-name>test</servlet-name>
     <url-pattern>/test11</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewBoardInfoServlet</display-name>
+    <servlet-name>ViewBoardInfoServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.view.ViewBoardInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewBoardInfoServlet</servlet-name>
+    <url-pattern>/admin/boardInfo</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -10,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <script type="text/javascript">
 
 	$().ready(function () {
@@ -27,20 +24,16 @@
 		
 	});
 </script>
-</head>
-<body>
-
 	
-	<div class="gameList">
-		
-	<div id="game" >
+<h3>히스토리관리</h3>
+<div id="listDiv">
 	<form id="checkGame" name="checkGame">
-	<table class="grid">
+	<table id="listTable">
 	<tr>
-		<td>선택</td>
-		<td>플레이정보ID</td>
-		<td>플레이시간</td>
-		<td>회원닉네임</td>
+		<th>선택</th>
+		<th>플레이정보ID</th>
+		<th>플레이시간</th>
+		<th>회원닉네임</th>
 	</tr>
 	
 	<c:forEach items="${histories}" var="history">
@@ -78,8 +71,7 @@
 				<div class="clear"></div>
 			</div>
 	</form>
-			
-	</div>
-	</div>
+</div>
+
 </body>
 </html>
