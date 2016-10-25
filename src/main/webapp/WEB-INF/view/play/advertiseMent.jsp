@@ -8,17 +8,12 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		var randomNumber = parseInt(Math.random()*3)+1
 		
 		
-		
-	/* 	$("#test"+randomNumber).click(function(){
-		$(this).remove();
-		$("#test"+randomNumber).css({"display":"block"});
-		$("#test"+randomNumber).attr({"autoplay":"autoplay"});			
-			 */
-		
-		
+	 	$("#advertisementVideo").click(function(){
+			$(this).remove();
+		});
+	 
 		
 	});
 	
@@ -29,25 +24,17 @@
 </script>
 
 <style>
-	#video1{
-	display: none;
+	video{
+	display: block;
 		}
-	#video2{
-	display: none;
-		}
-	#video3{
-		display: none;
-	}
 </style>
 
 <div>
 	 	<div id="marble" >
 	 			<div id="gamePan">
-	 			<c:forEach items="${advertisements}" var="advertisement">
-				    <video id="${advertisement.fileName}" width="100%" height="100%" 
+				    <video id="advertisementVideo" width="100%" height="100%" 
 				    	src="/Marble/play/download?advertisementId=${advertisement.advertisementId}" autoplay controls> 
 				    </video>
-	 			</c:forEach>
 	 			</div>
 		</div>  
 </div>

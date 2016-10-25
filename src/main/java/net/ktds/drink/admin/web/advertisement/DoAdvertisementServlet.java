@@ -39,14 +39,17 @@ public class DoAdvertisementServlet extends HttpServlet {
 		String advertisementId = multipartRequest.getParameter("advertisementId");
 		System.out.println(advertisementId);
 		if( contractDate.length() == 0){
-			response.sendRedirect("/Marble/admin/doAdvertisement?errorCode=1");
+			response.sendRedirect("/Marble/admin/advertisement?errorCode=1");
 			return;
 		}
 		if(expirationDate.length() == 0){
-			response.sendRedirect("/Marble/admin/doAdvertisement?errorCode=1");
+			response.sendRedirect("/Marble/admin/advertisement?errorCode=1");
 			return;
 		}
-		
+		if(advertisementId.length() == 0){
+			response.sendRedirect("/Marble/admin/advertisement?errorCode=1");
+			return;
+		}
 		MultipartFile uploadFile = multipartRequest.getFile("file");
 		
 		 if ( uploadFile.getFileSize() > 0 ) {
@@ -60,6 +63,10 @@ public class DoAdvertisementServlet extends HttpServlet {
 	            uploadFile.write("D:\\marble\\uploadfiles\\" + uploadFile.getFileName());
 	            fileName = uploadFile.getFileName();
 	        }
+		 else{
+			 response.sendRedirect("/Marble/admin/advertisement?errorCode=1");
+		 }
+		
 
 		AdvertisementVO advertisement = new AdvertisementVO();
 		advertisement.setFileName(fileName);
@@ -74,7 +81,7 @@ public class DoAdvertisementServlet extends HttpServlet {
 		}
 		else{
 			
-			response.sendRedirect("/Marble/admin/doAdvertisement?errorcode=2");
+			response.sendRedirect("/Marble/admin/advertisement?errorcode=2");
 			
 		}
 	

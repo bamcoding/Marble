@@ -925,4 +925,14 @@
     <servlet-name>DoSearchTypeInitServlet</servlet-name>
     <url-pattern>/admin/searchTypeInit</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteAdvertisementServlet</display-name>
+    <servlet-name>DoDeleteAdvertisementServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.advertisement.DoDeleteAdvertisementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteAdvertisementServlet</servlet-name>
+    <url-pattern>/admin/doDeleteAdvertisement</url-pattern>
+  </servlet-mapping>
 </web-app>

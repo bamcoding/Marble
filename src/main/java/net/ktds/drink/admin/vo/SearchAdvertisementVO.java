@@ -1,6 +1,6 @@
 package net.ktds.drink.admin.vo;
 
-public class SearchUserVO {
+public class SearchAdvertisementVO {
 	
 	private int pageNumber;
 	private int startRowNumber;
@@ -13,6 +13,12 @@ public class SearchUserVO {
 	}
 	public void setPageNumber(int pageNumber) {
 		this.pageNumber = pageNumber;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
 	}
 	public int getStartRowNumber() {
 		return startRowNumber;
@@ -31,12 +37,6 @@ public class SearchUserVO {
 	}
 	public void setSearchType(int searchType) {
 		this.searchType = searchType;
-	}
-	public String getSearchKeyword() {
-		return searchKeyword;
-	}
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
 	}
 	
 }

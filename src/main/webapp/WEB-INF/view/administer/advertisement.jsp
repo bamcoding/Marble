@@ -13,14 +13,31 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
+	var errorCode = "${param.errorCode}";
+	if(errorCode == "1") {
+		alert("파일, 광고시작일, 만료일을 모두 입력해주세요");
+		return;
+	}		
+	if(errorCode == "2") {
+		alert("광고 업로드에 실패했습니다.");
+		return;
+	}
+	
 	$("#uploadBtn").click(function(){
-		/* $.post("/Marble/admin/doAdvertisement",$("#writeForm").serialize(),function(data){
-		alert("성공");	
-		}); */
-		$("#writeForm").attr( {
-			"method": "post",
-			"action": "/Marble/admin/doAdvertisement"
-		}).submit();
+		if(confirm("광고를 업로드 하시겠습니까?")){
+			$("#writeForm").attr( {
+				"method": "post",
+				"action": "/Marble/admin/doAdvertisement"
+			}).submit();
+		}
+	});
+	
+	$("#deleteBtn").click(function(){
+		if(confirm("광고를 삭제 하시 겠습니까?")){
+			$.post("/Marble/admin/doDeleteAdvertisement",$("#writeForm").serialize(),function(data){
+				 alert( "" + data );
+			});
+		}
 	});
 });
 
@@ -66,16 +83,18 @@ $(document).ready(function(){
 					</tr>
 				</c:forEach>
 				</table>
+			</form>
+			<form id = "searchForm" name="searchForm">
 				${paging}
 				<div class="right">
 					<select id="searchType" name="searchType">
-							<option value="1" ${searchUser.searchType eq 1 ?'selected':''}>파일이름+계약일</option>
-							<option value="2" ${searchUser.searchType eq 1 ?'selected':''}>파일이름+만료일</option>
-							<option value="3" ${searchUser.searchType eq 2 ?'selected':''}>계약일</option>
-							<option value="4" ${searchUser.searchType eq 3 ?'selected':''}>만료일</option>
+							<option value="1" ${searchAdvertisement.searchType eq 1 ?'selected':''}>파일이름</option>
+<%-- 							<option value="2" ${searchAdvertisement.searchType eq 2 ?'selected':''}>파일이름+만료일</option>
+							<option value="3" ${searchAdvertisement.searchType eq 3 ?'selected':''}>계약일</option>
+							<option value="4" ${searchAdvertisement.searchType eq 4 ?'selected':''}>만료일</option> --%>
 					</select>
-					<div class="inline"><input type="text" id="searchKeyword" name="searchKeyword"  value="${searchUser.searchKeyword}"/></div>				
-					<div class="inline"><input type="button" id="adUploadBtn" value="검색" onclick="movePage(0)"/></div>
+					<div class="inline"><input type="text" id="searchKeyword" name="searchKeyword"  value="${searchAdvertisement.searchKeyword}"/></div>				
+					<div class="inline"><input type="button" id="searchBtn" value="검색" onclick="movePage(0)"/></div>
 					<div class="inline"><input type="button" id="deleteBtn" value="삭제"/></div>
 					<div class="clear"></div>
 				</div>
