@@ -18,10 +18,13 @@ public interface GamesBiz {
 	public GamesListVO getAllGames(SearchGamesVO searchGames);
 	public CustomListVO getCustomGames(SearchGamesVO searchGames);
 	
+
 	public List<GamesVO> allGetGames();
 	public List<GamesVO> getGames(GamesVO gamesVO);
-	
-	
+
+	public List<GamesVO> allGetGames(String userId);
+
+
 	public GamesVO getGame(String gameId);
 	public boolean addCustom(GamesVO gameVO, UserVO userInfo);
 	public GamesVO getGameBy(String gameName);

@@ -2,15 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html>
-<html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/Marble/css/layout.css" />
-<link rel="stylesheet" type="text/css" href="/Marble/css/grid.css" />
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
-<head>
-<jsp:include page="/WEB-INF/view/common/header.jsp" />
 <script type="text/javascript">
 
 	$(document).ready(function() {
@@ -22,7 +15,8 @@
 			alert("글 수정에 실패 하였습니다.");
 		}
 		$("#goBackBtn").click(function(){
-			location.href = "/Marble/board/detail?boardId=${board.boardId}&categoryId=${param.categoryId}";			
+			location.href = "/Marble/board/detail?boardId=${board.boardId}&categoryId=${param.categoryId}";
+			/* window.history.back(); */
 		})
 		
 		$("#boardSubject").keyup(function(){
@@ -57,8 +51,37 @@
 		});
 	});
 </script>
-</head>
-<body>
+
+<jsp:include page="/WEB-INF/view/common/header.jsp" />
+
+<div id="main">
+	<section id="one"></section>
+
+	<!-- One -->
+	<!-- <section id="start">
+			<div class="container">
+				<header class="major">
+				<h2>Read Only</h2>
+				<p>
+					Just an incredibly simple responsive site<br /> template freebie
+					by <a href="http://html5up.net">HTML5 UP</a>.
+				</p>
+				</header>
+			</div>
+			</section> -->
+
+
+
+
+	<div class="clear"></div>
+
+
+<section id="modify">
+	<div class="container">
+		<header class="major">
+			<h2>${category.categoryName }</h2>
+		</header>
+		
 <form id="modifyForm" name="modyfyForm" enctype="multipart/form-data">
 	<input type="hidden" name="boardId" value="${board.boardId}" />
 	<input type="hidden" name="categoryId" value="${param.categoryId}" />
@@ -91,5 +114,7 @@
 		<div class="clear"></div>
 	</div>
 </form>
-</body>
-</html>
+
+</div>
+</section>
+</div>

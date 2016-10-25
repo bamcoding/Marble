@@ -40,6 +40,7 @@ public class ViewListCommentServlet extends HttpServlet {
 		
 		String viewPath = "/WEB-INF/view/board/comment.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
+		request.setAttribute("boardId", boardId);
 		request.setAttribute("comments", comments);
 		rd.forward(request, response);
 		

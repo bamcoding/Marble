@@ -26,13 +26,16 @@ public class CommentDaoImpl extends DaoSupport implements CommentDao{
 				query.append(" 			CMMNT_ID, BRD_ID, CMMNT_CONT, USR_ID ");
 				query.append(" 			, CRT_DT, MDFY_DT ) ");
 				query.append(" VALUES	( ");
-				query.append(" 			'CR-' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || LPAD(CMMNT_ID_SEQ.NEXTVAL,6,0) ");
-				query.append(" 			, ?, ?, ?, SYSDATE, SYSDATE ) ");
+				query.append(" 			? ");
+				query.append(" 			, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD HH:MI:SS'), TO_DATE(?, 'YYYY-MM-DD HH:MI:SS') ) ");
 				
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
-				pstmt.setString(1, comment.getBoardId());
-				pstmt.setString(2, comment.getCommentContent());
-				pstmt.setString(3, comment.getUserId());
+				pstmt.setString(1, comment.getCommentId());
+				pstmt.setString(2, comment.getBoardId());
+				pstmt.setString(3, comment.getCommentContent());
+				pstmt.setString(4, comment.getUserId());
+				pstmt.setString(5, comment.getCreatedDate());
+				pstmt.setString(6, comment.getModifyDate());
 				return pstmt;
 			}
 			
@@ -175,6 +178,58 @@ public class CommentDaoImpl extends DaoSupport implements CommentDao{
 				return pstmt;
 			}
 			
+		});
+	}
+
+	@Override
+	public String getTime() {
+		return (String) selectOne(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD HH:MI:SS') ");
+				query.append(" FROM DUAL ");
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				String time = null;
+				if(rs.next()){
+					time = rs.getString(1);
+				}
+				return time;
+			}
+		});
+	}
+
+	@Override
+	public String getNewCommentId() {
+return (String) selectOne(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT 'CR-' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || LPAD(CMMNT_ID_SEQ.NEXTVAL,6,0) ");
+				query.append(" FROM DUAL ");
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				String commentId = null;
+				if(rs.next()){
+					commentId = rs.getString(1);
+				}
+				return commentId;
+			}
 		});
 	}
 }

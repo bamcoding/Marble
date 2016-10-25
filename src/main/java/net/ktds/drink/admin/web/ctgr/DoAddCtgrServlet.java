@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.ktds.drink.category.biz.CategoryBiz;
 import net.ktds.drink.category.biz.CategoryBizImpl;
+import net.ktds.drink.category.vo.CategoryVO;
 import net.ktds.drink.support.Param;
 
 public class DoAddCtgrServlet extends HttpServlet {
@@ -28,15 +29,29 @@ public class DoAddCtgrServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = param.getStringParam(request, "ctgr_input");
-		String parentName = param.getStringParam(request, "selected_info");
+		String categoryId = param.getStringParam(request, "categoryId");
+		
+		categoryId = categoryId.substring(4);
+		
+		CategoryVO categoryVO = new CategoryVO();
+		String categorySeq = biz.getNewCategoryId()+"";
+		
+		categoryVO.setCategoryId(categorySeq);
+		categoryVO.setCategoryName(name);
+		categoryVO.setParentCategoryId(categoryId);
+		
 		boolean isExist = biz.checkExistName(name);
 		boolean isTrue = false;
 		
 		if(!isExist){
-			isTrue = biz.addCategory(name, parentName);
+			isTrue = biz.addCategory(categoryVO);
 		}
 		PrintWriter out = response.getWriter();
-		out.write(isTrue+"");
+		if(isTrue){
+			out.write(categorySeq+"");			
+		}else{
+			out.write(isTrue+"");						
+		}
 		out.flush();
 		out.close();
 	}

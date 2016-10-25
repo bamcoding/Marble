@@ -23,6 +23,7 @@ public interface GamesDao {
 	public GamesVO getGameDetailBy(String gameId);
 	public CustomVO getCustomDetailBy(String gameId);
 
+	public List<GamesVO> allGetGames(String userId);
 	public List<GamesVO> allGetGames();
 	public GamesVO getGame(String gameId);
 	

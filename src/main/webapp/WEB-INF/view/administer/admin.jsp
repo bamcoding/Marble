@@ -39,7 +39,7 @@
 			<ul>
 			  <li class="member">
 			  	
-			  		<a href="/Marble/admin" class=memberBtn>Home</a>
+			  		<a href="/Marble/play/index" class=memberBtn>Home</a>
 			  </li>
 			  <li class="member">
 			  	  <a href="javascript:void(0);" class="memberBtn">회원관리 </a>

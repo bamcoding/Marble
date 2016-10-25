@@ -6,12 +6,15 @@
  */
 
 #marbleBoard {
+
 }
  
 #marble {
 	width: 100%;
-	position: relative;
-	z-index: 1;
+	position: fixed;
+	z-index: 100;
+	background: white;
+	height: 100%;
 }
 
 #marble table td div.gameInfo {

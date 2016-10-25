@@ -3,17 +3,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/Marble/css/interface.css" />
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 
 
 $(document).ready(function () {
+	
+	if("${sessionScope._GAME_SETTING_ }" != ""){
+		$.post("/Marble/getGameSetting", function(data){
+			var plays = data.split(",");
+			$("#games_list ul li").each(function(){
+				var gameId = $(this).attr("id");
+				for(i=0; i<plays.length; i++){
+					if(gameId == plays[i]){
+						var num = $(this).find(".gameCnt").text();
+						$(this).find(".gameCnt").text(parseInt(num)+1);
+						$(this).addClass("selected");
+					}
+				}
+				
+			});
+		});
+	}
 	
 	$("#categoryId").change(function(){
 		$.post( "/Marble/searchType", { "categoryId": $("#categoryId").val()}, function(data) {
@@ -54,28 +67,27 @@ $(document).ready(function () {
 		return cnt;
 	}
 	
-	var gameCnt = 0;
+	
 	$(".mBtn").click(function(){
-		var num = $(this).parents().children(".gameCnt").text();
+		var num = $(this).siblings(".gameCnt").text();
 		if(num != "0"){
 			$(this).parents().children(".gameCnt").text(parseInt(num)-1);
-			gameCnt--;
+			
 		}
 	});
 	
 	$(".pBtn").click(function(){
-		var num = $(this).parents().children(".gameCnt").text();
-		if(gameCnt < 19){
-			$(this).parents().children(".gameCnt").text(parseInt(num)+1);
-			gameCnt++;
+		var num = $(this).siblings(".gameCnt").text();
+		if(getCnt() < 19){
+			$(this).siblings(".gameCnt").text(parseInt(num)+1);
 		}else{
-			var txt = "게임을 23개 이상 정할 수 없습니다.";
+			var txt = "게임을 19개 이상 정할 수 없습니다.";
 			showWarning(txt);
 		}
 	});
 	
 	function showWarning(txt){
-		$(".warning").text(txt).fadeIn(500).fadeOut(1200);
+		$(".warningText").text(txt).fadeIn(500).fadeOut(1200);
 	}
 	
 	$(".info").click(function() {
@@ -85,7 +97,7 @@ $(document).ready(function () {
 	
 	$("#setBtn").click(function() {
 		
-		if(gameCnt < 19){
+		if(getCnt() < 19){
 			var txt = "게임을 19개 선택하셔야합니다.";
 			showWarning(txt);
 			return;
@@ -108,22 +120,7 @@ $(document).ready(function () {
 		
 	});
 	
-	if("${sessionScope._GAME_SETTING_ }" != ""){
-		$.post("/Marble/getGameSetting", function(data){
-			var plays = data.split(",");
-			$("#games_list ul li").each(function(){
-				var gameId = $(this).attr("id");
-				for(i=0; i<plays.length; i++){
-					if(gameId == plays[i]){
-						var num = $(this).find(".gameCnt").text();
-						$(this).find(".gameCnt").text(parseInt(num)+1);
-						$(this).addClass("selected");
-					}
-				}
-				
-			});
-		});
-	}
+	
 	
 });
 
@@ -132,11 +129,9 @@ $(document).ready(function () {
 		
 </script>
 
-</head>
-<body>
-
-	<div id = "gamesSet_Wrapper">
-	<div>
+	<div id = "gamesSet_Wrapper" class="row uniform">
+	<div class="12u">
+	<div class=" select-wrapper">
 		<select id="categoryId" name="categoryId">
 			<option selected="selected">Category</option>
 			<c:forEach items="${categories}" var="category">
@@ -144,31 +139,34 @@ $(document).ready(function () {
 			</c:forEach>
 		</select>
 	</div>
+	</div>
 	
-	<div id="games_set">
+	<div id="games_set" class="12u">
 		<div id="games_list"
-			style="display: inline-block; overflow-y: scroll; width: 100%; height: 500px; position: relative;">
+			style="overflow-y: scroll; height: 500px; position: relative;">
 			
-			<div class="warning" style="display: none; position: absolute; top: 200px; margin: 0 auto; font-weight: bold; color: red; font-size: larger; width: 100%; text-align: center;">
+			<div class="warningText" style="display: none; position: absolute; top: 200px; margin: 0 auto; font-weight: bold; color: red; font-size: larger; width: 100%; text-align: center;">
 				<p></p>
 			</div>
 			
 			<form class="setGmaesForm" name="setGamesForm">
-				<ul>
+				<ul class="alt">
 					<c:forEach items="${games}" var="game">
 						<li id="${game.gameId}">
-							<div class="inline gameName" style="color: black;">
+							<div class="row uniform">
+							<div class="gameName 7u" style="color: black;">
 								<p >${game.gameName}</p>
 							</div>
-							<div class="inline">
-								<input type="button" class="info" value="?"
-									style="background-color: white; border: 0;" />
+							<div class="2u">
+								<input type="button" class="info button small" value="?"
+									style="background-color: ; border: 0;" />
 								<input type="hidden" class="gameInfo" value="${game.gameInfo }">
 							</div>
-							<div class="inline">
-								<input type="button" class="mBtn" value="-"/>
-								<span class="gameCnt" style="color: black">0</span>
-								<input type="button" class="pBtn" value="+"/>
+							<div class="3u">
+								<input type="button" class="mBtn button small" value="-"/>
+								<span class="gameCnt" style="color: black; padding: 20px">0</span>
+								<input type="button" class="pBtn button small" value="+"/>
+							</div>
 							</div>
 						</li>
 					</c:forEach>
@@ -178,11 +176,9 @@ $(document).ready(function () {
 
 		</div>
 		<div>
-			<input type="button" id="setBtn" value="Set" />
+			<input type="button" id="setBtn" value="Set" class="button special big fit"/>
 		</div>
 		
 	</div>
 	
 	</div>
-</body>
-</html>

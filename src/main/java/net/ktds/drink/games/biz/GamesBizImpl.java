@@ -44,8 +44,8 @@ public class GamesBizImpl implements GamesBiz {
 
 
 	@Override
-	public List<GamesVO> allGetGames() {
-		return dao.allGetGames();
+	public List<GamesVO> allGetGames(String userId) {
+		return dao.allGetGames(userId);
 	}
 
 
@@ -188,6 +188,12 @@ public class GamesBizImpl implements GamesBiz {
 	@Override
 	public boolean deleteCustom(String gameId) {
 		return dao.deleteCustom(gameId)> 0;
+	}
+
+
+	@Override
+	public List<GamesVO> allGetGames() {
+		return dao.allGetGames();
 	}
 
 

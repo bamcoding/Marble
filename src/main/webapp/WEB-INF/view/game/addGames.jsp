@@ -61,14 +61,20 @@ $(document).ready(function () {
 <body>
 	<div id = "gamesAdd_Wrapper">
 		<form id="addGamesForm" name="addGamesForm" >
-			<div>
-				<input type="text" id="gameName" name="gameName" placeholder="GameName" />
+			<div class="row uniform">
+				<div class="12u">
+					<input type="text" id="gameName" name="gameName" placeholder="게임 이름을 작성하세요." />
+				</div>
 			</div>
-			<div>
-				<textarea id="gameInfo" name="gameInfo" placeholder="Explanation"></textarea>
+			
+				<div class="row uniform">
+			<div class="12u">
+				<textarea id="gameInfo" name="gameInfo" placeholder="게임 설명을 작성하세요." rows="7"></textarea>
 			</div>
-			<div class="right">
-				<input type="button" id="addBtn" value="Add" />
+			</div>
+			
+			<div class="12u">
+				<input type="button" id="addBtn" class="button fit special" value="Add" />
 			</div>
 		</form>
 		

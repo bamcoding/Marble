@@ -3,6 +3,7 @@ package net.ktds.drink.boards.biz;
 import net.ktds.drink.boards.vo.BoardListVO;
 import net.ktds.drink.boards.vo.BoardVO;
 import net.ktds.drink.boards.vo.SearchBoardVO;
+import net.ktds.drink.games.vo.CategoryVO;
 
 public interface BoardBiz {
 	
@@ -22,5 +23,7 @@ public interface BoardBiz {
 	public boolean updateHitCount(String boardId);
 	
 	public boolean updateRecommendCount(String boardId);
+	
+	public CategoryVO getCategoryName(String categoryId);
 	
 }

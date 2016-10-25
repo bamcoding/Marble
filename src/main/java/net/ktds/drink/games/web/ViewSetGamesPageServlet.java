@@ -36,18 +36,26 @@ public class ViewSetGamesPageServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		UserVO user = (UserVO) session.getAttribute(Session.USER_INFO);
+		
+		String userId;
+		if(user != null){
+			userId = user.getUserId();
+		}else{
+			userId = "anonymous";
+		}
+		
 		String viewPath = "/WEB-INF/view/game/setGames.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 
-		HttpSession session =  request.getSession();
-		UserVO userInfo = (UserVO) session.getAttribute(Session.USER_INFO);
-		
 		CategoryVO categoryVO = new CategoryVO();
 		categoryVO.setParentCategoryId("10");
 		List<CategoryVO> categories = biz.getCategory(categoryVO);
 		
 		
-		List<GamesVO> games = biz.allGetGames();
+		List<GamesVO> games = biz.allGetGames(userId);
 		
 		request.setAttribute("games", games);
 		request.setAttribute("categories", categories);

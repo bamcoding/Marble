@@ -685,6 +685,7 @@
     <servlet-name>DoDeleteCommentServlet</servlet-name>
     <url-pattern>/board/doDeleteCmt</url-pattern>
   </servlet-mapping>
+
   <servlet>
     <description></description>
     <display-name>viewAdvertisementVideoServlet</display-name>
@@ -984,5 +985,15 @@
   <servlet-mapping>
     <servlet-name>DoSearchHistoryInitServlet</servlet-name>
     <url-pattern>/admin/searchHistoryInit</url-pattern>
+      </servlet-mapping>
+ <servlet>
+    <description></description>
+    <display-name>test</display-name>
+    <servlet-name>test</servlet-name>
+    <servlet-class>net.ktds.bamcoding.web.test</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>test</servlet-name>
+    <url-pattern>/test11</url-pattern>
   </servlet-mapping>
 </web-app>

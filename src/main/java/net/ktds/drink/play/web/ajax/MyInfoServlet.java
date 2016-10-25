@@ -32,11 +32,10 @@ public class MyInfoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
 		
 		List<HistoryVO> history = (List<HistoryVO>) playBiz.getHistory(request);
 		
-		String viewPath = "/WEB-INF/view/play/myInfo.jsp";
+		String viewPath = "/WEB-INF/view/play/history.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 		
 		request.setAttribute("history", history);
