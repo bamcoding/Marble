@@ -358,6 +358,37 @@ public class BoardDaoImpl extends DaoSupport implements BoardDao{
 			}		
 		});
 	}
+
+	@Override
+	public CategoryVO getCategoryName(String categoryId) {
+		return (CategoryVO) selectOne(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	CTGR_ID ");
+				query.append(" 			, CTGR_NM ");
+				query.append(" FROM		CTGR ");
+				query.append(" WHERE	CTGR_ID = ? ");
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, categoryId);
+				
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				CategoryVO category = new CategoryVO();
+				if(rs.next()){
+					category.setCategoryId(rs.getString("CTGR_ID"));
+					category.setCategoryName(rs.getString("CTGR_NM"));
+				}
+				return category;
+			}
+		});
+	}
 	
 }
 

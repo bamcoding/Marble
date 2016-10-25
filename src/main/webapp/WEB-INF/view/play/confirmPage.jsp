@@ -41,7 +41,7 @@
 </script>
 
 <div class="confirm"
-	style="position: absolute; height: 30%; width: 30%; top: 35%; left: 35%; text-align: center; background: yellow;">
+	style="position: fixed; height: 60%; width: 60%; top: 20%; left: 20%; text-align: center; background: yellow; z-index: 100">
 
 
 	<c:choose>

@@ -13,8 +13,6 @@ body {
 }
 
 #wrapper {
-	position: relative;
-	top: 80px;
 }
 
 .footer {
@@ -171,7 +169,7 @@ body {
 	height:330px;
 }
 
-#signUserEmail, #signUserPassword, #userEmail, #userNickname
+/* #signUserEmail, #signUserPassword, #userEmail, #userNickname
 ,#userPassword1,#userPassword2
 {
 	width:250px;
@@ -180,6 +178,10 @@ body {
 	border:1px solid #cccccc;
 	border-radius: 5px;
 	
+} */
+
+#signUserEmail, #signUserPassword {
+	margin:0 0 1.125em 0;
 }
 
 
@@ -208,7 +210,7 @@ body {
 	font-size: 14px;
 }
 
-#signInBtn, #joinBtn{
+/* #signInBtn, #joinBtn{
 	margin:5px;
 	border:0px;
 	border-radius:5px;
@@ -217,7 +219,7 @@ body {
 	color:white;
 	background:#00b9ff;
 	position:relative;
-}
+} */
 
 .cancleBtn{
 	margin:8px 5px 0px 0px;
@@ -258,3 +260,22 @@ body {
 	height:700px;
 }
 
+#sessionBar {
+	margin-top: 15px;
+}
+
+#wrapper #article #articleHeader #articleInfo span img {
+	width: 15px;
+	margin-right: 5px;
+}
+
+#wrapper #article #articleHeader #attachedFile span {
+	font-size: 13px;
+	margin-right: 15px;
+}
+
+#wrapper #article #articleHeader #attachedFile span img {
+	width: 15px;
+	margin-top: 10px;
+	margin-right: 5px;
+}

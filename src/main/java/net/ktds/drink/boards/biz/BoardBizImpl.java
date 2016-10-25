@@ -7,6 +7,7 @@ import net.ktds.drink.boards.dao.BoardDaoImpl;
 import net.ktds.drink.boards.vo.BoardListVO;
 import net.ktds.drink.boards.vo.BoardVO;
 import net.ktds.drink.boards.vo.SearchBoardVO;
+import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.support.pager.Pager;
 import net.ktds.drink.support.pager.PagerFactory;
 
@@ -92,6 +93,11 @@ public class BoardBizImpl implements BoardBiz{
 	@Override
 	public boolean updateRecommendCount(String boardId) {
 		return boardDao.updateRecommendCount(boardId) > 0;
+	}
+
+	@Override
+	public CategoryVO getCategoryName(String categoryId) {
+		return boardDao.getCategoryName(categoryId);
 	}
 	
 	

@@ -14,6 +14,7 @@ import net.ktds.drink.boards.biz.BoardBizImpl;
 import net.ktds.drink.boards.vo.BoardListVO;
 import net.ktds.drink.boards.vo.SearchBoardVO;
 import net.ktds.drink.constants.Session;
+import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.support.Param;
 import net.ktds.drink.support.pager.ClassicPageExplorer;
 import net.ktds.drink.support.pager.PageExplorer;
@@ -43,6 +44,7 @@ public class ViewListPageServlet extends HttpServlet {
 		String searchKeyword = Param.getStringParam(request, "searchKeyword");
 		String categoryId = Param.getStringParam(request, "categoryId");
 		
+		CategoryVO category = boardBiz.getCategoryName(categoryId);
 		
 		SearchBoardVO searchBoard = null;
 		if (pageNo == -1) {
@@ -67,7 +69,7 @@ public class ViewListPageServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 		request.setAttribute("boards", boardList.getBoardLists());
 		request.setAttribute("pager", boardList.getPager());
-		request.setAttribute("categoryId", categoryId);
+		request.setAttribute("category", category);
 		PageExplorer page = new ClassicPageExplorer(boardList.getPager());
 		String pager = page.getPagingList("pageNo", "[@]", "<< prev", "next >>", "searchForm");
 		

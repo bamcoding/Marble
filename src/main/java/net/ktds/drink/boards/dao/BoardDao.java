@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.ktds.drink.boards.vo.BoardVO;
 import net.ktds.drink.boards.vo.SearchBoardVO;
+import net.ktds.drink.games.vo.CategoryVO;
 
 public interface BoardDao {
 	
@@ -22,5 +23,7 @@ public interface BoardDao {
 	public int updateHitCount(String boardId);
 	
 	public int updateRecommendCount(String boardId);
+	
+	public CategoryVO getCategoryName(String categoryId);
 	
 }

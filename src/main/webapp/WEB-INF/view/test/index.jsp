@@ -28,6 +28,7 @@
 		<li><a href="#two">Things I Can Do</a></li>
 		<li><a href="#three">A Few Accomplishments</a></li>
 		<li><a href="#four">Contact</a></li>
+		<li><a href="#five">Addition</a></li>
 	</ul>
 	</nav> <footer>
 	<ul class="icons">
@@ -160,7 +161,7 @@
 			</section>
 
 			<!-- Five -->
-			<!--
+			
 							<section id="five">
 								<div class="container">
 									<h3>Elements</h3>
@@ -504,7 +505,7 @@
 
 								</div>
 							</section>
-						-->
+					
 
 		</div>
 

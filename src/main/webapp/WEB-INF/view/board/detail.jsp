@@ -1,15 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/Marble/css/layout.css" />
-<link rel="stylesheet" type="text/css" href="/Marble/css/grid.css" />
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
-<jsp:include page="/WEB-INF/view/common/header.jsp" />
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#deleteBtn").click(function() {
@@ -39,6 +32,35 @@ $(document).ready(function() {
 	
 });	
 </script>
+
+<jsp:include page="/WEB-INF/view/common/header.jsp" />
+
+<div id="main">
+	<section id="one"></section>
+
+	<!-- One -->
+	<!-- <section id="start">
+			<div class="container">
+				<header class="major">
+				<h2>Read Only</h2>
+				<p>
+					Just an incredibly simple responsive site<br /> template freebie
+					by <a href="http://html5up.net">HTML5 UP</a>.
+				</p>
+				</header>
+			</div>
+			</section> -->
+
+
+
+
+	<div class="clear"></div>
+<section id="article">
+	<div class="container">
+		<header class="major">
+			<h2>${category.categoryName }</h2>
+		</header>
+
 <div id="article">
 	<div id="articleHeader">
 		<p>${board.boardSubject }</p>
@@ -50,7 +72,7 @@ $(document).ready(function() {
 		</div>
 		<c:if test="${not empty board.fileName }">
 			<div id="attachedFile">
-				<span><img src="/Board/img/text-file-3-xxl.png" /><a
+				<span><img src="/Marble/img/text-file-3-xxl.png" /><a
 					href="/Marble/doDownload?boardId=${board.boardId}">${board.fileName }</a></span>
 			</div>
 		</c:if>
@@ -64,12 +86,15 @@ $(document).ready(function() {
 	<c:if test="${sessionScope._USER_INFO_.userId eq board.userId || sessionScope._USER_INFO_.userEmail eq 'admin' }">
 		<a href="javascript:void(0);"  id="deleteBtn">삭제</a>
 		<a href="/Marble/board/modify?boardId=${board.boardId}&categoryId=${categoryId}">수정</a>
-    	<a href="javascript:void(0);"  id="listBtn">목록보기</a>
+    	<!-- <a href="javascript:void(0);"  id="listBtn">목록보기</a> -->
 	</c:if>
 
 	<a href="/Marble/board/list?categoryId=${categoryId}">목록보기</a>
 </div>
 
 <div id="commentList" style="border:1px solid black; height:500px;"></div>
-</body>
-</html>
+
+</div>
+</section>
+</div>
+
