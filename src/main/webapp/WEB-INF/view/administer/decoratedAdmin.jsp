@@ -17,6 +17,7 @@
 $().ready(function(){
 	$("#admin_home").click(function(){
 		alert("관리자 페이지입니다.");
+		location.href = "/Marble/admin";
 	});
 	
 	$("#admin_title .menu").click(function(){
