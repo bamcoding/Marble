@@ -71,7 +71,7 @@
 			  <li class="member">
 			  	<a href="javascript:void(0);"  class="categoryBtn">게임타입 관리</a>
 			  		<div class="member-content">
-			  			<a href="javascript:void(0);" id="category-info" class="underBtn">게임타입</a>
+			  			<a href="/Marble/admin/typeList" id="category-info" class="underBtn">게임타입</a>
 			  		</div>
 			  </li>
 			    <li class="member">

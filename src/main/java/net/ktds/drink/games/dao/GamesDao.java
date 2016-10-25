@@ -25,7 +25,7 @@ public interface GamesDao {
 
 	public List<GamesVO> allGetGames();
 	public GamesVO getGame(String gameId);
-
+	
 	public int addCustom(GamesVO gamesVO, UserVO userInfo);
 	public int updateGame(GamesVO gamesVO);
 	public int updateCustom(GamesVO gamesVO);
@@ -39,4 +39,5 @@ public interface GamesDao {
 	public int getConutOfCustomGames(SearchGamesVO searchGames);
 
 	public List<GamesVO> getGoldenCards();
+	
 }

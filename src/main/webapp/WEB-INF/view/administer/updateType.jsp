@@ -18,56 +18,55 @@
 			return;
 		}		
 		if(errorCode == "2") {
-			alert("게임등록에 실패했습니다.");
+			alert("타입등록에 실패했습니다.");
 			return;
 		}
 		if(errorCode == "3") {
-			alert("게임 이름이 중복됩니다");
+			alert("타입 이름이 중복됩니다");
 			return;
 		}
 		
 		
 		
 		$("#goBackBtn").click(function() {
-			location.href="/Marble/admin/customDetail?gameId=${customVO.gameId}";
+			location.href="/Marble/admin/typeDetail?typeId=${typeVO.typeId}";
 		});
 		
 		$("#writeBtn").click(function (){	
 			
-			if($("#gameName").val() == ""){
+			if($("#typeName").val() == ""){
 					alert("제목을 입력해주세요");
 					return;
 			}
-			else if($("#gameInfo").val() == ""){
+			else if($("#typeInfo").val() == ""){
 					alert("내용을 입력해주세요");
 					return;
 			}
 			
 			
 			else{
-				$.post("/Marble/IsExistGameName", 
-						{"gameName": $("#gameName").val()},
+				$.post("/Marble/IsExistTypeName", 
+						{"typeName": $("#typeName").val()},
 						function(data){
 							if(data == "false") {
 								
 								if(confirm("수정하시겠습니까?")) {
-									$.post( "/Marble/admin/doUpdateCustom", $("#writeForm").serialize());
-									alert("게임이 수정되었습니다.");
-								 	location.href="/Marble/admin/customList"; 
+									$.post( "/Marble/admin/doUpdateType", $("#writeForm").serialize());
+									alert("타입이 수정되었습니다.");
+								 	location.href="/Marble/admin/typeList"; 
 								}
-								
+							
 							}
-							else if( $("#gameName").val() == "${customVO.gamesVO.gameName}" ) {
+							else if( $("#typeName").val() == "${typeVO.typeName}" ) {
 								
 								if(confirm("수정하시겠습니까?")) {
-									$.post( "/Marble/admin/doUpdateCustom", $("#writeForm").serialize());
-									alert("게임이 수정되었습니다.");
-									location.href="/Marble/admin/customList"; 
+									$.post( "/Marble/admin/doUpdateType", $("#writeForm").serialize());
+									alert("타입이 수정되었습니다.");
+									location.href="/Marble/admin/typeList";
 								}
-								
 							}
 							else {
-								alert("게임 이름이 중복됩니다.");
+								alert("타입이름이 중복됩니다.");
 									
 							}
 				
@@ -82,12 +81,14 @@
 <body>
 	<div class="gameList">
 		<form id="writeForm" name="writeForm">
-		<input type="hidden" name="gameId" value="${customVO.gameId }"/>
+		<input type="hidden" name="typeId" value="${typeVO.typeId }"/>
+
 			<div>
-				<input type="text" id="gameName" name="gameName" placeholder="게임 제목을 입력하세요." value="${customVO.gamesVO.gameName}" />
-			</div>	
+				<input type="text" id="typeName" name="typeName" placeholder="타입 제목을 입력하세요." value="${typeVO.typeName}" />
+			</div>
+			
 			<div>
-				<textarea id="gameInfo" name="gameInfo" placeholder="게임 설명을 입력하세요."  value="">${customVO.gamesVO.gameInfo}</textarea>
+				<textarea id="typeInfo" name="typeInfo" placeholder="타입 설명을 입력하세요."  value="">${typeVO.typeInfo}</textarea>
 			</div>
 			<div style="margin-top:5px;">
 				<div style="float: right;">

@@ -53,9 +53,12 @@
 						{"gameName": $("#gameName").val()},
 						function(data){
 							if(data == "false") {
-								$.post( "/Marble/admin/doAddCategoryGame?categoryId=${categoryId}", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
-								alert("게임이 등록되었습니다.");
-							 	location.href="/Marble/admin/gameMenuList?categoryId=${categoryId}"; 
+								if(confirm("게임을 등록 하시겠습니까?")) {
+									$.post( "/Marble/admin/doAddCategoryGame?categoryId=${categoryId}", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
+									alert("게임이 등록되었습니다.");
+								 	location.href="/Marble/admin/gameMenuList?categoryId=${categoryId}"; 
+								}
+								
 							}
 							else {
 								alert("게임 이름이 중복됩니다.");

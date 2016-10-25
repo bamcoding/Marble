@@ -5,6 +5,7 @@ public class SearchGamesVO {
 	private int startRowNumber;
 	private int endRowNumber;
 	private int searchType;
+	
 	private String searchKeyword;
 
 	public int getPageNumber() {
