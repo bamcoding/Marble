@@ -65,7 +65,7 @@ public class ViewSoundTrackPageServlet extends HttpServlet {
 		request.setAttribute("pager",soundTracks.getPager());
 		PageExplorer pageExplorer = new ClassicPageExplorer(soundTracks.getPager());
 		
-		String pager = pageExplorer.getPagingList("pageNo", "[@]", "이전", "다음", "searchForm");
+		String pager = pageExplorer.getPagingList("pageNo", "@", "이전", "다음", "searchForm");
 		request.setAttribute("paging", pager);
 		request.setAttribute("searchSoundTrack",searchSoundTrack);
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);

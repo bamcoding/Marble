@@ -32,11 +32,13 @@
 	position: relative;
 	margin: 0 auto;
 	padding: 0 auto;
+	color : #400040;
 }
 
 #marble table {
 	margin: 20px auto;
-	box-shadow: 10px 10px 5px #888888;
+	box-shadow: 10px 10px 5px #ffffff;
+	
 }
 
 #marble table tr {
@@ -46,5 +48,5 @@
 #marble table td {
 	width: 140px;
 	text-align: center;
-	background: black; 
+	background: #ffffff; 
 }

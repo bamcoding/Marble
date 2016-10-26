@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/view/administer/admin.jsp" />
+<link rel="stylesheet" type="text/css" href="/Marble/css/pagination.css" />
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 
@@ -81,7 +82,7 @@ $(document).ready(function() {
 					<input type="text" id="searchKeyword" name="searchKeyword" value="${searchBoard.searchKeyword}" />
 				</div>
 				
-				<div class="inline">
+				<div class="paginatin">
 					<input type="button" id="searchBtn" value="검색" onclick="movePage(0)" />
 				</div>
 				

@@ -12,8 +12,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link rel="stylesheet" type="text/css" href="/Marble/css/pagination.css" />
 <link rel="stylesheet" type="text/css" href="/Marble/css/decorateAdmin.css" />
+<link rel="stylesheet" type="text/css" href="/Marble/css/pagination.css" />
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){

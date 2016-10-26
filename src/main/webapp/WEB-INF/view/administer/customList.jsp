@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
+<link rel="stylesheet" type="text/css" href="/Marble/css/pagination.css" />
 <jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <script type="text/javascript">
 	$().ready(function () {
@@ -32,10 +33,10 @@
 	<form id="registForm" name="registForm">
 	<table id="listTable">
 	<tr>
-		<td>선택</td>
-		<td>게임번호</td>
-		<td>게임이름</td>
-		<td>회원아이디</td>
+		<th>선택</th>
+		<th>게임번호</th>
+		<th>게임이름</th>
+		<th>회원아이디</th>
 	</tr>
 	
 	<c:forEach items="${customs}" var="custom">

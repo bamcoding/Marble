@@ -81,7 +81,7 @@ public class ViewGameMenuListPageServlet extends HttpServlet {
 		    
 		PageExplorer pageExplorer = 
 		        new ClassicPageExplorer(dummyGames.getPager());
-		String pager = pageExplorer.getPagingList("pageNo", "[@]", "이전", "다음", "searchForm");
+		String pager = pageExplorer.getPagingList("pageNo", "@", "이전", "다음", "searchForm");
 
 		request.setAttribute("paging", pager);
 		request.setAttribute("searchGame", searchGame);
