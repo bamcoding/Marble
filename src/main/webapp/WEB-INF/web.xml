@@ -995,7 +995,7 @@
     <servlet-name>ViewBoardInfoServlet</servlet-name>
     <url-pattern>/admin/boardInfo</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>ViewImageSetServlet</display-name>
     <servlet-name>ViewImageSetServlet</servlet-name>
@@ -1014,5 +1014,45 @@
   <servlet-mapping>
     <servlet-name>DoImageUpLoadServlet</servlet-name>
     <url-pattern>/admin/doImageUpLoad</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoSoundTrackServlet</display-name>
+    <servlet-name>DoSoundTrackServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.sound.DoSoundTrackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoSoundTrackServlet</servlet-name>
+    <url-pattern>/admin/doSoundTrack</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteSoundTrackServlet</display-name>
+    <servlet-name>DoDeleteSoundTrackServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.sound.DoDeleteSoundTrackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteSoundTrackServlet</servlet-name>
+    <url-pattern>/admin/doDeleteSoundTrack</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewSoundTrackPageServlet</display-name>
+    <servlet-name>ViewSoundTrackPageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.sound.ViewSoundTrackPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewSoundTrackPageServlet</servlet-name>
+    <url-pattern>/admin/soundTrack</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoShowSoundTrackServlet</display-name>
+    <servlet-name>DoShowSoundTrackServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.sound.DoShowSoundTrackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoShowSoundTrackServlet</servlet-name>
+    <url-pattern>/admin/doShowSoundTrack</url-pattern>
   </servlet-mapping>
 </web-app>

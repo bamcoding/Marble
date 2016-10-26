@@ -46,6 +46,7 @@
 <jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"></jsp:include>
 
 	<h3>회원관리</h3>
+	
 	<div id="listDiv">
 		<form id="registForm">
 			<table id="listTable">

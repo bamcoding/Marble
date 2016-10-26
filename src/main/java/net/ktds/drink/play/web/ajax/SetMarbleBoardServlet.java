@@ -103,7 +103,6 @@ public class SetMarbleBoardServlet extends HttpServlet {
 		
 		request.setAttribute("plays", plays);
 		request.setAttribute("start", start);
-		
 		rd.forward(request, response);
 	}
 

@@ -43,6 +43,9 @@ $().ready(function(){
 		if(menu=="광고관리"){
 			location.href = "/Marble/admin/advertisement";
 		}
+		if(menu=="음악관리"){
+			location.href = "/Marble/admin/soundTrack";
+		}
 		if(menu=="히스토리관리"){
 			location.href = "/Marble/admin/historyList";
 		}
@@ -83,6 +86,9 @@ $().ready(function(){
 			</li>
 			<li class="member">
 				<input type="button" class="inline menu" value="광고관리"/>
+			</li>
+			<li class="member">
+				<input type="button" class="inline menu" value="음악관리"/>
 			</li>
 			<li class="member">
 				<input type="button" class="inline menu" value="히스토리관리"/>
