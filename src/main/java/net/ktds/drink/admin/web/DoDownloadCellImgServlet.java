@@ -32,7 +32,7 @@ public class DoDownloadCellImgServlet extends HttpServlet {
 		String gameName = Param.getStringParam(request, "gameName");
 		String cellImage = biz.getCellImageofGamesBy(gameName);
 		
-		DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\marble\\uploadfiles");
+		DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\cell\\uploadfiles");
 	       if(cellImage == null){
 	    	   downloadUtil.download(request, response, "soccer.png" , "soccer.png");
 	        }
