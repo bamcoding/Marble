@@ -26,11 +26,9 @@ public class AdminDaoImpl extends DaoSupport implements AdminDao {
 				query.append("  			AD_ID ");
 				query.append("  			, CNTRCT_DT ");
 				query.append("  			, EXPRTN_DT ");
-				query.append("  			, FILE_PTH  ");
 				query.append("				, FILE_NM ) ");
 				query.append(" VALUES (  ");
 				query.append("  	   'AD-' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || LPAD(AD_ID_SEQ.NEXTVAL,6,0) ");
-				query.append(" 		   , ? ");
 				query.append(" 		   , ? ");
 				query.append(" 		   , ? ");
 				query.append(" 		   , ? ) ");
@@ -38,8 +36,7 @@ public class AdminDaoImpl extends DaoSupport implements AdminDao {
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				pstmt.setString(1, advertisementVO.getContractDate());
 				pstmt.setString(2, advertisementVO.getExpirationDate());
-				pstmt.setString(3, advertisementVO.getFilePath());
-				pstmt.setString(4, advertisementVO.getFileName());
+				pstmt.setString(3, advertisementVO.getFileName());
 				return pstmt;
 			}
 			
@@ -56,7 +53,6 @@ public class AdminDaoImpl extends DaoSupport implements AdminDao {
 				query.append(" SELECT 		AD_ID ");
 				query.append("  			, TO_CHAR( CNTRCT_DT, 'YYYY-MM-DD') CNTRCT_DT  ");
 				query.append("  			, TO_CHAR( EXPRTN_DT, 'YYYY-MM-DD') EXPRTN_DT  ");
-				query.append("  			, FILE_PTH  ");
 				query.append("				, FILE_NM ");
 				query.append(" FROM 		AD ");
 				
@@ -111,7 +107,6 @@ public class AdminDaoImpl extends DaoSupport implements AdminDao {
 					advertisement.setAdvertisementId(rs.getString("AD_ID"));
 					advertisement.setContractDate(rs.getString("CNTRCT_DT"));
 					advertisement.setExpirationDate(rs.getString("EXPRTN_DT"));
-					advertisement.setFilePath(rs.getString("FILE_PTH"));
 					advertisement.setFileName(rs.getString("FILE_NM"));
 					advertisements.add(advertisement);
 				}
@@ -130,7 +125,6 @@ public class AdminDaoImpl extends DaoSupport implements AdminDao {
 				query.append(" SELECT AD_ID ");
 				query.append(" 		  , CNTRCT_DT ");
 				query.append(" 		  , EXPRTN_DT ");
-				query.append("		  , FILE_PTH ");
 				query.append(" 		  , FILE_NM ");
 				query.append(" FROM  AD ");
 				query.append(" WHERE AD_ID = ? ");
@@ -148,7 +142,6 @@ public class AdminDaoImpl extends DaoSupport implements AdminDao {
 					advertisement.setContractDate(rs.getString("CNTRCT_DT"));
 					advertisement.setExpirationDate(rs.getString("EXPRTN_DT"));
 					advertisement.setFileName(rs.getString("FILE_NM"));
-					advertisement.setFilePath(rs.getString("FILE_PTH"));
 				}
 				return advertisement;
 			}
@@ -184,13 +177,11 @@ public class AdminDaoImpl extends DaoSupport implements AdminDao {
 				query.append(" SELECT AD_ID ");
 				query.append(" 		  , CNTRCT_DT ");
 				query.append(" 		  , EXPRTN_DT ");
-				query.append(" 		  , FILE_PTH ");
 				query.append(" 		  , FILE_NM ");
 				query.append(" FROM ( ");
 				query.append(" 		  SELECT AD_ID");
 				query.append("  	  ,  CNTRCT_DT");
 				query.append("  	  ,  EXPRTN_DT");
-				query.append(" 		  , FILE_PTH ");
 				query.append(" 		  , FILE_NM ");
 				query.append(" 				FROM DRINK.AD     ");
 				query.append(" 				WHERE TO_DATE(CNTRCT_DT,'YYYY:MM:DD') >= TO_DATE(SYSDATE, 'YYYY:MM:DD') ");
@@ -212,7 +203,6 @@ public class AdminDaoImpl extends DaoSupport implements AdminDao {
 					advertisement.setContractDate(rs.getString("CNTRCT_DT"));
 					advertisement.setExpirationDate(rs.getString("EXPRTN_DT"));
 					advertisement.setFileName(rs.getString("FILE_NM"));
-					advertisement.setFilePath(rs.getString("FILE_PTH"));
 					
 				}
 				return advertisement;

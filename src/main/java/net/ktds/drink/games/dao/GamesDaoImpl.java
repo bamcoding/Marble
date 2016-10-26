@@ -292,7 +292,10 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				query.append(" 			, GM_NM ");
 				query.append(" 			, GM_INFO ");
 				query.append(" 			, CTGR_ID ");
-				query.append(" 			, TYP_ID ) ");
+				query.append(" 			, TYP_ID  ");
+				query.append(" 			, DTL_IN  ");
+				query.append(" 			, TYP_ID  ");
+				
 				query.append(" VALUES ( ");
 				query.append(" 'GM-' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || LPAD(GM_ID_SEQ.NEXTVAL,6,0) ");
 				query.append(" 	, ?, ?, ?, '4' ) ");
