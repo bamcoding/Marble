@@ -70,7 +70,9 @@
 				</tr>
 			</c:forEach>
 			</table>
+			
 			${paging}
+			
 		<div class="right">
 			<select id="searchType" name="searchType">
 				<option value="1" ${searchUser.searchType eq 1 ?'selected':''}>아이디+닉네임</option>
