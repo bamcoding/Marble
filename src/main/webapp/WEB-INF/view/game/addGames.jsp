@@ -74,7 +74,7 @@ $(document).ready(function () {
 			</div>
 			
 			<div class="12u">
-				<input type="button" id="addBtn" class="button fit special" value="Add" />
+				<input type="button" id="addBtn" class="button fit special" value="ADD" />
 			</div>
 		</form>
 		

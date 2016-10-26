@@ -103,7 +103,7 @@
     <description></description>
     <display-name>ViewTestServlet</display-name>
     <servlet-name>ViewTestServlet</servlet-name>
-    <servlet-class>net.ktds.bamcoding.web.ViewTestServlet</servlet-class>
+    <servlet-class>message.ViewTestServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewTestServlet</servlet-name>

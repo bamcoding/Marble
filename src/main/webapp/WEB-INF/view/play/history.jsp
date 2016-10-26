@@ -21,7 +21,7 @@
     	});
     </script>
     
-<div class="history" style=" overflow-y: scroll; height: 300px">
+<div class="history" style="">
 	<ul class="alt">
 	<c:forEach var="his" items="${history }">
 		<li id="${his.playInfo }"><h3>${his.playDate }</h3></li>

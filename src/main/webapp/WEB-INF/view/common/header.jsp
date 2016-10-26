@@ -55,12 +55,7 @@
 
 <!-- Header -->
 	<section id="header"> <header> 
-	<span class="image avatar"><img src="/Marble/images/avatar.jpg" alt="" /></span>
-	<h1 id="logo">
-		<a href="#">주루마블</a>
-		<input type="button" id="startGame" class="button fit 12u" value="GAME START"/>
-		
-	</h1>
+	<span class="image avatar"><img src="/Marble/images/avatar.jpg" alt="게임을 시작합니다." id="startGame"/></span>
 	<div id="sessionBar">
 	<c:choose>
 		<c:when test="${empty sessionScope._USER_INFO_ }">
