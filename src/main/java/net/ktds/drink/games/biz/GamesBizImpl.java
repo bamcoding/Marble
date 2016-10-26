@@ -2,6 +2,7 @@ package net.ktds.drink.games.biz;
 
 import java.util.List;
 
+import net.ktds.drink.admin.vo.AdvertisementVO;
 import net.ktds.drink.games.dao.GamesDao;
 import net.ktds.drink.games.dao.GamesDaoImpl;
 import net.ktds.drink.games.vo.CategoryVO;
@@ -194,6 +195,21 @@ public class GamesBizImpl implements GamesBiz {
 	@Override
 	public List<GamesVO> allGetGames() {
 		return dao.allGetGames();
+	}
+
+
+	@Override
+	public String getDetailImageofGamesBy(String gameName) {
+		GamesVO gamesVO = dao.getImageofGamesBy(gameName);
+		return gamesVO.getDetailImage();
+	
+	}
+
+
+	@Override
+	public String getCellImageofGamesBy(String gameName) {
+		GamesVO gamesVO = dao.getImageofGamesBy(gameName);
+		return gamesVO.getCellImage();
 	}
 
 

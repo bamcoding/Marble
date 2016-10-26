@@ -8,9 +8,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
+
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <script type="text/javascript">
 
 	$().ready(function () {
@@ -20,7 +20,7 @@
 		
 		$("#deleteBtn").click(function(){	
 			if(confirm("선택한 게임을 삭제하시겠습니까?")) {
-				$.post( "/Marble/admin/deleteGame", $("#checkGame").serialize(), function( data ) {
+				$.post( "/Marble/admin/deleteGame", $("#registForm").serialize(), function( data ) {
 					  alert( "" + data );
 				});
 			}
@@ -29,25 +29,16 @@
 </script>
 </head>
 <body>
-<%-- 	<div class="gameOption">
-	<select class="categoryId" id="categoryId" >
-			<option selected="selected">전체게임</option>
-			<c:forEach items="${categories}" var="category">
-			<option value="${category.categoryId}">${category.categoryName}</option>
-			</c:forEach>
-		</select>
-	</div> --%>
-	
-	<div class="gameList">
-		
-	<div id="game" >
-	<form id="checkGame" name="checkGame">
-	<table class="grid">
+	<h3>게임전체 관리</h3>
+	<div id="listDiv">
+
+	<form id="registForm" name="registForm">
+	<table id="listTable">
 	<tr>
-		<td>선택</td>
-		<td>카테고리</td>
-		<td>게임번호</td>
-		<td>게임이름</td>
+		<th>선택</th>
+		<th>카테고리</th>
+		<th>게임번호</th>
+		<th>게임이름</th>
 	</tr>
 	
 	<c:forEach items="${games}" var="game">
@@ -69,7 +60,7 @@
 	<form id="searchForm" name="searchForm">
 	${paging}	
 			<div style="padding-top: 5px;">
-			<div class="left">
+			<div class="right">
 			
 						<select id="searchType" name="searchType">
 						//단항 조건문 
@@ -87,8 +78,7 @@
 				<div class="clear"></div>
 			</div>
 	</form>
-			
-	</div>
+
 	</div>
 </body>
 </html>

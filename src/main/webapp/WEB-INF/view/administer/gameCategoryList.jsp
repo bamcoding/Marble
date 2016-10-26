@@ -6,11 +6,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
+
 <script type="text/javascript">
 
 	$().ready(function () {
@@ -18,15 +19,14 @@
 		
 
 		$("#addBtn").click(function(){	
-			location.href="/Marble/admin/addCategoryGame?categoryId=${categoryId}";
-	
-			
+			location.href="/Marble/admin/addCategoryGame?categoryId=${categoryId}&categoryName=${categoryName}";
+
 		});
 
 		
 		$("#deleteBtn").click(function(){	
 			if(confirm("게임을 삭제하시겠습니까?")) {
-				$.post( "/Marble/admin/deleteCategoryGame", $("#checkGame").serialize(), function( data ) {
+				$.post( "/Marble/admin/deleteCategoryGame", $("#registForm").serialize(), function( data ) {
 					  alert( "" + data );
 				});
 			}
@@ -38,17 +38,17 @@
 </script>
 </head>
 <body>
+	<h3>${categoryName}</h3>
+	<div id="listDiv">
 
-	<div class="gameList">
-		
-	<div id="game" >
-	<form id="checkGame" name="checkGame">
-	<table class="grid">
+	<form id="registForm" name="registForm">
+	<table id="listTable">
+	
 	<tr>
-		<td>선택</td>
-		<td>카테고리</td>
-		<td>게임번호</td>
-		<td>게임이름</td>
+		<th>선택</th>
+		<th>카테고리</th>
+		<th>게임번호</th>
+		<th>게임이름</th>
 	</tr>
 	
 	<c:forEach items="${games}" var="game">
@@ -70,7 +70,7 @@
 	<form id="searchForm" name="searchForm">
 	${paging}	
 			<div style="padding-top: 5px;">
-			<div class="left">
+			<div class="right">
 			
 						<select id="searchType" name="searchType">
 						//단항 조건문 
@@ -90,6 +90,6 @@
 	</form>
 			
 	</div>
-	</div>
+
 </body>
 </html>

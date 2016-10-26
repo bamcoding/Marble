@@ -2,6 +2,7 @@ package net.ktds.drink.games.dao;
 
 import java.util.List;
 
+import net.ktds.drink.admin.vo.AdvertisementVO;
 import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.games.vo.CustomVO;
 import net.ktds.drink.games.vo.GamesVO;
@@ -41,4 +42,5 @@ public interface GamesDao {
 
 	public List<GamesVO> getGoldenCards();
 	
+	public GamesVO getImageofGamesBy(String gameName);
 }

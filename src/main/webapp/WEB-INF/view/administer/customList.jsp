@@ -8,14 +8,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <script type="text/javascript">
 	$().ready(function () {
 		$("#deleteBtn").click(function(){	
 			if(confirm("삭제하시겠습니까?")) {
-				$.post( "/Marble/admin/deleteCustom", $("#checkGame").serialize(), function( data ) {
+				$.post( "/Marble/admin/deleteCustom", $("#registForm").serialize(), function( data ) {
 					  alert( "" + data );
 				});
 			}
@@ -26,12 +25,12 @@
 	});
 </script>
 </head>
-<body>
-	<div class="gameList">
-		
-	<div id="game" >
-	<form id="checkGame" name="checkGame">
-	<table class="grid">
+<body>	
+	<h3>사용자 게임 관리</h3>
+	<div id="listDiv">
+
+	<form id="registForm" name="registForm">
+	<table id="listTable">
 	<tr>
 		<td>선택</td>
 		<td>게임번호</td>
@@ -76,6 +75,6 @@
 	</form>
 			
 	</div>
-	</div>
+
 </body>
 </html>

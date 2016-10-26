@@ -36,8 +36,7 @@ public class DoAdvertisementServlet extends HttpServlet {
 		
 		String contractDate = multipartRequest.getParameter("contractDate");
 		String expirationDate = multipartRequest.getParameter("expirationDate");
-		String advertisementId = multipartRequest.getParameter("advertisementId");
-		System.out.println(advertisementId);
+		
 		if( contractDate.length() == 0){
 			response.sendRedirect("/Marble/admin/advertisement?errorCode=1");
 			return;
@@ -46,11 +45,7 @@ public class DoAdvertisementServlet extends HttpServlet {
 			response.sendRedirect("/Marble/admin/advertisement?errorCode=1");
 			return;
 		}
-		if(advertisementId.length() == 0){
-			response.sendRedirect("/Marble/admin/advertisement?errorCode=1");
-			return;
-		}
-		MultipartFile uploadFile = multipartRequest.getFile("file");
+				MultipartFile uploadFile = multipartRequest.getFile("file");
 		
 		 if ( uploadFile.getFileSize() > 0 ) {
 	            
@@ -72,7 +67,6 @@ public class DoAdvertisementServlet extends HttpServlet {
 		advertisement.setFileName(fileName);
 		advertisement.setContractDate(contractDate);
 		advertisement.setExpirationDate(expirationDate);
-		advertisement.setFilePath("10.225.152.174:8080/Marble/admin/advertisement?advertisementId="+advertisementId);
 		boolean isSuccess = adminBiz.addAdvertisement(advertisement);
 		if (isSuccess){
 			

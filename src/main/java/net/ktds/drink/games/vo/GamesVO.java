@@ -6,7 +6,25 @@ public class GamesVO {
 	private String gameInfo;
 	private String categoryId;
 	private String typeId;
+	private String detailImage;
+	private String cellImage;
 	
+	
+	public String getDetailImage() {
+		return detailImage;
+	}
+
+	public void setDetailImage(String detailImage) {
+		this.detailImage = detailImage;
+	}
+
+	public String getCellImage() {
+		return cellImage;
+	}
+
+	public void setCellImage(String cellImage) {
+		this.cellImage = cellImage;
+	}
 	private CategoryVO categoryVO;
 	private GameTypeVO gameTypeVO;
 	

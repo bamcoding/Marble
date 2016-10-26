@@ -15,6 +15,7 @@ import net.ktds.drink.gameImages.biz.ImageBizImpl;
 import net.ktds.drink.gameImages.vo.ImageVO;
 import net.ktds.drink.support.MultipartHttpServletRequest;
 import net.ktds.drink.support.MultipartHttpServletRequest.MultipartFile;
+import net.ktds.drink.support.Param;
 import net.ktds.drink.user.vo.UserVO;
 
 

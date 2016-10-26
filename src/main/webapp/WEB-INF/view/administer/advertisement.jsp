@@ -60,14 +60,13 @@ $(document).ready(function(){
 										   </div>
 				   <br>
 				   <hr/>
-			   <table class="grid">
+			   <table id="listTable">
 					<tr>
-						<td>선택</td>
-						<td>번호</td>
-						<td>파일이름</td>
-						<td>계약일</td>
-						<td>만료일</td>
-						<td>파일경로</td>
+						<th>선택</th>
+						<th>번호</th>
+						<th>파일이름</th>
+						<th>계약일</th>
+						<th>만료일</th>
 					</tr>
 				<c:forEach items="${advertisements}" var="advertisement">
 						<div><input type="hidden" name="advertisementId" id="advertisementId" value="${advertisement.advertisementId}"/></div>
@@ -80,7 +79,6 @@ $(document).ready(function(){
 						<td>${advertisement.fileName}</td>
 						<td>${advertisement.contractDate }</td>
 						<td>${advertisement.expirationDate}</td>
-						<td><a href="/Marble/play/download?advertisementId=${advertisement.advertisementId}">${advertisement.filePath}</a></td>
 					</tr>
 				</c:forEach>
 				</table>

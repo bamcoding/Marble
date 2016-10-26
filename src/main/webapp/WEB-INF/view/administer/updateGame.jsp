@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -84,7 +84,7 @@
 </script>
 </head>
 <body>
-	<div class="gameList">
+	<div id="listDiv">
 		<form id="writeForm" name="writeForm">
 		<input type="hidden" name="gameId" value="${gamesVO.gameId }"/>
 			<div>

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.ktds.drink.admin.vo.AdvertisementVO;
 import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.games.vo.CustomVO;
 import net.ktds.drink.games.vo.GameTypeVO;
@@ -292,15 +293,19 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				query.append(" 			, GM_NM ");
 				query.append(" 			, GM_INFO ");
 				query.append(" 			, CTGR_ID ");
-				query.append(" 			, TYP_ID ) ");
+				query.append(" 			, TYP_ID  ");
+				query.append(" 			, DTL_IMG  ");
+				query.append(" 			, CELL_IMG ) ");
 				query.append(" VALUES ( ");
 				query.append(" 'GM-' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || LPAD(GM_ID_SEQ.NEXTVAL,6,0) ");
-				query.append(" 	, ?, ?, ?, '4' ) ");
+				query.append(" 	, ?, ?, ?, '4', ?, ? ) ");
 
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				pstmt.setString(1, gamesVO.getGameName());
 				pstmt.setString(2, gamesVO.getGameInfo());
 				pstmt.setString(3, gamesVO.getCategoryId());
+				pstmt.setString(4, gamesVO.getDetailImage());
+				pstmt.setString(5, gamesVO.getCellImage());
 
 				return pstmt;
 			}
@@ -454,6 +459,8 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				query.append(" 			, G.CTGR_ID ");
 				query.append(" 			, C.CTGR_NM ");
 				query.append("			, G.TYP_ID ");
+				query.append("			, G.DTL_IMG ");
+				query.append("			, G.CELL_IMG ");
 				query.append(" FROM		GAME G");			
 				query.append(" 			, CTGR C");			
 				query.append(" WHERE	G.CTGR_ID = C.CTGR_ID ");		
@@ -477,6 +484,8 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 					game.setGameInfo(rs.getString("GM_INFO"));
 					game.setCategoryId(rs.getString("CTGR_ID"));
 					game.setTypeId(rs.getString("TYP_ID"));
+					game.setDetailImage(rs.getString("DTL_IMG"));
+					game.setCellImage(rs.getString("CELL_IMG"));
 					
 					category = game.getCategoryVO();
 					category.setCategoryName(rs.getString("CTGR_NM"));
@@ -806,6 +815,7 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 					gameVO.setGameInfo(rs.getString("GM_INFO"));
 					gameVO.setCategoryId(rs.getString("CTGR_ID"));
 					gameVO.setTypeId(rs.getString("TYP_ID"));
+	
 					
 					categoryVO = gameVO.getCategoryVO();
 					categoryVO.setCategoryName(rs.getString("CTGR_NM"));
@@ -1194,6 +1204,48 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
             }
 
         });
+	}
+
+
+	@Override
+	public GamesVO getImageofGamesBy(String gameName) {
+		return (GamesVO)selectOne(new QueryAndResult(){
+
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	GM_ID ");
+				query.append(" 		  	, GM_NM ");
+				query.append(" 		  	, GM_INFO ");
+				query.append("			, CTGR_ID ");
+				query.append(" 			, TYP_ID  ");
+				query.append(" 			, DTL_IMG  ");
+				query.append(" 			, CELL_IMG ");
+				query.append(" FROM  GAME ");
+				query.append(" WHERE GM_NM = ? ");
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, gameName);
+				return pstmt;
+			}
+
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				GamesVO game = null;
+				if(rs.next()){
+					game = new GamesVO();
+					
+					game.setGameId(rs.getString("GM_ID"));
+					game.setGameName(rs.getString("GM_NM"));
+					game.setGameInfo(rs.getString("GM_INFO"));
+					game.setCategoryId(rs.getString("CTGR_ID"));
+					game.setTypeId(rs.getString("TYP_ID"));
+					game.setDetailImage(rs.getString("DTL_IMG"));
+					game.setCellImage(rs.getString("CELL_IMG"));
+				}
+				return game;
+			}
+			
+		});
 	}
 
 	

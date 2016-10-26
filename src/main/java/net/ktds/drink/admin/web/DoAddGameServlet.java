@@ -1,5 +1,6 @@
 package net.ktds.drink.admin.web;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import net.ktds.drink.games.biz.GamesBiz;
 import net.ktds.drink.games.biz.GamesBizImpl;
 import net.ktds.drink.games.vo.GamesVO;
+import net.ktds.drink.support.MultipartHttpServletRequest;
+import net.ktds.drink.support.MultipartHttpServletRequest.MultipartFile;
 import net.ktds.drink.support.Param;
 
 
@@ -27,9 +30,45 @@ public class DoAddGameServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String gameName = Param.getStringParam(request, "gameName");
-		String gameInfo = Param.getStringParam(request, "gameInfo");
-		String categoryId = Param.getStringParam(request, "categoryId");
+		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
+		
+		
+		String gameName = multipartRequest.getParameter("gameName");
+		String gameInfo = multipartRequest.getParameter("gameInfo");
+		String categoryId = multipartRequest.getParameter("categoryId");
+		
+		String detailImage = "";
+		String cellImage = "";
+		
+		MultipartFile uploadFile = multipartRequest.getFile("detailImage");
+		MultipartFile uploadFile2 = multipartRequest.getFile("cellImage");
+		
+		if ( uploadFile.getFileSize() > 0 ) {
+			// 이미지 업로드할 폴더 생성
+				File uploadFileDirectory = new File("D:\\marble\\uploadfiles\\");
+				if( !uploadFileDirectory.exists() ) {
+					//폴더가 없다면...만들어라
+					uploadFileDirectory.mkdir();
+				}
+						//디드라이브에 업로드한 파일의 이름으로 파일을 써라.
+			uploadFile.write("D:\\marble\\uploadfiles\\" + uploadFile.getFileName());
+			detailImage = uploadFile.getFileName();
+			
+		}
+		
+		if ( uploadFile2.getFileSize() > 0 ) {
+			// 이미지 업로드할 폴더 생성
+			File uploadFileDirectory2 = new File("D:\\marble\\uploadfiles\\");
+			if( !uploadFileDirectory2.exists() ) {
+				//폴더가 없다면...만들어라
+				uploadFileDirectory2.mkdir();
+			}
+			//디드라이브에 업로드한 파일의 이름으로 파일을 써라.
+			uploadFile2.write("D:\\marble\\uploadfiles\\" + uploadFile2.getFileName());
+			cellImage = uploadFile2.getFileName();	
+		}
+		
+		
 		
 		
 		if( gameName.length() == 0){
@@ -40,10 +79,7 @@ public class DoAddGameServlet extends HttpServlet {
 			response.sendRedirect("/Marble/admin/addGame?errorCode=1");
 			return;
 		}
-		boolean isExsit = biz.isExsistGameName(gameName);
-		if ( !isExsit ) {
-			response.sendRedirect("/Marble/admin/addGame?errorCode=3");
-		}
+	
 
 		
 		gameInfo = gameInfo.replace("\n", "<br/>").replaceAll("\r", " ");
@@ -52,13 +88,17 @@ public class DoAddGameServlet extends HttpServlet {
 		gamesVO.setGameName(gameName);
 		gamesVO.setGameInfo(gameInfo);
 		gamesVO.setCategoryId(categoryId);
-	
+		gamesVO.setDetailImage(detailImage);
+		gamesVO.setCellImage(cellImage);
+
 		if( gamesVO.getCategoryId().equals("카테고리를 선택해주세요") ) {
 			response.sendRedirect("/Marble/admin/addGame?errorCode=1");
 			return;
 		}
 		else {
-			biz.addGame(gamesVO);
+			 biz.addGame(gamesVO);
+			response.sendRedirect("/Marble/admin/gameList");
+			
 		}
 		
 	}

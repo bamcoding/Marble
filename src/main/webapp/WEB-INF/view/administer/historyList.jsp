@@ -5,7 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <script type="text/javascript">
@@ -55,7 +54,7 @@
 	<form id="searchForm" name="searchForm">
 	${paging}	
 			<div style="padding-top: 5px;">
-			<div class="left">
+			<div class="right">
 			
 						<select id="searchType" name="searchType">
 						//단항 조건문 
