@@ -15,6 +15,9 @@
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 $().ready(function(){
+	
+	$( "#gameList" ).load( "/Marble/admin/gameCategory" );
+	
 	$("#admin_home").click(function(){
 		alert("관리자 페이지입니다.");
 		location.href = "/Marble/admin";
@@ -32,13 +35,14 @@ $().ready(function(){
 			location.href = "/Marble/admin/boardInfo";
 		}
 		if(menu=="게임관리"){
-			location.href = "/Marble/admin/categorySet";
-		}
-			if(menu=="사용자게임"){
-				location.href = "/Marble/admin/customList";
-			}
-		if(menu=="게임타입관리"){
 			location.href = "/Marble/admin/gameList";
+		}
+	
+		if(menu=="사용자게임"){
+			location.href = "/Marble/admin/customList";
+		}
+		if(menu=="게임타입관리"){
+			location.href = "/Marble/admin/typeList";
 		}
 		if(menu=="광고관리"){
 			location.href = "/Marble/admin/advertisement";
@@ -75,6 +79,8 @@ $().ready(function(){
 			<li class="member">
 				<input type="button" class="inline menu" value="게임관리"/>
 				<div class="member-content">
+				<div id= "gameList" >
+			    </div>
 				<input type="button" class="menu underMenu" value="사용자게임"/>
 				</div>
 			</li>

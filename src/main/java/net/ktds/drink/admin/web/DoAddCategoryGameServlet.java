@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.ktds.drink.games.biz.GamesBiz;
 import net.ktds.drink.games.biz.GamesBizImpl;
+import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.games.vo.GamesVO;
 import net.ktds.drink.support.Param;
 
@@ -30,7 +31,7 @@ public class DoAddCategoryGameServlet extends HttpServlet {
 		String gameName = Param.getStringParam(request, "gameName");
 		String gameInfo = Param.getStringParam(request, "gameInfo");
 		String categoryId = Param.getStringParam(request, "categoryId");
-		
+		String categoryName = Param.getStringParam(request, "categoryName");
 		
 		if( gameName.length() == 0){
 			response.sendRedirect("/Marble/admin/addCategoryGame?errorCode=1");
@@ -52,6 +53,10 @@ public class DoAddCategoryGameServlet extends HttpServlet {
 		gamesVO.setGameName(gameName);
 		gamesVO.setGameInfo(gameInfo);
 		gamesVO.setCategoryId(categoryId);
+		
+		CategoryVO categoryVO = new CategoryVO();
+		categoryVO.setCategoryName(categoryName);
+		gamesVO.setCategoryVO(categoryVO);
 	
 		if( gamesVO.getCategoryId().equals("카테고리를 선택해주세요") ) {
 			response.sendRedirect("/Marble/admin/addCategoryGame?errorCode=1");

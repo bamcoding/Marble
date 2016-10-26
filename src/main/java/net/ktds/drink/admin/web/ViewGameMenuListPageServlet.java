@@ -70,9 +70,11 @@ public class ViewGameMenuListPageServlet extends HttpServlet {
 	    RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 
 		String categoryId = Param.getStringParam(request, "categoryId");
+		String categoryName = Param.getStringParam(request, "categoryName");
 		GamesListVO dummyGames = biz.getCategoryGames(searchGame, categoryId);
 		System.out.println(""+categoryId);
 		
+		request.setAttribute("categoryName", categoryName);
 		request.setAttribute("categoryId", categoryId);
 		request.setAttribute("games", dummyGames.getGames());
 		request.setAttribute("pager", dummyGames.getPager());
