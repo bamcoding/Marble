@@ -85,9 +85,9 @@ h3{
 }
 
 #listDiv{
-	overflow: auto;
+	overflow: hidden;
 	width:800px;
-	height:500px;
+	height:600px;
 	margin:10px;
 	border-radius: 10px;
 	border:1px solid black;

@@ -175,12 +175,20 @@
 			}
 		});
 		
+		//게임 이미지 넣기
+		$("#gamePan td").click(function(){
+			var name = $(this).children("div .gameName").text();
+			$(this).children("div .gameName").css({"display":"none"});
+			console.log(name);
+			$(this).append("<img style='padding:0px;width:100%;height:100%' src='/Marble/img/gamePanCell/"+name+".jpg'/>");
+		});
+		
 	});
 </script>
 <div id="marble">
 		<div id="disabledEffect"></div>
 	<div id="gamePan">
-		<table border="1">
+		<table>
 			<tr>
 				<td id="cell18">
 				<div class="gameName">${plays[15].games.gameName }</div>
@@ -316,8 +324,6 @@
 				<div class="gameType">6</div>
 				</td>
 			</tr>
-
-
 		</table>
 
 		<div class="object">PLAYER</div>
