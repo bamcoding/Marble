@@ -176,7 +176,7 @@ $(document).ready(function () {
 
 		</div>
 		<div>
-			<input type="button" id="setBtn" value="Set" class="button special big fit"/>
+			<input type="button" id="setBtn" value="SET" class="button special big fit"/>
 		</div>
 		
 	</div>

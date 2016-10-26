@@ -1,6 +1,9 @@
 @CHARSET "UTF-8";
 
-
+#signInForm, #registForm{
+	color:black;
+	
+}
 
 .warning {
 	background-color: #FFB7DB;
