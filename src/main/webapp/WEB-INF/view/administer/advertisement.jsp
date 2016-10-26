@@ -60,7 +60,7 @@ $(document).ready(function(){
 										   </div>
 				   <br>
 				   <hr/>
-			   <table class="grid">
+			   <table id="listTable">
 					<tr>
 						<th>선택</th>
 						<th>번호</th>

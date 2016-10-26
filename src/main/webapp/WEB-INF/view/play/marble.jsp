@@ -174,7 +174,10 @@
 				$("#flipper").addClass("clickFlip");						
 			}
 		});
-		
+		$("#gamePan td").each(function(){
+			var name = $(this).children("div .gameName").text();
+			$(this).children("div .gameName").append("<img src='/Marble/admin/doDownloadDetailImg?gameName="+name+"'/>");
+		});
 	});
 </script>
 <div id="marble">

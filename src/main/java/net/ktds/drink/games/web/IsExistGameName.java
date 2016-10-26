@@ -35,6 +35,7 @@ public class IsExistGameName extends HttpServlet {
 	
 		PrintWriter out = response.getWriter();
 		out.write(isExsistGameName+"");
+		System.out.println(isExsistGameName);
 		out.flush(); //보내줭
 		out.close();
 	}

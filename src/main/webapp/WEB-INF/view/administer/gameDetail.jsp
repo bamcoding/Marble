@@ -55,6 +55,14 @@
 		<td>게임설명</td>
 		<td>${gameVO.gameInfo}</td>
 	</tr>
+	<tr>
+		<td>Detail Img</td>
+		<td><a href="/Marble/admin/doDownloadDetailImg?gameName=${gameVO.gameName}">${gameVO.detailImage}</a><img src="/Marble/admin/doDownloadDetailImg?gameName=${gameVO.gameName}"/></td>
+	</tr>
+	<tr>
+		<td>Cell Img</td>
+		<td><a href="/Marble/admin/doDownloadCellImg?gameName=${gameVO.gameName}">${gameVO.cellImage}</a><img src="/Marble/admin/doDownloadCellImg?gameName=${gameVO.gameName}"/></td>
+	</tr>
 </table>
 <div style="float: right;"><input type="submit" id="deleteBtn" value="삭제" onclick="movePage(0)"></div>
 <div style="float: right;"><input type="submit" id="updateBtn" value="수정" onclick="movePage(0)"></div>

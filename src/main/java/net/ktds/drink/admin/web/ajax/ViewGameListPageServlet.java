@@ -78,26 +78,9 @@ public class ViewGameListPageServlet extends HttpServlet {
 
 		String viewPath = "/WEB-INF/view/administer/gameList.jsp";
 	    RequestDispatcher rd = request.getRequestDispatcher(viewPath);
-	    
-	    
-/*	    String categoryId = Param.getStringParam(request, "categoryId");
-	    
-	    categoryVO.setCategoryId(categoryId);
-		
-		GamesListVO dummyGames = biz.getCategoryGames(searchGame, categoryVO);
-		System.out.println(""+categoryId);*/
-				
+	
 	    GamesListVO dummyGames = biz.getAllGames(searchGame);
-/*		StringBuffer query = new StringBuffer();
-		List<GamesVO> geme =  dummyGames.getGames();
-		for (GamesVO gamesVO : geme) {
-			query.append(String.format(" <td> %s </td> \n" , gamesVO.getGameName() ) );
-		}
-		
-		PrintWriter out = response.getWriter();
-		out.write(query.toString());
-		out.flush();
-		out.close();*/
+
 		
 		request.setAttribute("games", dummyGames.getGames());
 		request.setAttribute("pager", dummyGames.getPager());
