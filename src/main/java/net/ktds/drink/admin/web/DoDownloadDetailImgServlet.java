@@ -33,7 +33,7 @@ public class DoDownloadDetailImgServlet extends HttpServlet {
 	        
 		String detailImage = biz.getDetailImageofGamesBy(gameName);
 
-        DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\marble\\uploadfiles");
+        DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\detail\\uploadfiles");
         
         if(detailImage == null){
             downloadUtil.download(request, response, "soccer.png" , "soccer.png");
