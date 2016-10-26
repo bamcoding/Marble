@@ -35,7 +35,7 @@ public class DoShowAdvertisementVideoServlet extends HttpServlet {
 		
         if( fileName != null && fileName.length() > 0 ){
         	
-        	VideoStreamingUtil downloadUtil = VideoStreamingUtil.getInstance("D:\\detail\\uploadfiles");
+        	VideoStreamingUtil downloadUtil = VideoStreamingUtil.getInstance("D:\\marble\\uploadfiles");
             
             downloadUtil.download(request, response, fileName, fileName);
         }

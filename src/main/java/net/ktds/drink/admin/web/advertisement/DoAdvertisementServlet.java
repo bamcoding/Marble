@@ -49,13 +49,13 @@ public class DoAdvertisementServlet extends HttpServlet {
 		
 		 if ( uploadFile.getFileSize() > 0 ) {
 	            
-	            File uploadFileDirectory = new File("D:\\detail\\uploadfiles\\");
+	            File uploadFileDirectory = new File("D:\\marble\\uploadfiles\\");
 	            
 	            // exists() -> 있다면
 	            if( !uploadFileDirectory.exists() ) {
 	                uploadFileDirectory.mkdirs();
 	            }
-	            uploadFile.write("D:\\detail\\uploadfiles\\" + uploadFile.getFileName());
+	            uploadFile.write("D:\\marble\\uploadfiles\\" + uploadFile.getFileName());
 	            fileName = uploadFile.getFileName();
 	        }
 		 else{

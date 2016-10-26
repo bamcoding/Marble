@@ -108,6 +108,7 @@ h3{
 
 #listTable th, td:not(:last-child) {
 	border-right: 1px solid #ffffff;
+	overflow:auto;
 }
 
 #listTable th, td {
