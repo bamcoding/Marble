@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +44,8 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<div class="userList">
+<h3>광고관리</h3>
+	<div id="listDiv">
 		<form id="writeForm"name="writeForm" enctype="multipart/form-data">
 				   <div>
 						<div class="inline">광고 선택 : </div>
