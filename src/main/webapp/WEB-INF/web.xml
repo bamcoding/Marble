@@ -995,7 +995,7 @@
     <servlet-name>ViewBoardInfoServlet</servlet-name>
     <url-pattern>/admin/boardInfo</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>ViewImageSetServlet</display-name>
     <servlet-name>ViewImageSetServlet</servlet-name>
@@ -1014,5 +1014,25 @@
   <servlet-mapping>
     <servlet-name>DoImageUpLoadServlet</servlet-name>
     <url-pattern>/admin/doImageUpLoad</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewImageUpLoadServlet</display-name>
+    <servlet-name>ViewImageUpLoadServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.img.ViewImageUpLoadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewImageUpLoadServlet</servlet-name>
+    <url-pattern>/admin/imageUpLoad</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteImageServlet</display-name>
+    <servlet-name>DoDeleteImageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.img.DoDeleteImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteImageServlet</servlet-name>
+    <url-pattern>/admin/doDeleteImage</url-pattern>
   </servlet-mapping>
 </web-app>
