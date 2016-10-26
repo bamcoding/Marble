@@ -46,6 +46,7 @@
 <jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"></jsp:include>
 
 	<h3>회원관리</h3>
+	
 	<div id="listDiv">
 		<form id="registForm">
 			<table id="listTable">
@@ -70,7 +71,9 @@
 				</tr>
 			</c:forEach>
 			</table>
+			
 			${paging}
+			
 		<div class="right">
 			<select id="searchType" name="searchType">
 				<option value="1" ${searchUser.searchType eq 1 ?'selected':''}>아이디+닉네임</option>

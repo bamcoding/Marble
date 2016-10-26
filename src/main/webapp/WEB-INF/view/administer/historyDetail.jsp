@@ -7,8 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
-<link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -31,30 +30,31 @@
 </script>
 </head>
 <body>
-<div class="gameList">
-<table class="grid">
+<h3>플레이 상세</h3>
+<div id="listDiv">
+<table id="listTable">
 	<tr>
-		<td>플레이정보 ID</td>	
+		<th>ID</th>	
 		<c:set var="number" value="${fn:split(gameSetVO.historyVO.playInfoId,'-')[2]}"/>
 		<fmt:parseNumber var="number" type="number" value="${number}"/>
 		<td colspan="2">${number}</td>
 	</tr>
 	<tr>
-		<td>플레이시간</td>	
+		<th>시간</th>	
 		<td colspan="2">${gameSetVO.historyVO.playTime}</td>
 	</tr>
 
 	<tr>
-		<td>회원아이디</td>	
+		<th>회원ID</th>	
 		<td colspan="2">${gameSetVO.userVO.userId}</td>
 	</tr>
 	<tr>
-		<td>회원닉네임</td>
+		<th>닉네임</th>
 		<td colspan="2">${gameSetVO.userVO.userNickname}</td>
 	</tr>
 
-		<tr>
-			<td>게임</td>
+	<tr>
+			<th>게임</th>
 				<td><b>아이디</br></b></b><c:forEach items="${gameSetList}" var="gameSet">
 				${gameSet.gamesVO.gameId}</br>
 				</c:forEach></td>
@@ -62,7 +62,7 @@
 				${gameSet.gamesVO.gameName}</br>
 				</c:forEach></td>
 				
-		</tr>
+	</tr>
 
 	
 </table>

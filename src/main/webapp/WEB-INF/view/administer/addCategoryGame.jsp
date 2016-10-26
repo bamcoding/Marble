@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -54,9 +54,9 @@
 						function(data){
 							if(data == "false") {
 								if(confirm("게임을 등록 하시겠습니까?")) {
-									$.post( "/Marble/admin/doAddCategoryGame?categoryId=${categoryId}", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
+									$.post( "/Marble/admin/doAddCategoryGame", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val(), "categoryName": $("#categoryName").val() });
 									alert("게임이 등록되었습니다.");
-								 	location.href="/Marble/admin/gameMenuList?categoryId=${categoryId}"; 
+								 	location.href="/Marble/admin/gameMenuList?categoryId=${categoryId}&categoryName=${categoryName}"; 
 								}
 								
 							}
@@ -73,9 +73,10 @@
 </script>
 </head>
 <body>
-	<div class="gameList">
+	<div id="listDiv">
 	
 		<form id="writeForm" name="writeForm">
+		<input type="hidden" value="${categoryName}" id="categoryName" name="categoryName">
 			<div>
 				<select class="categoryId" id="categoryId" name="categoryId" >
 				<option selected="selected">카테고리를 선택해주세요</option>

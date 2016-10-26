@@ -5,7 +5,6 @@ public class AdvertisementVO {
 	String advertisementId;
 	String contractDate;
 	String expirationDate;
-	String filePath;
 	String fileName;
 	
 	public String getFileName() {
@@ -31,12 +30,6 @@ public class AdvertisementVO {
 	}
 	public void setExpirationDate(String expirationDate) {
 		this.expirationDate = expirationDate;
-	}
-	public String getFilePath() {
-		return filePath;
-	}
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
 	}
 	
 }

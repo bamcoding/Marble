@@ -7,8 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
-<link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -35,25 +34,34 @@
 </script>
 </head>
 <body>
-<div class="gameList">
-<table class="grid">
+<h3>게임 상세</h3>
+<div id="listDiv">
+<table id="listTable">
 	<tr>
-		<td>게임 카테고리</td>	
+		<th>Category</th>	
 		<td>${gameVO.categoryVO.categoryName}</td>
 	</tr>
 	<tr>
-		<td>게임번호</td>	
+		<th>번호</th>	
 		<c:set var="number" value="${fn:split(gameVO.gameId,'-')[2]}"/>
 		<fmt:parseNumber var="number" type="number" value="${number}"/>
 		<td>${number}</td>
 	</tr>
 	<tr>
-		<td>게임이름</td>	
+		<th>이름</th>	
 		<td>${gameVO.gameName}</td>
 	</tr>
 	<tr>
-		<td>게임설명</td>
+		<th>설명</th>
 		<td>${gameVO.gameInfo}</td>
+	</tr>
+	<tr>
+		<td>Detail Img</td>
+		<td><a href="/Marble/admin/doDownloadDetailImg?gameName=${gameVO.gameName}">${gameVO.detailImage}</a><img src="/Marble/admin/doDownloadDetailImg?gameName=${gameVO.gameName}"/></td>
+	</tr>
+	<tr>
+		<td>Cell Img</td>
+		<td><a href="/Marble/admin/doDownloadCellImg?gameName=${gameVO.gameName}">${gameVO.cellImage}</a><img src="/Marble/admin/doDownloadCellImg?gameName=${gameVO.gameName}"/></td>
 	</tr>
 </table>
 <div style="float: right;"><input type="submit" id="deleteBtn" value="삭제" onclick="movePage(0)"></div>

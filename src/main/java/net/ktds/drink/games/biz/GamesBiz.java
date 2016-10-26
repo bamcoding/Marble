@@ -39,5 +39,8 @@ public interface GamesBiz {
 	public boolean deleteCustom(String gameId);
 	public boolean isExsistGameName(String gameName);
 	public List<GamesVO> getGoldenCards();
+	
+	public String getDetailImageofGamesBy(String gameName);
+	public String getCellImageofGamesBy(String gameName);
 
 }

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -21,11 +21,7 @@
 			alert("게임등록에 실패했습니다.");
 			return;
 		}
-		if(errorCode == "3") {
-			alert("게임 이름이 중복됩니다");
-			return;
-		}
-		
+	
 		
 		
 		$("#goBackBtn").click(function() {
@@ -54,9 +50,14 @@
 						function(data){
 							if(data == "false") {
 								if(confirm("게임을 등록 하시겠습니까?")) {
-									$.post( "/Marble/admin/doAdd", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
+									$("#writeForm").attr( {
+										"method": "post",
+										"action": "/Marble/admin/doAdd"
+									}).submit();
+									return;
+								/* 	$.post( "/Marble/admin/doAdd", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
 									alert("게임이 등록되었습니다.");
-								 	location.href="/Marble/admin/gameList"; 
+								 	location.href="/Marble/admin/gameList";  */
 								}
 								
 							}
@@ -73,9 +74,9 @@
 </script>
 </head>
 <body>
-	<div class="gameList">
+	<div id="listDiv">
 	
-		<form id="writeForm" name="writeForm">
+		<form id="writeForm" name="writeForm" enctype="multipart/form-data">
 			<div>
 				<select class="categoryId" id="categoryId" name="categoryId" >
 				<option selected="selected">카테고리를 선택해주세요</option>
@@ -90,6 +91,12 @@
 			
 			<div>
 				<textarea id="gameInfo" name="gameInfo" placeholder="게임 설명을 입력하세요."></textarea>
+			</div>
+			<div>
+				<input type="file" id="detailImage" name="detailImage" />
+			</div>
+			<div>
+				<input type="file" id="cellImage" name="cellImage" />
 			</div>
 			<div style="margin-top:5px;">
 				<div style="float: right;">

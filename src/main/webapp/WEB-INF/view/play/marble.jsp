@@ -174,13 +174,16 @@
 				$("#flipper").addClass("clickFlip");						
 			}
 		});
-		
+		$("#gamePan td").each(function(){
+			var name = $(this).children("div .gameName").text();
+			$(this).children("div .gameName").append("<img src='/Marble/admin/doDownloadDetailImg?gameName="+name+"'/>");
+		});
 	});
 </script>
 <div id="marble">
 		<div id="disabledEffect"></div>
 	<div id="gamePan">
-		<table border="1">
+		<table>
 			<tr>
 				<td id="cell18">
 				<div class="gameName">${plays[15].games.gameName }</div>
@@ -316,8 +319,6 @@
 				<div class="gameType">6</div>
 				</td>
 			</tr>
-
-
 		</table>
 
 		<div class="object">PLAYER</div>

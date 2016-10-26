@@ -6,8 +6,15 @@ public class ImageVO {
 	private String imageTitle;
 	private String managerId;
 	private String imageDescription;
+	private String latestModifyDate;
 	
 	
+	public String getLatestModifyDate() {
+		return latestModifyDate;
+	}
+	public void setLatestModifyDate(String latestModifyDate) {
+		this.latestModifyDate = latestModifyDate;
+	}
 	public String getImageTitle() {
 		return imageTitle;
 	}

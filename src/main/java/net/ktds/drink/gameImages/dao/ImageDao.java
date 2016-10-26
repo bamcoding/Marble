@@ -6,5 +6,13 @@ import net.ktds.drink.gameImages.vo.ImageVO;
 
 public interface ImageDao {
 	public int upLoadImage(ImageVO image);
+	
+	
 	public List<ImageVO> downLoadImage();
+	
+	
+	public List<ImageVO> getAllImageList();
+
+
+	public int deleteImage(String imageId);
 }
