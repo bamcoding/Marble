@@ -1,4 +1,4 @@
-package net.ktds.drink.admin.web;
+package net.ktds.drink.admin.web.view;
 
 import java.io.IOException;
 
@@ -21,7 +21,8 @@ public class ViewAdminPageServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String viewPath = "/WEB-INF/view/administer/adminMain.jsp";
+		String viewPath = "/WEB-INF/view/administer/decoratedAdmin.jsp";
+		//String viewPath = "/WEB-INF/view/administer/decoratedAdmin.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 		rd.forward(request, response);
 	}

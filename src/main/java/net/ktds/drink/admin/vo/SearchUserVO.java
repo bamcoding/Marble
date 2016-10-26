@@ -6,6 +6,8 @@ public class SearchUserVO {
 	private int startRowNumber;
 	private int endRowNumber;
 	private int searchType;
+	private String searchKeyword;
+	
 	public int getPageNumber() {
 		return pageNumber;
 	}
@@ -36,6 +38,5 @@ public class SearchUserVO {
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
 	}
-	private String searchKeyword;
 	
 }

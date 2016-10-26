@@ -47,7 +47,7 @@
 			<td>${customVO.gamesVO.gameName}</td>
 		</tr>
 		<tr>
-			<td>회원아이디</td>	
+			<td>회원닉네임</td>	
 			<td>${customVO.userVO.userNickname}</td>
 		</tr>
 		<tr>

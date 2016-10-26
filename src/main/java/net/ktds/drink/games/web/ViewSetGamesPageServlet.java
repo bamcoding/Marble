@@ -22,7 +22,7 @@ import net.ktds.drink.user.vo.UserVO;
 public class ViewSetGamesPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private GamesBiz biz;
-	private List<GamesVO> games;
+	
 
     public ViewSetGamesPageServlet() {
         super();
@@ -49,12 +49,13 @@ public class ViewSetGamesPageServlet extends HttpServlet {
 		
 		String viewPath = "/WEB-INF/view/game/setGames.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
-		
-		games = biz.allGetGames(userId);
-		
+
 		CategoryVO categoryVO = new CategoryVO();
 		categoryVO.setParentCategoryId("10");
 		List<CategoryVO> categories = biz.getCategory(categoryVO);
+		
+		
+		List<GamesVO> games = biz.allGetGames(userId);
 		
 		request.setAttribute("games", games);
 		request.setAttribute("categories", categories);

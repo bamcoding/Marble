@@ -54,6 +54,9 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 		});
 	}
 
+
+
+	
 	@Override
 	public List<CategoryVO> getAdminCategory(CategoryVO categoryVO) {
 		return selectList(new QueryAndResult() {
@@ -153,6 +156,7 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 			@Override
 			public PreparedStatement query(Connection conn) throws SQLException {
 				StringBuffer query = new StringBuffer();
+
 				query.append(" SELECT	G.GM_ID, G.GM_NM, G.GM_INFO, C.CTGR_ID, C.CTGR_NM, T.TYP_ID ");
 				query.append(" FROM 	CTGR C, GAME_TYPE T, ");
 				query.append(" ( ");
@@ -165,7 +169,7 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				query.append(" 		WHERE 	GM_ID IN (SELECT GM_ID FROM CUSTOM WHERE USR_ID = ?) ");
 				query.append(" ) G ");
 				query.append(" WHERE	G.CTGR_ID = C.CTGR_ID AND G.TYP_ID = T.TYP_ID ");
-				
+
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				pstmt.setString(1, userId);
 				return pstmt;
@@ -201,6 +205,7 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 
 	}
 
+	
 	@Override
 	public GamesVO getGame(String gameId) {
 		return (GamesVO) selectOne(new QueryAndResult() {
@@ -362,6 +367,7 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				query.append(" SELECT	COUNT(1) CNT ");
 				query.append(" FROM		GAME ");
 				query.append(" WHERE	GM_NM = ? ");
+				query.append(" AND		CTGR_ID NOT IN '16' ");		
 
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				pstmt.setString(1, gameName);
@@ -1132,6 +1138,65 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 			}
 		});
 	}
+
+
+
+
+	@Override
+	public List<GamesVO> allGetGames() {
+		return selectList(new QueryAndResult() {
+
+            @Override
+            public PreparedStatement query(Connection conn) throws SQLException {
+                StringBuffer query = new StringBuffer();
+                query.append(" SELECT    G.GM_ID ");
+                query.append("             , G.GM_NM ");
+                query.append("             , G.GM_INFO ");
+                query.append("             , C.CTGR_ID ");
+                query.append("             , C.CTGR_NM ");
+                query.append("             , T.TYP_ID ");
+                query.append(" FROM        GAME G ");
+                query.append("             , CTGR C ");
+                query.append("             , GAME_TYPE T ");
+                query.append(" WHERE    G.CTGR_ID = C.CTGR_ID ");
+                query.append(" AND        G.TYP_ID = T.TYP_ID ");
+                query.append(" AND        G.TYP_ID NOT IN (SELECT TYP_ID FROM GAME_TYPE WHERE TYP_NM = '황금열쇠' OR TYP_NM = '내게임') ");
+                
+                
+                PreparedStatement pstmt = conn.prepareStatement(query.toString());
+                return pstmt;
+            }
+
+            @Override
+            public Object makeObject(ResultSet rs) throws SQLException {
+                List<GamesVO> games = new ArrayList<GamesVO>();
+                GamesVO gameVO = null;
+                CategoryVO categoryVO = null;
+                GameTypeVO gameTypeVO = null;
+
+                while (rs.next()) {
+                    gameVO = new GamesVO();
+
+                    gameVO.setGameId(rs.getString("GM_ID"));
+                    gameVO.setGameName(rs.getString("GM_NM"));
+                    gameVO.setGameInfo(rs.getString("GM_INFO"));
+
+                    categoryVO = gameVO.getCategoryVO();
+                    gameVO.setCategoryId(rs.getString("CTGR_ID"));
+                    categoryVO.setCategoryName(rs.getString("CTGR_NM"));
+
+                    gameTypeVO = gameVO.getGameTypeVO();
+                    gameVO.setTypeId(rs.getString("TYP_ID"));
+
+                    games.add(gameVO);
+                }
+                return games;
+            }
+
+        });
+	}
+
+	
 
 	
 

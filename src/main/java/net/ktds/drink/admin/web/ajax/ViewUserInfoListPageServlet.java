@@ -41,9 +41,8 @@ public class ViewUserInfoListPageServlet extends HttpServlet {
 		int pageNo = Param.getIntParam(request, "pageNo", -1);
 		SearchUserVO searchUser = null;
 		int searchType = Param.getIntParam(request, "searchType");
-		System.out.println("하나"+searchType);
-		String searchKeyword = Param.getStringParam(request, "searchKeyword");
 		
+		String searchKeyword = Param.getStringParam(request, "searchKeyword");
 		if ( pageNo == -1 ){
 			searchUser = (SearchUserVO)session.getAttribute(Session.SEARCH_USER_INFO);
 			if ( searchUser == null){

@@ -25,9 +25,12 @@
 
 		
 		$("#deleteBtn").click(function(){	
-			$.post( "/Marble/admin/deleteCategoryGame", $("#checkGame").serialize(), function( data ) {
-				  alert( "" + data );
-			});
+			if(confirm("게임을 삭제하시겠습니까?")) {
+				$.post( "/Marble/admin/deleteCategoryGame", $("#checkGame").serialize(), function( data ) {
+					  alert( "" + data );
+				});
+			}
+			
 			
 		});
 		

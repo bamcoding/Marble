@@ -71,7 +71,19 @@
 			  <li class="member">
 			  	<a href="javascript:void(0);"  class="categoryBtn">게임타입 관리</a>
 			  		<div class="member-content">
-			  			<a href="javascript:void(0);" id="category-info" class="underBtn">게임타입</a>
+			  			<a href="/Marble/admin/typeList" id="category-info" class="underBtn">게임타입</a>
+			  		</div>
+			  </li>
+			    <li class="member">
+			  	<a href="javascript:void(0);"  class="advertisemnetBtn">광고관리</a>
+			  		<div class="member-content">
+			  			<a href="/Marble/admin/advertisement" id="category-info" class="underBtn">광고 설정</a>
+			  		</div>
+			  </li>
+			    <li class="member">
+			  	<a href="javascript:void(0);"  class="historyBtn">히스토리 관리</a>
+			  		<div class="member-content">
+			  			<a href="/Marble/admin/historyList" id="category-info" class="underBtn">히스토리 설정</a>
 			  		</div>
 			  </li>
 			  <div style="float:right">
