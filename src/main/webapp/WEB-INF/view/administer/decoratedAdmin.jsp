@@ -94,9 +94,6 @@ $().ready(function(){
 				<input type="button" class="inline menu" value="히스토리관리"/>
 			</li>
 			<li class="member">
-				<input type="button" class="inline menu" value="이미지관리"/>
-			</li>
-			<li class="member">
 				<input type="button" class="inline menu" value="주루마블"/>
 			</li>
 		</ul>
