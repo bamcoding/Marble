@@ -7,11 +7,12 @@
 	 	$("#joinBtn").click(function(){
 	 		$.post("/Marble/doSignUp",
 	 				$( "#registForm" ).serialize(), function(data){
-	 			if( data == "success"){	 				
-	 				location.href="/Marble/play/index";
+	 			if( data == "success"){
+	 				$("#signUp").html("<p><h3>회원가입에 성공하셨습니다.</h3></p>");
+	 				$("#regist").hide();
 	 			}
 	 			else{
-	 				$(".small").html(data);
+	 				$(".signError").html(data);
 	 			}
 	 			
 	 		});
@@ -124,11 +125,39 @@
 		});
 	});
 </script>
-
-	<form id="registForm">
-		<div><input type="text" id="userEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"> </div>
-		<div><input type="text" id="userNickname" name="userNickname" placeholder="닉네임을 적어주세요"/>  </div>
-		<div><input type="password" id="userPassword1" name="userPassword1" placeholder="Password를 적어주세요"/></div>
-		<div><input type="password" id="userPassword2" name="userPassword2" placeholder="Password를 한번더 적어주세요"/></div>
-		<div><input type="button" id="joinBtn" class="button big fit" value="JOIN"/></div>
-	</form>
+<style>
+	.signError{
+		
+		position:absolute;
+		right:42%;
+		top:39%;
+		
+	}
+	
+	.signError h3{
+	color:red;
+	}
+</style>
+	
+	<div id="signUp">
+		<div id="regist">
+			<form id="registForm">
+				<div class="signError"></div>
+				<div class="row uniform">
+				<div class="12u"><input type="text" id="userEmail" name="userEmail" placeholder="Email 또는 ID를 적어주세요"> </div>
+				</div>
+				<div class="row uniform">
+				<div class="12u"><input type="text" id="userNickname" name="userNickname" placeholder="닉네임을 적어주세요"/>  </div>
+				</div>
+				<div class="row uniform">
+				<div class="12u"><input type="password" id="userPassword1" name="userPassword1" placeholder="Password를 적어주세요"/></div>
+				</div>
+				<div class="row uniform">
+				<div class="12u"><input type="password" id="userPassword2" name="userPassword2" placeholder="Password를 한번더 적어주세요"/></div>
+				</div>
+				<div class="row uniform">
+				<div class="12u"><input type="button" id="joinBtn" class="button big fit special" value="JOIN"/></div>
+				</div>
+			</form>
+		</div>
+	</div>
