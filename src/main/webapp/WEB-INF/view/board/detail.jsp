@@ -63,36 +63,57 @@ $(document).ready(function() {
 
 <div id="article">
 	<div id="articleHeader">
-		<p>${board.boardSubject }</p>
-		<div id="articleInfo">
-			<span>${board.userVO.userNickname}</span> <span>${board.createdDate}</span>
-			<span><img src= "/Marble/img/eye-icon.png" />${board.hitCount}</span>
-			<span><img src="/Marble/img/heart-24-128.png" /><span
-				id="recommendCount">${board.recommendCount}</span></span>
+		<div class="row uniform">
+			<div class="9u">
+				<h2>${board.boardSubject }</h2>
+			</div>
+			<div class="3u">
+				<span style="margin: 10px"><img src= "/Marble/img/eye-icon.png" />${board.hitCount}</span>
+				<span style="margin: 10px">
+					<img src="/Marble/img/heart-24-128.png" />
+					<span id="recommendCount">${board.recommendCount}</span>
+				</span>
+			</div>
+			
 		</div>
+		
+		<div id="articleInfo" class="12u" style="text-align: right;">
+			<span>${board.userVO.userNickname}</span> <span>${board.createdDate}</span>
+			
+		</div>
+		<div class="row uniform">
+			<div class="10u">
 		<c:if test="${not empty board.fileName }">
-			<div id="attachedFile">
 				<span><img src="/Marble/img/text-file-3-xxl.png" /><a
 					href="/Marble/doDownload?boardId=${board.boardId}">${board.fileName }</a></span>
-			</div>
 		</c:if>
+			</div>
+			<div class="2u" style="text-align: right;">
+				<a href="javascript:void(0);" class="button small" id="recommendBtn"><img src= "/Marble/img/ic_thumb_up_white_24dp_1x.png" style="margin-top: 8px"/></a>
+			</div>
+		</div>
+		
+		
 	</div>
 	<hr />
-	<div id="boardBody">${board.boardContent}</div>
+	<div id="boardBody" style="padding: 20px">${board.boardContent}</div>
+	<hr />
 </div>
-<div id="boardFooter">
-	<a href="javascript:void(0);" id="recommendBtn">추천</a>
-
+<div id="boardFooter" class="row uniform">
+	<div class="10u">
+	
 	<c:if test="${sessionScope._USER_INFO_.userId eq board.userId || sessionScope._USER_INFO_.userEmail eq 'admin' }">
-		<a href="javascript:void(0);"  id="deleteBtn">삭제</a>
-		<a href="/Marble/board/modify?boardId=${board.boardId}&categoryId=${categoryId}">수정</a>
+		<a href="javascript:void(0);"  id="deleteBtn" class="button small"><img src= "/Marble/img/ic_delete_white_24dp_1x.png" style="margin-top: 8px"/></a>
+		<a href="/Marble/board/modify?boardId=${board.boardId}&categoryId=${categoryId}" class="button small"><img src= "/Marble/img/ic_create_white_24dp_1x.png" style="margin-top: 8px"/></a>
     	<!-- <a href="javascript:void(0);"  id="listBtn">목록보기</a> -->
 	</c:if>
-
-	<a href="/Marble/board/list?categoryId=${categoryId}">목록보기</a>
+	</div>
+	<div class="2u" style="text-align: right;">
+	<a href="/Marble/board/list?categoryId=${categoryId}" class="button small"><img src= "/Marble/img/ic_list_white_24dp_1x.png" style="margin-top: 8px"/></a>
+	</div>
 </div>
 
-<div id="commentList" style="border:1px solid black; height:500px;"></div>
+<div id="commentList"></div>
 
 </div>
 </section>

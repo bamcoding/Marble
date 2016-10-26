@@ -9,13 +9,13 @@ public class ClassicPageExplorer implements PageExplorer {
 	}
 	
 	/**
-	 * JSP?—?„œ Paging ê²°ê³¼ë¥? ë³´ì—¬ì¤??‹¤.
-	 * getPagingList?Š” &lt;form> ?ƒœê·? ?•ˆ?— ?‘?„±?˜?–´?•¼ ?•œ?‹¤.
-	 * @param link Page ë²ˆí˜¸ë¥? ? „?‹¬?•  Parameter Name
-	 * @param pageFormat Page ë²ˆí˜¸ë¥? ë³´ì—¬ì¤? ?Œ¨?„´ @(at)ê°? ?˜?´ì§? ë²ˆí˜¸ë¡? ì¹˜í™˜?œ?‹¤. [@]ë¡? ?‘?„±?•  ê²½ìš° [1] [2] [3] ì²˜ëŸ¼ ë³´ì—¬ì§„ë‹¤.
-	 * @param prev ?´? „ ?˜?´ì§? ê·¸ë£¹?œ¼ë¡? ê°??Š” ë²„íŠ¼?˜ ?´ë¦„ì„ ?‘?„±?•œ?‹¤.
-	 * @param next ?‹¤?Œ ?˜?´ì§? ê·¸ë£¹?œ¼ë¡? ê°??Š” ë²„íŠ¼?˜ ?´ë¦„ì„ ?‘?„±?•œ?‹¤.
-	 * @param formId ?„œë²„ì—ê²? ? „?‹¬?  Form ?˜ ?•„?´?””ë¥? ?‘?„±?•œ?‹¤.
+	 * JSP?ï¿½ï¿½?ï¿½ï¿½ Paging ê²°ê³¼ï¿½? ë³´ì—¬ï¿½??ï¿½ï¿½.
+	 * getPagingList?ï¿½ï¿½ &lt;form> ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½.
+	 * @param link Page ë²ˆí˜¸ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ Parameter Name
+	 * @param pageFormat Page ë²ˆí˜¸ï¿½? ë³´ì—¬ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ @(at)ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ë²ˆí˜¸ï¿½? ì¹˜í™˜?ï¿½ï¿½?ï¿½ï¿½. [@]ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ê²½ìš° [1] [2] [3] ì²˜ëŸ¼ ë³´ì—¬ì§„ë‹¤.
+	 * @param prev ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ê·¸ë£¹?ï¿½ï¿½ï¿½? ï¿½??ï¿½ï¿½ ë²„íŠ¼?ï¿½ï¿½ ?ï¿½ï¿½ë¦„ì„ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.
+	 * @param next ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ê·¸ë£¹?ï¿½ï¿½ï¿½? ï¿½??ï¿½ï¿½ ë²„íŠ¼?ï¿½ï¿½ ?ï¿½ï¿½ë¦„ì„ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.
+	 * @param formId ?ï¿½ï¿½ë²„ì—ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ Form ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.
 	 * @return
 	 */
 	public String getPagingList(String link, String pageFormat, String prev, String next, String formId) {
@@ -31,9 +31,10 @@ public class ClassicPageExplorer implements PageExplorer {
 		buffer.append("</script>");
 		
 		buffer.append("<input type=\"hidden\" id=\""+link+"\" name=\""+link+"\" />");
+		buffer.append("<ul class='pagination'>");
 		
 		if (pager.nowGroupNumber > 0) {
-			buffer.append("<a href=\"javascript:movePage('"+pager.prevGroupPageNumber+"')\">" + prev + "</a>");
+			buffer.append("<li><a href=\"javascript:movePage('"+pager.prevGroupPageNumber+"')\">" + prev + "</a></li>");
 		}
 
 		int nextPrintPage = pager.groupStartPage + pager.printPage;
@@ -46,14 +47,18 @@ public class ClassicPageExplorer implements PageExplorer {
 		for (int i = pager.groupStartPage; i < nextPrintPage; i++) {
 			pageNumber = pageFormat.replaceAll("@", i + "");
 			if ((i - 1) == pager.pageNo) {
-				pageNumber = "<b>" + pageNumber + "</b>";
+//				pageNumber = "<b>" + pageNumber + "</b>";
+				buffer.append("<li><a class='active' href=\"javascript:movePage('"+(i - 1)+"')\">" + pageNumber + "</a></li>");
+			}else{
+				buffer.append("<li><a href=\"javascript:movePage('"+(i - 1)+"')\">" + pageNumber + "</a></li>");
 			}
-			buffer.append("<a href=\"javascript:movePage('"+(i - 1)+"')\">" + pageNumber + "</a>");
 		}
 
 		if (pager.nowGroupNumber < (pager.totalGroup - 1)) {
-			buffer.append("<a href=\"javascript:movePage('"+pager.nextGroupPageNumber+"')\">" + next + "</a>");
+			buffer.append("<li><a href=\"javascript:movePage('"+pager.nextGroupPageNumber+"')\">" + next + "</a></li>");
 		}
+		
+		buffer.append("</ul>");
 
 		return buffer.toString();
 	}

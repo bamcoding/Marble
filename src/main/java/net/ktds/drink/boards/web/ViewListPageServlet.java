@@ -71,7 +71,9 @@ public class ViewListPageServlet extends HttpServlet {
 		request.setAttribute("pager", boardList.getPager());
 		request.setAttribute("category", category);
 		PageExplorer page = new ClassicPageExplorer(boardList.getPager());
-		String pager = page.getPagingList("pageNo", "[@]", "<< prev", "next >>", "searchForm");
+		String pager = page.getPagingList("pageNo", "@", "<< prev", "next >>", "searchForm");
+		
+		
 		
 		request.setAttribute("paging", pager);
 		request.setAttribute("searchBoard", searchBoard);
