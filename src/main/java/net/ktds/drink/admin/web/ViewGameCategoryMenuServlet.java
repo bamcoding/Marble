@@ -40,7 +40,7 @@ public class ViewGameCategoryMenuServlet extends HttpServlet {
 		
 		StringBuffer options = new StringBuffer();
 		for (CategoryVO category : categories) {
-			options.append(String.format("<a class=\"underBtn\" href=\"/Marble/admin/gameMenuList?categoryId=%s\">%s</a>", category.getCategoryId(), category.getCategoryName() ));
+			options.append(String.format("<input type=\"button\" class=\"menu underMenu\" value=\"%s\" onclick=\"location.href='/Marble/admin/gameMenuList?categoryId=%s&categoryName=%s'\">", category.getCategoryName(), category.getCategoryId(), category.getCategoryName() ));
 		}
 		
 		PrintWriter out = response.getWriter();

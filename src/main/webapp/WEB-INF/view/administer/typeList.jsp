@@ -3,15 +3,15 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
+
 <script type="text/javascript">
 
 	$().ready(function () {
@@ -27,7 +27,7 @@
 		
 		$("#deleteBtn").click(function(){	
 			if(confirm("선택한 게임을 삭제하시겠습니까?")) {
-				$.post( "/Marble/admin/deleteType", $("#checkType").serialize());
+				$.post( "/Marble/admin/deleteType", $("#registForm").serialize());
 			}
 			
 			
@@ -37,17 +37,17 @@
 </script>
 </head>
 <body>
-	
-	<div class="gameList">
+	<h3>게임타입관리</h3>
+	<div id="listDiv">
 		
-	<div id="game" >
-	<form id="checkType" name="checkType">
-	<table class="grid">
+	
+	<form id="registForm" name="registForm">
+	<table id="listTable">
 	<tr>
-		<td>선택</td>
-		<td>타입번호</td>
-		<td>타입이름</td>
-		<td>타입내용</td>
+		<th>선택</th>
+		<th>타입번호</th>
+		<th>타입이름</th>
+		<th>타입내용</th>
 	</tr>
 	
 	<c:forEach items="${types}" var="type">
@@ -67,7 +67,7 @@
 	<form id="searchForm" name="searchForm">
 	${paging}	
 			<div style="padding-top: 5px;">
-			<div class="left">
+			<div class="right">
 			
 						<select id="searchType" name="searchType">
 						//단항 조건문 
@@ -84,8 +84,7 @@
 				<div class="clear"></div>
 			</div>
 	</form>
-			
-	</div>
+
 	</div>
 </body>
 </html>

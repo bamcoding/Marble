@@ -6,8 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/WEB-INF/view/administer/admin.jsp"/>
-<link rel="stylesheet" type="text/css" href="/Marble/css/game.css"/>
+<jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -33,25 +32,26 @@
 </script>
 </head>
 <body>
-	<div class="gameList">
-	<table class="grid">
+<h3>사용자 게임 상세</h3>
+<div id="listDiv">
+<table id="listTable">
 	
 		<tr>
-			<td>게임번호</td>	
+			<th>Category</th>	
 			<c:set var="number" value="${fn:split(customVO.gameId,'-')[2]}"/>
 			<fmt:parseNumber var="number" type="number" value="${number}"/>
 			<td>${number}</td>
 		</tr>
 		<tr>
-			<td>게임 이름</td>	
+			<th>게임 이름</th>	
 			<td>${customVO.gamesVO.gameName}</td>
 		</tr>
 		<tr>
-			<td>회원닉네임</td>	
+			<th>회원닉네임</th>
 			<td>${customVO.userVO.userNickname}</td>
 		</tr>
 		<tr>
-			<td>게임설명</td>
+			<th>게임설명</th>
 			<td>${customVO.gamesVO.gameInfo}</td>
 		</tr>
 	</table>

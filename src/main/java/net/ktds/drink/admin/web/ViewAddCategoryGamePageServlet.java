@@ -37,7 +37,9 @@ public class ViewAddCategoryGamePageServlet extends HttpServlet {
 		List<CategoryVO> categories = biz.getAdminCategory(categoryVO);
 		
 		String categoryId = Param.getStringParam(request, "categoryId");
+		String categoryName = Param.getStringParam(request, "categoryName");
 		
+		request.setAttribute("categoryName", categoryName);
 		request.setAttribute("categoryId", categoryId);
 		request.setAttribute("categories", categories);
 		rd.forward(request, response);
