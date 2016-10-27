@@ -29,9 +29,9 @@ public class DoDownloadDetailImgServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String gameName = Param.getStringParam(request, "gameName");
+		String gameId = Param.getStringParam(request, "gameId");
 	        
-		String detailImage = biz.getDetailImageofGamesBy(gameName);
+		String detailImage = biz.getDetailImageofGamesBy(gameId);
 
         DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\detail\\uploadfiles");
         

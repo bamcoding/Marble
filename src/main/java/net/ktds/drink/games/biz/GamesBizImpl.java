@@ -199,16 +199,17 @@ public class GamesBizImpl implements GamesBiz {
 
 
 	@Override
-	public String getDetailImageofGamesBy(String gameName) {
-		GamesVO gamesVO = dao.getImageofGamesBy(gameName);
+	
+	public String getDetailImageofGamesBy(String gameId) {
+		GamesVO gamesVO = dao.getImageofGamesBy(gameId);
 		return gamesVO.getDetailImage();
 	
 	}
 
 
 	@Override
-	public String getCellImageofGamesBy(String gameName) {
-		GamesVO gamesVO = dao.getImageofGamesBy(gameName);
+	public String getCellImageofGamesBy(String gameId) {
+		GamesVO gamesVO = dao.getImageofGamesBy(gameId);
 		return gamesVO.getCellImage();
 	}
 

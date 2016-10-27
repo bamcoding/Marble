@@ -1075,4 +1075,14 @@
     <servlet-name>DoDownloadCellImgServlet</servlet-name>
     <url-pattern>/admin/doDownloadCellImg</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckExistImageServlet</display-name>
+    <servlet-name>CheckExistImageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.CheckExistImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckExistImageServlet</servlet-name>
+    <url-pattern>/checkImg</url-pattern>
+  </servlet-mapping>
 </web-app>
