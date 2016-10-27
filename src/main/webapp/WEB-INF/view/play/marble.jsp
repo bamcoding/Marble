@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/flip.css" />
 <link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/gamePan.css" />
 <link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/carousel.css" />
+<link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/horse.css">
 
 <script type="text/javascript">
 	$(document).ready( function() {
@@ -65,7 +66,7 @@
 		//던지기 부분
 		$(".cubeFrame").click(function() {
 			var showTime = 1000;
-			var randomNum = parseInt(Math.random()*6) + 1;
+			var randomNum = parseInt(Math.random()*6) + 1; //1111111111111111111111111111111111111111
 			
 			//큐브 애니메이션을 실행한다.
 			$("#cube").addClass("throwAction");
@@ -134,6 +135,7 @@
 						
 						if(data == "true"){
 							$("#gameInfoBox").html("<img src='/Marble/admin/doDownloadDetailImg?gameId="+gameId+"' style='width:100%;height:100%;'/>");
+							$("#gameInfoBox").addClass("showDetail");
 							
 						}else{
 							var str= "<h2>"+cellDiv.children(".gameName").text()+"</h2>";
@@ -144,16 +146,28 @@
 						$("#gameInfoBox").show();
 					});
 				}
-				
-				
-				
 			}
+			
+			$("#gameInfoBox").click(function(){
+				var cellDiv = $("#cell"+positionIndex);
+				var str = cellDiv.children(".gameInfo").text();
+				if($(this).hasClass("showDetail")){
+					var text = "</br><span style='font-size:2em;border-bottom:1px solid white;'>게임설명</span>"
+					
+					$(this).html(text+"</br></br>"+str);		
+					$(this).removeClass("showDetail");
+				}
+			});
 		}
 		
 		$("#gameInfoBox").click(function(){
-			$("#gameInfoBox").html("");
-			$("#gameInfoBox").hide();
+			if(!$(this).hasClass("showDetail")){
+				$(this).html("");
+				$(this).hide();
+			}
 		});
+		
+
 
 		var randomNum = 0;
 		function actionSpinGoldKey(){
@@ -376,8 +390,9 @@
 			</tr>
 		</table>
 
-		<div class="object"><img src="/Marble/img/usedImage/horse.png" style="height:100%;width:100%;"/></div>
-
+		<div class="object"><img class="soju" src="/Marble/img/usedImage/horse.png" style="height:100%;width:100%;"/></div>
+		<!-- </div>
+ 		-->
 		<!-- 큐브 부분 -->
 		<div class="cubeFrame">
 			<div class="cube" id="cube">

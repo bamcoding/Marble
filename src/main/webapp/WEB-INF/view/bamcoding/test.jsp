@@ -7,40 +7,18 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript" src="Marble/js/jquery-3.1.1.js"></script>
+<link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/decorate.css">
 <script type="text/javascript">
  $().ready(function(){
-	 
- setTimeout(function(){
-	$("#a").addClass("zoomIt"); 
- },300)
-
- setTimeout(function(){
-	$("#b").addClass("zoomIt"); 
- },600)
-	 
+	  
  })
  
 
 </script>
 
-<style>
-
-.zoomIt{
-	animation: zome 1s infinite linear;
-}
-
-@keyframe zome{
-	0%	{ transform:scale(1);}
-	100% { transform:scale(1.5);}
-}
-</style>
-
 <body>
-<div id="a" style="font-size:2em;font-weight:bold;">
-이근재 
-</div>
-<div id="b" style="font-size:2em;font-weight:bold;">
-성정한
-</div>
+
+<div id="soju"></div>
+
 </body>
 </html>

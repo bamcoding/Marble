@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+
+.soju{
+z-index:999;
+animation: rubberBand 0.7s infinite linear;
+perspective: 400px;
+}
+
+@keyframes bounce {
+from, 20%, 53%, 80%, to {
+animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+transform: translate3d(0,0,0);
+}
+40%, 43% {
+animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+transform: translate3d(0, -25px, 0);
+}
+70% {
+animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+transform: translate3d(0, -15px, 0);
+}
+75%{
+transform: translate3d(0,-13px,0);
+}
+80%{
+transform: translate3d(0,-12px,0);
+}
+90% {
+transform: translate3d(0,-8px,0);
+}
+}
+
+@keyframes rubberBand {
+from {
+transform: scale3d(1, 1, 1);
+}
+30% {
+transform: scale3d(1, 0.95, 1);
+}
+40% {
+transform: scale3d(0.9, 1.05, 1);
+}
+50% {
+transform: scale3d(1.05, 0.9, 1);
+}
+65% {
+transform: scale3d(.90, 1.00, 1);
+}
+75% {
+transform: scale3d(1.00, .95, 1);
+}
+to {
+transform: scale3d(1, 1, 1);
+}
+}
