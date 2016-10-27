@@ -55,7 +55,7 @@
 
 <!-- Header -->
 	<section id="header"> <header> 
-	<span class="image avatar"><img src="/Marble/images/avatar.jpg" alt="게임을 시작합니다." id="startGame"/></span>
+	<span class="image avatar"><img src="/Marble/images/avatar1.jpg" alt="게임을 시작합니다." id="startGame"/></span>
 	<div id="sessionBar">
 	<c:choose>
 		<c:when test="${empty sessionScope._USER_INFO_ }">
@@ -84,8 +84,9 @@
 			</c:when>
 			<c:otherwise>
 				<li><a href="#setting" class="active">SETTING</a></li>
-				<li><a href="#history">HISTORY</a></li>
 				<li><a href="#add">ADD GAME</a></li>
+				<li><a href="#history">HISTORY</a></li>
+				
 				
 			</c:otherwise>
 		</c:choose>

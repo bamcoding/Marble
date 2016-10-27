@@ -4,6 +4,13 @@
 <script>
 
 </script>
+
+<style>
+	.userInfoValue {
+		
+	}
+</style>
+
 <div class="userInfo">
 
 		<div class="12u">
@@ -15,7 +22,8 @@
 			<div class="2u">
 			<img src="/Marble/img/ic_account_circle_white_24dp_1x.png">
 			</div>
-			<div class="5u">
+
+			<div class="5u userInfoValue" style="padding-top: 37px;">
 			<c:choose>
 				<c:when test="${sessionScope._USER_INFO_.userEmail eq 'admin'}">			
 					<a href="/Marble/admin">관리자</a>
@@ -28,7 +36,7 @@
 			<div class="2u">
 			<img src="/Marble/img/ic_monetization_on_white_24dp_1x.png">
 			</div>
-			<div class="2u">
+			<div class="2u userInfoValue" style="padding-top: 37px;">
 			 ${sessionScope._USER_INFO_.points }
 			</div>
 		</div>

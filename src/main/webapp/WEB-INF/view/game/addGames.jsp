@@ -43,14 +43,19 @@ $(document).ready(function () {
 							{"gameName": $("#gameName").val()},
 							function(data){
 								if(data == "false") {
-									$.post( "/Marble/doAddGames", $( "#addGamesForm" ).serialize());
-									alert("게임이 등록되었습니다.");
+									$.post( "/Marble/doAddGames", $( "#addGamesForm" ).serialize(), function(){
+										alert("게임이 등록되었습니다.");
+										location.reload();
+									});
+									
+									
+									
 								}
 								else {
 									alert("게임 이름이 중복됩니다.");
 								}
 					
-				});	
+					});	
 				}
 		});
 

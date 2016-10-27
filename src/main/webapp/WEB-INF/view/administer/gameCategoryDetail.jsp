@@ -35,7 +35,7 @@
 </head>
 <body>
 <h3>게임 카테고리 상세</h3>
-<div id="listDiv">
+<div id="listDiv" style="overflow:auto;">
 <table id="listTable">
 	<tr>
 		<th>Category</th>	
@@ -58,13 +58,13 @@
 	<c:if test="${not empty gameVO.detailImage}">
 	<tr>
 		<th>Detail Img</th>
-		<td><a href="/Marble/admin/doDownloadDetailImg?gameName=${gameVO.gameName}">${gameVO.detailImage}</a><img src="/Marble/admin/doDownloadDetailImg?gameName=${gameVO.gameName}"/></td>
+		<td><a href="/Marble/admin/doDownloadDetailImg?gameId=${gameVO.gameId}">${gameVO.detailImage}</a><img src="/Marble/admin/doDownloadDetailImg?gameId=${gameVO.gameId}"/></td>
 	</tr>
 	</c:if>
 	<c:if test="${not empty gameVO.cellImage}">
 	<tr>
 		<th>Cell Img</th>
-		<td><a href="/Marble/admin/doDownloadCellImg?gameName=${gameVO.gameName}">${gameVO.cellImage}</a><img src="/Marble/admin/doDownloadCellImg?gameName=${gameVO.gameName}"/></td>
+		<td><a href="/Marble/admin/doDownloadCellImg?gameId=${gameVO.gameId}">${gameVO.cellImage}</a><img src="/Marble/admin/doDownloadCellImg?gameId=${gameVO.gameId}"/></td>
 	</tr>
 	</c:if>
 </table>

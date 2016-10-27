@@ -36,6 +36,7 @@ $(document).ready(function(){
 		if(confirm("광고를 삭제 하시 겠습니까?")){
 			$.post("/Marble/admin/doDeleteAdvertisement",$("#writeForm").serialize(),function(data){
 				 alert( "" + data );
+				 location.href="/Marble/admin/advertisement";
 			});
 		}
 	});

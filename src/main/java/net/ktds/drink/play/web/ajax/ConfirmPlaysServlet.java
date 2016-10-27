@@ -36,22 +36,23 @@ public class ConfirmPlaysServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String playInfo = Param.getStringParam(request, "playInfo");
+		
+		List<PlayVO> plays = null;
+		
 		if(playInfo != null && playInfo != ""){
 			System.out.println(playInfo);
+			
+			 plays = playBiz.getPlaysByPlayInfo(playInfo);
+			
+		}else{
 			HttpSession session = request.getSession();
-			
-			List<PlayVO> plays = playBiz.getPlaysByPlayInfo(playInfo);
-			
-			if(session.getAttribute(Session.GAME_SETTING) != null){
-				session.removeAttribute(Session.GAME_SETTING);
-			}
-			
-			session.setAttribute(Session.GAME_SETTING, plays);
+			plays = (List<PlayVO>) session.getAttribute(Session.GAME_SETTING);
 		}
 		
 		String viewPath = "/WEB-INF/view/play/confirmPage.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
-		
+		request.setAttribute("plays", plays);
+		request.setAttribute("playInfo", playInfo);
 		rd.forward(request, response);
 
 	}
