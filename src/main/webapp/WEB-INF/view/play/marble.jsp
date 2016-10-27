@@ -119,6 +119,9 @@
 			}else if(cellDiv.hasClass("island")){
 				$("#gameInfoBox").html("한번 쉬어가세요~");
 				$("#gameInfoBox").show();
+			}else if(cellDiv.hasClass("start")){
+			$("#gameInfoBox").html("벌주 면제권 획득!!");
+			$("#gameInfoBox").show();
 			}else if(false){
 				
 			}else{
