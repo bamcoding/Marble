@@ -92,7 +92,18 @@ $(document).ready(function () {
 	
 	$(".info").click(function() {
 		var info = $(this).parents().children(".gameInfo").val();
-		alert(info);
+		var text = "</br><span style='font-size:2em;border-bottom:1px solid white;'>게임설명</span>"
+		$("#infoBoard").html(text+"</br></br>"+info);
+		$("#infoBoard").addClass("show");
+		$("#infoBoard").fadeIn();
+		
+		//alert(info);
+	});
+	
+	$("#infoBoard").click(function(){
+		if($("#infoBoard").hasClass("show")){
+			$("#infoBoard").fadeOut();
+		}	
 	});
 	
 	$("#setBtn").click(function() {

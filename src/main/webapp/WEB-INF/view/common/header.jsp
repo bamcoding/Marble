@@ -120,6 +120,7 @@
 	<div id="wrapper">
 	
 	
+<div id="infoBoard" >내가 설명한다고</div>
 <div id="marbleBoard"></div>
 <div id="cubeDiv"></div>
 	
