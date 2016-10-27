@@ -1055,16 +1055,7 @@
     <servlet-name>DoDownloadDetailImgServlet</servlet-name>
     <url-pattern>/admin/doDownloadDetailImg</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>DoDownloadCellImgServlet</display-name>
-    <servlet-name>DoDownloadCellImgServlet</servlet-name>
-    <servlet-class>net.ktds.drink.admin.web.DoDownloadCellImgServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DoDownloadCellImgServlet</servlet-name>
-    <url-pattern>/admin/doDownloadCellImg</url-pattern>
-  </servlet-mapping>
+ 
   <servlet>
     <description></description>
     <display-name>ResetGameSetServlet</display-name>
