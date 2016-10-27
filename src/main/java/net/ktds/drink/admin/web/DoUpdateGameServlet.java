@@ -67,7 +67,7 @@ public class DoUpdateGameServlet extends HttpServlet {
 		
 		if ( detailDeleteBtn != null && detailDeleteBtn.equals("delete"))  {
 			String detailImage = biz.getDetailImageofGamesBy(gameName);
-			File file = new File("D:\\marble\\uploadfiles\\" + detailImage);
+			File file = new File("D:\\detail\\uploadfiles\\" + detailImage);
 			file.delete();
 			
 			gamesVO.setDetailImage("");
@@ -77,7 +77,7 @@ public class DoUpdateGameServlet extends HttpServlet {
 		
 		if ( cellDeleteBtn != null && cellDeleteBtn.equals("delete"))  {
 			String cellImage = biz.getCellImageofGamesBy(gameName);
-			File file = new File("D:\\marble\\uploadfiles\\" + cellImage);
+			File file = new File("D:\\cell\\uploadfiles\\" + cellImage);
 			file.delete();
 			
 			gamesVO.setCellImage("");
@@ -89,13 +89,13 @@ public class DoUpdateGameServlet extends HttpServlet {
 		
 		if ( uploadFile.getFileSize() > 0 ) {
 			// 이미지 업로드할 폴더 생성
-				File uploadFileDirectory = new File("D:\\marble\\uploadfiles\\");
+				File uploadFileDirectory = new File("D:\\detail\\uploadfiles\\");
 				if( !uploadFileDirectory.exists() ) {
 					//폴더가 없다면...만들어라
 					uploadFileDirectory.mkdir();
 				}
 						//디드라이브에 업로드한 파일의 이름으로 파일을 써라.
-			uploadFile.write("D:\\marble\\uploadfiles\\" + uploadFile.getFileName());
+			uploadFile.write("D:\\detail\\uploadfiles\\" + uploadFile.getFileName());
 			String detailImage = uploadFile.getFileName();
 			gamesVO.setDetailImage(detailImage);
 		}
@@ -103,13 +103,13 @@ public class DoUpdateGameServlet extends HttpServlet {
 		
 		if ( uploadFile2.getFileSize() > 0 ) {
 			// 이미지 업로드할 폴더 생성
-			File uploadFileDirectory2 = new File("D:\\marble\\uploadfiles\\");
+			File uploadFileDirectory2 = new File("D:\\cell\\uploadfiles\\");
 			if( !uploadFileDirectory2.exists() ) {
 				//폴더가 없다면...만들어라
 				uploadFileDirectory2.mkdir();
 			}
 			//디드라이브에 업로드한 파일의 이름으로 파일을 써라.
-			uploadFile2.write("D:\\marble\\uploadfiles\\" + uploadFile2.getFileName());
+			uploadFile2.write("D:\\cell\\uploadfiles\\" + uploadFile2.getFileName());
 			String cellImage = uploadFile2.getFileName();	
 			gamesVO.setCellImage(cellImage);
 		}

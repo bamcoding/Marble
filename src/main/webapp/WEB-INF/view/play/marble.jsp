@@ -197,8 +197,8 @@
 		});
 		
 		
-		
 		$("#gamePan td").each(function(){
+
 			var gameId = $(this).children(".gameId").text();
 			var cellId = $(this).attr("id");
 			if(gameId != ""){
@@ -237,7 +237,7 @@
 				<div class="gameType">${plays[13].games.typeId }</div>
 				</td>
 				<td id="cell15" class="golden-card">
-				<div class="gameName">황금열쇠</div>
+				<div class="gameName"><img src="/Marble/img/usedImage/황금열쇠.jpg" style="height:100%;width:100%;"/></div>
 				<div class="gameInfo"></div>
 				<div class="gameType">5</div>
 				</td>
@@ -291,12 +291,12 @@
 			</tr>
 			<tr>
 				<td id="cell21" class="golden-card">
-				<div class="gameName">황금열쇠</div>
+				<div class="gameName"><img src="/Marble/img/usedImage/황금열쇠.jpg" style="height:100%;width:100%;"/></div>
 				<div class="gameInfo"></div>
 				<div class="gameType">5</div>
 				</td>
 				<td id="cell9" class="golden-card">
-				<div class="gameName">황금열쇠</div>
+				<div class="gameName"><img src="/Marble/img/usedImage/황금열쇠.jpg" style="height:100%;width:100%;"/></div>
 				<div class="gameInfo"></div>
 				<div class="gameType">5</div>
 				</td>
@@ -373,7 +373,7 @@
 			</tr>
 		</table>
 
-		<div class="object">PLAYER</div>
+		<div class="object"><img src="/Marble/img/usedImage/horse.png" style="height:100%;width:100%;"/></div>
 
 		<!-- 큐브 부분 -->
 		<div class="cubeFrame">
