@@ -183,7 +183,7 @@
 <div id="marble">
 		<div id="disabledEffect"></div>
 	<div id="gamePan">
-		<table border="1">
+		<table>
 			<tr>
 				<td id="cell18">
 				<div class="gameName">${plays[15].games.gameName }</div>
@@ -319,8 +319,6 @@
 				<div class="gameType">6</div>
 				</td>
 			</tr>
-
-
 		</table>
 
 		<div class="object">PLAYER</div>

@@ -50,6 +50,9 @@ $().ready(function(){
 		if(menu=="히스토리관리"){
 			location.href = "/Marble/admin/historyList";
 		}
+		if(menu=="이미지관리"){
+			location.href = "/Marble/admin/imageSet";
+		}
 		if(menu=="주루마블"){
 			location.href = "/Marble/play/index";
 		}

@@ -25,12 +25,6 @@ public abstract class Pager {
 
 	protected int pageNo;
 	
-	/**
-	 * Paging ê°ì²´ë¥? ?–»?–´?˜¨?‹¤.
-	 * ?•œ ?˜?´ì§??‹¹ ë³´ì—¬ì§??Š” ê²Œì‹œê¸? ?ˆ˜ 10ê°?
-	 * ?•œ ?˜?´ì§??‹¹ ë³´ì—¬ì§??Š” ?˜?´ì§? ?ˆ˜ 10ê°?
-	 * ë¡? ê¸°ë³¸ ?„¤? •?¨.
-	 */
 	public Pager() {
 		this.printArticle = 10;
 		this.printPage = 10;
@@ -45,12 +39,6 @@ public abstract class Pager {
 		setPageNumber(pageNumber + "");
 	}
 	
-	/**
-	 * ?š”ì²??œ ?˜?´ì§??˜ ë²ˆí˜¸ë¥? ?–»?–´?˜¨?‹¤.
-	 * 1 ?˜?´ì§??˜ ê²½ìš° 0?´ ?…? ¥?œ?‹¤.
-	 * ?•„ë¬´ê²ƒ?„ ?…? ¥?•˜ì§? ?•Š?•˜?‹¤ë©? 0?œ¼ë¡? ê¸°ë³¸ ?„¤? •?œ?‹¤.
-	 * @param pageNumber
-	 */
 	public void setPageNumber(String pageNumber) {
 		this.pageNo = 0;
 		try {
@@ -70,10 +58,6 @@ public abstract class Pager {
 	
 	protected abstract void computeArticleNumbers();
 	
-	/**
-	 * ì¡°íšŒ?•˜? ¤?Š” ì¡°ê±´(Query)?˜ ì´? ê²Œì‹œë¬? ?ˆ˜ë¥? ? •?˜?•œ?‹¤.
-	 * @param count
-	 */
 	public void setTotalArticleCount(int count) {
 		this.totalArticleCount = count;
 
@@ -83,42 +67,20 @@ public abstract class Pager {
 				/ this.printPage);
 	}
 	
-	/**
-	 * ì¡°íšŒ?•˜? ¤?Š” ì¡°ê±´(Query)?˜ ì´? ê²Œì‹œë¬? ?ˆ˜ë¥? ê°?? ¸?˜¨?‹¤.
-	 * @return
-	 */
 	public int getTotalArticleCount() {
 		return this.totalArticleCount;
 	}
 
-	/**
-	 * Query?—?„œ ?‚¬?š©?  ?ƒ?ƒ‰ ?‹œ?‘ ë²ˆí˜¸ 
-	 * Oracle?˜ ê²½ìš° rownum?˜ ?‹œ?‘ ë²ˆí˜¸
-	 * @return
-	 */
 	public int getStartArticleNumber() {
 		return this.startArticleNumber;
 	}
 	
-	/**
-	 * Query?—?„œ ?‚¬?š©?  ?ƒ?ƒ‰ ?‹œ?‘ ë²ˆí˜¸ë¥? ? •?˜?•œ?‹¤.
-	 * @param startArticleNumber
-	 */
 	public void setStartArticleNumber(int startArticleNumber) {
 		this.startArticleNumber = startArticleNumber;
 	}
-	
-	/**
-	 * Query?—?„œ ?‚¬?š©?  ?ƒ?ƒ‰ ? ë²ˆí˜¸ë¥? ? •?˜?•œ?‹¤.
-	 * @param endArticleNumber
-	 */
+
 	public abstract void setEndArticleNumber(int endArticleNumber);
 
-	/**
-	 * Query?—?„œ ?‚¬?š©?  ?ƒ?ƒ‰ ë§ˆì?ë§? ë²ˆí˜¸
-	 * Oracle?˜ ê²½ìš° rownum?˜ ë§ˆì?ë§? ë²ˆí˜¸
-	 * @return
-	 */
 	public abstract int getEndArticleNumber();
 	
 }
