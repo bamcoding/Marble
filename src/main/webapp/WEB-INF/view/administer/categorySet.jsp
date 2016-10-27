@@ -99,7 +99,7 @@
 						,function(data){
 							if(data=="true"){
 								var categoryId = $("#categoryId").val();
-								$("#"+categoryId).children("a").text($("#ctgr_input").val());
+								$("#"+categoryId).children("a:nth-child(2)").text($("#ctgr_input").val());
 							}
 							else{
 								alert("중복되는 이름은 사용할 수 없습니다.");
@@ -126,16 +126,13 @@
 							if(confirm("정말 삭제하시겠습니까?")){
 								grandParent.addClass("the node child was deleted");
 								$("#"+categoryId).remove();
-								alert(grandParent.children("ul").children("li").length);
 								var count = grandParent.children("ul").children("li").length;
 								if(count ==0){
-									alert("지금.");
 									grandParent.children("a").children("i").remove();
 								}
 							}
 						}
 						else{
-							alert(grandParent.children("ul").length);
 							alert("하위 파일이 있으면 삭제할 수 없습니다.");
 						}
 				});
@@ -238,15 +235,15 @@
 		<c:set var='nr' value='${category.level }' />
 			<c:choose>
 			<c:when test='${pr lt nr }'>
-					<ul><li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:when>
+					<ul><li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a></c:when>
 			<c:when test='${pr gt nr }'>
 					<c:forEach begin='1' end='${pr-nr }' step='1'>
 					</li></ul>
 					</c:forEach>
-					<li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:when>
+					<li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a></c:when>
 			<c:otherwise>
 					</li>
-					<li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a>(${pr},${nr})</c:otherwise>
+					<li id='ctgr${category.categoryId }'><a href='javascript:void(0);'>${category.categoryName}</a></c:otherwise>
 			</c:choose>
 				<c:set var='pr' value='${nr}'/>
 		</c:forEach>

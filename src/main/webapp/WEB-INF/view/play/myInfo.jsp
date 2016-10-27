@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 
 </script>
@@ -18,9 +19,9 @@
 			<c:choose>
 				<c:when test="${sessionScope._USER_INFO_.userEmail eq 'admin'}">			
 					<a href="/Marble/admin">관리자</a>
-				</c:when>	
+				</c:when>
 				<c:otherwise>
-				 	${sessionScope._USER_INFO_.userNickname }
+					${sessionScope._USER_INFO_.userNickname }
 				</c:otherwise>
 			</c:choose>
 			</div>
