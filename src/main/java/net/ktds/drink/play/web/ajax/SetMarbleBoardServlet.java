@@ -47,11 +47,22 @@ public class SetMarbleBoardServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		String randomPlays = Param.getStringParam(request, "random");
-		if(randomPlays.equals("true")){
-			session.removeAttribute(Session.GAME_SETTING);
+		
+		List<PlayVO> plays = null;
+		
+		String playInfo = Param.getStringParam(request, "playInfo");
+		
+		if(playInfo != null && playInfo != ""){
+			 plays = playBiz.getPlaysByPlayInfo(playInfo);
+		}else{
+			plays = (List<PlayVO>) session.getAttribute(Session.GAME_SETTING);
 		}
 		
-		List<PlayVO> plays = (List<PlayVO>) session.getAttribute(Session.GAME_SETTING);
+		
+		if(randomPlays.equals("true")){
+			plays = null;
+		}
+		
 		UserVO user = (UserVO) session.getAttribute(Session.USER_INFO);
 		
 		

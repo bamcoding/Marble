@@ -52,7 +52,7 @@ public class DoSetGamesServlet extends HttpServlet {
 		}else{
 			userId = "anonymous";
 		}
-		
+		System.out.println(gamesArr.length);
 		
 		List<PlayVO> plays = new ArrayList<PlayVO>();
 		PlayVO play = null;

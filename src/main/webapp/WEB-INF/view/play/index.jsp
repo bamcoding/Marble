@@ -11,6 +11,12 @@
 	});
 </script>
 
+<style>
+	.container:not(:last-child){
+		height: 100%
+	}
+</style>
+
 <jsp:include page="/WEB-INF/view/common/header.jsp" />
 
 <!-- Main -->
@@ -60,8 +66,23 @@
 				</header>
 				<div id="settingPage">
 				</div>
+				
 			</div>
 			</section>
+			
+			
+			<!-- Three -->
+			<section id="add">
+			<div class="container">
+				<header class="major">
+				<h2>ADD GAME</h2>
+				<p>자신만의 게임을 추가해보세요.</p>
+				</header>
+				<div id="addGamePage"></div>
+				
+			</div>
+			</section>
+			
 			
 			<section id="history">
 			<div class="container">
@@ -74,17 +95,7 @@
 			</div>
 			</section>
 
-			<!-- Three -->
-			<section id="add">
-			<div class="container">
-				<header class="major">
-				<h2>ADD GAME</h2>
-				<p>자신만의 게임을 추가해보세요.</p>
-				</header>
-				<div id="addGamePage"></div>
-				
-			</div>
-			</section>
+			
 				
 			</c:otherwise>
 		</c:choose>

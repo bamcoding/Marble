@@ -25,7 +25,7 @@ public class PlayDaoImpl extends DaoSupport implements PlayDao{
 				
 				StringBuffer query = new StringBuffer();
 				query.append(" SELECT	PLY_INFO_ID ");
-				query.append(" 			, TO_CHAR(PLY_TM, 'YYYY/MM/DD HH:MI:SS') PLY_TM ");
+				query.append(" 			, TO_CHAR(PLY_TM, 'YYYY/MM/DD HH24:MI:SS') PLY_TM ");
 				query.append(" 			, USR_ID ");
 				query.append(" FROM		PLAY_INFO ");
 				query.append(" WHERE	USR_ID = ? ");

@@ -13,11 +13,11 @@
 								if (data == "true") {
 									location.href = "/Marble/play/index";
 								} else if (data == "false") {
-									$(".small").html("<p>로그인에 실패하였습니다.</p>");
+									$("#signInError").html("로그인에 실패하였습니다.").fadeIn(300).fadeOut(1000);
 								} else if (data == "EmailNull") {
-									$(".small").html("<p>아이디를 입력하세요.</p>");
+									$("#signInError").html("아이디를 입력하세요.").fadeIn(300).fadeOut(1000);
 								} else if (data == "PasswordNull") {
-									$(".small").html("<p>패스워드를 입력하세요.</p>");
+									$("#signInError").html("패스워드를 입력하세요.").fadeIn(300).fadeOut(1000);
 								}
 							});
 
@@ -56,6 +56,21 @@
 				
 			});
 </script>
+
+<style>
+	#signInError {
+		display: none;
+		position: absolute;
+		top: 7em;
+		font-weight: bold;
+		color: red;
+		font-size: larger;
+	}
+</style>
+
+<div id="signInError">
+</div>
+
 <div>
 	<form id="signInForm" name="signInForm">
 		

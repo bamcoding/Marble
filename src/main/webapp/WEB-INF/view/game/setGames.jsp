@@ -16,7 +16,7 @@ $(document).ready(function () {
 			var plays = data.split(",");
 			$("#games_list ul li").each(function(){
 				var gameId = $(this).attr("id");
-				for(i=0; i<plays.length; i++){
+				for(i=0; i<19/* plays.length */; i++){
 					if(gameId == plays[i]){
 						var num = $(this).find(".gameCnt").text();
 						$(this).find(".gameCnt").text(parseInt(num)+1);
@@ -69,17 +69,17 @@ $(document).ready(function () {
 	
 	
 	$(".mBtn").click(function(){
-		var num = $(this).siblings(".gameCnt").text();
+		var num = $(this).parents("li").find(".gameCnt").text();
 		if(num != "0"){
-			$(this).parents().children(".gameCnt").text(parseInt(num)-1);
+			$(this).parents("li").find(".gameCnt").text(parseInt(num)-1);
 			
 		}
 	});
 	
 	$(".pBtn").click(function(){
-		var num = $(this).siblings(".gameCnt").text();
+		var num = $(this).parents("li").find(".gameCnt").text();
 		if(getCnt() < 19){
-			$(this).siblings(".gameCnt").text(parseInt(num)+1);
+			$(this).parents("li").find(".gameCnt").text(parseInt(num)+1);
 		}else{
 			var txt = "게임을 19개 이상 정할 수 없습니다.";
 			showWarning(txt);
@@ -87,7 +87,7 @@ $(document).ready(function () {
 	});
 	
 	function showWarning(txt){
-		$(".warningText").text(txt).fadeIn(500).fadeOut(1200);
+		$(".warningText").html(txt).fadeIn(1000).fadeOut(1500);
 	}
 	
 	$(".info").click(function() {
@@ -115,9 +115,19 @@ $(document).ready(function () {
 		});
 		
 		$.post("/Marble/doSetGames", {games : param}, function(data){
-			showWarning(data);
+			var txt = "셋팅이 완료되었습니다.";
+			showWarning(txt);
 		});
 		
+	});
+	
+	$("#resetBtn").click(function() {
+		$.post("/Marble/resetGame", function(data){
+			$("#games_set ul li").each(function(){
+				$(this).find(".gameCnt").text(0);
+				$(this).removeClass("selected");
+			});				
+		})
 	});
 	
 	
@@ -128,6 +138,37 @@ $(document).ready(function () {
 
 		
 </script>
+
+<style>
+
+	#games_list {
+		overflow-y: scroll; 
+		height: 50%; 
+		position: relative;
+	}
+
+	.warningText {
+		display: none; 
+		position: fixed; 
+		width: 40%; 
+		top: 45%; 
+		left: 30%; 
+		padding: 1em;
+		background-color: #FFFFFF;
+		
+		z-index: 100;
+		border-radius: 14px;
+		
+		border:3px solid #4acaa8;
+		
+		font-weight: bold; 
+		font-size: larger; 
+		text-align: center;
+	}
+	
+	
+	
+</style>
 
 	<div id = "gamesSet_Wrapper" class="row uniform">
 	<div class="12u">
@@ -143,9 +184,9 @@ $(document).ready(function () {
 	
 	<div id="games_set" class="12u">
 		<div id="games_list"
-			style="overflow-y: scroll; height: 500px; position: relative;">
+			style="">
 			
-			<div class="warningText" style="display: none; position: absolute; top: 200px; margin: 0 auto; font-weight: bold; color: red; font-size: larger; width: 100%; text-align: center;">
+			<div class="warningText" style="">
 				<p></p>
 			</div>
 			
@@ -154,19 +195,23 @@ $(document).ready(function () {
 					<c:forEach items="${games}" var="game">
 						<li id="${game.gameId}">
 							<div class="row uniform">
-							<div class="gameName 7u" style="color: black;">
-								<p >${game.gameName}</p>
-							</div>
-							<div class="2u">
-								<input type="button" class="info button small" value="?"
-									style="background-color: ; border: 0;" />
-								<input type="hidden" class="gameInfo" value="${game.gameInfo }">
-							</div>
-							<div class="3u">
-								<input type="button" class="mBtn button small" value="-"/>
-								<span class="gameCnt" style="color: black; padding: 20px">0</span>
-								<input type="button" class="pBtn button small" value="+"/>
-							</div>
+								<div class="gameName 6u" style="color: black;">
+									<p >${game.gameName}</p>
+								</div>
+								<div class="2u">
+									<input type="button" class="info button small" value="?"
+										style="background-color: ; border: 0;" />
+									<input type="hidden" class="gameInfo" value="${game.gameInfo }">
+								</div>
+								<div class="1u">
+									<input type="button" class="mBtn button small" value="-"/>
+								</div>
+								<div class="1u">
+									<span class="gameCnt" style="color: black; padding: 20px"	>0</span>
+								</div>
+								<div class="1u">	
+									<input type="button" class="pBtn button small" value="+"/>
+								</div>
 							</div>
 						</li>
 					</c:forEach>
@@ -175,9 +220,15 @@ $(document).ready(function () {
 			
 
 		</div>
-		<div>
-			<input type="button" id="setBtn" value="SET" class="button special big fit"/>
+		<div class="row uniform">
+			<div class="6u">
+				<input type="button" id="setBtn" value="SET" class="button special big fit"/>
+			</div>
+			<div class="6u">
+				<input type="button" id="resetBtn" value="RESET" class="button big fit"/>
+			</div>
 		</div>
+		
 		
 	</div>
 	

@@ -20,7 +20,7 @@
 						    }
 						    
 						    // 추출한 파일명 삽입
-						    $(this).siblings('.upload-name').val(filename);
+						    $('.filebox .upload-name').val(filename);
 						  });
 
 						  
@@ -125,7 +125,7 @@
  					</div>
  					<div class="1u" style="padding-left: 0px; margin-top: 2px">
  							<label for="file" class="button"><img src="/Marble/img/ic_file_upload_white_24dp_1x.png" style="margin-top: 10px"></label> 
-  							<input type="file" id="file" class="upload-hidden"> 
+  							<input type="file" id="file" name="file" class="upload-hidden"> 
 					</div>
 				</div>
 				<div class="row uniform">
