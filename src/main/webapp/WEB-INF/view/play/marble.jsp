@@ -317,7 +317,9 @@
 				<div class="gameType">${plays[16].games.typeId }</div>
 				<div class="gameImg"></div>
 				</td>
-				<th id="goodPlace" colspan="5" rowspan="5"></th>
+				<th id="goodPlace" colspan="5" rowspan="5">
+				<img src="/Marble/img/usedImage/주루마블.jpg"/>
+				</th>
 				<td id="cell11">
 				<div class="gameId">${plays[9].games.gameId }</div>
 				<div class="gameName">${plays[9].games.gameName }</div>

@@ -4,6 +4,14 @@
 #marble 1
 
  */
+ 
+#goodPlace img{
+	position:absolute;
+	width:738px;
+	height:500px;
+	border:10px inset brown;
+}
+ 
 #infoBoard{
 	top:70%;
 	left: 30%;
@@ -43,7 +51,7 @@
 	height: 100%;
 	position: fixed;
 	z-index: 100;
-	background-image:url("/Marble/img/usedImage/나무결.jpg");
+	background-image:url("/Marble/img/usedImage/테이블.jpg");
 	background-size:100% 100%;
 	background-position:left;
 }
