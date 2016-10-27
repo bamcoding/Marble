@@ -30,6 +30,7 @@ public class ViewAddCategoryGamePageServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String viewPath = "/WEB-INF/view/administer/addCategoryGame.jsp";
+		
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 		CategoryVO categoryVO = new CategoryVO();
 		//부모 카테고리 = 게임 
@@ -42,6 +43,7 @@ public class ViewAddCategoryGamePageServlet extends HttpServlet {
 		request.setAttribute("categoryName", categoryName);
 		request.setAttribute("categoryId", categoryId);
 		request.setAttribute("categories", categories);
+
 		rd.forward(request, response);
 	}
 

@@ -26,7 +26,12 @@ public class GamesBizImpl implements GamesBiz {
 		userDao = new UserDaoImpl();
 	}	
 	
-	
+
+	@Override
+	public CategoryVO getCategoryAt(String categoryId) {
+		return dao.getCategoryAt(categoryId);
+	}
+
 	@Override
 	public List<CategoryVO> getCategory(CategoryVO categoryVO) {
 		return dao.getCategory(categoryVO);
@@ -211,6 +216,7 @@ public class GamesBizImpl implements GamesBiz {
 		GamesVO gamesVO = dao.getImageofGamesBy(gameName);
 		return gamesVO.getCellImage();
 	}
+
 
 
 

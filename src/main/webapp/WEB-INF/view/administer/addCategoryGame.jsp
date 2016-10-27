@@ -54,9 +54,17 @@
 						function(data){
 							if(data == "false") {
 								if(confirm("게임을 등록 하시겠습니까?")) {
+										$("#writeForm").attr( {
+											"method": "post",
+											"action": "/Marble/admin/doAddCategoryGame"
+										}).submit();
+										
+										return;
+										
+									/* 	
 									$.post( "/Marble/admin/doAddCategoryGame", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val(), "categoryName": $("#categoryName").val() });
 									alert("게임이 등록되었습니다.");
-								 	location.href="/Marble/admin/gameMenuList?categoryId=${categoryId}&categoryName=${categoryName}"; 
+								 	location.href="/Marble/admin/gameMenuList?categoryId=${categoryId}&categoryName=${categoryName}";  */
 								}
 								
 							}
@@ -75,7 +83,7 @@
 <body>
 	<div id="listDiv">
 	
-		<form id="writeForm" name="writeForm">
+		<form id="writeForm" name="writeForm" enctype="multipart/form-data">
 		<input type="hidden" value="${categoryName}" id="categoryName" name="categoryName">
 			<div>
 				<select class="categoryId" id="categoryId" name="categoryId" >
@@ -91,6 +99,12 @@
 			
 			<div>
 				<textarea id="gameInfo" name="gameInfo" placeholder="게임 설명을 입력하세요."></textarea>
+			</div>
+			<div>
+				<input type="file" id="detailImage" name="detailImage" />
+			</div>
+			<div>
+				<input type="file" id="cellImage" name="cellImage" />
 			</div>
 			<div style="margin-top:5px;">
 				<div style="float: right;">

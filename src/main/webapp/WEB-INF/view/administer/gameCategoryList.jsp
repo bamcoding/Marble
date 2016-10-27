@@ -15,12 +15,11 @@
 <script type="text/javascript">
 
 	$().ready(function () {
-
-		
+	
 
 		$("#addBtn").click(function(){	
-			location.href="/Marble/admin/addCategoryGame?categoryId=${categoryId}&categoryName=${categoryName}";
-
+			location.href="/Marble/admin/addCategoryGame?categoryId=${categoryId}";
+			
 		});
 
 		
@@ -42,6 +41,7 @@
 	<div id="listDiv">
 
 	<form id="registForm" name="registForm">
+	<input type="hidden" value="${categoryName}" id="categoryName" name="categoryName">
 	<table id="listTable">
 	
 	<tr>
