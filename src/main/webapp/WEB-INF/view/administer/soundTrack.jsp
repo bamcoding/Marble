@@ -32,8 +32,8 @@ $(document).ready(function(){
 		if(confirm("음악을 삭제 하시 겠습니까?")){
 			$.post("/Marble/admin/doDeleteSoundTrack",$("#writeForm").serialize(),function(data){
 				 alert( "" + data );
+				location.href = "/Marble/admin/soundTrack"
 			});
-			location.href = "/Marble/admin/soundTrack"
 		}
 	});
 });

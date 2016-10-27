@@ -30,7 +30,7 @@
 </script>
 
 <h3>사용자 게임 상세</h3>
-<div id="listDiv">
+<div id="listDiv" style="overflow:auto;">
 <table id="listTable">
 	
 		<tr>
