@@ -60,6 +60,10 @@
 	display: none;
 }
 
+#marble table td div.gameImg {
+	display: none;
+}
+
 #gamePan {
 	width: 1050px;
 	position: relative;

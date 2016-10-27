@@ -1836,7 +1836,7 @@
 		padding: 0.75em 1em;
 	}
 
-	input[type="checkbox"],
+	.checkbox input[type="checkbox"],
 	input[type="radio"] {
 		-moz-appearance: none;
 		-webkit-appearance: none;
