@@ -331,8 +331,8 @@
 			</tr>
 			<tr>
 				<td id="cell0" class="start">
-				<div class="gameName">${start.games.gameName }</div>
-				<div class="gameInfo">${start.games.gameInfo }</div>
+				<div class="gameName"><img src="/Marble/img/usedImage/Start.jpg" style="height:100%;width:100%;"/></div>
+				<div class="gameInfo">벌주 면제권 획득!!</div>
 				<div class="gameType">${start.games.typeId }</div>
 				</td>
 				<td id="cell1">
@@ -366,7 +366,7 @@
 				<div class="gameType">${plays[5].games.typeId }</div>
 				</td>
 				<td id="cell6" class="island">
-				<div class="gameName">무인도</div>
+				<div class="gameName"><img src="/Marble/img/usedImage/무인도.jpg" style="height:100%;width:100%;"/></div>
 				<div class="gameInfo">한번 쉬어가세요~</div>
 				<div class="gameType">6</div>
 				</td>
