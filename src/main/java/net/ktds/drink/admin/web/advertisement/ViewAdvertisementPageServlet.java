@@ -69,7 +69,7 @@ public class ViewAdvertisementPageServlet extends HttpServlet {
 		
 		PageExplorer pageExplorer = new ClassicPageExplorer(advertisements.getPager());
 		
-		String pager = pageExplorer.getPagingList("pageNo", "[@]", "이전", "다음", "searchForm");
+		String pager = pageExplorer.getPagingList("pageNo", "@", "이전", "다음", "searchForm");
 		request.setAttribute("paging", pager);
 		request.setAttribute("searchAdvertisement",searchAdvertisement);
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);

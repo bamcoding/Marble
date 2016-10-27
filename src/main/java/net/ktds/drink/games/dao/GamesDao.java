@@ -16,6 +16,7 @@ public interface GamesDao {
 	public List<CustomVO> getCustomGames(SearchGamesVO searchGames);
 	
 	public List<CategoryVO> getCategory(CategoryVO categoryVO);
+	public CategoryVO getCategoryAt(String categoryId);
 	public List<CategoryVO> getAdminCategory(CategoryVO categoryVO);
 	public List<GamesVO> getGames(GamesVO gamesVO);
 
@@ -42,5 +43,5 @@ public interface GamesDao {
 
 	public List<GamesVO> getGoldenCards();
 	
-	public GamesVO getImageofGamesBy(String gameName);
+	public GamesVO getImageofGamesBy(String gameId);
 }

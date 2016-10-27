@@ -12,6 +12,7 @@ import net.ktds.drink.user.vo.UserVO;
 
 public interface GamesBiz {
 	public List<CategoryVO> getCategory(CategoryVO categoryVO);
+	public CategoryVO getCategoryAt(String categoryId);
 	public List<CategoryVO> getAdminCategory(CategoryVO categoryVO);
 	
 	public GamesListVO getCategoryGames(SearchGamesVO searchGames, String categoryId);
@@ -37,10 +38,14 @@ public interface GamesBiz {
 	public boolean updateCustom(GamesVO gamesVO);
 	public boolean deleteGames(String gameId);
 	public boolean deleteCustom(String gameId);
+	
 	public boolean isExsistGameName(String gameName);
+	
+	
 	public List<GamesVO> getGoldenCards();
 	
-	public String getDetailImageofGamesBy(String gameName);
-	public String getCellImageofGamesBy(String gameName);
+	public String getDetailImageofGamesBy(String gameId);
+	public String getCellImageofGamesBy(String gameId);
 
+	
 }

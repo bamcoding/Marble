@@ -31,7 +31,7 @@ public class ViewTestServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/test/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/bamcoding/test.jsp");
 		rd.forward(request, response);
 	
 	}

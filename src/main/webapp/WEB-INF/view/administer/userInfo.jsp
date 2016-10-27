@@ -12,33 +12,41 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link rel="stylesheet" type="text/css" href="/Marble/css/pagination.css" />
 <link rel="stylesheet" type="text/css" href="/Marble/css/decorateAdmin.css" />
+<link rel="stylesheet" type="text/css" href="/Marble/css/pagination.css" />
+
 <script type="text/javascript" src="/Marble/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		
 		$("#deleteBtn").click(function(){
-			
-			$.post( "/Marble/doUserInfoDelete",$("#registForm").serialize(),function(data){
-				if ( data == "true"){
-					location.href=("/Marble/admin/userInfo");
-				}
-				else if( data == "false" ){
-					alert("delete할 유저를 한명이상을 고르시오");
-				}
-			} );	
+			if(confirm("delete하시겠습니까?")){
+				
+				$.post( "/Marble/doUserInfoDelete",$("#registForm").serialize(),function(data){
+					if ( data == "true"){
+						location.href=("/Marble/admin/userInfo");
+					}
+					else if( data == "false" ){
+						alert("delete할 유저를 한명이상을 고르시오");
+					}
+				} );	
+				
+			}
+				
 		});
 		
 		$("#passwordResetBtn").click(function(){
-			$.post("/Marble/admin/doPasswordReset",$("#registForm").serialize(),function(data){
-				if ( data == "false"){
-					alert("초기화할 유저를 1명 이상 골라주세요");
-				}
-				else if( data == "true"){
-					alert("비밀번호가 초기화 되었습니다.");
-				}
-			});
+			if(confirm("패스워드를 초기화 하시겠습니까?")){
+				$.post("/Marble/admin/doPasswordReset",$("#registForm").serialize(),function(data){
+					if ( data == "false"){
+						alert("초기화할 유저를 1명 이상 골라주세요");
+					}
+					else if( data == "true"){
+						alert("비밀번호가 초기화 되었습니다.");
+					}
+				});
+			}
 		});
 	});
 </script>

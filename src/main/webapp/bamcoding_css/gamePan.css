@@ -25,9 +25,10 @@
 	left:20%;
 	width: 60%;
 	height: 60%;
-	background:gray;
+	background:#ffffff;
 	position: absolute;
 	text-align: center;
+	border:2px solid black;
 }
 
 #gamePan .object {
@@ -36,13 +37,8 @@
 	left:36px;
   	display: block;
   	width: 100px;
-  	height: 80px;
-  	line-height: 80px;
-  	font-size: 1.5em;
-  	text-align: center;
-  	background: #000;
-  	color: #FFF;
-  	border-radius: 25px;
+  	height: 100px;
+  	
   	-webkit-transition: 0.3s;
 	-webkit-transform-style: preserve-3d;
 	-moz-transition: 0.3s;

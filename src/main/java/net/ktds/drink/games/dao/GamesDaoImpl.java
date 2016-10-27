@@ -96,6 +96,42 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 	}
 	
 	@Override
+	public CategoryVO getCategoryAt(String categoryId) {
+		
+		return (CategoryVO) selectOne(new QueryAndResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	CTGR_ID ");
+				query.append(" 			, CTGR_NM ");
+				query.append(" 			, PRNT_CTGR_ID ");
+				query.append(" FROM		CTGR ");					
+				query.append(" WHERE	CTGR_ID = ? ");			
+				
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, categoryId);
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				CategoryVO category = null;
+				
+				if(rs.next()){
+					category = new CategoryVO();
+					
+					category.setCategoryId(rs.getString("CTGR_ID"));
+					category.setCategoryName(rs.getString("CTGR_NM"));
+					category.setParentCategoryId(rs.getString("PRNT_CTGR_ID"));					
+					
+				}
+				return category;
+			}
+		});
+	}
+
+	@Override
 	public List<GamesVO> getGames(GamesVO gamesVO) {
 		return selectList(new QueryAndResult() {
 
@@ -615,6 +651,12 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				if( gamesVO.getCategoryId() != null ) {
 					query.append(" , CTGR_ID = ? ");
 				}
+				if( gamesVO.getDetailImage() != null ) {
+					query.append(" , DTL_IMG = ? ");
+				}
+				if( gamesVO.getCellImage() != null ) {
+					query.append(" , CELL_IMG = ? ");
+				}
 				query.append(" WHERE	GM_ID = ? ");
 				
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
@@ -629,6 +671,12 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 				}
 				if(gamesVO.getCategoryId() != null ) {
 					pstmt.setString(index++, gamesVO.getCategoryId());
+				}
+				if(gamesVO.getDetailImage() != null ) {
+					pstmt.setString(index++, gamesVO.getDetailImage());
+				}
+				if(gamesVO.getCellImage() != null ) {
+					pstmt.setString(index++, gamesVO.getCellImage());
 				}
 				
 				pstmt.setString(index++, gamesVO.getGameId());
@@ -1208,23 +1256,19 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 
 
 	@Override
-	public GamesVO getImageofGamesBy(String gameName) {
+	public GamesVO getImageofGamesBy(String gameId) {
 		return (GamesVO)selectOne(new QueryAndResult(){
 
 			@Override
 			public PreparedStatement query(Connection conn) throws SQLException {
 				StringBuffer query = new StringBuffer();
 				query.append(" SELECT	GM_ID ");
-				query.append(" 		  	, GM_NM ");
-				query.append(" 		  	, GM_INFO ");
-				query.append("			, CTGR_ID ");
-				query.append(" 			, TYP_ID  ");
 				query.append(" 			, DTL_IMG  ");
 				query.append(" 			, CELL_IMG ");
 				query.append(" FROM  GAME ");
-				query.append(" WHERE GM_NM = ? ");
+				query.append(" WHERE GM_ID = ? ");
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
-				pstmt.setString(1, gameName);
+				pstmt.setString(1, gameId);
 				return pstmt;
 			}
 
@@ -1235,10 +1279,6 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 					game = new GamesVO();
 					
 					game.setGameId(rs.getString("GM_ID"));
-					game.setGameName(rs.getString("GM_NM"));
-					game.setGameInfo(rs.getString("GM_INFO"));
-					game.setCategoryId(rs.getString("CTGR_ID"));
-					game.setTypeId(rs.getString("TYP_ID"));
 					game.setDetailImage(rs.getString("DTL_IMG"));
 					game.setCellImage(rs.getString("CELL_IMG"));
 				}
@@ -1248,6 +1288,10 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 		});
 	}
 
+
+
+
+	
 	
 
 	

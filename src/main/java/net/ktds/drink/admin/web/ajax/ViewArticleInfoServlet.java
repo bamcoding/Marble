@@ -63,7 +63,7 @@ public class ViewArticleInfoServlet extends HttpServlet {
 		request.setAttribute("pager", boardList.getPager());
 		request.setAttribute("categoryId", categoryId);
 		PageExplorer page = new ClassicPageExplorer(boardList.getPager());
-		String pager = page.getPagingList("pageNo", "[@]", "<< prev", "next >>", "searchForm");
+		String pager = page.getPagingList("pageNo", "@", "<< prev", "next >>", "searchForm");
 		
 		request.setAttribute("paging", pager);
 		request.setAttribute("searchBoard", searchBoard);

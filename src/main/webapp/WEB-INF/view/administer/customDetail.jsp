@@ -3,10 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
 <jsp:include page="/WEB-INF/view/administer/decoratedAdmin.jsp"/>
+<link rel="stylesheet" type="text/css" href="/Marble/css/pagination.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -30,8 +28,7 @@
 		
 	});
 </script>
-</head>
-<body>
+
 <h3>사용자 게임 상세</h3>
 <div id="listDiv">
 <table id="listTable">
