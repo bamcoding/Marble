@@ -155,11 +155,11 @@
 				}
 			}
 			
+
 			/* $("#gameInfoBox").click(function(){
 				var str = $("#cell"+positionIndex).children(".gameInfo").text();
 				if($(this).hasClass("showDetail")){
 					var text = "</br><span style='font-size:2em;border-bottom:1px solid white;'>게임설명</span>"
-					
 					$(this).html(text+"</br></br>"+str);		
 					$(this).removeClass("showDetail");
 				}
@@ -241,8 +241,21 @@
 			
 		});
 	});
+	
 </script>
 <div id="marble">
+		<!-- exit event -->
+		<div id="exit">
+		  <input type="checkbox" id="toggle"/>
+		  <label for="toggle" id="toggle-btn"></label>
+		  <div class="nav-icon"></div>
+		  <nav data-state="close">
+		    <ul>
+		      <li><a href="/Marble/play/index">CLOSE</a></li>
+		    </ul>
+		  </nav>
+		</div>
+		
 		<div id="disabledEffect"></div>
 	<div id="gamePan">
 		<table>
@@ -426,9 +439,7 @@
 			</tr>
 		</table>
 		
-		<div>
-		<header>
-		</div>
+
 
 
 		<div class="object"><img class="soju" src="/Marble/img/usedImage/horse.png" style="height:100%;width:100%;"/></div>
@@ -447,7 +458,10 @@
 		</div>
 		<div id="blingEffect"></div>
 		<div id="disabledEffect"></div>
-		
+		<div id="sound"><audio autoplay>
+		<source src="/Marble/admin/doShowSoundTrack?soundTrackId=
+SND-20161027-000051">
+ 		 </audio></div>
 		<div id="gameInfoBox"></div>
 		
 		<!-- 황금 열쇠 ( 1.연출 부분 ) -->

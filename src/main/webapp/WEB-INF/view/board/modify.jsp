@@ -117,7 +117,7 @@
 			
 			
 			<c:if test="${not empty board.fileName }">
-				<div style="padding-top: 10px; padding-bottom: 10px" >
+				<div  class="checkbox"  style="padding-top: 10px; padding-bottom: 10px" >
 					<input type="checkbox" id="fileDeleteBtn" name="fileDeleteBtn" value="delete" />
 					<label for="fileDeleteBtn"><img src="/Marble/img/text-file-3-xxl.png" style="width:12px;'" />
 					${board.fileName}</label>

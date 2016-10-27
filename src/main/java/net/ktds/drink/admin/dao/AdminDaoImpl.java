@@ -371,9 +371,9 @@ public class AdminDaoImpl extends DaoSupport implements AdminDao {
 			@Override
 			public PreparedStatement query(Connection conn) throws SQLException {
 				StringBuffer query = new StringBuffer();
-				query.append(" DELETE ");
-				query.append(" FROM SND_TRCK");
-				query.append(" WHERE TRCK_ID = ? ");
+				query.append( " DELETE ");
+				query.append( " FROM SND_TRCK " );
+				query.append( " WHERE TRCK_ID = ? ");
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				pstmt.setString(1, soundTrackId);
 				return pstmt;

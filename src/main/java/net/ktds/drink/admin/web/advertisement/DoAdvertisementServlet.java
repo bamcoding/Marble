@@ -45,7 +45,17 @@ public class DoAdvertisementServlet extends HttpServlet {
 			response.sendRedirect("/Marble/admin/advertisement?errorCode=1");
 			return;
 		}
+
+		
+		
+		
 				MultipartFile uploadFile = multipartRequest.getFile("file");
+				
+				if(uploadFile.getFileName().equals("")) {
+					response.sendRedirect("/Marble/admin/advertisement?errorCode=1");
+					return;
+				}
+				
 		
 		 if ( uploadFile.getFileSize() > 0 ) {
 	            

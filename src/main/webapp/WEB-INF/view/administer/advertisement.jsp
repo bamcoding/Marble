@@ -16,11 +16,9 @@ $(document).ready(function(){
 	var errorCode = "${param.errorCode}";
 	if(errorCode == "1") {
 		alert("파일, 광고시작일, 만료일을 모두 입력해주세요");
-		return;
 	}		
 	if(errorCode == "2") {
 		alert("광고 업로드에 실패했습니다.");
-		return;
 	}
 	
 	$("#uploadBtn").click(function(){
