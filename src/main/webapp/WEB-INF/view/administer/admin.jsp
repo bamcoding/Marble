@@ -80,12 +80,7 @@
 			  			<a href="/Marble/admin/advertisement" id="category-info" class="underBtn">광고 설정</a>
 			  		</div>
 			  </li>
-	   	    <li class="member">
-			  	<a href="javascript:void(0);"  class="soundTrackBtn">음악관리</a>
-			  		<div class="member-content">
-			  			<a href="/Marble/admin/soundTrack" id="category-info" class="underBtn">음악 설정</a>
-			  		</div>
-			  </li>
+
 			    <li class="member">
 			  	<a href="javascript:void(0);"  class="historyBtn">히스토리 관리</a>
 			  		<div class="member-content">

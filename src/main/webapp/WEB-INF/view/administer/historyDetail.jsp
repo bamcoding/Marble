@@ -31,7 +31,7 @@
 </head>
 <body>
 <h3>플레이 상세</h3>
-<div id="listDiv">
+<div id="listDiv" style="overflow:auto;">
 <table id="listTable">
 	<tr>
 		<th>ID</th>	

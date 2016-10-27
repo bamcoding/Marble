@@ -39,7 +39,7 @@
 </head>
 <body>
 	<h3>게임타입관리</h3>
-	<div id="listDiv">
+	<div id="listDiv" style="overflow:auto;">
 		
 	
 	<form id="registForm" name="registForm">

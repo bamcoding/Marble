@@ -97,7 +97,9 @@ function makeDiv(data){
 					${comment.commentContent }
 					</div>
 				</div>
+				<c:if test="${sessionScope._USER_INFO_.userNickname eq comment.userVO.userNickname || sessionScope._USER_INFO_.userEmail eq 'admin' }">
 				<div class="commentDelete"><a href="javascript:void(0);"  id="deleteBtn" class="deleteBtn button small"><img src= "/Marble/img/ic_delete_white_24dp_1x.png" style="margin-top: 8px"/></a></div>
+				</c:if>
 			</div>
 		</c:forEach>
 	</form>

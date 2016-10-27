@@ -96,9 +96,9 @@ $().ready(function(){
 			<li class="member">
 				<input type="button" class="inline menu" value="광고관리"/>
 			</li>
-			<li class="member">
+		<!-- 	<li class="member">
 				<input type="button" class="inline menu" value="음악관리"/>
-			</li>
+			 </li> -->
 			<li class="member">
 				<input type="button" class="inline menu" value="히스토리관리"/>
 			</li>

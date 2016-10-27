@@ -9,7 +9,7 @@
 		$("#addGamePage").load("/Marble/addGames");
 		$("#historyPage").load("/Marble/myInfo");
 		$("#advertisement").load("/Marble/play/video");
-	});s
+	});
 </script>
 
 <style>
