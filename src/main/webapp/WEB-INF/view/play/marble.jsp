@@ -406,7 +406,10 @@
 		</div>
 		<div id="blingEffect"></div>
 		<div id="disabledEffect"></div>
-		
+		<div id="sound"><audio autoplay>
+		<source src="/Marble/admin/doShowSoundTrack?soundTrackId=
+SND-20161027-000051">
+ 		 </audio></div>
 		<div id="gameInfoBox"></div>
 		
 		<!-- 황금 열쇠 ( 1.연출 부분 ) -->

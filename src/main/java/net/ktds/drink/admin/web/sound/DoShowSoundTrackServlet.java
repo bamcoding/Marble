@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.ktds.drink.admin.biz.AdminBiz;
 import net.ktds.drink.admin.biz.AdminBizImpl;
 import net.ktds.drink.support.Param;
-import net.ktds.drink.support.VideoStreamingUtil;
+import net.ktds.drink.support.SoundStreamingUtil;
 
 public class DoShowSoundTrackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,7 +30,7 @@ public class DoShowSoundTrackServlet extends HttpServlet {
 		
         if( fileName != null && fileName.length() > 0 ){
         	
-        	VideoStreamingUtil downloadUtil = VideoStreamingUtil.getInstance("D:\\marble\\uploadfiles");
+        	SoundStreamingUtil downloadUtil = SoundStreamingUtil.getInstance("D:\\board\\uploadfiles");
             
             downloadUtil.download(request, response, fileName, fileName);
         }
