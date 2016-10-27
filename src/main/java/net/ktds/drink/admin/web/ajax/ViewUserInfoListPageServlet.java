@@ -70,7 +70,7 @@ public class ViewUserInfoListPageServlet extends HttpServlet {
 		
 		PageExplorer pageExplorer = new ClassicPageExplorer(users.getPager());
 		
-		String pager = pageExplorer.getPagingList("pageNo", "[@]", "이전", "다음", "registForm");
+		String pager = pageExplorer.getPagingList("pageNo", "@", "이전", "다음", "registForm");
 		request.setAttribute("paging", pager);
 		request.setAttribute("searchUser",searchUser);
 		

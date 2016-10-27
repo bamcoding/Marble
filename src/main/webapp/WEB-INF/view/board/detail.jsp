@@ -78,7 +78,7 @@ $(document).ready(function() {
 		</div>
 		
 		<div id="articleInfo" class="12u" style="text-align: right;">
-			<span>${board.userVO.userNickname}</span> <span>${board.createdDate}</span>
+			<span >${board.userVO.userNickname}</span> <span>${board.createdDate}</span>
 			
 		</div>
 		<div class="row uniform">

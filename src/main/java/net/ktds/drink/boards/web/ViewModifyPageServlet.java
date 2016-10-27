@@ -7,11 +7,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import net.ktds.drink.boards.biz.BoardBiz;
 import net.ktds.drink.boards.biz.BoardBizImpl;
 import net.ktds.drink.boards.vo.BoardVO;
+import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.support.Param;
 
 public class ViewModifyPageServlet extends HttpServlet {
@@ -32,7 +32,10 @@ public class ViewModifyPageServlet extends HttpServlet {
 		
 		
 		String boardId = Param.getStringParam(request, "boardId");
+		String categoryId = Param.getStringParam(request, "categoryId");
+		
 		BoardVO board = boardBiz.getBoardAt(boardId);
+		CategoryVO category = boardBiz.getCategoryName(categoryId);
 		
 		String content = board.getBoardContent();
 		content = content.replaceAll("<br/>", "\n").replaceAll("\r", "");
@@ -45,6 +48,7 @@ public class ViewModifyPageServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 		
 		request.setAttribute("board", board);
+		request.setAttribute("category", category);
 		
 		rd.forward(request, response);
 		

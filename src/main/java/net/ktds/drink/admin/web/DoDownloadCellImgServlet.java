@@ -29,10 +29,10 @@ public class DoDownloadCellImgServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String gameName = Param.getStringParam(request, "gameName");
-		String cellImage = biz.getCellImageofGamesBy(gameName);
+		String gameId = Param.getStringParam(request, "gameId");
+		String cellImage = biz.getCellImageofGamesBy(gameId);
 		
-		DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\marble\\uploadfiles");
+		DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\cell\\uploadfiles");
 	       if(cellImage == null){
 	    	   downloadUtil.download(request, response, "soccer.png" , "soccer.png");
 	        }

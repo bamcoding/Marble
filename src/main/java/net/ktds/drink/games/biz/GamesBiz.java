@@ -38,10 +38,14 @@ public interface GamesBiz {
 	public boolean updateCustom(GamesVO gamesVO);
 	public boolean deleteGames(String gameId);
 	public boolean deleteCustom(String gameId);
+	
 	public boolean isExsistGameName(String gameName);
+	
+	
 	public List<GamesVO> getGoldenCards();
 	
-	public String getDetailImageofGamesBy(String gameName);
-	public String getCellImageofGamesBy(String gameName);
+	public String getDetailImageofGamesBy(String gameId);
+	public String getCellImageofGamesBy(String gameId);
 
+	
 }

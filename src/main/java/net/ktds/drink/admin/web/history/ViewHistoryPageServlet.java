@@ -73,7 +73,7 @@ public class ViewHistoryPageServlet extends HttpServlet {
 		    
 		PageExplorer pageExplorer = 
 		        new ClassicPageExplorer(dummyHistory.getPager());
-		String pager = pageExplorer.getPagingList("pageNo", "[@]", "이전", "다음", "searchForm");
+		String pager = pageExplorer.getPagingList("pageNo", "@", "이전", "다음", "searchForm");
 
 		request.setAttribute("paging", pager);
 		request.setAttribute("searchGame", searchGame);

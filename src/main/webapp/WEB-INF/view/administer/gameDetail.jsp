@@ -35,7 +35,7 @@
 </head>
 <body>
 <h3>게임 상세</h3>
-<div id="listDiv">
+<div id="listDiv" style="overflow:auto;">
 <table id="listTable">
 	<tr>
 		<th>Category</th>	

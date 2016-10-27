@@ -6,6 +6,7 @@ import net.ktds.drink.support.pager.Pager;
 import net.ktds.drink.user.vo.UserVO;
 
 public class AdvertisementListVO {
+	
 	private List<AdvertisementVO> advertisements;
 	private Pager pager;
 	

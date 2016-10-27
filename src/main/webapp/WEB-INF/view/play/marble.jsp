@@ -109,6 +109,7 @@
 				positionIndex = (2 * cellX) + cellY + (cellY + y);					
 			}
 				
+			//벌칙들
 			var cellDiv = $("#cell"+positionIndex);
 			if(cellDiv.hasClass("golden-card")){
 				$.post("/Marble/getCard", function(data){
@@ -118,11 +119,31 @@
 			}else if(cellDiv.hasClass("island")){
 				$("#gameInfoBox").html("한번 쉬어가세요~");
 				$("#gameInfoBox").show();
+			}else if(false){
+				
 			}else{
-				var str = "<h2>"+cellDiv.children(".gameName").text()+"</h2>";
-				str += "<div>" + cellDiv.children(".gameInfo").text()+"</div>";
-				$("#gameInfoBox").html(str);
-				$("#gameInfoBox").show();
+				var gameId = cellDiv.children(".gameId").text();
+				if(gameId != ""){
+					
+					$.post("/Marble/checkImg", {"type":"detail", "gameId" : gameId}, function(data){
+						
+						var str = "";
+						
+						if(data == "true"){
+							$("#gameInfoBox").html("<img src='/Marble/admin/doDownloadDetailImg?gameId="+gameId+"' style=''/>");
+							
+						}else{
+							var str= "<h2>"+cellDiv.children(".gameName").text()+"</h2>";
+							str += "<div>" + cellDiv.children(".gameInfo").text()+"</div>";
+							$("#gameInfoBox").html(str);
+						}
+						
+						$("#gameInfoBox").show();
+					});
+				}
+				
+				
+				
 			}
 		}
 		
@@ -174,9 +195,21 @@
 				$("#flipper").addClass("clickFlip");						
 			}
 		});
+		
+		
+		
 		$("#gamePan td").each(function(){
-			var name = $(this).children("div .gameName").text();
-			$(this).children("div .gameName").append("<img src='/Marble/admin/doDownloadDetailImg?gameName="+name+"'/>");
+			var gameId = $(this).children(".gameId").text();
+			var cellId = $(this).attr("id");
+			if(gameId != ""){
+				
+				$.post("/Marble/checkImg", {"type":"cell", "gameId" : gameId}, function(data){
+					if(data == "true"){
+						$("#"+cellId).children(".gameName").html("<img src='/Marble/admin/doDownloadCellImg?gameId="+gameId+"' style='height:100%;width:100%;'/>");
+					}
+				});
+			}
+			
 		});
 	});
 </script>
@@ -186,16 +219,19 @@
 		<table>
 			<tr>
 				<td id="cell18">
+				<div class="gameId">${plays[15].games.gameId }</div>
 				<div class="gameName">${plays[15].games.gameName }</div>
 				<div class="gameInfo">${plays[15].games.gameInfo }</div>
 				<div class="gameType">${plays[15].games.typeId }</div>
 				</td>
 				<td id="cell17">
+				<div class="gameId">${plays[14].games.gameId }</div>
 				<div class="gameName">${plays[14].games.gameName }</div>
 				<div class="gameInfo">${plays[14].games.gameInfo }</div>
 				<div class="gameType">${plays[14].games.typeId }</div>
 				</td>
 				<td id="cell16">
+				<div class="gameId">${plays[13].games.gameId }</div>
 				<div class="gameName">${plays[13].games.gameName }</div>
 				<div class="gameInfo">${plays[13].games.gameInfo }</div>
 				<div class="gameType">${plays[13].games.typeId }</div>
@@ -206,16 +242,19 @@
 				<div class="gameType">5</div>
 				</td>
 				<td id="cell14">
+				<div class="gameId">${plays[12].games.gameId }</div>
 				<div class="gameName">${plays[12].games.gameName }</div>
 				<div class="gameInfo">${plays[12].games.gameInfo }</div>
 				<div class="gameType">${plays[12].games.typeId }</div>
 				</td>
 				<td id="cell13">
+				<div class="gameId">${plays[11].games.gameId }</div>
 				<div class="gameName">${plays[11].games.gameName }</div>
 				<div class="gameInfo">${plays[11].games.gameInfo }</div>
 				<div class="gameType">${plays[11].games.typeId }</div>
 				</td>
 				<td id="cell12">
+				<div class="gameId">${plays[10].games.gameId }</div>
 				<div class="gameName">${plays[10].games.gameName }</div>
 				<div class="gameInfo">${plays[10].games.gameInfo }</div>
 				<div class="gameType">${plays[10].games.typeId }</div>
@@ -223,12 +262,14 @@
 			</tr>
 			<tr>
 				<td id="cell19">
+				<div class="gameId">${plays[16].games.gameId }</div>
 				<div class="gameName">${plays[16].games.gameName }</div>
 				<div class="gameInfo">${plays[16].games.gameInfo }</div>
 				<div class="gameType">${plays[16].games.typeId }</div>
 				</td>
 				<th id="goodPlace" colspan="5" rowspan="5"></th>
 				<td id="cell11">
+				<div class="gameId">${plays[9].games.gameId }</div>
 				<div class="gameName">${plays[9].games.gameName }</div>
 				<div class="gameInfo">${plays[9].games.gameInfo }</div>
 				<div class="gameType">${plays[9].games.typeId }</div>
@@ -236,11 +277,13 @@
 			</tr>
 			<tr>
 				<td id="cell20">
+				<div class="gameId">${plays[17].games.gameId }</div>
 				<div class="gameName">${plays[17].games.gameName }</div>
 				<div class="gameInfo">${plays[17].games.gameInfo }</div>
 				<div class="gameType">${plays[17].games.typeId }</div>
 				</td>
 				<td id="cell10">
+				<div class="gameId">${plays[8].games.gameId }</div>
 				<div class="gameName">${plays[8].games.gameName }</div>
 				<div class="gameInfo">${plays[8].games.gameInfo }</div>
 				<div class="gameType">${plays[8].games.typeId }</div>
@@ -260,11 +303,13 @@
 			</tr>
 			<tr>
 				<td id="cell22">
+				<div class="gameId">${plays[18].games.gameId }</div>
 				<div class="gameName">${plays[18].games.gameName }</div>
 				<div class="gameInfo">${plays[18].games.gameInfo }</div>
 				<div class="gameType">${plays[18].games.typeId }</div>
 				</td>
 				<td id="cell8">
+				<div class="gameId">${plays[7].games.gameId }</div>
 				<div class="gameName">${plays[7].games.gameName }</div>
 				<div class="gameInfo">${plays[7].games.gameInfo }</div>
 				<div class="gameType">${plays[7].games.typeId }</div>
@@ -272,43 +317,50 @@
 			</tr>
 			<tr>
 				<td id="cell23">
+				<div class="gameId">${plays[19].games.gameId }</div>
 				<div class="gameName">${plays[19].games.gameName }</div>
 				<div class="gameInfo">${plays[19].games.gameInfo }</div>
 				<div class="gameType">${plays[19].games.typeId }</div>
 				</td>
 				<td id="cell7">
+				<div class="gameId">${plays[16].games.gameId }</div>
 				<div class="gameName">${plays[6].games.gameName }</div>
 				<div class="gameInfo">${plays[6].games.gameInfo }</div>
 				<div class="gameType">${plays[6].games.typeId }</div>
 				</td>
 			</tr>
 			<tr>
-				<td id="cell0">
+				<td id="cell0" class="start">
 				<div class="gameName">${start.games.gameName }</div>
 				<div class="gameInfo">${start.games.gameInfo }</div>
 				<div class="gameType">${start.games.typeId }</div>
 				</td>
 				<td id="cell1">
+				<div class="gameId">${plays[0].games.gameId }</div>
 				<div class="gameName">${plays[0].games.gameName }</div>
 				<div class="gameInfo">${plays[0].games.gameInfo }</div>
 				<div class="gameType">${plays[0].games.typeId }</div>
 				</td>
 				<td id="cell2">
+				<div class="gameId">${plays[1].games.gameId }</div>
 				<div class="gameName">${plays[1].games.gameName }</div>
 				<div class="gameInfo">${plays[1].games.gameInfo }</div>
 				<div class="gameType">${plays[1].games.typeId }</div>
 				</td>
 				<td id="cell3">
+				<div class="gameId">${plays[2].games.gameId }</div>
 				<div class="gameName">${plays[2].games.gameName }</div>
 				<div class="gameInfo">${plays[2].games.gameInfo }</div>
 				<div class="gameType">${plays[2].games.typeId }</div>
 				</td>
 				<td id="cell4">
+				<div class="gameId">${plays[4].games.gameId }</div>
 				<div class="gameName">${plays[4].games.gameName }</div>
 				<div class="gameInfo">${plays[4].games.gameInfo }</div>
 				<div class="gameType">${plays[4].games.typeId }</div>
 				</td>
 				<td id="cell5">
+				<div class="gameId">${plays[5].games.gameId }</div>
 				<div class="gameName">${plays[5].games.gameName }</div>
 				<div class="gameInfo">${plays[5].games.gameInfo }</div>
 				<div class="gameType">${plays[5].games.typeId }</div>

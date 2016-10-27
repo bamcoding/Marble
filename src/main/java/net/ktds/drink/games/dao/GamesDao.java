@@ -43,5 +43,5 @@ public interface GamesDao {
 
 	public List<GamesVO> getGoldenCards();
 	
-	public GamesVO getImageofGamesBy(String gameName);
+	public GamesVO getImageofGamesBy(String gameId);
 }

@@ -1256,23 +1256,19 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 
 
 	@Override
-	public GamesVO getImageofGamesBy(String gameName) {
+	public GamesVO getImageofGamesBy(String gameId) {
 		return (GamesVO)selectOne(new QueryAndResult(){
 
 			@Override
 			public PreparedStatement query(Connection conn) throws SQLException {
 				StringBuffer query = new StringBuffer();
 				query.append(" SELECT	GM_ID ");
-				query.append(" 		  	, GM_NM ");
-				query.append(" 		  	, GM_INFO ");
-				query.append("			, CTGR_ID ");
-				query.append(" 			, TYP_ID  ");
 				query.append(" 			, DTL_IMG  ");
 				query.append(" 			, CELL_IMG ");
 				query.append(" FROM  GAME ");
-				query.append(" WHERE GM_NM = ? ");
+				query.append(" WHERE GM_ID = ? ");
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
-				pstmt.setString(1, gameName);
+				pstmt.setString(1, gameId);
 				return pstmt;
 			}
 
@@ -1283,10 +1279,6 @@ public class GamesDaoImpl extends DaoSupport implements GamesDao {
 					game = new GamesVO();
 					
 					game.setGameId(rs.getString("GM_ID"));
-					game.setGameName(rs.getString("GM_NM"));
-					game.setGameInfo(rs.getString("GM_INFO"));
-					game.setCategoryId(rs.getString("CTGR_ID"));
-					game.setTypeId(rs.getString("TYP_ID"));
 					game.setDetailImage(rs.getString("DTL_IMG"));
 					game.setCellImage(rs.getString("CELL_IMG"));
 				}

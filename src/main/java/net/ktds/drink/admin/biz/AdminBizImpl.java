@@ -9,6 +9,9 @@ import net.ktds.drink.admin.dao.AdminDaoImpl;
 import net.ktds.drink.admin.vo.AdvertisementListVO;
 import net.ktds.drink.admin.vo.AdvertisementVO;
 import net.ktds.drink.admin.vo.SearchAdvertisementVO;
+import net.ktds.drink.admin.vo.SearchSoundTrackVO;
+import net.ktds.drink.admin.vo.SoundTrackListVO;
+import net.ktds.drink.admin.vo.SoundTrackVO;
 import net.ktds.drink.support.pager.Pager;
 import net.ktds.drink.support.pager.PagerFactory;
 
@@ -59,5 +62,41 @@ public class AdminBizImpl implements AdminBiz {
 	public AdvertisementVO getRandomAdvertisementVideoBy() {
 		return adminDao.getRandomAdvertisementVideoBy();
 	}
+	
+	//===================================
+	@Override
+	public boolean addSoundTrack(SoundTrackVO soundTrackVO) {
+		return adminDao.addSoundTrack(soundTrackVO) > 0;
+	}
+	@Override
+	public SoundTrackListVO getSoundTrack(SearchSoundTrackVO searchSoundTrack) {
+		
+		int totalCount = adminDao.getCountOfSoundTracks(searchSoundTrack);
+		
+		Pager pager = PagerFactory.getPager(true);
+		pager.setTotalArticleCount(totalCount);
+		pager.setPageNumber(searchSoundTrack.getPageNumber());
+		
+		searchSoundTrack.setStartRowNumber(pager.getStartArticleNumber());
+		searchSoundTrack.setEndRowNumber(pager.getEndArticleNumber());
+		
+		List<SoundTrackVO> soundTrack = adminDao.getSoundTrack(searchSoundTrack);
+		
+		SoundTrackListVO soundTrackList = new SoundTrackListVO();
+		soundTrackList.setPager(pager);
+		soundTrackList.setSoundTracks(soundTrack);
+		
+		return soundTrackList;
+	}
+	@Override
+	public String getFileNameOfSoundTrackBy(String soundTrackId) {
+		SoundTrackVO soundTrackVO = adminDao.getFileNameOfSoundTrackBy(soundTrackId);
+		return soundTrackVO.getFileName();
+	}
+	@Override
+	public boolean deleteSoundTrack(String soundTrackId) {
+		return adminDao.deleteSoundTrack(soundTrackId) > 0;
+	}
+	
 
 }
