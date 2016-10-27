@@ -55,14 +55,18 @@
 		<th>설명</th>
 		<td>${gameVO.gameInfo}</td>
 	</tr>
+	<c:if test="${not empty gameVO.detailImage}">
 	<tr>
-		<td>Detail Img</td>
-		<td><a href="/Marble/admin/doDownloadDetailImg?gameName=${gameVO.gameName}">${gameVO.detailImage}</a><img src="/Marble/admin/doDownloadDetailImg?gameName=${gameVO.gameName}"/></td>
+		<th>Detail Img</th>
+		<td><a href="/Marble/admin/doDownloadDetailImg?gameId=${gameVO.gameId}">${gameVO.detailImage}</a><img src="/Marble/admin/doDownloadDetailImg?gameId=${gameVO.gameId}" style="overflow:hidden; height:100px;"/></td>
 	</tr>
+	</c:if>
+	<c:if test="${not empty gameVO.cellImage}">
 	<tr>
-		<td>Cell Img</td>
-		<td><a href="/Marble/admin/doDownloadCellImg?gameName=${gameVO.gameName}">${gameVO.cellImage}</a><img src="/Marble/admin/doDownloadCellImg?gameName=${gameVO.gameName}"/></td>
+		<th>Cell Img</th>
+		<td><a href="/Marble/admin/doDownloadCellImg?gameId=${gameVO.gameId}">${gameVO.cellImage}</a><img src="/Marble/admin/doDownloadCellImg?gameId=${gameVO.gameId}" style="overflow:hidden; height:100px;"/></td>
 	</tr>
+	</c:if>
 </table>
 <div style="float: right;"><input type="submit" id="deleteBtn" value="삭제" onclick="movePage(0)"></div>
 <div style="float: right;"><input type="submit" id="updateBtn" value="수정" onclick="movePage(0)"></div>

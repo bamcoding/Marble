@@ -56,18 +56,22 @@
 							if(data == "false") {
 								
 								if(confirm("수정하시겠습니까?")) {
-									$.post( "/Marble/admin/doUpdateGame", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
-									alert("게임이 수정되었습니다.");
-								 	location.href="/Marble/admin/gameList"; 
+									$("#writeForm").attr( {
+										"method": "post",
+										"action": "/Marble/admin/doUpdateGame?gameId=${gamesVO.gameId}"
+									}).submit();
+									return;
 								}
 							
 							}
 							else if( $("#gameName").val() == "${gamesVO.gameName}" ) {
 								
 								if(confirm("수정하시겠습니까?")) {
-									$.post( "/Marble/admin/doUpdateGame", $("#writeForm").serialize(), { "categoryId": $("#categoryId").val()} );
-									alert("게임이 수정되었습니다.");
-									location.href="/Marble/admin/gameList";
+									$("#writeForm").attr( {
+										"method": "post",
+										"action": "/Marble/admin/doUpdateGame?gameId=${gamesVO.gameId}"
+									}).submit();
+									return;
 								}
 							}
 							else {
@@ -85,7 +89,7 @@
 </head>
 <body>
 	<div id="listDiv">
-		<form id="writeForm" name="writeForm">
+		<form id="writeForm" name="writeForm" enctype="multipart/form-data">
 		<input type="hidden" name="gameId" value="${gamesVO.gameId }"/>
 			<div>
 				<select class="categoryId" id="categoryId" name="categoryId" >
@@ -102,7 +106,26 @@
 			<div>
 				<textarea id="gameInfo" name="gameInfo" placeholder="게임 설명을 입력하세요."  value="">${gamesVO.gameInfo}</textarea>
 			</div>
+			
+			<c:if test="${not empty gamesVO.detailImage}">
+			<div style="padding-top: 10px; padding-bottom: 10px;">
+				<input type="checkbox" id="detailDeleteBtn" name="detailDeleteBtn" value="delete" />
+				<img src="/Marble/admin/doDownloadDetailImg?gameName=${gamesVO.gameName}" style="width: 12px;" /> ${gamesVO.detailImage}
+			</div>
+			</c:if>
+			
+			<c:if test="${not empty gamesVO.cellImage}">
+			<div style="padding-top: 10px; padding-bottom: 10px;">
+				<input type="checkbox" id="cellDeleteBtn" name="cellDeleteBtn" value="delete" />
+				<img src="/Marble/admin/doDownloadCellImg?gameName=${gamesVO.gameName}" style="width: 12px;" /> ${gamesVO.cellImage}
+			</div>
+			</c:if>
+			
 			<div style="margin-top:5px;">
+				<div class="left">
+					<div><input type="file" id="detailImage" name="detailImage" /></div>
+					<div><input type="file" id="cellImage" name="cellImage" /></div>
+				</div>
 				<div style="float: right;">
 					<div class="inline">
 						<input type="button" id="goBackBtn" value="뒤로가기" />

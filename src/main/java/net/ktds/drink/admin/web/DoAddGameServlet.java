@@ -2,6 +2,7 @@ package net.ktds.drink.admin.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -90,14 +91,15 @@ public class DoAddGameServlet extends HttpServlet {
 		gamesVO.setCategoryId(categoryId);
 		gamesVO.setDetailImage(detailImage);
 		gamesVO.setCellImage(cellImage);
-
+	
 		if( gamesVO.getCategoryId().equals("카테고리를 선택해주세요") ) {
 			response.sendRedirect("/Marble/admin/addGame?errorCode=1");
 			return;
 		}
 		else {
 			 biz.addGame(gamesVO);
-			response.sendRedirect("/Marble/admin/gameList");
+			
+			 response.sendRedirect("/Marble/admin/gameList");
 			
 		}
 		

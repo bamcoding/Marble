@@ -1,5 +1,6 @@
 package net.ktds.drink.admin.web;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +11,9 @@ import net.ktds.drink.games.biz.GamesBiz;
 import net.ktds.drink.games.biz.GamesBizImpl;
 import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.games.vo.GamesVO;
+import net.ktds.drink.support.MultipartHttpServletRequest;
 import net.ktds.drink.support.Param;
+import net.ktds.drink.support.MultipartHttpServletRequest.MultipartFile;
 
 public class DoAddCategoryGameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,12 +30,19 @@ public class DoAddCategoryGameServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		String gameName = Param.getStringParam(request, "gameName");
-		String gameInfo = Param.getStringParam(request, "gameInfo");
-		String categoryId = Param.getStringParam(request, "categoryId");
-		String categoryName = Param.getStringParam(request, "categoryName");
+		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
 		
+		String gameName = multipartRequest.getParameter("gameName");
+		String gameInfo = multipartRequest.getParameter("gameInfo");
+		String categoryId = multipartRequest.getParameter("categoryId");
+		String categoryName = multipartRequest.getParameter("categoryName");
+	
+		
+		String detailImage = "";
+		String cellImage = "";
+		
+		MultipartFile uploadFile = multipartRequest.getFile("detailImage");
+		MultipartFile uploadFile2 = multipartRequest.getFile("cellImage");
 		if( gameName.length() == 0){
 			response.sendRedirect("/Marble/admin/addCategoryGame?errorCode=1");
 			return;
@@ -41,11 +51,32 @@ public class DoAddCategoryGameServlet extends HttpServlet {
 			response.sendRedirect("/Marble/admin/addCategoryGame?errorCode=1");
 			return;
 		}
-		boolean isExsit = biz.isExsistGameName(gameName);
-		if ( !isExsit ) {
-			response.sendRedirect("/Marble/admin/addCategoryGame?errorCode=3");
+		
+	
+		if ( uploadFile.getFileSize() > 0 ) {
+			// 이미지 업로드할 폴더 생성
+				File uploadFileDirectory = new File("D:\\marble\\uploadfiles\\");
+				if( !uploadFileDirectory.exists() ) {
+					//폴더가 없다면...만들어라
+					uploadFileDirectory.mkdir();
+				}
+						//디드라이브에 업로드한 파일의 이름으로 파일을 써라.
+			uploadFile.write("D:\\marble\\uploadfiles\\" + uploadFile.getFileName());
+			detailImage = uploadFile.getFileName();
+			
 		}
-
+		
+		if ( uploadFile2.getFileSize() > 0 ) {
+			// 이미지 업로드할 폴더 생성
+			File uploadFileDirectory2 = new File("D:\\marble\\uploadfiles\\");
+			if( !uploadFileDirectory2.exists() ) {
+				//폴더가 없다면...만들어라
+				uploadFileDirectory2.mkdir();
+			}
+			//디드라이브에 업로드한 파일의 이름으로 파일을 써라.
+			uploadFile2.write("D:\\marble\\uploadfiles\\" + uploadFile2.getFileName());
+			cellImage = uploadFile2.getFileName();	
+		}
 		
 		gameInfo = gameInfo.replace("\n", "<br/>").replaceAll("\r", " ");
 		
@@ -53,17 +84,23 @@ public class DoAddCategoryGameServlet extends HttpServlet {
 		gamesVO.setGameName(gameName);
 		gamesVO.setGameInfo(gameInfo);
 		gamesVO.setCategoryId(categoryId);
+		gamesVO.setDetailImage(detailImage);
+		gamesVO.setCellImage(cellImage);
 		
 		CategoryVO categoryVO = new CategoryVO();
 		categoryVO.setCategoryName(categoryName);
 		gamesVO.setCategoryVO(categoryVO);
+		
 	
+		
 		if( gamesVO.getCategoryId().equals("카테고리를 선택해주세요") ) {
 			response.sendRedirect("/Marble/admin/addCategoryGame?errorCode=1");
 			return;
 		}
 		else {
 			biz.addGame(gamesVO);
+			response.sendRedirect("/Marble/admin/gameMenuList?categoryId="+categoryId);
+
 		}
 	}
 

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import net.ktds.drink.constants.Session;
 import net.ktds.drink.games.biz.GamesBiz;
 import net.ktds.drink.games.biz.GamesBizImpl;
+import net.ktds.drink.games.vo.CategoryVO;
 import net.ktds.drink.games.vo.GamesListVO;
 import net.ktds.drink.games.vo.SearchGamesVO;
 import net.ktds.drink.support.Param;
@@ -34,10 +35,6 @@ public class ViewGameMenuListPageServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		
-
 		
 		HttpSession session = request.getSession();
         int pageNo = Param.getIntParam(request, "pageNo", -1);
@@ -70,9 +67,13 @@ public class ViewGameMenuListPageServlet extends HttpServlet {
 	    RequestDispatcher rd = request.getRequestDispatcher(viewPath);
 
 		String categoryId = Param.getStringParam(request, "categoryId");
-		String categoryName = Param.getStringParam(request, "categoryName");
+		
+		CategoryVO categoryVO = biz.getCategoryAt(categoryId);
+		String categoryName = categoryVO.getCategoryName();
+		
+		
 		GamesListVO dummyGames = biz.getCategoryGames(searchGame, categoryId);
-		System.out.println(""+categoryId);
+	
 		
 		request.setAttribute("categoryName", categoryName);
 		request.setAttribute("categoryId", categoryId);

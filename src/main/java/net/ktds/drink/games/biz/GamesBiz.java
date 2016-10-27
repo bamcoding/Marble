@@ -12,6 +12,7 @@ import net.ktds.drink.user.vo.UserVO;
 
 public interface GamesBiz {
 	public List<CategoryVO> getCategory(CategoryVO categoryVO);
+	public CategoryVO getCategoryAt(String categoryId);
 	public List<CategoryVO> getAdminCategory(CategoryVO categoryVO);
 	
 	public GamesListVO getCategoryGames(SearchGamesVO searchGames, String categoryId);
