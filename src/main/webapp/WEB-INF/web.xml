@@ -103,7 +103,7 @@
     <description></description>
     <display-name>ViewTestServlet</display-name>
     <servlet-name>ViewTestServlet</servlet-name>
-    <servlet-class>net.ktds.bamcoding.web.ViewTestServlet</servlet-class>
+    <servlet-class>message.ViewTestServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewTestServlet</servlet-name>
@@ -1034,5 +1034,15 @@
   <servlet-mapping>
     <servlet-name>DoDownloadCellImgServlet</servlet-name>
     <url-pattern>/admin/doDownloadCellImg</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckExistImageServlet</display-name>
+    <servlet-name>CheckExistImageServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.ajax.CheckExistImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckExistImageServlet</servlet-name>
+    <url-pattern>/checkImg</url-pattern>
   </servlet-mapping>
 </web-app>

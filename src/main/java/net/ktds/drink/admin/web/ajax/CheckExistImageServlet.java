@@ -1,6 +1,8 @@
-package net.ktds.drink.admin.web;
+package net.ktds.drink.admin.web.ajax;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,37 +10,49 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.ktds.drink.games.biz.GamesBiz;
 import net.ktds.drink.games.biz.GamesBizImpl;
-import net.ktds.drink.games.vo.GamesVO;
-import net.ktds.drink.support.DownloadUtil;
 import net.ktds.drink.support.Param;
 
-
-public class DoDownloadCellImgServlet extends HttpServlet {
+public class CheckExistImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private GamesBiz biz;    
- 
-    public DoDownloadCellImgServlet() {
+       
+	private GamesBiz gamesBiz;
+	
+    public CheckExistImageServlet() {
         super();
-        biz = new GamesBizImpl();
+        gamesBiz = new GamesBizImpl();
     }
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String gameId = Param.getStringParam(request, "gameId");
-		String cellImage = biz.getCellImageofGamesBy(gameId);
+		String type = Param.getStringParam(request, "type");
 		
-		DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\cell\\uploadfiles");
-	       if(cellImage == null){
-	    	   downloadUtil.download(request, response, "soccer.png" , "soccer.png");
-	        }
-	       else{
-	    	   downloadUtil.download(request, response, cellImage , cellImage);
-	        }
+		String fileName = null;
+		
+		if(type.equals("detail") ){
+			fileName = gamesBiz.getDetailImageofGamesBy(gameId);
+		}else if (type.equals("cell") ){
+			fileName = gamesBiz.getCellImageofGamesBy(gameId);
+		}
+		
+		boolean isExist = false;
+		if(fileName != null){
+			isExist = true;
+		}else{
+			isExist = false;
+		}
+		
+		PrintWriter out = response.getWriter();
+		out.append(isExist + "");
+		out.flush();
+		out.close();
+		
+		
+		
 	}
 
 }

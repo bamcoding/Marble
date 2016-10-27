@@ -198,182 +198,180 @@
 		
 		
 		
-		$("#gamePan td").each(function(){
+ 		$("#gamePan td").each(function(){
 			var gameId = $(this).children(".gameId").text();
 			var cellId = $(this).attr("id");
 			if(gameId != ""){
 				
 				$.post("/Marble/checkImg", {"type":"cell", "gameId" : gameId}, function(data){
 					if(data == "true"){
-						$("#"+cellId).children(".gameName").html("<img src='/Marble/admin/doDownloadCellImg?gameId="+gameId+"' style='height:100%;width:100%;'/>");
+						$("#"+cellId).children(".gameName").html("<img src='/Marble/admin/doDownloadCellImg?gameId="+gameId+"' style='height:autopx;width:auto;'/>");
 					}
 				});
 			}
-			
-		});
+		}); 
+ 		
 	});
 </script>
 <div id="marble">
 		<div id="disabledEffect"></div>
 	<div id="gamePan">
-		<table border="1">
-			<tr>
-				<td id="cell18">
+		<div id="marbleTableDiv">
+			<div class="trDiv">
+				<div id="cell18">
 				<div class="gameId">${plays[15].games.gameId }</div>
 				<div class="gameName">${plays[15].games.gameName }</div>
 				<div class="gameInfo">${plays[15].games.gameInfo }</div>
 				<div class="gameType">${plays[15].games.typeId }</div>
-				</td>
-				<td id="cell17">
+				</div>
+				<div id="cell17">
 				<div class="gameId">${plays[14].games.gameId }</div>
 				<div class="gameName">${plays[14].games.gameName }</div>
 				<div class="gameInfo">${plays[14].games.gameInfo }</div>
 				<div class="gameType">${plays[14].games.typeId }</div>
-				</td>
-				<td id="cell16">
+				</div>
+				<div id="cell16">
 				<div class="gameId">${plays[13].games.gameId }</div>
 				<div class="gameName">${plays[13].games.gameName }</div>
 				<div class="gameInfo">${plays[13].games.gameInfo }</div>
 				<div class="gameType">${plays[13].games.typeId }</div>
-				</td>
-				<td id="cell15" class="golden-card">
+				</div>
+				<div id="cell15" class="golden-card">
 				<div class="gameName">황금열쇠</div>
 				<div class="gameInfo"></div>
 				<div class="gameType">5</div>
-				</td>
-				<td id="cell14">
+				</div>
+				<div id="cell14">
 				<div class="gameId">${plays[12].games.gameId }</div>
 				<div class="gameName">${plays[12].games.gameName }</div>
 				<div class="gameInfo">${plays[12].games.gameInfo }</div>
 				<div class="gameType">${plays[12].games.typeId }</div>
-				</td>
-				<td id="cell13">
+				</div>
+				<div id="cell13">
 				<div class="gameId">${plays[11].games.gameId }</div>
 				<div class="gameName">${plays[11].games.gameName }</div>
 				<div class="gameInfo">${plays[11].games.gameInfo }</div>
 				<div class="gameType">${plays[11].games.typeId }</div>
-				</td>
-				<td id="cell12">
+				</div>
+				<div id="cell12">
 				<div class="gameId">${plays[10].games.gameId }</div>
 				<div class="gameName">${plays[10].games.gameName }</div>
 				<div class="gameInfo">${plays[10].games.gameInfo }</div>
 				<div class="gameType">${plays[10].games.typeId }</div>
-				</td>
-			</tr>
-			<tr>
-				<td id="cell19">
+				</div>
+			</div>
+			<div class="trDiv">
+				<div id="cell19">
 				<div class="gameId">${plays[16].games.gameId }</div>
 				<div class="gameName">${plays[16].games.gameName }</div>
 				<div class="gameInfo">${plays[16].games.gameInfo }</div>
 				<div class="gameType">${plays[16].games.typeId }</div>
-				</td>
+				</div>
 				<th id="goodPlace" colspan="5" rowspan="5"></th>
-				<td id="cell11">
+				<div id="cell11" style="float:right;margin-right:5px;">
 				<div class="gameId">${plays[9].games.gameId }</div>
 				<div class="gameName">${plays[9].games.gameName }</div>
 				<div class="gameInfo">${plays[9].games.gameInfo }</div>
 				<div class="gameType">${plays[9].games.typeId }</div>
-				</td>
-			</tr>
-			<tr>
-				<td id="cell20">
+				</div>
+			</div>
+			<div class="trDiv">
+				<div id="cell20">
 				<div class="gameId">${plays[17].games.gameId }</div>
 				<div class="gameName">${plays[17].games.gameName }</div>
 				<div class="gameInfo">${plays[17].games.gameInfo }</div>
 				<div class="gameType">${plays[17].games.typeId }</div>
-				</td>
-				<td id="cell10">
+				</div>
+				<div id="cell10" style="float:right;margin-right:5px;">
 				<div class="gameId">${plays[8].games.gameId }</div>
 				<div class="gameName">${plays[8].games.gameName }</div>
 				<div class="gameInfo">${plays[8].games.gameInfo }</div>
 				<div class="gameType">${plays[8].games.typeId }</div>
-				</td>
-			</tr>
-			<tr>
-				<td id="cell21" class="golden-card">
+				</div>
+			</div>
+			<div class="trDiv">
+				<div id="cell21" class="golden-card">
 				<div class="gameName">황금열쇠</div>
 				<div class="gameInfo"></div>
 				<div class="gameType">5</div>
-				</td>
-				<td id="cell9" class="golden-card">
+				</div>
+				<div id="cell9" class="golden-card" style="float:right;margin-right:5px;">
 				<div class="gameName">황금열쇠</div>
 				<div class="gameInfo"></div>
 				<div class="gameType">5</div>
-				</td>
-			</tr>
-			<tr>
-				<td id="cell22">
+				</div>
+			</div>
+			<div class="trDiv">
+				<div id="cell22">
 				<div class="gameId">${plays[18].games.gameId }</div>
 				<div class="gameName">${plays[18].games.gameName }</div>
 				<div class="gameInfo">${plays[18].games.gameInfo }</div>
 				<div class="gameType">${plays[18].games.typeId }</div>
-				</td>
-				<td id="cell8">
+				</div>
+				<div id="cell8" style="float:right;margin-right:5px;">
 				<div class="gameId">${plays[7].games.gameId }</div>
 				<div class="gameName">${plays[7].games.gameName }</div>
 				<div class="gameInfo">${plays[7].games.gameInfo }</div>
 				<div class="gameType">${plays[7].games.typeId }</div>
-				</td>
-			</tr>
-			<tr>
-				<td id="cell23">
+				</div>
+			</div>
+			<div class="trDiv" >
+				<div id="cell23">
 				<div class="gameId">${plays[19].games.gameId }</div>
 				<div class="gameName">${plays[19].games.gameName }</div>
 				<div class="gameInfo">${plays[19].games.gameInfo }</div>
 				<div class="gameType">${plays[19].games.typeId }</div>
-				</td>
-				<td id="cell7">
+				</div>
+				<div id="cell7" style="float:right;margin-right:5px;">
 				<div class="gameId">${plays[16].games.gameId }</div>
 				<div class="gameName">${plays[6].games.gameName }</div>
 				<div class="gameInfo">${plays[6].games.gameInfo }</div>
 				<div class="gameType">${plays[6].games.typeId }</div>
-				</td>
-			</tr>
-			<tr>
-				<td id="cell0" class="start">
+				</div>
+			</div>
+			<div class="trDiv">
+				<div id="cell0" class="start inline">
 				<div class="gameName">${start.games.gameName }</div>
 				<div class="gameInfo">${start.games.gameInfo }</div>
 				<div class="gameType">${start.games.typeId }</div>
-				</td>
-				<td id="cell1">
+				</div>
+				<div id="cell1" class="inline">
 				<div class="gameId">${plays[0].games.gameId }</div>
 				<div class="gameName">${plays[0].games.gameName }</div>
 				<div class="gameInfo">${plays[0].games.gameInfo }</div>
 				<div class="gameType">${plays[0].games.typeId }</div>
-				</td>
-				<td id="cell2">
+				</div>
+				<div id="cell2" class="inline">
 				<div class="gameId">${plays[1].games.gameId }</div>
 				<div class="gameName">${plays[1].games.gameName }</div>
 				<div class="gameInfo">${plays[1].games.gameInfo }</div>
 				<div class="gameType">${plays[1].games.typeId }</div>
-				</td>
-				<td id="cell3">
+				</div>
+				<div id="cell3" class="inline">
 				<div class="gameId">${plays[2].games.gameId }</div>
 				<div class="gameName">${plays[2].games.gameName }</div>
 				<div class="gameInfo">${plays[2].games.gameInfo }</div>
 				<div class="gameType">${plays[2].games.typeId }</div>
-				</td>
-				<td id="cell4">
+				</div>
+				<div id="cell4" class="inline">
 				<div class="gameId">${plays[4].games.gameId }</div>
 				<div class="gameName">${plays[4].games.gameName }</div>
 				<div class="gameInfo">${plays[4].games.gameInfo }</div>
 				<div class="gameType">${plays[4].games.typeId }</div>
-				</td>
-				<td id="cell5">
+				</div>
+				<div id="cell5" class="inline">
 				<div class="gameId">${plays[5].games.gameId }</div>
 				<div class="gameName">${plays[5].games.gameName }</div>
 				<div class="gameInfo">${plays[5].games.gameInfo }</div>
 				<div class="gameType">${plays[5].games.typeId }</div>
-				</td>
-				<td id="cell6" class="island">
+				</div>
+				<div id="cell6" class="island inline">
 				<div class="gameName">무인도</div>
 				<div class="gameInfo">한번 쉬어가세요~</div>
 				<div class="gameType">6</div>
-				</td>
-			</tr>
-
-
-		</table>
+				</div>
+			</div>
+		</div>
 
 		<div class="object">PLAYER</div>
 
