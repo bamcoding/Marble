@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/gamePan.css" />
 <link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/carousel.css" />
 <link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/horse.css">
+<link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/exit.css">
 
 <script type="text/javascript">
 	$(document).ready( function() {
@@ -118,11 +119,15 @@
 					actionSpinGoldKey();
 				});	
 			}else if(cellDiv.hasClass("island")){
-				$("#gameInfoBox").html("한번 쉬어가세요~");
+				var str= "<div style='display:;'><h2>"+cellDiv.children(".gameName").html()+"</h2>";
+				str += "<div style='overflow-y:auto;height:13em;padding-left:1em;padding-right:1em;'>" + cellDiv.children(".gameInfo").html()+"</div></div>";
+				$("#gameInfoBox").html(str);
 				$("#gameInfoBox").show();
 			}else if(cellDiv.hasClass("start")){
-			$("#gameInfoBox").html("벌주 면제권 획득!!");
-			$("#gameInfoBox").show();
+				var str= "<div style='display:;'><h2>"+cellDiv.children(".gameName").html()+"</h2>";
+				str += "<div style='overflow-y:auto;height:13em;padding-left:1em;padding-right:1em;'>" + cellDiv.children(".gameInfo").html()+"</div></div>";
+				$("#gameInfoBox").html(str);
+				$("#gameInfoBox").show();
 			}else if(false){
 				
 			}else{
@@ -136,10 +141,12 @@
 						if(data == "true"){
 							$("#gameInfoBox").html("<img src='/Marble/admin/doDownloadDetailImg?gameId="+gameId+"' style='width:100%;height:100%;'/>");
 							$("#gameInfoBox").addClass("showDetail");
-							
+							var str= "<div style='display:none;'><h2>"+cellDiv.children(".gameName").html()+"</h2>";
+							str += "<div style='overflow-y:auto;height:13em;padding-left:1em;padding-right:1em;'>" + cellDiv.children(".gameInfo").html()+"</div></div>";
+							$("#gameInfoBox").append(str);
 						}else{
-							var str= "<h2>"+cellDiv.children(".gameName").text()+"</h2>";
-							str += "<div>" + cellDiv.children(".gameInfo").text()+"</div>";
+							var str= "<div><h2>"+cellDiv.children(".gameName").html()+"</h2>";
+							str += "<div style='overflow-y:auto;height:13em;padding-left:1em;padding-right:1em;'>" + cellDiv.children(".gameInfo").html()+"</div></div>";
 							$("#gameInfoBox").html(str);
 						}
 						
@@ -148,20 +155,23 @@
 				}
 			}
 			
-			$("#gameInfoBox").click(function(){
-				var cellDiv = $("#cell"+positionIndex);
-				var str = cellDiv.children(".gameInfo").text();
+			/* $("#gameInfoBox").click(function(){
+				var str = $("#cell"+positionIndex).children(".gameInfo").text();
 				if($(this).hasClass("showDetail")){
 					var text = "</br><span style='font-size:2em;border-bottom:1px solid white;'>게임설명</span>"
 					
 					$(this).html(text+"</br></br>"+str);		
 					$(this).removeClass("showDetail");
 				}
-			});
+			}); */
 		}
 		
 		$("#gameInfoBox").click(function(){
-			if(!$(this).hasClass("showDetail")){
+			if($(this).hasClass("showDetail")){
+				$(this).children("img").hide();
+				$(this).children("div").show();
+				$(this).removeClass("showDetail");
+			}else{
 				$(this).html("");
 				$(this).hide();
 			}
@@ -222,7 +232,9 @@
 				
 				$.post("/Marble/checkImg", {"type":"cell", "gameId" : gameId}, function(data){
 					if(data == "true"){
-						$("#"+cellId).children(".gameName").html("<img src='/Marble/admin/doDownloadCellImg?gameId="+gameId+"' style='height:100%;width:100%;'/>");
+						$("#"+cellId).children(".gameImg").html("<img src='/Marble/admin/doDownloadCellImg?gameId="+gameId+"' style='height:100%;width:100%;'/>");
+						$("#"+cellId).children(".gameName").hide();
+						$("#"+cellId).children(".gameImg").show();
 					}
 				});
 			}
@@ -240,41 +252,48 @@
 				<div class="gameName">${plays[15].games.gameName }</div>
 				<div class="gameInfo">${plays[15].games.gameInfo }</div>
 				<div class="gameType">${plays[15].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell17">
 				<div class="gameId">${plays[14].games.gameId }</div>
 				<div class="gameName">${plays[14].games.gameName }</div>
 				<div class="gameInfo">${plays[14].games.gameInfo }</div>
 				<div class="gameType">${plays[14].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell16">
 				<div class="gameId">${plays[13].games.gameId }</div>
 				<div class="gameName">${plays[13].games.gameName }</div>
 				<div class="gameInfo">${plays[13].games.gameInfo }</div>
 				<div class="gameType">${plays[13].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell15" class="golden-card">
 				<div class="gameName"><img src="/Marble/img/usedImage/황금열쇠.jpg" style="height:100%;width:100%;"/></div>
 				<div class="gameInfo"></div>
 				<div class="gameType">5</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell14">
 				<div class="gameId">${plays[12].games.gameId }</div>
 				<div class="gameName">${plays[12].games.gameName }</div>
 				<div class="gameInfo">${plays[12].games.gameInfo }</div>
 				<div class="gameType">${plays[12].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell13">
 				<div class="gameId">${plays[11].games.gameId }</div>
 				<div class="gameName">${plays[11].games.gameName }</div>
 				<div class="gameInfo">${plays[11].games.gameInfo }</div>
 				<div class="gameType">${plays[11].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell12">
 				<div class="gameId">${plays[10].games.gameId }</div>
 				<div class="gameName">${plays[10].games.gameName }</div>
 				<div class="gameInfo">${plays[10].games.gameInfo }</div>
 				<div class="gameType">${plays[10].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 			</tr>
 			<tr>
@@ -283,6 +302,7 @@
 				<div class="gameName">${plays[16].games.gameName }</div>
 				<div class="gameInfo">${plays[16].games.gameInfo }</div>
 				<div class="gameType">${plays[16].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<th id="goodPlace" colspan="5" rowspan="5"></th>
 				<td id="cell11">
@@ -290,6 +310,7 @@
 				<div class="gameName">${plays[9].games.gameName }</div>
 				<div class="gameInfo">${plays[9].games.gameInfo }</div>
 				<div class="gameType">${plays[9].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 			</tr>
 			<tr>
@@ -298,12 +319,14 @@
 				<div class="gameName">${plays[17].games.gameName }</div>
 				<div class="gameInfo">${plays[17].games.gameInfo }</div>
 				<div class="gameType">${plays[17].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell10">
 				<div class="gameId">${plays[8].games.gameId }</div>
 				<div class="gameName">${plays[8].games.gameName }</div>
 				<div class="gameInfo">${plays[8].games.gameInfo }</div>
 				<div class="gameType">${plays[8].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 			</tr>
 			<tr>
@@ -311,11 +334,13 @@
 				<div class="gameName"><img src="/Marble/img/usedImage/황금열쇠.jpg" style="height:100%;width:100%;"/></div>
 				<div class="gameInfo"></div>
 				<div class="gameType">5</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell9" class="golden-card">
 				<div class="gameName"><img src="/Marble/img/usedImage/황금열쇠.jpg" style="height:100%;width:100%;"/></div>
 				<div class="gameInfo"></div>
 				<div class="gameType">5</div>
+				<div class="gameImg"></div>
 				</td>
 			</tr>
 			<tr>
@@ -324,12 +349,14 @@
 				<div class="gameName">${plays[18].games.gameName }</div>
 				<div class="gameInfo">${plays[18].games.gameInfo }</div>
 				<div class="gameType">${plays[18].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell8">
 				<div class="gameId">${plays[7].games.gameId }</div>
 				<div class="gameName">${plays[7].games.gameName }</div>
 				<div class="gameInfo">${plays[7].games.gameInfo }</div>
 				<div class="gameType">${plays[7].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 			</tr>
 			<tr>
@@ -338,57 +365,71 @@
 				<div class="gameName">${plays[19].games.gameName }</div>
 				<div class="gameInfo">${plays[19].games.gameInfo }</div>
 				<div class="gameType">${plays[19].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell7">
 				<div class="gameId">${plays[16].games.gameId }</div>
 				<div class="gameName">${plays[6].games.gameName }</div>
 				<div class="gameInfo">${plays[6].games.gameInfo }</div>
 				<div class="gameType">${plays[6].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 			</tr>
 			<tr>
 				<td id="cell0" class="start">
-				<div class="gameName"><img src="/Marble/img/usedImage/Start.jpg" style="height:100%;width:100%;"/></div>
+				<div class="gameName" style="display: none">새로운 출발!!</div>
 				<div class="gameInfo">벌주 면제권 획득!!</div>
 				<div class="gameType">${start.games.typeId }</div>
+				<div class="gameImg" style="display: block;"><img src="/Marble/img/usedImage/Start.jpg" style="height:100%;width:100%;"/></div>
 				</td>
 				<td id="cell1">
 				<div class="gameId">${plays[0].games.gameId }</div>
 				<div class="gameName">${plays[0].games.gameName }</div>
 				<div class="gameInfo">${plays[0].games.gameInfo }</div>
 				<div class="gameType">${plays[0].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell2">
 				<div class="gameId">${plays[1].games.gameId }</div>
 				<div class="gameName">${plays[1].games.gameName }</div>
 				<div class="gameInfo">${plays[1].games.gameInfo }</div>
 				<div class="gameType">${plays[1].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell3">
 				<div class="gameId">${plays[2].games.gameId }</div>
 				<div class="gameName">${plays[2].games.gameName }</div>
 				<div class="gameInfo">${plays[2].games.gameInfo }</div>
 				<div class="gameType">${plays[2].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell4">
 				<div class="gameId">${plays[4].games.gameId }</div>
 				<div class="gameName">${plays[4].games.gameName }</div>
 				<div class="gameInfo">${plays[4].games.gameInfo }</div>
 				<div class="gameType">${plays[4].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell5">
 				<div class="gameId">${plays[5].games.gameId }</div>
 				<div class="gameName">${plays[5].games.gameName }</div>
 				<div class="gameInfo">${plays[5].games.gameInfo }</div>
 				<div class="gameType">${plays[5].games.typeId }</div>
+				<div class="gameImg"></div>
 				</td>
 				<td id="cell6" class="island">
-				<div class="gameName"><img src="/Marble/img/usedImage/무인도.jpg" style="height:100%;width:100%;"/></div>
+				<div class="gameName" style="display: none">무인도</div>
 				<div class="gameInfo">한번 쉬어가세요~</div>
 				<div class="gameType">6</div>
+				<div class="gameImg" style="display: block;"><img src="/Marble/img/usedImage/무인도.jpg" style="height:100%;width:100%;"/></div>
 				</td>
 			</tr>
 		</table>
+		
+		<div>
+		<header>
+		</div>
+
 
 		<div class="object"><img class="soju" src="/Marble/img/usedImage/horse.png" style="height:100%;width:100%;"/></div>
 		<!-- </div>
