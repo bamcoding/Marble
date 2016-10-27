@@ -13,11 +13,11 @@ import net.ktds.drink.admin.biz.AdminBiz;
 import net.ktds.drink.admin.biz.AdminBizImpl;
 import net.ktds.drink.admin.vo.AdvertisementVO;
 
-public class viewAdvertisementVideoServlet extends HttpServlet {
+public class ViewAdvertisementVideoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private AdminBiz adminBiz;
 
-	public viewAdvertisementVideoServlet() {
+	public ViewAdvertisementVideoServlet() {
 		super();
 		adminBiz = new AdminBizImpl();
 	}
@@ -33,7 +33,9 @@ public class viewAdvertisementVideoServlet extends HttpServlet {
 		AdvertisementVO advertisement = adminBiz.getRandomAdvertisementVideoBy();
 		String viewPath = "/WEB-INF/view/play/advertiseMent.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(viewPath);
+		System.out.println(advertisement.getAdvertisementId());
 		request.setAttribute("advertisement", advertisement);
+		
 		rd.forward(request, response);
 	}
 

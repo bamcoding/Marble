@@ -11,7 +11,7 @@
 		
 		
 	 	$("#advertisementVideo").click(function(){
-			$(this).remove();
+			//$(this).remove();
 		});
 	 
 		
@@ -23,18 +23,9 @@
 	
 </script>
 
-<style>
-	video{
-	display: block;
-		}
-</style>
 
-<div>
-	 	<div id="marble" >
-	 			<div id="gamePan">
-				    <video id="advertisementVideo" width="100%" height="100%" 
+
+
+				    <video width="100%" height="" 
 				    	src="/Marble/play/download?advertisementId=${advertisement.advertisementId}" autoplay controls> 
 				    </video>
-	 			</div>
-		</div>  
-</div>

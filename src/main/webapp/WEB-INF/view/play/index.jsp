@@ -7,13 +7,16 @@
 	$().ready(function(){
 		$("#settingPage").load("/Marble/setGames");
 		$("#addGamePage").load("/Marble/addGames");
-		$("#historyPage").load("/Marble/myInfo")
-	});
+		$("#historyPage").load("/Marble/myInfo");
+		$("#advertisement").load("/Marble/play/video");
+	});s
 </script>
 
 <style>
 	.container:not(:last-child){
 		height: 100%
+	}
+	#advertisement{
 	}
 </style>
 
@@ -40,6 +43,10 @@
 			
 			<c:choose>
 			<c:when test="${empty sessionScope._USER_INFO_ }">
+				
+				<section id="ad">
+					<div id="advertisement"></div>
+				</section>
 				
 			<section id="signup">
 			<div class="container">

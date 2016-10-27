@@ -687,12 +687,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>viewAdvertisementVideoServlet</display-name>
-    <servlet-name>viewAdvertisementVideoServlet</servlet-name>
-    <servlet-class>net.ktds.drink.play.web.ajax.viewAdvertisementVideoServlet</servlet-class>
+    <display-name>ViewAdvertisementVideoServlet</display-name>
+    <servlet-name>ViewAdvertisementVideoServlet</servlet-name>
+    <servlet-class>net.ktds.drink.play.web.ajax.ViewAdvertisementVideoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>viewAdvertisementVideoServlet</servlet-name>
+    <servlet-name>ViewAdvertisementVideoServlet</servlet-name>
     <url-pattern>/play/video</url-pattern>
   </servlet-mapping>
   <servlet>

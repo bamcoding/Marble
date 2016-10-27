@@ -186,7 +186,7 @@ public class AdminDaoImpl extends DaoSupport implements AdminDao {
 				query.append("  	  ,  EXPRTN_DT");
 				query.append(" 		  , FILE_NM ");
 				query.append(" 				FROM DRINK.AD     ");
-				query.append(" 				WHERE TO_DATE(CNTRCT_DT,'YYYY:MM:DD') >= TO_DATE(SYSDATE, 'YYYY:MM:DD') ");
+				query.append(" 				WHERE TO_DATE(CNTRCT_DT,'YYYY:MM:DD') <= TO_DATE(SYSDATE, 'YYYY:MM:DD') ");
 				query.append("  			AND   TO_DATE(EXPRTN_DT,'YYYY:MM:DD') >= TO_DATE(SYSDATE, 'YYYY:MM:DD') ");
 				query.append("  			ORDER BY dbms_random.value ");
 				query.append("  	 ) ");
