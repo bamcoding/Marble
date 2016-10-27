@@ -34,6 +34,11 @@ public class DoSoundTrackServlet extends HttpServlet {
 		
 		MultipartFile uploadFile = multipartRequest.getFile("file");
 		
+		if(uploadFile.getFileName().equals("")) {
+			response.sendRedirect("/Marble/admin/soundTrack?errorCode=1");
+			return;
+		}
+		
 		 if ( uploadFile.getFileSize() > 0 ) {
 	            
 	            File uploadFileDirectory = new File("D:\\board\\uploadfiles\\");
@@ -45,9 +50,7 @@ public class DoSoundTrackServlet extends HttpServlet {
 	            uploadFile.write("D:\\board\\uploadfiles\\" + uploadFile.getFileName());
 	            fileName = uploadFile.getFileName();
 	        }
-		 else{
-			 response.sendRedirect("/Marble/admin/soundTrackId?errorCode=1");
-		 }
+	
 		
 
 		SoundTrackVO soundTrack = new SoundTrackVO();
@@ -57,7 +60,7 @@ public class DoSoundTrackServlet extends HttpServlet {
 			response.sendRedirect("/Marble/admin/soundTrack");
 		}
 		else{
-			response.sendRedirect("/Marble/admin/soundTrack?errorcode=2");
+			response.sendRedirect("/Marble/admin/soundTrack?errorCode=2");
 		}
 	
 	}
