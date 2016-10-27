@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/gamePan.css" />
 <link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/carousel.css" />
 <link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/horse.css">
+<link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/exit.css">
 
 <script type="text/javascript">
 	$(document).ready( function() {
@@ -424,6 +425,11 @@
 				</td>
 			</tr>
 		</table>
+		
+		<div>
+		<header>
+		</div>
+
 
 		<div class="object"><img class="soju" src="/Marble/img/usedImage/horse.png" style="height:100%;width:100%;"/></div>
 		<!-- </div>
