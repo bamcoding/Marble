@@ -133,7 +133,7 @@
 						var str = "";
 						
 						if(data == "true"){
-							$("#gameInfoBox").html("<img src='/Marble/admin/doDownloadDetailImg?gameId="+gameId+"' style=''/>");
+							$("#gameInfoBox").html("<img src='/Marble/admin/doDownloadDetailImg?gameId="+gameId+"' style='width:100%;height:100%;'/>");
 							
 						}else{
 							var str= "<h2>"+cellDiv.children(".gameName").text()+"</h2>";

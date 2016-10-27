@@ -1,4 +1,4 @@
-package net.ktds.drink.user.web.ajax;
+	package net.ktds.drink.user.web.ajax;
 
 import java.io.IOException;
 import java.io.PrintWriter;

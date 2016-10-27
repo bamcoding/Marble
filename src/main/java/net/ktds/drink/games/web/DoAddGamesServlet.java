@@ -2,6 +2,7 @@ package net.ktds.drink.games.web;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,8 +57,6 @@ public class DoAddGamesServlet extends HttpServlet {
 		
 		
 		biz.addCustom(gameVO, userInfo);
-		
-
 		
 	
 	}

@@ -6,54 +6,48 @@
 
 	$(document).ready(function(){
 		
-		var flag = true;
-		var cntGame = 0;
-		var gameName = "";
+	
+		if("${sessionScope._GAME_SETTING_}" == "" && "${param.playInfo}" == ""){
+			//$(".confirm").css("height","38%");
+		}
+		
 		var i = 0;
 		$(".confirmGames li").each(function(){
-			cntGame++;
-			
-			var result ="";
-			var idx = $(this).index();
-			gameName = $(this).text();
-			//alert(idx + " " + gameName);
 			var gameId = $(this).attr("class");
-			if(i == 0){
-			$("."+gameId).each(function(index){
-				gameName = $(this).text();
-				i = index;
-			});
+			var gameName = $(this).text();
 			
-			if(flag){
-				result += "";
+			var length = $("#setGames").children(".row").length;
+			
+			if(length == 0){
+				$("#setGames").append("<div class='row uniform'><div id='"+gameId+"' class='8u'>"+gameName+"</div><div class='gameCnt 4u'>1</div></div>");
+			}else if(length > 0){
+				var flag = true;
+				for(var i=0; i<length; i++){
+					
+					if($("#"+gameId).text() == gameName){
+						var cnt = $("#"+gameId).siblings(".gameCnt");
+						var num = cnt.text();
+						cnt.text(parseInt(num)+1);
+						flag = false;
+						break;
+					}
+				}
+				
+				if(flag){
+					$("#setGames").append("<div class='row uniform'><div id='"+gameId+"' class='8u'>"+gameName+"</div><div class='gameCnt 4u'>1</div></div>");
+				}
 			}
 			
-			result += "<div class='row uniform'><div class='3u'>"+gameName + "</div><div class='3u'> X " + (i+1)+"</div></div>";
-			
-			if(!flag){
-				result += "";
-			}
-			
-			$(this).html(result);
-			flag = !flag;
-			
-			}else{
-				$(this).remove();
-				i--;
-			}			
 			
 			
 		});
 		
-		$(".cntGame").html(cntGame);
-		
-		
 		$(".yesBtn").click(function(){
-			$("#marbleBoard").load("/Marble/setMarbleBoard?random=false");
+			$("#marbleBoard").load("/Marble/setMarbleBoard?random=false&playInfo=${param.playInfo}");
 		});
 		
 		$(".randomBtn").click(function(){
-			$("#marbleBoard").load("/Marble/setMarbleBoard?random=true");
+			$("#marbleBoard").load("/Marble/setMarbleBoard?random=true&playInfo=${param.playInfo}");
 		});
 		
 		$(".noBtn").click(function(){
@@ -69,9 +63,8 @@
 	}
 	.confirm{
 		position: fixed; 
-		height: 80%; 
 		width: 60%; 
-		top: 10%; 
+		top: 15%; 
 		left: 20%; 
 		text-align: center; 
 		background-color: #FFFFFF;
@@ -79,12 +72,20 @@
 		z-index: 100;
 		border-radius: 14px;
 		
+		border:3px solid #4acaa8;
+		
+		
 	}
 	.comfirmWrapper{
 		height: 100%; 
 		width: 100%; 
 		position:relative;
-		border:2px solid #00FF00;
+		padding: 2em;
+	}
+	
+	.comfirmWrapper p{
+		font-weight: bold;
+		font-size: larger;
 	}
 	
 	.buttons {
@@ -92,51 +93,70 @@
 		position: absolute;
 	}
 	
+	#setGames{
+		overflow-y: auto;
+		margin: 1em;
+		padding-top: 2em;
+		padding-left: 1em;
+		max-height: 18em;
+	
+	}
+	
+	#setGames .row div{
+		border:2px solid #4acaa8;
+		font-weight: bold;
+		font-size: larger;
+		padding-top: 1em;
+		padding-bottom: 1em;
+	}
+	
 </style>
 
 <div class="confirm">
 
 	<div class="comfirmWrapper">
-	<div class="cntGame">235353</div>
+	<h3>게임을 확인하세요.</h3>
+	<hr/>
 	<c:choose>
-		<c:when test="${empty sessionScope._GAME_SETTING_ }">
-    	설정된 셋팅이 없습니다. <br />
+		<c:when test="${empty plays }">
+    	<p>설정된 셋팅이 없습니다. <br />
     	랜덤으로 게임을 시작하시겠습니까?
-    	<div class="buttons">
-    		<div style="float: left;">
-				<div style="display: inline-block;">
-					<input type="button" value="예" class="randomBtn" />
+    	</p>
+    	<hr/>
+    		<div class="row uniform">
+				<div class="6u">
+					<input type="button" value="시작" class="randomBtn" />
 				</div>
-				</div>
-				<div style="float: right;">
-				<div style="display: inline-block;">
-					<input type="button" value="아니오" class="noBtn" />
-				</div>
+				
+				<div class="6u">
+					<input type="button" value="닫기" class="noBtn" />
 				</div>
 			</div>
 		</c:when>
 		<c:otherwise>
 			<div>
-			<ul class="confirmGames">
-			<c:forEach var="play" items="${sessionScope._GAME_SETTING_ }" varStatus="i">
+			<ul class="confirmGames" style="display: none">
+			<c:forEach var="play" items="${plays }" varStatus="i">
 				<li class="${play.games.gameId }">${play.games.gameName }
 				</li>
 			</c:forEach>
 			</ul>
 			</div>
 			
-			<div class="buttons 12u">
+			<div id="setGames" >
+			
+			</div>
+			<hr/>
 				<div class="row uniform">
 				<div class="4u">
-					<input type="button" value="예" class="yesBtn" />
+					<input type="button" value="시작" class="yesBtn" />
 				</div>
 				<div class="4u">
 					<input type="button" value="랜덤으로 게임 시작" class="randomBtn" />
 				</div>
 				
 				<div class="4u">
-					<input type="button" value="아니오" class="noBtn" />
-				</div>
+					<input type="button" value="닫기" class="noBtn" />
 				</div>
 			</div>
 		</c:otherwise>
