@@ -152,9 +152,9 @@
 			$("#gameInfoBox").click(function(){
 				var cellDiv = $("#cell"+positionIndex);
 				var str = cellDiv.children(".gameInfo").text();
+				console.log(str);
 				if($(this).hasClass("showDetail")){
 					var text = "</br><span style='font-size:2em;border-bottom:1px solid white;'>게임설명</span>"
-					
 					$(this).html(text+"</br></br>"+str);		
 					$(this).removeClass("showDetail");
 				}
@@ -232,6 +232,20 @@
 	});
 </script>
 <div id="marble">
+		<!-- exit event -->
+		<div id="exit" style="z-index:999;">
+		  <input type="checkbox" id="toggle" style="display:none;"/>
+		  <label for="toggle" id="toggle-btn"></label>
+		  <div class="nav-icon"></div>
+		  <nav data-state="close">
+		    <ul>
+		      <li><a href="/Marble/play/index">Home</a></li>
+		      <li><a href="#">About</a></li>
+		      <li><a href="#">Services</a></li>
+		      <li><a href="#">Contact</a></li>
+		    </ul>
+		  </nav>
+		</div>
 		<div id="disabledEffect"></div>
 	<div id="gamePan">
 		<table>
@@ -391,9 +405,7 @@
 			</tr>
 		</table>
 		
-		<div>
-		<header>
-		</div>
+
 
 
 		<div class="object"><img class="soju" src="/Marble/img/usedImage/horse.png" style="height:100%;width:100%;"/></div>
