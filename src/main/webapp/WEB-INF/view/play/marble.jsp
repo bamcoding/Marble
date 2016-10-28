@@ -242,16 +242,24 @@
 			
 		});
 		
-		$("#soju1").mouseover(function(){
-			$(this).addClass("sojuCenter");
-			$(this).css("animation","roll3 2s linear");
-			var random9 = parseInt(Math.random()*360) + 1
-			setTimeout(function(){
-				$(this).css("transform","rotateZ("+random9+"deg)")
-			},2000);
-			setTimeout(function(){
-				$(this).removeClass("sojuCenter");
-			},2500);
+		$(".soju1").click(function(){
+			var random9 = parseInt(Math.random()*360) + 1;
+			var showTime = 1000;
+			if($(this).hasClass("centerSoju")){				
+				$(this).removeClass("centerSoju");
+				$(this).removeClass("rollSoju");
+				$(this).addClass("soju1");
+			}
+			else if(!$(this).hasClass("rollSoju")){
+				$(this).removeClass("soju1");
+				$(this).addClass("centerSoju");
+				$(this).addClass("rollSoju");
+				
+					setTimeout(function(){
+						$(".centerSoju").removeClass("rollSoju");
+						$(".centerSoju").css("transform","rotateZ("+random9+"deg)");
+					}, showTime);
+			}
 		});
 	});
 	
@@ -507,7 +515,7 @@ SND-20161027-000051">
 		<div id="drink"></div>
 	</div>
 	
-	<img id="soju1" src="/Marble/img/usedImage/술병.png"/>
+	<img class="soju1" src="/Marble/img/usedImage/술병.png"/>
 </div>
 
 

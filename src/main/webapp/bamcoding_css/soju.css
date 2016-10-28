@@ -1,20 +1,24 @@
 @CHARSET "UTF-8";
 
-#soju1 {
-        animation: bounce 0.7s infinite linear;
-        perspective: 400px;
-        position:fixed;
+.soju1 {
+	animation: bounce 0.7s infinite linear;
+	position: fixed;
+}
 
-    }
+.centerSoju{
+	top:15%;
+	left:45%;
+	z-index:999;
+	position: fixed;
+}
 
-.sojuCenter{
-	top:30%;
-	left:30%;
+.rollsoju{
+	animation: roll3 1s linear;
 }
 
 @keyframes roll3{
 	0% {transform: rotateZ(0deg);}
-	100% {transform: rotateZ(900deg);}
+	100% {transform: rotateZ(2000deg);}
 }    
 
     
