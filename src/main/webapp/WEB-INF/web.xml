@@ -1043,7 +1043,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>DoShowSoundTrackServlet</servlet-name>
-    <url-pattern>/admin/doShowSoundTrack</url-pattern>
+    <url-pattern>/doShowSoundTrack</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -1053,9 +1053,8 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>DoDownloadDetailImgServlet</servlet-name>
-    <url-pattern>/admin/doDownloadDetailImg</url-pattern>
+    <url-pattern>/doDownloadDetailImg</url-pattern>
   </servlet-mapping>
- 
   <servlet>
     <description></description>
     <display-name>ResetGameSetServlet</display-name>
@@ -1074,6 +1073,16 @@
   <servlet-mapping>
     <servlet-name>CheckExistImageServlet</servlet-name>
     <url-pattern>/checkImg</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDownloadCellImgServlet</display-name>
+    <servlet-name>DoDownloadCellImgServlet</servlet-name>
+    <servlet-class>net.ktds.drink.admin.web.DoDownloadCellImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDownloadCellImgServlet</servlet-name>
+    <url-pattern>/doDownloadCellImg</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

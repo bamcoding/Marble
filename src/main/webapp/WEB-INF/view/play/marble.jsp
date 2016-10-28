@@ -139,7 +139,7 @@
 						var str = "";
 						
 						if(data == "true"){
-							$("#gameInfoBox").html("<img src='/Marble/admin/doDownloadDetailImg?gameId="+gameId+"' style='width:100%;height:100%;'/>");
+							$("#gameInfoBox").html("<img src='/Marble/doDownloadDetailImg?gameId="+gameId+"' style='width:100%;height:100%;'/>");
 							$("#gameInfoBox").addClass("showDetail");
 							var str= "<div style='display:none;'><h2>"+cellDiv.children(".gameName").html()+"</h2>";
 							str += "<div style='overflow-y:auto;height:13em;padding-left:1em;padding-right:1em;'>" + cellDiv.children(".gameInfo").html()+"</div></div>";
@@ -232,7 +232,7 @@
 				
 				$.post("/Marble/checkImg", {"type":"cell", "gameId" : gameId}, function(data){
 					if(data == "true"){
-						$("#"+cellId).children(".gameImg").html("<img src='/Marble/admin/doDownloadCellImg?gameId="+gameId+"' style='height:100%;width:100%;'/>");
+						$("#"+cellId).children(".gameImg").html("<img src='/Marble/doDownloadCellImg?gameId="+gameId+"' style='height:100%;width:100%;'/>");
 						$("#"+cellId).children(".gameName").hide();
 						$("#"+cellId).children(".gameImg").show();
 					}
@@ -461,7 +461,7 @@
 		<div id="blingEffect"></div>
 		<div id="disabledEffect"></div>
 		<div id="sound"><audio autoplay>
-		<source src="/Marble/admin/doShowSoundTrack?soundTrackId=
+		<source src="/Marble/doShowSoundTrack?soundTrackId=
 SND-20161027-000051">
  		 </audio></div>
 		<div id="gameInfoBox"></div>
