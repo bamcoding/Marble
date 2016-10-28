@@ -58,13 +58,13 @@
 	<c:if test="${not empty gameVO.detailImage}">
 	<tr>
 		<th>Detail Img</th>
-		<td><a href="/Marble/admin/doDownloadDetailImg?gameId=${gameVO.gameId}">${gameVO.detailImage}</a><img src="/Marble/admin/doDownloadDetailImg?gameId=${gameVO.gameId}" style="overflow:hidden; height:100px;"/></td>
+		<td><a href="/Marble/doDownloadDetailImg?gameId=${gameVO.gameId}">${gameVO.detailImage}</a><img src="/Marble/doDownloadDetailImg?gameId=${gameVO.gameId}" style="overflow:hidden; height:100px;"/></td>
 	</tr>
 	</c:if>
 	<c:if test="${not empty gameVO.cellImage}">
 	<tr>
 		<th>Cell Img</th>
-		<td><a href="/Marble/admin/doDownloadCellImg?gameId=${gameVO.gameId}">${gameVO.cellImage}</a><img src="/Marble/admin/doDownloadCellImg?gameId=${gameVO.gameId}" style="overflow:hidden; height:100px;"/></td>
+		<td><a href="/Marble/doDownloadCellImg?gameId=${gameVO.gameId}">${gameVO.cellImage}</a><img src="/Marble/doDownloadCellImg?gameId=${gameVO.gameId}" style="overflow:hidden; height:100px;"/></td>
 	</tr>
 	</c:if>
 </table>
