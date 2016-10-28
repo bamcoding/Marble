@@ -493,7 +493,8 @@ SND-20161027-000051">
 		<div id="goldenCard"></div>
 		<div id="drink"></div>
 	</div>
-
+	<link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/soju.css">
+	<img id="soju1" src="/Marble/img/usedImage/술병.png"/>
 </div>
 
 
