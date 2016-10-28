@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css"	href="/Marble/bamcoding_css/carousel.css" />
 <link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/horse.css">
 <link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/exit.css">
+<link rel="stylesheet" type="text/css" href="/Marble/bamcoding_css/soju.css"/>
 
 <script type="text/javascript">
 	$(document).ready( function() {
@@ -239,6 +240,18 @@
 				});
 			}
 			
+		});
+		
+		$("#soju1").mouseover(function(){
+			$(this).addClass("sojuCenter");
+			$(this).css("animation","roll3 2s linear");
+			var random9 = parseInt(Math.random()*360) + 1
+			setTimeout(function(){
+				$(this).css("transform","rotateZ("+random9+"deg)")
+			},2000);
+			setTimeout(function(){
+				$(this).removeClass("sojuCenter");
+			},2500);
 		});
 	});
 	
@@ -493,7 +506,8 @@ SND-20161027-000051">
 		<div id="goldenCard"></div>
 		<div id="drink"></div>
 	</div>
-
+	
+	<img id="soju1" src="/Marble/img/usedImage/술병.png"/>
 </div>
 
 
